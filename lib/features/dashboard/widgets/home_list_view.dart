@@ -1,11 +1,77 @@
 import 'package:dar_afaq/core/helper/extensions.dart';
-import 'package:dar_afaq/core/helper/spacing.dart';
-import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/routing/routes.dart';
 
-class Listing {
+import '../../../core/helper/spacing.dart';
+import '../../../core/resources/color_manager.dart';
+import '../../../core/routing/routes.dart';
+
+class HomeListView extends StatelessWidget {
+  HomeListView({
+    super.key,
+  });
+
+// Mock data for the two listings in the new image
+  final List<HomeListing> _mockListings = [
+    HomeListing(
+      title: 'للبيع - ارض فضاء',
+      description: 'للبيع اراضي في الزهراء مواقع زوايه و...',
+      location: 'الزهراء',
+      areaSqMeters: 400,
+      priceInK: 380,
+      isFeatured: true,
+      listingType: 'للبيع',
+      propertyType: 'ارض فضاء',
+      agencyName: 'شرق الوطنية العقارية',
+      agencyDetails: 'شرق الوطنية العقارية',
+      imageAsset:
+          'https://images.pexels.com/photos/9938940/pexels-photo-9938940.jpeg', // Placeholder image asset
+    ),
+    HomeListing(
+      title: 'للبيع - بيت',
+      description: 'للبيع قسيمه بالزهراء ق 4 شارع واحد مقابل شارع مفتوح ...',
+      location: 'الزهراء',
+      areaSqMeters: 375,
+      priceInK: 480,
+      isFeatured: true,
+      listingType: 'للبيع',
+      propertyType: 'بيت',
+      agencyName: 'حساب وسيط',
+      agencyDetails: 'شركه الاعتماد الدوليه العقاريه',
+      imageAsset:
+          'https://images.pexels.com/photos/26556320/pexels-photo-26556320.jpeg', // Placeholder image asset
+    ),
+    HomeListing(
+      title: 'للبيع - عمارة استثمارية',
+      description: 'للبيع قسيمه بالزهراء ق 4 شارع واحد مقابل شارع مفتوح ...',
+      location: 'الزهراء',
+      areaSqMeters: 375,
+      priceInK: 480,
+      isFeatured: true,
+      listingType: 'للبيع',
+      propertyType: 'استثمارية',
+      agencyName: 'حساب وسيط',
+      agencyDetails: 'شركه الشراع الدوليه العقاريه',
+      imageAsset:
+          'https://www.pexels.com/photo/apartment-interior-with-open-kitchen-near-table-with-chairs-6899345/', // Placeholder image asset
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true, // let ListView size itself to its children
+      physics: const NeverScrollableScrollPhysics(), // disable internal scroll
+      padding: EdgeInsets.zero, // Remove default listview padding
+      itemCount: _mockListings.length,
+      itemBuilder: (context, index) {
+        return HomeCard(listing: _mockListings[index]);
+      },
+    );
+  }
+}
+
+class HomeListing {
   final String title;
   final String description;
   final String location;
@@ -18,7 +84,7 @@ class Listing {
   final String agencyDetails;
   final String? imageAsset; // To handle the different images
 
-  Listing({
+  HomeListing({
     required this.title,
     required this.description,
     required this.location,
@@ -33,7 +99,7 @@ class Listing {
   });
 }
 
-class AdCard extends StatelessWidget {
+class HomeCard extends StatelessWidget {
   // final String title;
   // final String location;
   // final String description;
@@ -41,9 +107,9 @@ class AdCard extends StatelessWidget {
   // final String type; // e.g., 'سكني', 'بيت', 'للبيع'
   // final String imageUrl;
   // final bool isFeatured;
-  final Listing listing;
+  final HomeListing listing;
 
-  const AdCard({
+  const HomeCard({
     required this.listing,
     super.key,
 
@@ -62,7 +128,7 @@ class AdCard extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: GestureDetector(
         onTap: () {
-          context.pushNamed(Routes.adsDetailsRoute);
+          context.pushNamed(Routes.propertyDetailsRoute);
         },
         child: Card(
           color: Colors.white,

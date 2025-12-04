@@ -411,7 +411,7 @@ class SmallerTransactionCard extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15.sp,
-                        color: ColorManager.primary2,
+                        color: ColorManager.primary,
                       ),
                     ),
                     horizontalSpace(8),

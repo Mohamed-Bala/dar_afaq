@@ -40,7 +40,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                 },
               ),
             ),
-            horizontalSpace(10),
+            horizontalSpace(5),
             Expanded(
               child: buildFilterDropdown(
                 label: 'المناطق', // Areas
@@ -53,7 +53,20 @@ class _FilterWidgetState extends State<FilterWidget> {
                 },
               ),
             ),
-            horizontalSpace(10),
+            horizontalSpace(5),
+            Expanded(
+              child: buildFilterDropdown(
+                label: 'المحافظة', // Areas
+                value: _selectedArea,
+                items: ['الفردوس', 'العمرية', 'حولي', 'العبدلي'],
+                onChanged: (value) {
+                  setState(() {
+                    _selectedArea = value;
+                  });
+                },
+              ),
+            ),
+            horizontalSpace(5),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -81,7 +94,7 @@ Widget buildFilterDropdown({
   required ValueChanged<String?> onChanged,
 }) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: 12.w),
+    padding: EdgeInsets.symmetric(horizontal: 10.w),
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(8.r),

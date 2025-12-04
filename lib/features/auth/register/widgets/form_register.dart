@@ -89,7 +89,7 @@ class _FormRegisterState extends State<FormRegister> {
                 return 'Please enter a valid email';
               }
             },
-            // controller: context.read<RegisterCubit>().emailController,
+            //   // controller: context.read<RegisterCubit>().emailController,
           ),
           verticalSpace(18),
           AppTextFormField(
@@ -104,30 +104,30 @@ class _FormRegisterState extends State<FormRegister> {
             },
             //  controller: context.read<RegisterCubit>().phoneController,
           ),
-          verticalSpace(18),
-          const Divider(),
-          verticalSpace(18),
-          const AddressData(),
-          verticalSpace(18),
-          const Divider(),
-          verticalSpace(18),
-          const ToggleButtonWidget(),
-          verticalSpace(18),
-          AppTextFormField(
-            readOnly: true,
-            hintText: 'Birth Of Date',
-            keyboardType: TextInputType.text,
-            onTap: () {
-              selectDate();
-            },
-            validator: (value) {
-              // if (value == null || value.isEmpty) {
-              //   return 'Please select your birth date';
-              // }
-              // return null;
-            },
-            controller: _dateController,
-          ),
+          //  verticalSpace(18),
+          // const Divider(),
+          // verticalSpace(18),
+          //  const AddressData(),
+          //  verticalSpace(18),
+          //  const Divider(),
+          // verticalSpace(18),
+          // const ToggleButtonWidget(),
+          // verticalSpace(18),
+          // AppTextFormField(
+          //   readOnly: true,
+          //   hintText: 'Birth Of Date',
+          //   keyboardType: TextInputType.text,
+          //   onTap: () {
+          //     selectDate();
+          //   },
+          //   validator: (value) {
+          //     // if (value == null || value.isEmpty) {
+          //     //   return 'Please select your birth date';
+          //     // }
+          //     // return null;
+          //   },
+          //   controller: _dateController,
+          // ),
           verticalSpace(18),
           AppTextFormField(
             //  controller: context.read<RegisterCubit>().passwordController,
@@ -187,101 +187,101 @@ class _FormRegisterState extends State<FormRegister> {
   }
 }
 
-class AddressData extends StatefulWidget {
-  const AddressData({
-    super.key,
-  });
+// class AddressData extends StatefulWidget {
+//   const AddressData({
+//     super.key,
+//   });
 
-  @override
-  State<AddressData> createState() => _AddressDataState();
-}
+//   @override
+//   State<AddressData> createState() => _AddressDataState();
+// }
 
-class _AddressDataState extends State<AddressData> {
-  String? _selectedValue; // State variable to hold the selected value
-  final List<String> _options = [
-    'القادسية',
-    'قرطبة',
-    'الروضة',
-    'الشامية',
-    'الشويخ',
-    'الصليبخات',
-    'القيروان'
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        areaWidget(),
-        verticalSpace(18),
-        AppTextFormField(
-          hintText: 'Buliding Number',
-          keyboardType: TextInputType.number,
-          validator: (value) {},
-        ),
-        verticalSpace(18),
-        AppTextFormField(
-          hintText: 'Floor',
-          keyboardType: TextInputType.number,
-          validator: (value) {},
-        ),
-        verticalSpace(18),
-        AppTextFormField(
-          hintText: 'Avenue',
-          keyboardType: TextInputType.number,
-          validator: (value) {},
-        ),
-      ],
-    );
-  }
+// class _AddressDataState extends State<AddressData> {
+//   String? _selectedValue; // State variable to hold the selected value
+//   final List<String> _options = [
+//     'القادسية',
+//     'قرطبة',
+//     'الروضة',
+//     'الشامية',
+//     'الشويخ',
+//     'الصليبخات',
+//     'القيروان'
+//   ];
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         areaWidget(),
+//         verticalSpace(18),
+//         AppTextFormField(
+//           hintText: 'Buliding Number',
+//           keyboardType: TextInputType.number,
+//           validator: (value) {},
+//         ),
+//         verticalSpace(18),
+//         AppTextFormField(
+//           hintText: 'Floor',
+//           keyboardType: TextInputType.number,
+//           validator: (value) {},
+//         ),
+//         verticalSpace(18),
+//         AppTextFormField(
+//           hintText: 'Avenue',
+//           keyboardType: TextInputType.number,
+//           validator: (value) {},
+//         ),
+//       ],
+//     );
+//   }
 
-  DropdownButtonFormField<String> areaWidget() {
-    return DropdownButtonFormField<String>(
-      decoration: InputDecoration(
-        isDense: true,
-        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: ColorManager.primary,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: ColorManager.white,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        fillColor: ColorManager.lighterGray,
-        filled: true,
-      ),
-      value: _selectedValue,
-      hint: const Text('Area Name'),
-      items: _options.map((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-      onChanged: (String? newValue) {
-        setState(() {
-          _selectedValue = newValue;
-        });
-      },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please select an option';
-        }
-        return null;
-      },
-    );
-  }
-}
+//   DropdownButtonFormField<String> areaWidget() {
+//     return DropdownButtonFormField<String>(
+//       decoration: InputDecoration(
+//         isDense: true,
+//         contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+//         focusedBorder: OutlineInputBorder(
+//           borderSide: BorderSide(
+//             color: ColorManager.primary,
+//             width: 1.3,
+//           ),
+//           borderRadius: BorderRadius.circular(16.0),
+//         ),
+//         enabledBorder: OutlineInputBorder(
+//           borderSide: BorderSide(
+//             color: ColorManager.white,
+//             width: 1.3,
+//           ),
+//           borderRadius: BorderRadius.circular(16.0),
+//         ),
+//         focusedErrorBorder: OutlineInputBorder(
+//           borderSide: const BorderSide(
+//             color: Colors.red,
+//             width: 1.3,
+//           ),
+//           borderRadius: BorderRadius.circular(16.0),
+//         ),
+//         fillColor: ColorManager.lighterGray,
+//         filled: true,
+//       ),
+//       value: _selectedValue,
+//       hint: const Text('Area Name'),
+//       items: _options.map((String value) {
+//         return DropdownMenuItem<String>(
+//           value: value,
+//           child: Text(value),
+//         );
+//       }).toList(),
+//       onChanged: (String? newValue) {
+//         setState(() {
+//           _selectedValue = newValue;
+//         });
+//       },
+//       validator: (value) {
+//         if (value == null || value.isEmpty) {
+//           return 'Please select an option';
+//         }
+//         return null;
+//       },
+//     );
+//   }
+// }

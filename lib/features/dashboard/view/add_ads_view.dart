@@ -1,14 +1,24 @@
 import 'package:dar_afaq/core/helper/extensions.dart';
+import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/helper/spacing.dart';
 import '../../../core/resources/styles_manager.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/widgets/app_text_button.dart';
+import '../widgets/build_gridItem.dart';
 
 // Helper class for data structure
 
 class AdType {
   final String title;
   final String description;
+  final String description2;
+
+  final String description3;
+
+  final String description4;
+
   final IconData icon;
   final Color backgroundColor;
   final Color textColor;
@@ -17,8 +27,11 @@ class AdType {
   final bool isFeatured;
 
   AdType({
-    required this.title,
     required this.description,
+    required this.description2,
+    required this.description3,
+    required this.description4,
+    required this.title,
     required this.icon,
     required this.backgroundColor,
     this.textColor = Colors.white,
@@ -46,103 +59,112 @@ class AdTypeCard extends StatelessWidget {
       textDirection: TextDirection.rtl, // For Arabic text
       child: GestureDetector(
         onTap: onTap,
-        child: Container(
-          width: MediaQuery.of(context).size.width *
-              0.4, // Approximately half width
-          height: 200, // Fixed height for visual consistency
-          margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-          decoration: BoxDecoration(
-            color: adType.backgroundColor,
-            borderRadius: BorderRadius.circular(15),
-            border: isSelected
-                ? Border.all(
-                    color: adType.borderColor, width: 3.0) // Highlight selected
-                : null,
-            boxShadow: [
-              if (isSelected)
-                BoxShadow(
-                  color: adType.borderColor.withOpacity(0.5),
-                  blurRadius: 8,
-                  spreadRadius: 2,
-                ),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end, // Aligned to right
-              children: <Widget>[
-                // Top row: selection circle and icon
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 24,
-                      height: 24,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.white,
-                          width:
-                              isSelected ? 6 : 2, // Thicker border if selected
-                        ),
-                        color: isSelected ? Colors.white : Colors.transparent,
-                      ),
-                      child: isSelected
-                          ? Center(
-                              child: Container(
-                                width: 10,
-                                height: 10,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.blue
-                                      .shade800, // Inner circle for selection
-                                ),
-                              ),
-                            )
-                          : null,
-                    ),
-                    Icon(
-                      adType.icon,
-                      color: adType.iconColor,
-                      size: 40,
-                    ),
-                  ],
-                ),
-                // Bottom content: title and description
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      adType.title,
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: adType.textColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      adType.description,
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: adType.textColor.withOpacity(0.8),
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
+        child: Material(
+          elevation: 4,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.4,
+            height: 200.h,
+            margin: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 4.0.h),
+            decoration: BoxDecoration(
+              //color: adType.backgroundColor,
+              borderRadius: BorderRadius.circular(12),
+              border: isSelected
+                  ? Border.all(color: adType.borderColor, width: 3.0)
+                  : null,
+              boxShadow: [
+                if (isSelected)
+                  BoxShadow(
+                    color: adType.borderColor.withOpacity(0.1),
+                    blurRadius: 8,
+                    spreadRadius: 2,
+                  ),
               ],
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 4.0.h),
+              child: Column(
+                //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Aligned to right
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 20.w,
+                        height: 20.h,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: ColorManager.primary,
+                            width: isSelected
+                                ? 2
+                                : 2, // Thicker border if selected
+                          ),
+                          color: isSelected
+                              ? ColorManager.primary
+                              : Colors.transparent,
+                        ),
+                        child: isSelected
+                            ? Center(
+                                child: Container(
+                                  width: 10.w,
+                                  height: 10.h,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            : null,
+                      ),
+                      Text(
+                        adType.title,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: ColorManager.primary,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      verticalSpace(10),
+                      Text(
+                        adType.description,
+                        textAlign: TextAlign.right,
+                        style: StylesManager.font12GrayRegular,
+                      ),
+                      Text(
+                        adType.description2,
+                        textAlign: TextAlign.right,
+                        style: StylesManager.font12GrayRegular,
+                      ),
+                      Text(
+                        adType.description3,
+                        textAlign: TextAlign.right,
+                        style: StylesManager.font12GrayRegular,
+                      ),
+                      Text(
+                        adType.description4,
+                        textAlign: TextAlign.right,
+                        style: StylesManager.font12GrayRegular,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
   }
-
-
 }
 
 class PackageSelectionScreen extends StatefulWidget {
@@ -157,37 +179,96 @@ class _PackageSelectionScreenState extends State<PackageSelectionScreen> {
 
   final List<AdType> _adTypes = [
     AdType(
-      title: 'إعلان مميز',
-      description: 'يظهر أعلى قائمة الإعلانات',
+      title: ' أساسية',
+      description: '  صلاحية الإعلان ٣٠ يوم',
+      description2: "",
+      description3: "",
+      description4: "",
+
       icon: Icons.campaign_outlined, // Speaker icon
-      backgroundColor: Colors.amber.shade700,
+      backgroundColor: ColorManager.grey,
       iconColor: Colors.white,
-      borderColor: Colors.blue.shade800, // Border for selected state
+      borderColor: ColorManager.primary, // Border for selected state
       isFeatured: true,
     ),
     AdType(
-      title: 'إعلان عادي',
-      description: 'يظهر ضمن قائمة الإعلانات',
+      title: ' اكسترا',
+      description: '  ضعف المشاهدات',
+      description2: " رفع ٥ مرات",
+      description3: " تثبيت عقار للبيع",
+      description4: "صلاحية ٣٠ يوم",
       icon: Icons
           .ad_units_outlined, // 'AD' icon (using ad_units for a similar look)
-      backgroundColor: Colors.blue.shade700,
+      backgroundColor: ColorManager.grey,
       iconColor: Colors.white,
-      borderColor: Colors.blue.shade800, // Border for selected state
+      borderColor: ColorManager.primary, // Border for selected state
+      isFeatured: false,
+    ),
+    AdType(
+      title: ' سوبر',
+      description: ' خصم ٥٠٪  ',
+      description2: "رفع ٩ مرات",
+      description3: "علان مميز",
+      description4: " ضعف المشاهدات ×١٠",
+      icon: Icons.campaign_outlined, // Speaker icon
+      backgroundColor: ColorManager.grey,
+      iconColor: Colors.white,
+      borderColor: ColorManager.primary, // Border for selected state
+      isFeatured: true,
+    ),
+    AdType(
+      title: ' بريميوم',
+      description: 'وصول سريع + مضاعف للمشاهدات',
+      description2: "صلاحية ٦٠ يوم",
+      description3: "رفع ١٥ مرة",
+      description4: "علان مميز + شعار خاص",
+      icon: Icons
+          .ad_units_outlined, // 'AD' icon (using ad_units for a similar look)
+      backgroundColor: ColorManager.grey,
+      iconColor: Colors.white,
+      borderColor: ColorManager.primary, // Border for selected state
+      isFeatured: false,
+    ),
+    AdType(
+      title: ' VIP',
+      description: ' مضاعفة المشاهدات ×٢٠ + أولوية',
+      description2: "صلاحية ٩٠ يوم",
+      description3: " دعم مباشر",
+      description4: "تثبيت في كل الأقسام",
+      icon: Icons
+          .ad_units_outlined, // 'AD' icon (using ad_units for a similar look)
+      backgroundColor: ColorManager.grey,
+      iconColor: Colors.white,
+      borderColor: ColorManager.primary, // Border for selected state
       isFeatured: false,
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    // We wrap the entire UI in a SingleChildScrollView to make it scrollable
-    // if the content exceeds the screen height, as is typical for bottom sheets.
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: realEstateServices.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4,
+                crossAxisSpacing: 10.0,
+                mainAxisSpacing: 10.0,
+                childAspectRatio: 1.0,
+              ),
+              itemBuilder: (context, index) {
+                final item = realEstateServices[index];
+                return buildGridItem(item, ColorManager.iconColor,
+                    ColorManager.itemBackgroundColor);
+              },
+            ),
+            verticalSpace(20),
             const Text(
               'اختر نوع الإعلان',
               style: TextStyle(
@@ -196,10 +277,18 @@ class _PackageSelectionScreenState extends State<PackageSelectionScreen> {
                 fontSize: 20,
               ),
             ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(_adTypes.length, (index) {
+            verticalSpace(10),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: _adTypes.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10.0,
+                mainAxisSpacing: 10.0,
+                childAspectRatio: 1.0,
+              ),
+              itemBuilder: (context, index) {
                 final adType = _adTypes[index];
                 return AdTypeCard(
                   adType: adType,
@@ -210,44 +299,21 @@ class _PackageSelectionScreenState extends State<PackageSelectionScreen> {
                     });
                   },
                 );
-              }),
+              },
             ),
-            // You can add other elements here, like a 'Continue' button
-            // if needed for the flow.
-            const SizedBox(height: 40),
+            verticalSpace(40),
             if (_selectedAdTypeIndex != null)
               Center(
                 child: AppTextButton(
                   buttonText: "متابعة",
+                  buttonWidth: 250.w,
                   textStyle: StylesManager.font16White,
                   onPressed: () {
-                     context.pushNamed(Routes.addRoute);
+                    context.pushNamed(Routes.addRoute);
                   },
                 ),
-                // ElevatedButton(
-                //   onPressed: () {
-                //     context.pushNamed(Routes.addRoute);
-                //     // Handle the selection, e.g., navigate to next screen
-                //     final selectedAd = _adTypes[_selectedAdTypeIndex!];
-                //     ScaffoldMessenger.of(context).showSnackBar(
-                //       SnackBar(content: Text('تم اختيار: ${selectedAd.title}')),
-                //     );
-                //     print('Selected Ad Type: ${selectedAd.title}');
-                //   },
-                //   style: ElevatedButton.styleFrom(
-                //     backgroundColor: Colors.blue.shade800, // Button color
-                //     padding: const EdgeInsets.symmetric(
-                //         horizontal: 40, vertical: 15),
-                //     shape: RoundedRectangleBorder(
-                //       borderRadius: BorderRadius.circular(10),
-                //     ),
-                //   ),
-                //   child: const Text(
-                //     'متابعة', // Continue
-                //     style: TextStyle(fontSize: 18, color: Colors.white),
-                //   ),
-                // ),
               ),
+            verticalSpace(40),
           ],
         ),
       ),

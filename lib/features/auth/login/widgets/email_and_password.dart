@@ -23,16 +23,28 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
       key: formKey,
       child: Column(
         children: [
+          // AppTextFormField(
+          //   hintText: 'Email',
+          //   validator: (value) {
+          //     if (value == null ||
+          //         value.isEmpty ||
+          //         !AppRegex.isEmailValid(value)) {
+          //       return 'Please enter a valid email';
+          //     }
+          //   },
+          //   controller: emailController,
+          // ),
           AppTextFormField(
-            hintText: 'Email',
+            hintText: 'Phone number',
+            keyboardType: TextInputType.phone,
             validator: (value) {
               if (value == null ||
                   value.isEmpty ||
-                  !AppRegex.isEmailValid(value)) {
-                return 'Please enter a valid email';
+                  !AppRegex.isPhoneNumberValid(value)) {
+                return 'Please enter a valid phone number';
               }
             },
-            controller: emailController,
+            //  controller: context.read<RegisterCubit>().phoneController,
           ),
           verticalSpace(18),
           AppTextFormField(

@@ -26,16 +26,16 @@ class _DashboardViewState extends State<DashboardView> {
     const Home(),
     AuctionView(),
     const PackageSelectionScreen(),
-    const AdsView(),
     const DealsView(),
+    const AdsView(),
   ];
 
   final List<String> _titel = [
     "دار أفاق",
     "المزادات",
-    "اضافة اعلان",
-    "الاعلانات",
+    " اضافة اعلان",
     "الصفقات",
+    "الاعلانات",
   ];
 
   final PageController _pageController = PageController();
@@ -88,6 +88,18 @@ class _DashboardViewState extends State<DashboardView> {
             });
           },
         ),
+        floatingActionButton: FloatingActionButton(
+          shape: const CircleBorder(), // Make the FAB circular
+          backgroundColor:
+              ColorManager.primary, //(0xFF0D1B44), // Dark blue background
+          onPressed: () {
+            // Handle 'الخدمات' (Services) tap
+            _onItemTapped(2); // Assuming Services is index 2
+          },
+          child: const Icon(Icons.ads_click_outlined,
+              color: Colors.white, size: 30), // Example icon for Services
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -99,16 +111,16 @@ class _DashboardViewState extends State<DashboardView> {
               label: 'المزادات',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.add),
+              icon: Icon(Icons.ads_click_outlined),
               label: 'اضافة اعلان',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.campaign),
-              label: 'الاعلانات',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.swap_calls),
               label: 'الصفقات',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.campaign),
+              label: 'الاعلانات',
             ),
           ],
           currentIndex: _currentIndex,

@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/helper/spacing.dart';
 import '../../../core/resources/styles_manager.dart';
-import '../../../core/routing/routes.dart';
 import '../../../core/widgets/app_text_button.dart';
 import '../../../core/widgets/app_text_form_field.dart';
 
@@ -19,7 +18,7 @@ class AddView extends StatefulWidget {
 class _AddViewState extends State<AddView> {
   String? _selectedCategory;
   String? _selectedArea;
-  String _selectedTransaction = 'بيع';
+  final String _selectedTransaction = 'بيع';
   final TextEditingController _descriptionController = TextEditingController();
 
   @override
@@ -31,7 +30,7 @@ class _AddViewState extends State<AddView> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           title: const Text(
-            'إضافة عقار',
+            'إضاف إعلان ',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
@@ -41,42 +40,42 @@ class _AddViewState extends State<AddView> {
             price: '٤٠ د.ك',
             packageName: 'الباقة المختارة  : سوبر',
           ),
-          const SizedBox(height: 24),
+          // const SizedBox(height: 24),
 
-          const Text(
-            'نوع المعاملة',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(height: 12),
-          Wrap(
-            alignment: WrapAlignment.spaceBetween,
-            spacing: 10,
-            runSpacing: 10,
-            children: [
-              ArabicTransactionButton(
-                label: 'بيع', // Sale
-                icon: Icons.monetization_on,
-                isSelected: _selectedTransaction == 'بيع',
-                onTap: () => setState(() => _selectedTransaction = 'بيع'),
-              ),
-              ArabicTransactionButton(
-                label: 'إيجار', // Rent
-                icon: Icons.home,
-                isSelected: _selectedTransaction == 'إيجار',
-                onTap: () => setState(() => _selectedTransaction = 'إيجار'),
-              ),
-              ArabicTransactionButton(
-                label: 'بدل', // Exchange
-                icon: Icons.sync_alt,
-                isSelected: _selectedTransaction == 'بدل',
-                onTap: () => setState(() => _selectedTransaction = 'بدل'),
-              ),
-            ],
-          ),
+          // const Text(
+          //   'نوع المعاملة',
+          //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          // ),
+          // const SizedBox(height: 12),
+          // Wrap(
+          //   alignment: WrapAlignment.spaceBetween,
+          //   spacing: 10,
+          //   runSpacing: 10,
+          //   children: [
+          //     ArabicTransactionButton(
+          //       label: 'بيع', // Sale
+          //       icon: Icons.monetization_on,
+          //       isSelected: _selectedTransaction == 'بيع',
+          //       onTap: () => setState(() => _selectedTransaction = 'بيع'),
+          //     ),
+          //     ArabicTransactionButton(
+          //       label: 'إيجار', // Rent
+          //       icon: Icons.home,
+          //       isSelected: _selectedTransaction == 'إيجار',
+          //       onTap: () => setState(() => _selectedTransaction = 'إيجار'),
+          //     ),
+          //     ArabicTransactionButton(
+          //       label: 'بدل', // Exchange
+          //       icon: Icons.sync_alt,
+          //       isSelected: _selectedTransaction == 'بدل',
+          //       onTap: () => setState(() => _selectedTransaction = 'بدل'),
+          //     ),
+          //   ],
+          // ),
           verticalSpace(24),
 
           const Text(
-            'وصف العقار', // Property Description
+            'وصف الاعلان',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
           verticalSpace(10),
@@ -90,7 +89,7 @@ class _AddViewState extends State<AddView> {
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(color: Colors.grey.shade400),
               ),
-              hintText: 'تفاصيل العقار',
+              hintText: 'تفاصيل إعلان',
               hintTextDirection: TextDirection.rtl,
             ),
             textAlign: TextAlign.right,
@@ -106,59 +105,63 @@ class _AddViewState extends State<AddView> {
           ),
           verticalSpace(10),
           _buildFilterDropdown(
-            label: 'المناطق', // Areas
+            label: 'المنطقة', // Areas
             hint: 'صباح الناصر', // Sabah Al-Nasser (Example)
             value: _selectedArea,
             items: ['صباح الناصر', 'الاندلس', 'القرين', 'حولي'],
             onChanged: (value) => setState(() => _selectedArea = value),
           ),
 
-          verticalSpace(30),
-          AppTextFormField(
-            hintText: 'عدد الغرف',
-            keyboardType: TextInputType.number,
-            validator: (value) {},
-          ),
+          // verticalSpace(30),
+          // AppTextFormField(
+          //   hintText: 'عدد الغرف',
+          //   keyboardType: TextInputType.number,
+          //   validator: (value) {},
+          // ),
+          // verticalSpace(10),
+          // AppTextFormField(
+          //   hintText: 'عدد الصالات',
+          //   keyboardType: TextInputType.number,
+          //   validator: (value) {},
+          // ),
+          // verticalSpace(10),
+          // AppTextFormField(
+          //   hintText: 'المساحة (م²)',
+          //   keyboardType: TextInputType.number,
+          //   validator: (value) {},
+          // ),
           verticalSpace(10),
-          AppTextFormField(
-            hintText: 'عدد الصالات',
-            keyboardType: TextInputType.number,
-            validator: (value) {},
+          const Text(
+            'السعر',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            textDirection: TextDirection.rtl,
           ),
-          verticalSpace(10),
-          AppTextFormField(
-            hintText: 'المساحة (م²)',
-            keyboardType: TextInputType.number,
-            validator: (value) {},
-          ),
-          verticalSpace(10),
           AppTextFormField(
             hintText: 'السعر (د.ك)',
             keyboardType: TextInputType.number,
             validator: (value) {},
           ),
-          verticalSpace(10),
-          AppTextFormField(
-            hintText: 'العنوان التفصيلي',
-            keyboardType: TextInputType.number,
-            validator: (value) {},
-          ),
+          // verticalSpace(10),
+          // AppTextFormField(
+          //   hintText: 'العنوان التفصيلي',
+          //   keyboardType: TextInputType.number,
+          //   validator: (value) {},
+          // ),
           verticalSpace(10),
           // --- 4. Upload Zones (88888888.PNG) ---
+          // const DashedUploadZone(
+          //   title: 'رفع فيديو (30 ثانية)', // Upload video (30 seconds)
+          //   hint:
+          //       'اسحب الفيديو هنا أو اضغط للرفع', // Drag video here or press to upload
+          // ),
+          //  const SizedBox(height: 20),
           const DashedUploadZone(
-            title: 'رفع فيديو (30 ثانية)', // Upload video (30 seconds)
-            hint:
-                'اسحب الفيديو هنا أو اضغط للرفع', // Drag video here or press to upload
-          ),
-          const SizedBox(height: 20),
-          const DashedUploadZone(
-            title: 'رفع صور العقار', // Upload property photos
-            hint:
-                'اسحب الصور هنا أو اضغط للرفع', // Drag photos here or press to upload
+            title: 'رفع صور إعلان',
+            hint: 'اسحب الصور هنا أو اضغط للرفع',
           ),
           const SizedBox(height: 40),
           AppTextButton(
-            buttonText: 'إضافة عقار',
+            buttonText: 'إضافة إعلان  ',
             textStyle: StylesManager.font16White,
             onPressed: () {
               //  context.pushNamed(Routes.addRoute);
@@ -379,3 +382,20 @@ class DashedUploadZone extends StatelessWidget {
     );
   }
 }
+//==============================================================================
+
+// Data list for the "Property Type" dropdown (اختر النوع)
+const List<String> propertyTypes = [
+  'شقة', // Apartment
+  'فيلا', // Villa
+  'بيت', // House
+  'ارض', // Land
+  'عمارة', // Building/Tower
+  'شاليه', // Chalet
+  'مزرعة', // Farm
+  'محل تجاري', // Commercial Shop
+];
+
+// Placeholder for the selected value
+String? selectedType;
+String? selectedArea;

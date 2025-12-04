@@ -53,7 +53,13 @@ class _CategoryListViewState extends State<CategoryListView> {
                   label: category['label'] as String,
                   icon: category['icon'] as IconData,
                   isSelected: isSelected,
-                  onTap: () {},
+                  onTap: () {
+                     setState(() {
+                    _selectedIndex = index;
+                    // Add filtering logic here
+                  });
+                    
+                  },
                 ),
               ),
             );

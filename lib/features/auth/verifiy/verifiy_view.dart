@@ -2,6 +2,7 @@ import 'package:dar_afaq/core/helper/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/helper/app_regex.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/resources/styles_manager.dart';
 import '../../../core/routing/routes.dart';
@@ -42,10 +43,22 @@ class _VerifiyViewState extends State<VerifiyView> {
                 Column(
                   children: [
                     verticalSpace(18),
+                    // AppTextFormField(
+                    //   hintText: 'Email Address',
+                    //   validator: (value) {},
+                    //   controller: emailController,
+                    // ),
                     AppTextFormField(
-                      hintText: 'Email Address',
-                      validator: (value) {},
-                      controller: emailController,
+                      hintText: 'Phone number',
+                      keyboardType: TextInputType.phone,
+                      validator: (value) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            !AppRegex.isPhoneNumberValid(value)) {
+                          return 'Please enter a valid phone number';
+                        }
+                      },
+                      //  controller: context.read<RegisterCubit>().phoneController,
                     ),
                     verticalSpace(24),
 

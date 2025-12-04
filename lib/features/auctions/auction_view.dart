@@ -1,9 +1,11 @@
+import 'package:dar_afaq/core/helper/extensions.dart';
 import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/helper/spacing.dart';
-import '../dashboard/widgets/build_filter_widget.dart';
+import '../../core/resources/styles_manager.dart';
+import '../../core/routing/routes.dart';
 
 class AuctionView extends StatelessWidget {
   AuctionView({super.key});
@@ -24,7 +26,7 @@ class AuctionView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const FilterWidget(),
+          const FilterAuctionWidget(),
 
           // Segmented Filter Buttons
           Container(
@@ -107,130 +109,248 @@ class AuctionListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: ColorManager.white,
-      margin: EdgeInsets.symmetric(vertical: 8.0.w, horizontal: 8.0.h),
-      elevation: 1,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: Padding(
-        padding: EdgeInsets.all(15.0.h),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Left Side (Ministry Logo)
-            // Container(
-            //   width: 50,
-            //   height: 50,
-            //   decoration: BoxDecoration(
-            //     color: Colors.red[100], // Placeholder color
-            //     borderRadius: BorderRadius.circular(8),
-            //     image: const DecorationImage(
-            //       image: AssetImage(
-            //           'assets/ministry_logo.png'), // Replace with actual logo
-            //       fit: BoxFit.cover,
-            //     ),
-            //   ),
-            //   child: const Center(
-            //     child: Text('🇰🇼',
-            //         style: TextStyle(fontSize: 24)), // Placeholder if no image
-            //   ),
-            // ),
-            horizontalSpace(12),
+    return GestureDetector(
+      onTap: () {
+        context.pushNamed(Routes.auctionDetailsRoute);
+      },
+      child: Card(
+        color: ColorManager.white,
+        margin: EdgeInsets.symmetric(vertical: 8.0.w, horizontal: 8.0.h),
+        elevation: 1,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: EdgeInsets.all(15.0.h),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Left Side (Ministry Logo)
+              // Container(
+              //   width: 50,
+              //   height: 50,
+              //   decoration: BoxDecoration(
+              //     color: Colors.red[100], // Placeholder color
+              //     borderRadius: BorderRadius.circular(8),
+              //     image: const DecorationImage(
+              //       image: AssetImage(
+              //           'assets/ministry_logo.png'), // Replace with actual logo
+              //       fit: BoxFit.cover,
+              //     ),
+              //   ),
+              //   child: const Center(
+              //     child: Text('🇰🇼',
+              //         style: TextStyle(fontSize: 24)), // Placeholder if no image
+              //   ),
+              // ),
+              horizontalSpace(12),
 
-            // Middle Section (Details)
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.bookmark_border,
-                            color: ColorManager.primary2,
-                          ),
-                          horizontalSpace(4),
-                          Text(
-                            ministry,
-                            style: const TextStyle(fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.access_time,
-                            size: 16.sp,
-                            color: ColorManager.primary2,
-                          ),
-                          horizontalSpace(4),
-                          Text(
-                            time,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_today,
-                            size: 16.sp,
-                            color: ColorManager.primary2,
-                          ),
-                          horizontalSpace(4),
-                          Text(
-                            date,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  verticalSpace(20),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.location_on,
-                        size: 16.sp,
-                        color: ColorManager.primary2,
-                      ),
-                      horizontalSpace(4),
-                      Expanded(
-                        child: Text(
-                          location,
-                          style: TextStyle(
-                              color: ColorManager.grey, fontSize: 13.sp),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+              // Middle Section (Details)
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.bookmark_border,
+                              color: ColorManager.primary,
+                            ),
+                            horizontalSpace(4),
+                            Text(
+                              ministry,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                          ],
                         ),
-                      ),
-                      Text(
-                        'ذكرني',
-                        style: TextStyle(
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.access_time,
+                              size: 16.sp,
+                              color: ColorManager.primary,
+                            ),
+                            horizontalSpace(4),
+                            Text(
+                              time,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.calendar_today,
+                              size: 16.sp,
+                              color: ColorManager.primary,
+                            ),
+                            horizontalSpace(4),
+                            Text(
+                              date,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    verticalSpace(20),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.location_on,
+                          size: 16.sp,
                           color: ColorManager.primary,
-                          fontSize: 12.sp,
                         ),
-                      ),
-                    ],
-                  ),
+                        horizontalSpace(4),
+                        Expanded(
+                          child: Text(
+                            location,
+                            style: TextStyle(
+                                color: ColorManager.grey, fontSize: 13.sp),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Text(
+                          'ذكرني',
+                          style: TextStyle(
+                            color: ColorManager.primary,
+                            fontSize: 12.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              // Right Side (Bookmark Icon)
+              const Column(
+                children: [
+                  // IconButton(
+                  //   icon: const Icon(Icons.bookmark_border, color: Colors.grey),
+                  //   onPressed: () {},
+                  // ),
                 ],
               ),
-            ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
-            // Right Side (Bookmark Icon)
-            const Column(
-              children: [
-                // IconButton(
-                //   icon: const Icon(Icons.bookmark_border, color: Colors.grey),
-                //   onPressed: () {},
-                // ),
-              ],
+class FilterAuctionWidget extends StatefulWidget {
+  const FilterAuctionWidget({super.key});
+
+  @override
+  State<FilterAuctionWidget> createState() => _FilterAuctionWidgetState();
+}
+
+class _FilterAuctionWidgetState extends State<FilterAuctionWidget> {
+  // State for filter dropdowns
+  String? _selectedCategory;
+  String? _selectedArea;
+  @override
+  Widget build(BuildContext context) {
+    // --- Filter Row ---
+    return Container(
+      color: Colors.white,
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+      child: Directionality(
+        textDirection: TextDirection.rtl, // Force RTL for the filter row
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: buildFilterDropdown(
+                label: 'فئة العقار', // Property Category
+                value: _selectedCategory,
+                items: ['شقة', 'فيلا', 'ارض', 'محل'],
+                onChanged: (value) {
+                  setState(() {
+                    _selectedCategory = value;
+                  });
+                },
+              ),
+            ),
+            horizontalSpace(5),
+            Expanded(
+              child: buildFilterDropdown(
+                label: 'المناطق', // Areas
+                value: _selectedArea,
+                items: ['الاندلس', 'القرين', 'حولي', 'السالمية'],
+                onChanged: (value) {
+                  setState(() {
+                    _selectedArea = value;
+                  });
+                },
+              ),
+            ),
+            horizontalSpace(5),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.r),
+                border: Border.all(color: Colors.grey),
+              ),
+              child: IconButton(
+                icon: Icon(Icons.filter_list, color: ColorManager.primary),
+                onPressed: () {
+                  // Handle filter action
+                },
+              ),
             ),
           ],
         ),
       ),
     );
   }
+}
+
+Widget buildFilterDropdown({
+  required String label,
+  required String? value,
+  required List<String> items,
+  required ValueChanged<String?> onChanged,
+}) {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 10.w),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(8.r),
+      border: Border.all(color: Colors.grey),
+    ),
+    child: DropdownButtonHideUnderline(
+      child: DropdownButton<String>(
+        value: value,
+        hint: Text(
+          label,
+          style: StylesManager.font12GrayRegular,
+          textDirection: TextDirection.rtl,
+        ),
+        icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),
+        isExpanded: true,
+        style: TextStyle(color: Colors.black87, fontSize: 14.sp),
+        onChanged: onChanged,
+        items: items.map<DropdownMenuItem<String>>((String item) {
+          return DropdownMenuItem<String>(
+            value: item,
+            child: Text(
+              item,
+              textDirection: TextDirection.rtl,
+              textAlign: TextAlign.right,
+            ),
+          );
+        }).toList(),
+        // Add `dropdownColor` if you want to customize dropdown menu background
+        // dropdownColor: Colors.white,
+      ),
+    ),
+  );
 }

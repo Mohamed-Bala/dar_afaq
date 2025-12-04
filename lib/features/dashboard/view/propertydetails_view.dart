@@ -1,137 +1,15 @@
 import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PropertyDetails {
-  final String title;
-  final String location;
-  final String date;
-  final int views;
-  final String listingType;
-  final String propertyType;
-  final int areaSqMeters;
-  final int numberOfRooms;
-  final int numberOfFloors;
-  final String description;
-  final String agencyName;
-  final String agencyDetails;
-  final String agencyLogoAsset;
-  final String mainImageAsset;
-
-  PropertyDetails({
-    required this.title,
-    required this.location,
-    required this.date,
-    required this.views,
-    required this.listingType,
-    required this.propertyType,
-    required this.areaSqMeters,
-    required this.numberOfRooms,
-    required this.numberOfFloors,
-    required this.description,
-    required this.agencyName,
-    required this.agencyDetails,
-    required this.agencyLogoAsset,
-    required this.mainImageAsset,
-  });
-}
-
-class DetailsSectionHeader extends StatelessWidget {
-  final String title;
-  final String value;
-  final IconData icon;
-
-  const DetailsSectionHeader({
-    super.key,
-    required this.title,
-    required this.value,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      margin: const EdgeInsets.only(left: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                value,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(width: 4),
-              Icon(icon, size: 18, color: Colors.blueGrey.shade700),
-            ],
-          ),
-          Text(
-            title,
-            style: const TextStyle(fontSize: 12, color: Colors.grey),
-          ),
-        ],
-      ),
-    );
-  }
-}
+// --- Color Palette ---
+// Defining the main colors used in the ad.
+const Color kPrimaryColor = Color(0xFF003049); // Dark blue/black for text
+const Color kAccentColor = Color(0xFFFFB700); // Yellow/Orange for highlights
+const Color kBackgroundColor = Colors.white;
 
 class PropertyDetailsScreen extends StatelessWidget {
-  // Mock Data (Controller/Data Layer Simulation)
-  final PropertyDetails property = PropertyDetails(
-    title: 'بيت في الرميثية ٣ ادوار وسرداب',
-    location: 'الرميثية',
-    date: '17.11.2025',
-    views: 96,
-    listingType: 'للبيع',
-    propertyType: 'بيت',
-    areaSqMeters: 750,
-    numberOfRooms: 0, // Based on the icon showing '0 غرف'
-    numberOfFloors: 4, // Based on the icon showing '4 طوابق'
-    description:
-        'للبيع فيلا في الرميثية - ٧٥٠م زاوية سكة وارتداد - تشطيب جديد سوبر ديلوكس - ثلاثة ادوار وسرداب "شقق" - مؤجر بالكامل - يمنع الوسطاء - وادي السلام العقارية ٩٩٦٧٧٤٦٥',
-    agencyName: 'وادي السلام العقارية',
-    agencyDetails: 'حساب وسيط',
-    agencyLogoAsset:
-        'https://www.pexels.com/photo/apartment-interior-with-open-kitchen-near-table-with-chairs-6899345/', // Placeholder
-    mainImageAsset:
-        'https://images.pexels.com/photos/26556320/pexels-photo-26556320.jpeg', // Placeholder
-  );
-
-  PropertyDetailsScreen({super.key});
-
-  // Helper method for the status/type tags
-  Widget _buildTag(String text, {MaterialColor color = Colors.blueGrey}) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      margin: const EdgeInsets.only(left: 8),
-      decoration: BoxDecoration(
-        color: color.shade100,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 12, color: color.shade800),
-      ),
-    );
-  }
-
-  // Helper method for the agency action buttons (call/chat)
-  Widget _buildActionButton(IconData icon) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.only(left: 10),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: ColorManager.primary),
-      ),
-      child: Icon(icon, color: ColorManager.primary, size: 24),
-    );
-  }
+  const PropertyDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -149,6 +27,10 @@ class PropertyDetailsScreen extends StatelessWidget {
           ),
           actions: [
             IconButton(
+              icon: const Icon(Icons.favorite, color: Colors.white),
+              onPressed: () {},
+            ),
+            IconButton(
               icon: const Icon(Icons.share, color: Colors.white),
               onPressed: () {},
             ),
@@ -156,115 +38,242 @@ class PropertyDetailsScreen extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // 1. MAIN IMAGE SECTION (Header)
-              _buildImageHeader(context),
-
-              // 2. MAIN DETAILS AND TAGS
+              // --- 1. Header/Logo Section ---
+              Container(
+                width: double.infinity,
+                height: 250,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      'https://images.pexels.com/photos/26556320/pexels-photo-26556320.jpeg',
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              // --- 2. Title & Price Section ---
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Title and Price/Location
-                    Text(
-                      property.title,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                    const Text(
+                      'للبيع ارض في الزهراء زاويه شارعين وسكه ثلاث',
+                      textAlign: TextAlign.right,
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 8),
+                    const Text(
+                      'واجهات ٤١٨ متر',
+                      textAlign: TextAlign.right,
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 10),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          '340 د.ك',
+                          'د.ك',
                           style: TextStyle(
-                              fontSize: 16, color: ColorManager.primary),
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                            color: ColorManager.primary,
+                          ),
                         ),
-                        const Spacer(),
-                        const Icon(
-                          Icons.location_on,
-                          color: Colors.grey,
-                          size: 18,
-                        ),
-                        const SizedBox(width: 4),
+                        const SizedBox(width: 5),
                         Text(
-                          property.location,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey,
+                          '495,000',
+                          style: TextStyle(
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                            color: ColorManager.primary,
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 4),
-                    // Row(
-                    //   children: [
-                    //     Text(property.date,
-                    //         style: const TextStyle(
-                    //             fontSize: 12, color: Colors.grey)),
-                    //     const SizedBox(width: 12),
-                    //     const Icon(Icons.remove_red_eye_outlined,
-                    //         color: Colors.grey, size: 14),
-                    //     const SizedBox(width: 4),
-                    //     Text('${property.views}',
-                    //         style: const TextStyle(
-                    //             fontSize: 12, color: Colors.grey)),
-                    //   ],
-                    // ),
-                    const Divider(height: 30),
-
-                    // Tags and Metrics (Area, Rooms, Floors)
-                    Row(
-                      children: [
-                        _buildTag(property.listingType, color: Colors.blue),
-                        _buildTag('سكني', color: Colors.green),
-                        _buildTag(property.propertyType, color: Colors.brown),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    const SizedBox(height: 8),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // Area
-                        DetailsSectionHeader(
-                          title: 'م² ',
-                          value: '${property.areaSqMeters}',
-                          icon: Icons.fullscreen_exit,
+                        Row(
+                          children: [
+                            Text(
+                              'الزهراء',
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            SizedBox(width: 4),
+                            Icon(Icons.location_on,
+                                color: Colors.grey, size: 16),
+                          ],
                         ),
-                        // Rooms (Custom icon for room count)
-                        DetailsSectionHeader(
-                          title: 'غرف',
-                          value: '${property.numberOfRooms}',
-                          icon: Icons.bed_outlined,
+                        Row(
+                          children: [
+                            Text(
+                              '463',
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            SizedBox(width: 4),
+                            Icon(
+                              Icons.remove_red_eye_outlined,
+                              color: Colors.grey,
+                              size: 16,
+                            ),
+                          ],
                         ),
-                        // Floors
-                        DetailsSectionHeader(
-                          title: 'طوابق',
-                          value: '${property.numberOfFloors}',
-                          icon: Icons.apartment,
+                        Text(
+                          '23.11.2025',
+                          style: TextStyle(color: Colors.grey),
                         ),
                       ],
                     ),
-                    const Divider(height: 30),
-
-                    // 3. ABOUT PROPERTY SECTION
-                    const Text('عن العقار',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 8),
-                    Text(
-                      property.description,
-                      style: const TextStyle(fontSize: 15, height: 1.5),
-                    ),
-                    const Divider(height: 30),
+                    const SizedBox(height: 10),
+                    // Date and Views
                   ],
                 ),
               ),
+              const SizedBox(height: 15),
+              // --- 3. Tags (Buttons) ---
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.start,
+              //     children: [
+              //       _buildTag('ارض فضاء', true), // Highlighted tag
+              //       const SizedBox(width: 10),
+              //       _buildTag('للبيع', false),
+              //       const SizedBox(width: 10),
+              //       _buildTag('سكني', false),
+              //     ],
+              //   ),
+              // ),
+              // const Divider(thickness: 1, height: 30),
+              // // --- 4. Specs Section ---
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.start,
+              //     children: [
+              //       // Icon column
+              //       Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           _buildSpecRow('418 م2', Icons.aspect_ratio),
+              //           const SizedBox(height: 10),
+              //           _buildSpecRow(
+              //               '2', Icons.king_bed), // Placeholder for bedrooms
+              //           const SizedBox(height: 10),
+              //           _buildSpecRow(
+              //               '-', Icons.bathtub), // Placeholder for bathrooms
+              //           const SizedBox(height: 10),
+              //           _buildSpecRow(
+              //               '-', Icons.home), // Placeholder for floor count
+              //         ],
+              //       ),
+              //       const SizedBox(width: 20),
+              //       // Label column
+              //       Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           _buildSpecRow('-', null), // Empty to align with meter
+              //           const SizedBox(height: 10),
+              //           _buildSpecRow('-', null), // Empty to align with bed
+              //           const SizedBox(height: 10),
+              //           _buildSpecRow('-', null), // Empty to align with bath
+              //           const SizedBox(height: 10),
+              //           _buildSpecRow('-', null), // Empty to align with home
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              const Divider(thickness: 1, height: 30),
+              // --- 5. Property Details (عن العقار) ---
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'عن الاعلان',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      'للبيع ارض فضاء في الزهراء',
+                      textAlign: TextAlign.right,
+                    ),
+                    Text(
+                      'المساحة 418 متر قطعة 3',
+                      textAlign: TextAlign.right,
+                    ),
+                    Text(
+                      'الموقع زاوية شارعين + سكة جانبية',
+                      textAlign: TextAlign.right,
+                    ),
+                    Text(
+                      'ثلاث واجهات قريبة من الممشى',
+                      textAlign: TextAlign.right,
+                    ),
+                    Text(
+                      'السعر 495 الف .',
+                      textAlign: TextAlign.right,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              // --- 6. Boubyan Bank Ad & Financing Question ---
 
-              // 5. AGENCY FOOTER
-              _buildAgencyFooter(),
+              const SizedBox(height: 80), // Space for the fixed footer
+            ],
+          ),
+        ),
+        // --- 7. Fixed Bottom Navigation Bar/Contact Bar ---
+        bottomSheet: Container(
+          color: kBackgroundColor,
+          padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
+          child: Row(
+            children: [
+              const Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundColor: kPrimaryColor,
+                          child: Icon(Icons.person, color: kAccentColor),
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          'مؤسسة الوداد العقارية',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: kPrimaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      'مكتب الوداد العقاري',
+                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 10),
+              // Contact Buttons
+              _buildContactButton(Icons.call, kPrimaryColor),
+              const SizedBox(width: 10),
+              _buildContactButton(Icons.chat_bubble_outline, kPrimaryColor),
+              const SizedBox(width: 10),
             ],
           ),
         ),
@@ -272,91 +281,54 @@ class PropertyDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildImageHeader(BuildContext context) {
-    return Stack(
+  // Helper Widget for Spec Rows (e.g., Area, Bedrooms)
+  Widget _buildSpecRow(String text, IconData? icon) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Container(
-          width: double.infinity,
-          height: 250,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(property.mainImageAsset),
-              fit: BoxFit.cover,
-            ),
-          ),
+        if (icon != null) Icon(icon, color: Colors.grey.shade700, size: 24),
+        if (icon != null) const SizedBox(width: 8),
+        Text(
+          text,
+          style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey.shade700),
         ),
-        // Overlay for App Name
-        // Positioned(
-        //   bottom: 10,
-        //   right: 20,
-        //   child: Text(
-        //     'الحسبة', // Al-Hisba
-        //     style: TextStyle(
-        //       color: Colors.white,
-        //       fontSize: 28,
-        //       fontWeight: FontWeight.w900,
-        //       shadows: [
-        //         Shadow(
-        //             blurRadius: 5.0,
-        //             color: Colors.black.withOpacity(0.5),
-        //             offset: const Offset(2.0, 2.0))
-        //       ],
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }
 
-  Widget _buildAgencyFooter() {
+  // Helper Widget for Tags (Buttons)
+  Widget _buildTag(String text, bool isHighlighted) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, -3),
-          ),
-        ],
+        color: isHighlighted ? const Color(0xFFF0F0F0) : kBackgroundColor,
+        border: Border.all(
+            color: isHighlighted ? Colors.grey.shade300 : Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(20),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Action Buttons
-          _buildActionButton(Icons.phone),
-          _buildActionButton(Icons.chat_bubble_outline),
-          const SizedBox(width: 10),
-
-          // Agency Info
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  property.agencyName,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  property.agencyDetails,
-                  style: const TextStyle(fontSize: 14, color: Colors.grey),
-                ),
-              ],
-            ),
-          ),
-
-          // Agency Logo Placeholder
-          Container(
-            width: 50,
-            height: 50,
-            color: Colors.grey.shade200, // Placeholder background
-            child: const Icon(Icons.business, color: Colors.blueGrey),
-          ),
-        ],
+      child: Text(
+        text,
+        style: TextStyle(
+          color: kPrimaryColor,
+          fontWeight: isHighlighted ? FontWeight.bold : FontWeight.normal,
+        ),
       ),
+    );
+  }
+
+  // Helper Widget for Contact Buttons
+  Widget _buildContactButton(IconData icon, Color color) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        border: Border.all(color: color),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Icon(icon, color: color, size: 20),
     );
   }
 }
