@@ -1,7 +1,10 @@
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../features/auth/data/models/response/response.dart';
 
 class SharedPrefHelper {
   // private constructor as I don't want to allow creating an instance of this class itself.
@@ -42,6 +45,10 @@ class SharedPrefHelper {
         return null;
     }
   }
+
+
+
+
 
   /// Gets a bool value from SharedPreferences with given [key].
   static getBool(String key) async {
@@ -85,6 +92,13 @@ class SharedPrefHelper {
     debugPrint('FlutterSecureStorage : getSecuredString with key :');
     return await flutterSecureStorage.read(key: key) ?? '';
   }
+
+  static Future<void> saveUser(RegisterResponse  userInfo) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  // تحويل الكائن إلى نص JSON String
+  String userData = jsonEncode(userInfo.registerData); 
+  await sharedPreferences.setString('user_data', userData); // هنا يقبل String فقط
+}
 
   /// Removes all keys and values in the FlutterSecureStorage
   static clearAllSecuredData() async {

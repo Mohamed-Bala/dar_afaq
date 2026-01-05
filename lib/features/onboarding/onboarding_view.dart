@@ -28,14 +28,9 @@ class OnboardingView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Spacer(flex: 2),
-                  Text(
-                    'دار أفاق',
-                    textAlign: TextAlign.center,
-                    style: StylesManager.font25PrimaryBold,
-                  ),
                   verticalSpace(10),
                   Image.asset(
-                    'assets/images/logo.png',
+                    'assets/images/splash_image.png',
                     height: 180.h,
                     fit: BoxFit.cover,
                   ),

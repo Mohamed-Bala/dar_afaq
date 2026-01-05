@@ -1,32 +1,18 @@
+import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/resources/color_manager.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../core/helper/spacing.dart';
+import '../../dashboard/data/response/response.dart';
+import '../../dashboard/ui/widgets/build_action_button.dart';
 
 class AuctionDetails extends StatelessWidget {
-  AuctionDetails({
+  final AuctionDataResponse? auctionData;
+  const AuctionDetails({
     super.key,
+    required this.auctionData,
   });
-
-  // Mock Data (Controller/Data Layer Simulation)
-  final PropertyDetails property = PropertyDetails(
-    title: 'وزارة العدل',
-    location: 'قصر العدل الجديد - الطابق الثامن - قاعة 5',
-    date: '17.11.2025',
-    views: 96,
-    listingType: 'للبيع',
-    propertyType: 'بيت',
-    areaSqMeters: 750,
-    numberOfRooms: 0, // Based on the icon showing '0 غرف'
-    numberOfFloors: 4, // Based on the icon showing '4 طوابق'
-    description:
-        'للبيع فيلا في الرميثية - ٧٥٠م زاوية سكة وارتداد - تشطيب جديد سوبر ديلوكس - ثلاثة ادوار وسرداب "شقق" - مؤجر بالكامل - يمنع الوسطاء - وادي السلام العقارية ',
-    agencyName: 'وادي السلام العقارية',
-    agencyDetails: 'حساب وسيط',
-    agencyLogoAsset:
-        'https://www.pexels.com/photo/apartment-interior-with-open-kitchen-near-table-with-chairs-6899345/', // Placeholder
-    mainImageAsset:
-        'https://images.pexels.com/photos/26556320/pexels-photo-26556320.jpeg',
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -42,58 +28,46 @@ class AuctionDetails extends StatelessWidget {
             icon: const Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () => Navigator.pop(context),
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.favorite, color: Colors.white),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: const Icon(Icons.share, color: Colors.white),
-              onPressed: () {},
-            ),
-          ],
+          // actions: [
+          //   IconButton(
+          //     icon: const Icon(Icons.favorite, color: Colors.white),
+          //     onPressed: () {},
+          //   ),
+          //   // IconButton(
+          //   //   icon: const Icon(Icons.share, color: Colors.white),
+          //   //   onPressed: () {},
+          //   // ),
+          // ],
         ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. MAIN IMAGE SECTION (Header)
               _buildImageHeader(context),
-
-              // 2. MAIN DETAILS AND TAGS
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Title and Price/Location
-                    Text(
-                      property.title,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
+                    verticalSpace(8),
                     Row(
                       children: [
-                        // Text(
-                        //   '340 د.ك',
-                        //   style: TextStyle(
-                        //     fontSize: 20,
-                        //     fontWeight: FontWeight.bold,
-                        //     color: ColorManager.primary,
-                        //   ),
-                        // ),
-                        const Spacer(),
-                        const Icon(
+                        Icon(
                           Icons.location_on,
-                          color: Colors.grey,
-                          size: 18,
+                          color: ColorManager.primary,
+                          size: 18.sp,
                         ),
-                        const SizedBox(width: 4),
+                        horizontalSpace(4),
                         Text(
-                          property.location,
+                          auctionData?.region ?? "",
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          auctionData?.auctionDate ?? "",
                           style: const TextStyle(
                             fontSize: 16,
                             color: Colors.grey,
@@ -101,34 +75,27 @@ class AuctionDetails extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 4),
-
-                    const SizedBox(height: 16),
+                    verticalSpace(10),
                     const Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [],
                     ),
-                    const Divider(height: 30),
-
-                    // 3. ABOUT PROPERTY SECTION
-                    const Text(
-                      'عن المزاد',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 8),
+                    Divider(height: 25.h),
                     Text(
-                      property.description,
-                      style: const TextStyle(fontSize: 15, height: 1.5),
+                      'عن المزاد',
+                      style: TextStyle(
+                          fontSize: 18.sp, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 20),
-                    //const Divider(height: 30),
+                    verticalSpace(8),
+                    Text(
+                      auctionData?.description ?? "",
+                      style: TextStyle(fontSize: 15.sp, height: 1.5),
+                    ),
+                    verticalSpace(10),
                   ],
                 ),
               ),
-
-              // 5. AGENCY FOOTER
               _buildAgencyFooter(),
             ],
           ),
@@ -140,16 +107,22 @@ class AuctionDetails extends StatelessWidget {
   Widget _buildImageHeader(BuildContext context) {
     return Stack(
       children: [
-        Container(
+        CachedNetworkImage(
+          imageUrl: auctionData?.images ?? "",
+          height: 250.h,
           width: double.infinity,
-          height: 250,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(property.mainImageAsset),
-              fit: BoxFit.cover,
-            ),
+          fit: BoxFit.cover,
+          // يظهر أثناء التحميل
+          placeholder: (context, url) => Container(
+            color: Colors.grey[200],
+            child: const Center(child: CircularProgressIndicator()),
           ),
-        ),
+
+          errorWidget: (context, url, error) => Container(
+            color: Colors.grey[300],
+            child: const Icon(Icons.error),
+          ),
+        )
       ],
     );
   }
@@ -172,75 +145,26 @@ class AuctionDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Action Buttons
-          _buildActionButton(Icons.phone),
-          const SizedBox(width: 20),
-          _buildActionButton(Icons.chat_bubble_outline),
+          GestureDetector(
+            onTap: () {
+              launchWhatsApp(auctionData?.phone ?? '');
+            },
+            child: buildActionButton(
+              Icons.chat_bubble_outline,
+              Colors.blue,
+            ),
+          ),
+          horizontalSpace(15),
+          GestureDetector(
+              onTap: () {
+                makePhoneCall(auctionData?.phone ?? '');
+              },
+              child: buildActionButton(
+                Icons.phone,
+                Colors.blue,
+              )),
         ],
       ),
     );
   }
-
-  // Helper method for the status/type tags
-  Widget _buildTag(String text, {MaterialColor color = Colors.blueGrey}) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      margin: const EdgeInsets.only(left: 8),
-      decoration: BoxDecoration(
-        color: color.shade100,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 12, color: color.shade800),
-      ),
-    );
-  }
-
-  // Helper method for the agency action buttons (call/chat)
-  Widget _buildActionButton(IconData icon) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.only(left: 10),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: ColorManager.primary),
-      ),
-      child: Icon(icon, color: ColorManager.primary, size: 24),
-    );
-  }
-}
-
-class PropertyDetails {
-  final String title;
-  final String location;
-  final String date;
-  final int views;
-  final String listingType;
-  final String propertyType;
-  final int areaSqMeters;
-  final int numberOfRooms;
-  final int numberOfFloors;
-  final String description;
-  final String agencyName;
-  final String agencyDetails;
-  final String agencyLogoAsset;
-  final String mainImageAsset;
-
-  PropertyDetails({
-    required this.title,
-    required this.location,
-    required this.date,
-    required this.views,
-    required this.listingType,
-    required this.propertyType,
-    required this.areaSqMeters,
-    required this.numberOfRooms,
-    required this.numberOfFloors,
-    required this.description,
-    required this.agencyName,
-    required this.agencyDetails,
-    required this.agencyLogoAsset,
-    required this.mainImageAsset,
-  });
 }
