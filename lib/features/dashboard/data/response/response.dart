@@ -316,19 +316,63 @@ class NotificationsDataResponse {
       _$NotificationsDataResponseFromJson(json);
 }
 
-// ================= Regions Response =================
+// ================= SearchAdsResponse =================
 @JsonSerializable()
-class RegionsResponse {
-  @JsonKey(name: 'regions')
-  List<String>? regions;
+class SearchAdsResponse {
+  final String? message;
+  final int? count;
+  final List<AdModel>? data;
+  SearchAdsResponse(this.count, this.data, this.message);
 
-  RegionsResponse({this.regions});
-
-  factory RegionsResponse.fromJson(Map<String, dynamic> json) =>
-      _$RegionsResponseFromJson(json);
+  factory SearchAdsResponse.fromJson(Map<String, dynamic> json) =>
+      _$SearchAdsResponseFromJson(json);
 }
 
-// ===
+@JsonSerializable()
+class AdModel {
+  final int? id;
+  @JsonKey(name: 'plan_price')
+  final String? planPrice;
+  @JsonKey(name: 'plan_name')
+  final String? planName;
+  @JsonKey(name: 'transaction_type')
+  final String? transactionType;
+  final String? phone;
+  final String? status;
+  final String? description;
+  @JsonKey(name: 'auction_date')
+  final String? auctionDate;
+  final String? type;
+  final String? region;
+  final String? price;
+  final String? images;
+  @JsonKey(name: 'user_id')
+  final String? userId;
+  @JsonKey(name: 'created_at')
+  final String? createdAt;
+
+  AdModel({
+    this.id,
+    this.planPrice,
+    this.planName,
+    this.transactionType,
+    this.phone,
+    this.status,
+    this.description,
+    this.auctionDate,
+    this.type,
+    this.region,
+    this.price,
+    this.images,
+    this.userId,
+    this.createdAt,
+  });
+
+  factory AdModel.fromJson(Map<String, dynamic> json) =>
+      _$AdModelFromJson(json);
+}
+
+// === DeleteAdResponse
 @JsonSerializable()
 class DeleteAdResponse {
   String? message;

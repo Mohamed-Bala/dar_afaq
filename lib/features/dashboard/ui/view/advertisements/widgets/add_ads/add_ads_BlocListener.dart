@@ -2,7 +2,6 @@ import 'package:dar_afaq/core/helper/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../../../core/network/api_error_model.dart';
 import '../../../../../../../../core/resources/styles_manager.dart';
 import '../../../../../../../../core/routing/routes.dart';
 import '../../../../../logic/home_cubit.dart';
@@ -21,7 +20,6 @@ class AddAdsBloclistener extends StatelessWidget {
       listener: (context, state) {
         state.whenOrNull(
           addAdvertisementLoading: () {
-            // show loading dialog on root navigator and prevent back dismiss
             showDialog(
               context: context,
               barrierDismissible: false,

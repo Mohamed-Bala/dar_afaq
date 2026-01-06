@@ -4,7 +4,7 @@ import '../../../../../data/response/response.dart';
 import 'ads.dart';
 
 class AdsListViewWidget extends StatelessWidget {
-  final List<AdsDataResponse?> adsDataResponseList;
+  final List<AdModel?> adsDataResponseList;
   const AdsListViewWidget({
     super.key,
     required this.adsDataResponseList,

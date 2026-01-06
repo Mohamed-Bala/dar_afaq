@@ -98,10 +98,21 @@ class DeleteState with _$DeleteState {
 class UpdateAdState with _$UpdateAdState {
   const factory UpdateAdState.initial() = _UpdateAdInitial;
   const factory UpdateAdState.updateAdLoading() = UpdateAdLoading;
-  const factory UpdateAdState.updateAdSuccess(UpdateAdResponse updateAdResponse) =
-      UpdateAdSuccess;
+  const factory UpdateAdState.updateAdSuccess(
+      UpdateAdResponse updateAdResponse) = UpdateAdSuccess;
   const factory UpdateAdState.updateAdError(ApiErrorModel apiErrorModel) =
       UpdateAdStateError;
 
-      const factory UpdateAdState.updateAdImagePicked(File image) = UpdateAdImagePicked;
+  const factory UpdateAdState.updateAdImagePicked(File image) =
+      UpdateAdImagePicked;
+}
+
+@freezed
+class FilterState with _$FilterState {
+  const factory FilterState.initial() = _FilterInitial;
+  const factory FilterState.filterLoading() = FilterLoading;
+  const factory FilterState.filterSuccess(SearchAdsResponse searchAdsResponse) =
+      FilterSuccess;
+  const factory FilterState.filterError(ApiErrorModel apiErrorModel) =
+      FilterError;
 }

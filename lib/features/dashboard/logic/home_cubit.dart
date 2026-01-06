@@ -340,3 +340,41 @@ class UpdateAdCubit extends Cubit<UpdateAdState> {
     );
   }
 }
+
+class FilterCubit extends Cubit<FilterState> {
+  final AdsSearchRepository adsSearchRepository;
+
+  // متغيرات لتخزين الاختيارات الحالية داخل الكيوبيت
+  String? currentRegion;
+  String? currentTransactionType;
+
+  FilterCubit(this.adsSearchRepository) : super(FilterState.initial());
+
+  Future<void> getAdsSearch({String? region, String? transactionType}) async {
+    // 1. تحديث القيم المحفوظة (إذا تم تمرير قيم جديدة)
+    if (region != null) currentRegion = region;
+    if (transactionType != null) currentTransactionType = transactionType;
+
+    emit(FilterState.filterLoading());
+
+    // 2. إرسال الطلب بالقيم المحفوظة كاملة
+    final response = await adsSearchRepository.getAdsSearch(
+      AdsSearchRequest(
+        region: currentRegion, // نستخدم القيمة المحفوظة
+        transactionType: currentTransactionType, // نستخدم القيمة المحفوظة
+      ),
+    );
+
+    response.when(
+      success: (data) => emit(FilterState.filterSuccess(data)),
+      failure: (error) => emit(FilterState.filterError(error)),
+    );
+  }
+
+  // دالة لمسح الفلاتر والبدء من جديد
+  void clearFilters() {
+    currentRegion = null;
+    currentTransactionType = null;
+    getAdsSearch(); // جلب كل البيانات بدون فلاتر
+  }
+}

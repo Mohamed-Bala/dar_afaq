@@ -7,31 +7,14 @@ import '../../../../core/helper/spacing.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../logic/home_cubit.dart';
+import '../../logic/home_state.dart';
 
-class FilterWidget extends StatefulWidget {
+class FilterWidget extends StatelessWidget {
   const FilterWidget({super.key});
 
   @override
-  State<FilterWidget> createState() => _FilterWidgetState();
-}
-
-class _FilterWidgetState extends State<FilterWidget> {
-  // State for filter dropdowns
-  String? _selectedCategory;
-  String? _selectedArea;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     try {
-  //       context.read<AddAdvertisementCubit>().fetchRegions();
-  //     } catch (_) {}
-  //   });
-  // }
-
-  @override
   Widget build(BuildContext context) {
-    // --- Filter Row ---
+    // نجعل الـ Row ثابتاً دائماً، ونستخدم الكيوبيت فقط لجلب القيم الحالية
     return Container(
       color: Colors.white,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
@@ -40,43 +23,59 @@ class _FilterWidgetState extends State<FilterWidget> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            // --- فلتر نوع المعاملة ---
             Expanded(
-              child: buildFilterDropdown(
-                label: 'فئة العقار',
-                value: _selectedCategory,
-                items: ['شقة', 'فيلا', 'ارض', 'محل'],
-                onChanged: (value) {
-                  setState(() {
-                    _selectedCategory = value;
-                  });
+              child: BlocBuilder<FilterCubit, FilterState>(
+                buildWhen: (previous, current) =>
+                    true, // يضمن تحديث الـ Dropdown
+                builder: (context, state) {
+                  return buildFilterDropdown(
+                    label: 'فئة العقار',
+                    // نأخذ القيمة المخزنة في الكيوبيت حالياً
+                    value: context.read<FilterCubit>().currentTransactionType,
+                    items: context.read<AddAdvertisementCubit>().propertyTypes,
+                    // .map((service) => service.label)
+                    // .toList(),
+                    onChanged: (value) {
+                      context
+                          .read<FilterCubit>()
+                          .getAdsSearch(transactionType: value);
+                    },
+                  );
                 },
               ),
             ),
             horizontalSpace(5),
+
+            // --- فلتر المناطق ---
             Expanded(
-              child: buildFilterDropdown(
-                label: 'المناطق',
-                value: _selectedArea,
-                items: context.watch<AddAdvertisementCubit>().regions,
-                onChanged: (value) {
-                  setState(() {
-                    context.read<AddAdvertisementCubit>().updateRegion(value!);
-                    _selectedArea = value;
-                  });
+              child: BlocBuilder<FilterCubit, FilterState>(
+                builder: (context, state) {
+                  return buildFilterDropdown(
+                    label: 'المناطق',
+                    value: context.read<FilterCubit>().currentRegion,
+                    items: context.read<AddAdvertisementCubit>().regions,
+                    onChanged: (value) {
+                      context.read<FilterCubit>().getAdsSearch(region: value);
+                    },
+                  );
                 },
               ),
             ),
             horizontalSpace(5),
+
+            // زر إعادة الضبط (Refresh)
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(8.r),
-                border: Border.all(color: Colors.grey),
+                border: Border.all(color: Colors.grey.shade300),
               ),
               child: IconButton(
-                icon: Icon(Icons.filter_list, color: ColorManager.primary),
+                icon: Icon(Icons.refresh,
+                    color: ColorManager.primary, size: 20.sp),
                 onPressed: () {
-                  // Handle filter action
+                  context.read<FilterCubit>().clearFilters();
                 },
               ),
             ),
@@ -87,6 +86,7 @@ class _FilterWidgetState extends State<FilterWidget> {
   }
 }
 
+// --- دالة الـ Dropdown (بدون تغيير كبير في التصميم) ---
 Widget buildFilterDropdown({
   required String label,
   required String? value,
@@ -98,32 +98,23 @@ Widget buildFilterDropdown({
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(8.r),
-      border: Border.all(color: Colors.grey),
+      border: Border.all(color: Colors.grey.shade300),
     ),
     child: DropdownButtonHideUnderline(
       child: DropdownButton<String>(
         value: value,
-        hint: Text(
-          label,
-          style: StylesManager.font12GrayRegular,
-          textDirection: TextDirection.rtl,
-        ),
+        hint: Text(label, style: StylesManager.font12GrayRegular),
         icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),
         isExpanded: true,
-        style: TextStyle(color: Colors.black87, fontSize: 14.sp),
+        style: TextStyle(color: Colors.black87, fontSize: 13.sp),
         onChanged: onChanged,
-        items: items.map<DropdownMenuItem<String>>((String item) {
+        items: items.toSet().map<DropdownMenuItem<String>>((String item) {
           return DropdownMenuItem<String>(
             value: item,
-            child: Text(
-              item,
-              textDirection: TextDirection.rtl,
-              textAlign: TextAlign.right,
-            ),
+            child: Text(item,
+                textDirection: TextDirection.rtl, textAlign: TextAlign.right),
           );
         }).toList(),
-        // Add `dropdownColor` if you want to customize dropdown menu background
-        // dropdownColor: Colors.white,
       ),
     ),
   );

@@ -43,12 +43,12 @@ class _AddAdsViewState extends State<AddAdsView> {
         child: ListView(
           padding: const EdgeInsets.all(16.0),
           children: [
-            buildPackageBanner(
-              // price:
-              //     '${context.watch<AddAdvertisementCubit>().selectedPlanPrice} د.ك',
-              packageName:
-                  'الباقة المختارة : ${context.read<AddAdvertisementCubit>().selectedPlanName}',
-            ),
+            // buildPackageBanner(
+            //   // price:
+            //   //     '${context.watch<AddAdvertisementCubit>().selectedPlanPrice} د.ك',
+            //   packageName:
+            //       'الباقة المختارة : ${context.read<AddAdvertisementCubit>().selectedPlanName}',
+            // ),
             verticalSpace(24),
             BlocBuilder<AddAdvertisementCubit, AddAdvertisementState>(
               builder: (context, state) {

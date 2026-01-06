@@ -52,15 +52,6 @@ class AddAdvertisementRepository {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
-
-  Future<ApiResult<RegionsResponse>> getRegions() async {
-    try {
-      final response = await _homeApi.getRegions();
-      return ApiResult.success(response);
-    } catch (error) {
-      return ApiResult.failure(ApiErrorHandler.handle(error));
-    }
-  }
 }
 
 class ShowUserAdRepository {
@@ -122,6 +113,23 @@ class UpdateAdRepository {
       UpdateAdvertisementRequest updateAdvertisementRequest) async {
     try {
       final response = await _homeApi.UpdateAd(updateAdvertisementRequest);
+
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+}
+
+class AdsSearchRepository {
+  final HomeApi _homeApi;
+
+  AdsSearchRepository(this._homeApi);
+
+  Future<ApiResult<SearchAdsResponse>> getAdsSearch(
+      AdsSearchRequest adsSearchRequest) async {
+    try {
+      final response = await _homeApi.getSearchAds(adsSearchRequest);
 
       return ApiResult.success(response);
     } catch (error) {

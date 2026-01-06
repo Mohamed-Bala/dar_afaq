@@ -20,8 +20,10 @@ abstract class HomeApi {
   @GET(ApiConstants.adsVip)
   Future<HomeResponse> getAdsVipResponse();
 
-  @GET(ApiConstants.adSregions)
-  Future<RegionsResponse> getRegions();
+  @GET(ApiConstants.searchAds)
+  Future<SearchAdsResponse> getSearchAds(
+    @Body() AdsSearchRequest adsSearchRequest,
+  );
 
   @POST(ApiConstants.addAdvertisement)
   Future<AddAdvertisementResponse> addAdvertisement(

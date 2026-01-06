@@ -292,15 +292,54 @@ Map<String, dynamic> _$NotificationsDataResponseToJson(
       'Subject': instance.subject,
     };
 
-RegionsResponse _$RegionsResponseFromJson(Map<String, dynamic> json) =>
-    RegionsResponse(
-      regions:
-          (json['regions'] as List<dynamic>?)?.map((e) => e as String).toList(),
+SearchAdsResponse _$SearchAdsResponseFromJson(Map<String, dynamic> json) =>
+    SearchAdsResponse(
+      (json['count'] as num?)?.toInt(),
+      (json['data'] as List<dynamic>?)
+          ?.map((e) => AdModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      json['message'] as String?,
     );
 
-Map<String, dynamic> _$RegionsResponseToJson(RegionsResponse instance) =>
+Map<String, dynamic> _$SearchAdsResponseToJson(SearchAdsResponse instance) =>
     <String, dynamic>{
-      'regions': instance.regions,
+      'message': instance.message,
+      'count': instance.count,
+      'data': instance.data,
+    };
+
+AdModel _$AdModelFromJson(Map<String, dynamic> json) => AdModel(
+      id: (json['id'] as num?)?.toInt(),
+      planPrice: json['plan_price'] as String?,
+      planName: json['plan_name'] as String?,
+      transactionType: json['transaction_type'] as String?,
+      phone: json['phone'] as String?,
+      status: json['status'] as String?,
+      description: json['description'] as String?,
+      auctionDate: json['auction_date'] as String?,
+      type: json['type'] as String?,
+      region: json['region'] as String?,
+      price: json['price'] as String?,
+      images: json['images'] as String?,
+      userId: json['user_id'] as String?,
+      createdAt: json['created_at'] as String?,
+    );
+
+Map<String, dynamic> _$AdModelToJson(AdModel instance) => <String, dynamic>{
+      'id': instance.id,
+      'plan_price': instance.planPrice,
+      'plan_name': instance.planName,
+      'transaction_type': instance.transactionType,
+      'phone': instance.phone,
+      'status': instance.status,
+      'description': instance.description,
+      'auction_date': instance.auctionDate,
+      'type': instance.type,
+      'region': instance.region,
+      'price': instance.price,
+      'images': instance.images,
+      'user_id': instance.userId,
+      'created_at': instance.createdAt,
     };
 
 DeleteAdResponse _$DeleteAdResponseFromJson(Map<String, dynamic> json) =>

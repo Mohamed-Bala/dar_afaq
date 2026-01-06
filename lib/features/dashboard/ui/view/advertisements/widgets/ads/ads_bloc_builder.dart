@@ -1,5 +1,7 @@
+import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../data/response/response.dart';
 import '../../../../../logic/home_cubit.dart';
@@ -11,22 +13,22 @@ class AdsBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<FilterCubit, FilterState>(
       buildWhen: (previous, current) =>
-          current is AllAdsSuccess ||
-          current is AllAdsError ||
-          current is AllAdsLoading,
+          current is FilterSuccess ||
+          current is FilterError ||
+          current is FilterLoading,
       builder: (context, state) {
         return state.maybeWhen(
-        allAdsSuccess: (adsList) {
+          filterSuccess: (adsList) {
             return setupSuccess(adsList);
           },
-          allAdsLoading: () {
+          filterLoading: () {
             return const Center(
               child: CircularProgressIndicator.adaptive(),
             );
           },
-          allAdsError: (apiErrorModel) => setupError(),
+          filterError: (apiErrorModel) => setupError(),
           orElse: () {
             return const SizedBox.shrink();
           },
@@ -35,9 +37,24 @@ class AdsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupSuccess(AdsResponse adsList) {
+  Widget setupSuccess(SearchAdsResponse adsList) {
+    if (adsList.data!.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.search_off, size: 60.sp, color: ColorManager.primary),
+            SizedBox(height: 10.h),
+            Text(
+              "لا توجد نتائج تطابق بحثك حالياً",
+              style: TextStyle(fontSize: 16.sp, color: Colors.black54),
+            ),
+          ],
+        ),
+      );
+    }
     return AdsListViewWidget(
-      adsDataResponseList: adsList.allAds ?? [],
+      adsDataResponseList: adsList.data ?? [],
     );
   }
 

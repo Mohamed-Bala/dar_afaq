@@ -123,19 +123,21 @@ class _HomeApi implements HomeApi {
   }
 
   @override
-  Future<RegionsResponse> getRegions() async {
+  Future<SearchAdsResponse> getSearchAds(
+      AdsSearchRequest adsSearchRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<RegionsResponse>(Options(
+    final _data = <String, dynamic>{};
+    _data.addAll(adsSearchRequest.toJson());
+    final _options = _setStreamType<SearchAdsResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'adSregions',
+          'adSsearch',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -145,9 +147,9 @@ class _HomeApi implements HomeApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RegionsResponse _value;
+    late SearchAdsResponse _value;
     try {
-      _value = RegionsResponse.fromJson(_result.data!);
+      _value = SearchAdsResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

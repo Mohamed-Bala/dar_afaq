@@ -5907,3 +5907,602 @@ abstract class UpdateAdImagePicked implements UpdateAdState {
   _$$UpdateAdImagePickedImplCopyWith<_$UpdateAdImagePickedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$FilterState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterLoading,
+    required TResult Function(SearchAdsResponse searchAdsResponse)
+        filterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterLoading,
+    TResult? Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterLoading,
+    TResult Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterInitial value) initial,
+    required TResult Function(FilterLoading value) filterLoading,
+    required TResult Function(FilterSuccess value) filterSuccess,
+    required TResult Function(FilterError value) filterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterInitial value)? initial,
+    TResult? Function(FilterLoading value)? filterLoading,
+    TResult? Function(FilterSuccess value)? filterSuccess,
+    TResult? Function(FilterError value)? filterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterInitial value)? initial,
+    TResult Function(FilterLoading value)? filterLoading,
+    TResult Function(FilterSuccess value)? filterSuccess,
+    TResult Function(FilterError value)? filterError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FilterStateCopyWith<$Res> {
+  factory $FilterStateCopyWith(
+          FilterState value, $Res Function(FilterState) then) =
+      _$FilterStateCopyWithImpl<$Res, FilterState>;
+}
+
+/// @nodoc
+class _$FilterStateCopyWithImpl<$Res, $Val extends FilterState>
+    implements $FilterStateCopyWith<$Res> {
+  _$FilterStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$FilterInitialImplCopyWith<$Res> {
+  factory _$$FilterInitialImplCopyWith(
+          _$FilterInitialImpl value, $Res Function(_$FilterInitialImpl) then) =
+      __$$FilterInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FilterInitialImplCopyWithImpl<$Res>
+    extends _$FilterStateCopyWithImpl<$Res, _$FilterInitialImpl>
+    implements _$$FilterInitialImplCopyWith<$Res> {
+  __$$FilterInitialImplCopyWithImpl(
+      _$FilterInitialImpl _value, $Res Function(_$FilterInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FilterInitialImpl implements _FilterInitial {
+  const _$FilterInitialImpl();
+
+  @override
+  String toString() {
+    return 'FilterState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FilterInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterLoading,
+    required TResult Function(SearchAdsResponse searchAdsResponse)
+        filterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterLoading,
+    TResult? Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterLoading,
+    TResult Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterInitial value) initial,
+    required TResult Function(FilterLoading value) filterLoading,
+    required TResult Function(FilterSuccess value) filterSuccess,
+    required TResult Function(FilterError value) filterError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterInitial value)? initial,
+    TResult? Function(FilterLoading value)? filterLoading,
+    TResult? Function(FilterSuccess value)? filterSuccess,
+    TResult? Function(FilterError value)? filterError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterInitial value)? initial,
+    TResult Function(FilterLoading value)? filterLoading,
+    TResult Function(FilterSuccess value)? filterSuccess,
+    TResult Function(FilterError value)? filterError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FilterInitial implements FilterState {
+  const factory _FilterInitial() = _$FilterInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$FilterLoadingImplCopyWith<$Res> {
+  factory _$$FilterLoadingImplCopyWith(
+          _$FilterLoadingImpl value, $Res Function(_$FilterLoadingImpl) then) =
+      __$$FilterLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FilterLoadingImplCopyWithImpl<$Res>
+    extends _$FilterStateCopyWithImpl<$Res, _$FilterLoadingImpl>
+    implements _$$FilterLoadingImplCopyWith<$Res> {
+  __$$FilterLoadingImplCopyWithImpl(
+      _$FilterLoadingImpl _value, $Res Function(_$FilterLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FilterLoadingImpl implements FilterLoading {
+  const _$FilterLoadingImpl();
+
+  @override
+  String toString() {
+    return 'FilterState.filterLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FilterLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterLoading,
+    required TResult Function(SearchAdsResponse searchAdsResponse)
+        filterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterError,
+  }) {
+    return filterLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterLoading,
+    TResult? Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterError,
+  }) {
+    return filterLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterLoading,
+    TResult Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterError,
+    required TResult orElse(),
+  }) {
+    if (filterLoading != null) {
+      return filterLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterInitial value) initial,
+    required TResult Function(FilterLoading value) filterLoading,
+    required TResult Function(FilterSuccess value) filterSuccess,
+    required TResult Function(FilterError value) filterError,
+  }) {
+    return filterLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterInitial value)? initial,
+    TResult? Function(FilterLoading value)? filterLoading,
+    TResult? Function(FilterSuccess value)? filterSuccess,
+    TResult? Function(FilterError value)? filterError,
+  }) {
+    return filterLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterInitial value)? initial,
+    TResult Function(FilterLoading value)? filterLoading,
+    TResult Function(FilterSuccess value)? filterSuccess,
+    TResult Function(FilterError value)? filterError,
+    required TResult orElse(),
+  }) {
+    if (filterLoading != null) {
+      return filterLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterLoading implements FilterState {
+  const factory FilterLoading() = _$FilterLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$FilterSuccessImplCopyWith<$Res> {
+  factory _$$FilterSuccessImplCopyWith(
+          _$FilterSuccessImpl value, $Res Function(_$FilterSuccessImpl) then) =
+      __$$FilterSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SearchAdsResponse searchAdsResponse});
+}
+
+/// @nodoc
+class __$$FilterSuccessImplCopyWithImpl<$Res>
+    extends _$FilterStateCopyWithImpl<$Res, _$FilterSuccessImpl>
+    implements _$$FilterSuccessImplCopyWith<$Res> {
+  __$$FilterSuccessImplCopyWithImpl(
+      _$FilterSuccessImpl _value, $Res Function(_$FilterSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchAdsResponse = null,
+  }) {
+    return _then(_$FilterSuccessImpl(
+      null == searchAdsResponse
+          ? _value.searchAdsResponse
+          : searchAdsResponse // ignore: cast_nullable_to_non_nullable
+              as SearchAdsResponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilterSuccessImpl implements FilterSuccess {
+  const _$FilterSuccessImpl(this.searchAdsResponse);
+
+  @override
+  final SearchAdsResponse searchAdsResponse;
+
+  @override
+  String toString() {
+    return 'FilterState.filterSuccess(searchAdsResponse: $searchAdsResponse)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterSuccessImpl &&
+            (identical(other.searchAdsResponse, searchAdsResponse) ||
+                other.searchAdsResponse == searchAdsResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, searchAdsResponse);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterSuccessImplCopyWith<_$FilterSuccessImpl> get copyWith =>
+      __$$FilterSuccessImplCopyWithImpl<_$FilterSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterLoading,
+    required TResult Function(SearchAdsResponse searchAdsResponse)
+        filterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterError,
+  }) {
+    return filterSuccess(searchAdsResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterLoading,
+    TResult? Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterError,
+  }) {
+    return filterSuccess?.call(searchAdsResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterLoading,
+    TResult Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterError,
+    required TResult orElse(),
+  }) {
+    if (filterSuccess != null) {
+      return filterSuccess(searchAdsResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterInitial value) initial,
+    required TResult Function(FilterLoading value) filterLoading,
+    required TResult Function(FilterSuccess value) filterSuccess,
+    required TResult Function(FilterError value) filterError,
+  }) {
+    return filterSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterInitial value)? initial,
+    TResult? Function(FilterLoading value)? filterLoading,
+    TResult? Function(FilterSuccess value)? filterSuccess,
+    TResult? Function(FilterError value)? filterError,
+  }) {
+    return filterSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterInitial value)? initial,
+    TResult Function(FilterLoading value)? filterLoading,
+    TResult Function(FilterSuccess value)? filterSuccess,
+    TResult Function(FilterError value)? filterError,
+    required TResult orElse(),
+  }) {
+    if (filterSuccess != null) {
+      return filterSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterSuccess implements FilterState {
+  const factory FilterSuccess(final SearchAdsResponse searchAdsResponse) =
+      _$FilterSuccessImpl;
+
+  SearchAdsResponse get searchAdsResponse;
+  @JsonKey(ignore: true)
+  _$$FilterSuccessImplCopyWith<_$FilterSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FilterErrorImplCopyWith<$Res> {
+  factory _$$FilterErrorImplCopyWith(
+          _$FilterErrorImpl value, $Res Function(_$FilterErrorImpl) then) =
+      __$$FilterErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$FilterErrorImplCopyWithImpl<$Res>
+    extends _$FilterStateCopyWithImpl<$Res, _$FilterErrorImpl>
+    implements _$$FilterErrorImplCopyWith<$Res> {
+  __$$FilterErrorImplCopyWithImpl(
+      _$FilterErrorImpl _value, $Res Function(_$FilterErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$FilterErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilterErrorImpl implements FilterError {
+  const _$FilterErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'FilterState.filterError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterErrorImplCopyWith<_$FilterErrorImpl> get copyWith =>
+      __$$FilterErrorImplCopyWithImpl<_$FilterErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterLoading,
+    required TResult Function(SearchAdsResponse searchAdsResponse)
+        filterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterError,
+  }) {
+    return filterError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterLoading,
+    TResult? Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterError,
+  }) {
+    return filterError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterLoading,
+    TResult Function(SearchAdsResponse searchAdsResponse)? filterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterError,
+    required TResult orElse(),
+  }) {
+    if (filterError != null) {
+      return filterError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterInitial value) initial,
+    required TResult Function(FilterLoading value) filterLoading,
+    required TResult Function(FilterSuccess value) filterSuccess,
+    required TResult Function(FilterError value) filterError,
+  }) {
+    return filterError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterInitial value)? initial,
+    TResult? Function(FilterLoading value)? filterLoading,
+    TResult? Function(FilterSuccess value)? filterSuccess,
+    TResult? Function(FilterError value)? filterError,
+  }) {
+    return filterError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterInitial value)? initial,
+    TResult Function(FilterLoading value)? filterLoading,
+    TResult Function(FilterSuccess value)? filterSuccess,
+    TResult Function(FilterError value)? filterError,
+    required TResult orElse(),
+  }) {
+    if (filterError != null) {
+      return filterError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterError implements FilterState {
+  const factory FilterError(final ApiErrorModel apiErrorModel) =
+      _$FilterErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$FilterErrorImplCopyWith<_$FilterErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

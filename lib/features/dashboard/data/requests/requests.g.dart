@@ -93,3 +93,15 @@ Map<String, dynamic> _$UpdateAdvertisementRequestToJson(
       'id': instance.id,
       'image_base64': instance.image,
     };
+
+AdsSearchRequest _$AdsSearchRequestFromJson(Map<String, dynamic> json) =>
+    AdsSearchRequest(
+      region: json['region'] as String?,
+      transactionType: json['transaction_type'] as String?,
+    );
+
+Map<String, dynamic> _$AdsSearchRequestToJson(AdsSearchRequest instance) =>
+    <String, dynamic>{
+      'region': instance.region,
+      'transaction_type': instance.transactionType,
+    };

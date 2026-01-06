@@ -10,7 +10,7 @@ import '../../../../../data/response/response.dart';
 import '../../../../widgets/build_action_button.dart';
 
 class AdCard extends StatelessWidget {
-  final AdsDataResponse? adsData;
+  final AdModel? adsData;
 
   const AdCard({
     super.key,
