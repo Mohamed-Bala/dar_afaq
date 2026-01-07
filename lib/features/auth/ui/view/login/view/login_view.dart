@@ -1,10 +1,12 @@
 import 'package:dar_afaq/core/helper/extensions.dart';
 import 'package:dar_afaq/core/resources/color_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/helper/spacing.dart';
+import '../../../../../../core/resources/strings_manager.dart';
 import '../../../../../../core/resources/styles_manager.dart';
 import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/widgets/app_text_button.dart';
@@ -40,12 +42,12 @@ class _LoginViewState extends State<LoginView> {
               children: [
                 verticalSpace(70),
                 Text(
-                  'Welcome Back',
+                  AppStrings.welcomeBack.tr(),
                   style: StylesManager.font25PrimaryBold,
                 ),
                 verticalSpace(8),
                 Text(
-                  'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
+                  AppStrings.loginWelcomeMessage.tr(),
                   style: StylesManager.font13Grey,
                 ),
                 verticalSpace(36),
@@ -63,7 +65,7 @@ class _LoginViewState extends State<LoginView> {
                       child: Align(
                         alignment: AlignmentDirectional.centerEnd,
                         child: Text(
-                          'Forgot Password?',
+                          AppStrings.forgotPassword.tr(),
                           style: StylesManager.font13Grey.copyWith(
                             decoration: TextDecoration.underline,
                             color: ColorManager.primary,
@@ -73,7 +75,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     verticalSpace(24),
                     AppTextButton(
-                      buttonText: "Login",
+                      buttonText: AppStrings.loginNow.tr(),
                       textStyle: StylesManager.font16White,
                       onPressed: () {
                         validateThenDoLogin(context);

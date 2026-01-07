@@ -399,3 +399,64 @@ class UpdateAdResponse {
   factory UpdateAdResponse.fromJson(Map<String, dynamic> json) =>
       _$UpdateAdResponseFromJson(json);
 }
+
+
+
+
+@JsonSerializable()
+class FilterSectionResponse {
+  final bool? success;
+  final int? count;
+  final List<FilterSectionModel>? data;
+
+  FilterSectionResponse({this.success, this.count, this.data});
+
+  factory FilterSectionResponse.fromJson(Map<String, dynamic> json) =>
+      _$FilterSectionResponseFromJson(json);
+}
+
+@JsonSerializable()
+class FilterSectionModel {
+  final int? id;
+  @JsonKey(name: 'plan_price')
+  final String? planPrice;
+  @JsonKey(name: 'plan_name')
+  final String? planName;
+  @JsonKey(name: 'transaction_type')
+  final String? transactionType;
+  final String? phone;
+  final String? status;
+  final String? description;
+  @JsonKey(name: 'auction_date')
+  final String? auctionDate;
+  final String? type;
+  final String? region;
+  final String? price;
+  final String? images;
+  @JsonKey(name: 'user_id')
+  final String? userId;
+  @JsonKey(name: 'created_at')
+  final String? createdAt;
+  @JsonKey(name: 'updated_at')
+  final String? updatedAt;
+
+  FilterSectionModel({
+    this.id,
+    this.planPrice,
+    this.planName,
+    this.transactionType,
+    this.phone,
+    this.status,
+    this.description,
+    this.auctionDate,
+    this.type,
+    this.region,
+    this.price,
+    this.images,
+    this.userId,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  factory FilterSectionModel.fromJson(Map<String, dynamic> json) => _$FilterSectionModelFromJson(json);
+}

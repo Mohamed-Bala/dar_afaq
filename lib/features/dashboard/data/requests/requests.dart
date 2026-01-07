@@ -104,8 +104,6 @@ class UpdateAdvertisementRequest {
   Map<String, dynamic> toJson() => _$UpdateAdvertisementRequestToJson(this);
 }
 
-
-
 @JsonSerializable()
 class AdsSearchRequest {
   final String? region;
@@ -119,4 +117,17 @@ class AdsSearchRequest {
 
   // هذه الدالة هي التي تحول الكائن إلى الخريطة (Map) التي تُرسل في الـ Body
   Map<String, dynamic> toJson() => _$AdsSearchRequestToJson(this);
+}
+
+@JsonSerializable()
+class FilterSectionRequest {
+  final String? section;
+  final String? type;
+
+  FilterSectionRequest({
+    this.section,
+    this.type,
+  });
+
+  Map<String, dynamic> toJson() => _$FilterSectionRequestToJson(this);
 }

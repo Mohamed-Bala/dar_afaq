@@ -1,10 +1,12 @@
 import 'package:dar_afaq/features/dashboard/logic/home_cubit.dart';
 import 'package:dar_afaq/features/dashboard/logic/home_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/helper/spacing.dart';
+import '../../core/resources/strings_manager.dart';
 import '../../core/widgets/refresh_Indicator_widget.dart';
 import '../../core/widgets/snackbar_message.dart';
 import 'widgets/Notifications_widget.dart';
@@ -33,8 +35,8 @@ class _NotificationsViewState extends State<NotificationsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'الإشعارات',
+        title: Text(
+          AppStrings.notificationsTitle.tr(),
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -46,7 +48,7 @@ class _NotificationsViewState extends State<NotificationsView> {
         listener: (context, state) {
           state.maybeWhen(
             notificationsError: (error) {
-              final msg = error.message ?? "حدث خطأ";
+              final msg = error.message ?? AppStrings.errorOccurred.tr();
               SnackBarMessage()
                   .showErrorSnackBar(message: msg, context: context);
             },
@@ -88,8 +90,11 @@ class _NotificationsViewState extends State<NotificationsView> {
                         ),
                 );
               },
-              notificationsError: (error) =>
-                  Center(child: Text(error.message ?? "خطأ")),
+              notificationsError: (error) => Center(
+                child: Text(
+                  error.message ?? AppStrings.errorOccurred.tr(),
+                ),
+              ),
               orElse: () => const SizedBox.shrink(),
             );
           },

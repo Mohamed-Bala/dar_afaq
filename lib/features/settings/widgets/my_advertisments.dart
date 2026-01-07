@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dar_afaq/core/helper/extensions.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../core/di/di.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/resources/color_manager.dart';
+import '../../../core/resources/strings_manager.dart';
 import '../../../core/resources/styles_manager.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/widgets/app_text_button.dart';
@@ -86,7 +88,7 @@ class ShowUserAdCard extends StatelessWidget {
               ),
               Text(
                 showUserAdvertisementData?.auctionDate != null
-                    ? "تاريخ الانتهاء: ${showUserAdvertisementData!.auctionDate}"
+                    ? "${AppStrings.expiryDate.tr()}: ${showUserAdvertisementData!.auctionDate}"
                     : "",
                 style: StylesManager.font12GrayRegular,
               ),
@@ -122,7 +124,7 @@ class ShowUserAdCard extends StatelessWidget {
             children: [
               Expanded(
                 child: AppTextButton(
-                  buttonText: "تعديل",
+                  buttonText:AppStrings.edit.tr(),
                   textStyle: StylesManager.font16White,
                   onPressed: () {
                     Navigator.pushNamed(
@@ -133,12 +135,6 @@ class ShowUserAdCard extends StatelessWidget {
                         'showUserAdCubit': context.read<ShowUserAdCubit>(),
                       },
                     );
-
-                    // context.pushNamed(
-                    //   Routes
-                    //       .editAdRoute, // تأكد من تعريف هذا المسار في AppRouter
-                    //   arguments: showUserAdvertisementData,
-                    // );
                   },
                 ),
               ),
@@ -157,7 +153,7 @@ class ShowUserAdCard extends StatelessWidget {
                     builder: (context, state) {
                       return Builder(builder: (newcontext) {
                         return AppTextButton(
-                          buttonText: "حذف",
+                          buttonText:AppStrings.delete.tr(),
                           backgroundColor: Colors.red.shade400,
                           textStyle: StylesManager.font16White,
                           onPressed: () {
@@ -187,21 +183,21 @@ class ShowUserAdCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           title: Text(
-            "تأكيد الحذف",
+         AppStrings.confirmDeleteTitle.tr(),
             textAlign: TextAlign.right,
             style: StylesManager.font12GrayRegular.copyWith(
               fontSize: 16.sp,
               color: Colors.black,
             ),
           ),
-          content: const Text(
-            "هل أنت متأكد من رغبتك في حذف هذا الإعلان؟ لا يمكن التراجع عن هذا الإجراء.",
+          content:  Text(
+            AppStrings.confirmDeleteMessage.tr(),
             textAlign: TextAlign.right,
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(),
-              child: const Text("إلغاء"),
+              child:  Text(AppStrings.cancel.tr()),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -211,7 +207,7 @@ class ShowUserAdCard extends StatelessWidget {
               onPressed: () {
                 type.emitDeleteAds(showUserAdvertisementData?.id ?? 0);
               },
-              child: const Text("تأكيد الحذف"),
+              child: Text(AppStrings.confirm.tr()),
             ),
           ],
         );

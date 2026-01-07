@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/helper/spacing.dart';
+import '../../../../../../core/resources/strings_manager.dart';
 import '../../../../../../core/resources/styles_manager.dart';
 import '../../../../../../core/widgets/app_text_button.dart';
 import '../../../../logic/cubit_cubit.dart';
@@ -37,12 +39,12 @@ class _RegisterViewState extends State<RegisterView> {
               children: [
                 verticalSpace(30),
                 Text(
-                  'Create Account',
+                  AppStrings.createAccount.tr(),
                   style: StylesManager.font25PrimaryBold,
                 ),
                 verticalSpace(8),
                 Text(
-                  'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
+                  AppStrings.registerWelcomeMessage.tr(),
                   style: StylesManager.font13Grey,
                 ),
                 verticalSpace(20),
@@ -52,14 +54,12 @@ class _RegisterViewState extends State<RegisterView> {
                     const FormRegister(),
                     verticalSpace(20),
                     AppTextButton(
-                      buttonText: "Register",
+                      buttonText: AppStrings.registerButton.tr(),
                       textStyle: StylesManager.font16White,
                       onPressed: () {
                         validateThenDoRegister(context);
                       },
                     ),
-                    // verticalSpace(18),
-                    // const TermsAndConditionsText(),
                     verticalSpace(30),
                     const AlreadyHaveAccountText(),
                     const RegisterpBlocListener(),

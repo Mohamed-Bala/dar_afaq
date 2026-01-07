@@ -1,6 +1,8 @@
 import 'package:dar_afaq/features/dashboard/logic/home_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/resources/strings_manager.dart';
 import 'my_advertisment_bloc_builder.dart';
 
 class MyAdvertisementsView extends StatefulWidget {
@@ -21,21 +23,18 @@ class _MyAdvertisementsViewState extends State<MyAdvertisementsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(AppStrings.myAdvertisements.tr()),
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text('إعلاناتي'),
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.pop(context),
-          ),
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
         ),
-        body: MyAdvertismentBlocBuilder(),
       ),
+      body: MyAdvertismentBlocBuilder(),
     );
   }
 }

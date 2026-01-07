@@ -1,11 +1,12 @@
 import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:dar_afaq/core/widgets/app_text_button.dart';
 import 'package:dar_afaq/core/widgets/app_text_form_field.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 import '../../core/helper/spacing.dart';
+import '../../core/resources/strings_manager.dart';
 import '../../core/resources/styles_manager.dart';
 
 class CalculationCostView extends StatefulWidget {
@@ -40,8 +41,8 @@ class _CalculationCostViewState extends State<CalculationCostView> {
           return AlertDialog(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            title: const Text(
-              "نتجية الحساب",
+            title: Text(
+              AppStrings.calculationResult.tr(),
               textAlign: TextAlign.right,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
@@ -49,7 +50,7 @@ class _CalculationCostViewState extends State<CalculationCostView> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "القيمة التقديرية للعقار",
+                  AppStrings.estimatedValue.tr(),
                   style: StylesManager.font18BlackBold,
                 ),
                 verticalSpace(10),
@@ -57,7 +58,7 @@ class _CalculationCostViewState extends State<CalculationCostView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "د.ك",
+                      AppStrings.currency.tr(),
                       style: StylesManager.font24Black700Weight.copyWith(
                         color: ColorManager.primary,
                       ),
@@ -74,8 +75,8 @@ class _CalculationCostViewState extends State<CalculationCostView> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: const Text(
-                  "إغلاق",
+                child: Text(
+                  AppStrings.close.tr(),
                   style: TextStyle(color: Colors.red),
                 ),
               ),
@@ -91,7 +92,7 @@ class _CalculationCostViewState extends State<CalculationCostView> {
     return Scaffold(
       backgroundColor: ColorManager.white,
       appBar: AppBar(
-        title: const Text("حاسبة القيمة السوقية العادلة"),
+        title: Text(AppStrings.calculatorTitle.tr()),
         backgroundColor: ColorManager.white,
       ),
       body: SingleChildScrollView(
@@ -101,58 +102,58 @@ class _CalculationCostViewState extends State<CalculationCostView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildLabel("مساحة الأرض (م²)"),
+              _buildLabel(AppStrings.landArea.tr()),
               AppTextFormField(
                 controller: areaController,
-                hintText: 'مثال 400',
+                hintText: AppStrings.example400.tr(),
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'يرجى إدخال القيمة';
+                    return AppStrings.pleaseEnterValue.tr();
                   }
                   return null;
                 },
               ),
               verticalSpace(10),
-              _buildLabel("الموقع الجغرافي"),
+              _buildLabel(AppStrings.geographicLocation.tr()),
               _buildDropdown(
-                hint: "العاصمة - مناطق داخلية",
+                hint: AppStrings.locationHint.tr(),
                 items: ["العاصمة - مناطق داخلية", "حولي", "الفروانية"],
                 onChanged: (val) {
                   setState(() => selectedLocation = val);
                 },
               ),
               verticalSpace(10),
-              _buildLabel("موقع القسيمة والارتداد"),
+              _buildLabel(AppStrings.plotPosition.tr()),
               _buildDropdown(
-                hint: "شارع واحد",
+                hint: AppStrings.oneStreet.tr(),
                 items: ["شارع واحد", "زاوية", "بطن وظهر"],
                 onChanged: (val) {
                   setState(() => selectedPosition = val);
                 },
               ),
               verticalSpace(10),
-              _buildLabel("عمر البناء"),
+              _buildLabel(AppStrings.buildingAge.tr()),
               _buildDropdown(
-                hint: "جديد (0-3 سنوات)",
+                hint: AppStrings.newAge.tr(),
                 items: ["جديد (0-3 سنوات)", "متوسط (4-10 سنوات)", "قديم"],
                 onChanged: (val) {
                   (val) => setState(() => selectedAge = val);
                 },
               ),
               verticalSpace(10),
-              _buildLabel("نوع ومستوى التشطيب"),
+              _buildLabel(AppStrings.finishingType.tr()),
               _buildDropdown(
-                hint: 'أرض فضاء',
+                hint: AppStrings.vacantLand.tr(),
                 items: ["أرض فضاء", "سوبر لوكس", "عادي"],
                 onChanged: (val) {
                   setState(() => selectedFinishing = val);
                 },
               ),
               verticalSpace(10),
-              _buildLabel("المميزات الإضافية"),
+              _buildLabel(AppStrings.extraFeatures.tr()),
               _buildDropdown(
-                hint: 'لايوجد',
+                hint: AppStrings.none.tr(),
                 items: ["لا يوجد", "حمام سباحة", "حديقة"],
                 onChanged: (val) {
                   setState(() => selectedExtra = val);
@@ -160,7 +161,7 @@ class _CalculationCostViewState extends State<CalculationCostView> {
               ),
               verticalSpace(30),
               AppTextButton(
-                buttonText: 'احسب القيمة الآن',
+                buttonText: AppStrings.calculateNow.tr(),
                 textStyle: TextStyle(fontSize: 18, color: Colors.white),
                 onPressed: () {
                   _calculateAndShowAlert(context);

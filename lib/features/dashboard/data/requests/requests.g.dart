@@ -105,3 +105,17 @@ Map<String, dynamic> _$AdsSearchRequestToJson(AdsSearchRequest instance) =>
       'region': instance.region,
       'transaction_type': instance.transactionType,
     };
+
+FilterSectionRequest _$FilterSectionRequestFromJson(
+        Map<String, dynamic> json) =>
+    FilterSectionRequest(
+      section: json['section'] as String?,
+      type: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$FilterSectionRequestToJson(
+        FilterSectionRequest instance) =>
+    <String, dynamic>{
+      'section': instance.section,
+      'type': instance.type,
+    };

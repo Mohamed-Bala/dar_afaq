@@ -1,8 +1,10 @@
 import 'package:dar_afaq/core/helper/spacing.dart';
 import 'package:dar_afaq/core/resources/color_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 
 // --- Main About Us Screen Widget ---
@@ -14,7 +16,7 @@ class AboutUsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('About Us'),
+        title: Text(AppStrings.aboutDarAfaq.tr()),
         backgroundColor: Colors.white,
       ),
       // ListView makes the content scrollable
@@ -33,7 +35,7 @@ class AboutUsView extends StatelessWidget {
           const ContactSection(),
           Divider(height: 20.h, thickness: 1),
 
-          const LegalInfoSection(),
+          // const LegalInfoSection(),
         ],
       ),
     );
@@ -55,14 +57,17 @@ class AppIdentitySection extends StatelessWidget {
         verticalSpace(5),
         Align(
           alignment: Alignment.centerRight,
-          child: const SectionHeader(title: 'دار أفاق'),
+          child: SectionHeader(title: AppStrings.appName.tr()),
         ),
         verticalSpace(8),
-        Text(
-          'منصة متكاملة لبيانات السوق العقاري: المزادات، الصفقات المسجلة، التقييم، وحساب تكلفة البناء.',
-          style: StylesManager.font13Grey
-              .copyWith(fontSize: 16.sp, color: Colors.black, height: 1.5),
-          textAlign: TextAlign.center,
+        Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            AppStrings.appIdentityDesc.tr(),
+            style: StylesManager.font13Grey
+                .copyWith(fontSize: 16.sp, color: Colors.black, height: 1.3),
+            textAlign: TextAlign.center,
+          ),
         ),
         verticalSpace(10)
       ],
@@ -76,31 +81,30 @@ class MissionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const SectionHeader(title: 'من نحن'),
+        SectionHeader(title: AppStrings.whoWeAre.tr()),
         verticalSpace(10),
         Text(
-          '''تأسست دار آفاق العقارية لتطوير مشاريع سكنية وتجارية عالية الجودة  مع التركيز على التفاصيل الدقيقة والالتزام بالمواعيد وخدمة العملاء المتميزة.
-''',
+          AppStrings.whoWeAreDesc.tr(),
           style: StylesManager.font13Grey
-              .copyWith(fontSize: 16.sp, color: Colors.black, height: 1.5),
-          textAlign: TextAlign.justify,
+              .copyWith(fontSize: 16.sp, color: Colors.black, height: 1.3),
+          textAlign: TextAlign.start,
         ),
         Divider(height: 30.h, thickness: 1),
-        const SectionHeader(title: 'قيمنا'),
+        SectionHeader(title: AppStrings.ourValues.tr()),
         verticalSpace(10),
-        const LabeledInfo(
+        LabeledInfo(
           icon: Icons.check_circle_outline,
-          text: 'أن نصبح الشريك الأول في المقاولات الذكية',
+          text: AppStrings.valuePartner.tr(),
         ),
-        const LabeledInfo(
+        LabeledInfo(
           icon: Icons.people_outline,
-          text: 'تسعى شركة دار افاق الذكية إلى تقديم مشاريع متكاملة',
+          text: AppStrings.valueProjects.tr(),
         ),
-        const LabeledInfo(
+        LabeledInfo(
           icon: Icons.rocket_launch_outlined,
-          text: 'نؤمن بالالتزام، الجودة، الابتكار',
+          text: AppStrings.valueInnovation.tr(),
         ),
       ],
     );
@@ -115,7 +119,7 @@ class ContactSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        const SectionHeader(title: 'تواصل معنا'),
+        SectionHeader(title: AppStrings.contactUs.tr()),
         verticalSpace(10),
         ListTile(
           leading: Icon(Icons.email, color: ColorManager.primary),
@@ -137,43 +141,21 @@ class ContactSection extends StatelessWidget {
   }
 }
 
-class LegalInfoSection extends StatelessWidget {
-  const LegalInfoSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Text(
-          'Version 1.0.0 (Build 20251128)',
-          style: StylesManager.font13Grey,
-        ),
-        TextButton(
-          onPressed: () {},
-          child: Text(
-            'Privacy Policy | Terms of Service',
-            style:
-                StylesManager.font13Grey.copyWith(color: ColorManager.primary),
-          ),
-        ),
-        verticalSpace(5),
-      ],
-    );
-  }
-}
-
 class SectionHeader extends StatelessWidget {
   final String title;
   const SectionHeader({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
+    return Align(
+      alignment: AlignmentDirectional.centerStart,
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+      ),
     );
   }
 }
@@ -185,23 +167,20 @@ class LabeledInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 4.0.h),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Icon(icon, size: 19.sp, color: ColorManager.primary),
-            horizontalSpace(10),
-            Expanded(
-              child: Text(
-                text,
-                style: const TextStyle(fontSize: 16),
-              ),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 4.0.h),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Icon(icon, size: 19.sp, color: ColorManager.primary),
+          horizontalSpace(10),
+          Expanded(
+            child: Text(
+              text,
+              style: const TextStyle(fontSize: 16),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

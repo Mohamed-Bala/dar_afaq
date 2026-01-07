@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/helper/spacing.dart';
 
+import '../../../../core/resources/strings_manager.dart';
 import '../../../dashboard/logic/home_cubit.dart';
 import '../../../dashboard/logic/home_state.dart';
 import '../../widgets/my_advertisments.dart';
@@ -39,8 +41,9 @@ class MyAdvertismentBlocBuilder extends StatelessWidget {
                     ),
             );
           },
-          showUserAdsError: (error) =>
-              Center(child: Text(error.message ?? "خطأ")),
+          showUserAdsError: (error) => Center(
+            child: Text(error.message ?? AppStrings.errorOccurred.tr()),
+          ),
           orElse: () => const SizedBox.shrink(),
         );
       },
@@ -48,8 +51,8 @@ class MyAdvertismentBlocBuilder extends StatelessWidget {
   }
 
   Widget _buildEmptyState() {
-    return const Center(
-      child: Text("لا توجد إعلانات حالياً"),
+    return Center(
+      child: Text(AppStrings.noAdsAvailable.tr()),
     );
   }
 }

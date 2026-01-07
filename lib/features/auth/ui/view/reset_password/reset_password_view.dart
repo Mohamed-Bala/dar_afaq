@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/helper/spacing.dart';
 import '../../../../../core/resources/color_manager.dart';
+import '../../../../../core/resources/strings_manager.dart';
 import '../../../../../core/resources/styles_manager.dart';
 import '../../../../../core/widgets/app_text_button.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
@@ -19,7 +21,7 @@ class ResetPasswordView extends StatefulWidget {
 class _ResetPasswordViewState extends State<ResetPasswordView> {
   void validateThenDoaResetPassword(BuildContext context) {
     if (context.read<ResetPasswordCubit>().formKey.currentState!.validate()) {
-      print("Sending request for email: ${widget.email}");
+      // print("Sending request for email: ${widget.email}");
       context.read<ResetPasswordCubit>().emitResetPassword(
             email: widget.email,
           );
@@ -39,19 +41,19 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Create New Password",
+                  AppStrings.createNewPassword.tr(),
                   style: StylesManager.font25PrimaryBold,
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Your new password must be different from previous used passwords.",
+                  AppStrings.resetPasswordDescription.tr(),
                   style: StylesManager.font13Grey,
                 ),
                 const SizedBox(height: 40),
                 AppTextFormField(
                   controller:
                       context.read<ResetPasswordCubit>().passwordController,
-                  hintText: 'New Password',
+                  hintText: AppStrings.newPasswordHint.tr(),
                   isObscureText:
                       context.read<ResetPasswordCubit>().isPasswordObscure,
                   suffixIcon: GestureDetector(
@@ -71,18 +73,17 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter a valid password ';
+                      return AppStrings.validPasswordError.tr();
                     }
                     return null;
                   },
                 ),
                 verticalSpace(24),
-
                 AppTextFormField(
                   controller: context
                       .read<ResetPasswordCubit>()
                       .passwordConfirmationController,
-                  hintText: 'Confirm New Password',
+                  hintText: AppStrings.confirmNewPasswordHint.tr(),
                   isObscureText: context
                       .read<ResetPasswordCubit>()
                       .isConfirmPasswordObscure,
@@ -111,16 +112,14 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                             .read<ResetPasswordCubit>()
                             .passwordController
                             .text) {
-                      return 'Passwords do not match';
+                      return AppStrings.passwordsDontMatch.tr();
                     }
                     return null;
                   },
                 ),
                 verticalSpace(24),
-
-                // زر الحفظ
                 AppTextButton(
-                  buttonText: "Reset Password",
+                  buttonText: AppStrings.resetPasswordButton.tr(),
                   textStyle: StylesManager.font16White,
                   onPressed: () {
                     validateThenDoaResetPassword(context);
@@ -135,6 +134,4 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
       ),
     );
   }
-
-
 }

@@ -2,6 +2,7 @@ import 'package:dar_afaq/core/helper/extensions.dart';
 import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:dar_afaq/features/dashboard/logic/home_cubit.dart';
 import 'package:dar_afaq/features/settings/view/profile/profile_view.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -12,6 +13,7 @@ import '../../../../core/di/di.dart';
 import '../../../../core/helper/constants.dart';
 import '../../../../core/helper/shared_pref.dart';
 import '../../../../core/resources/langauge_manager.dart';
+import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../auth/logic/cubit_cubit.dart';
@@ -32,80 +34,69 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     // Crucial for Arabic/RTL: forces the layout to start from the right
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          toolbarHeight: 0,
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      BlocBuilder<UserInfoCubit, UserInfoState>(
-                        builder: (context, state) {
-                          String name = "جاري التحميل...";
-                          String email = "";
-                          if (state is UserInfoSuccess) {
-                            name = state.data.user?.name ?? "بدون اسم";
-                            email = state.data.user?.email ?? "";
-                          }
+        toolbarHeight: 0,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    BlocBuilder<UserInfoCubit, UserInfoState>(
+                      builder: (context, state) {
+                        String name = AppStrings.loading.tr();
+                        String email = "";
+                        if (state is UserInfoSuccess) {
+                          name = state.data.user?.name ?? "بدون اسم";
+                          email = state.data.user?.email ?? "";
+                        }
 
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              const SizedBox(height: 10),
-                              Text(
-                                name,
-                                style: StylesManager.font12GrayRegular.copyWith(
-                                  color: Colors.black,
-                                  fontSize: 18.sp,
-                                ),
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            SizedBox(height: 10.h),
+                            Text(
+                              name,
+                              style: StylesManager.font12GrayRegular.copyWith(
+                                color: Colors.black,
+                                fontSize: 14.sp,
                               ),
-                              Text(
-                                email,
-                                style: StylesManager.font12GrayRegular.copyWith(
-                                  color: Colors.black,
-                                ),
+                            ),
+                            Text(
+                              email,
+                              style: StylesManager.font12GrayRegular.copyWith(
+                                color: Colors.black,
                               ),
-                            ],
-                          );
-                        },
-                      ),
-                      // App Logo (Rounded blue icon)
-                      IconButton(
-                          icon: const Icon(Icons.close, color: Colors.black),
-                          onPressed: () {
-                            context.pop();
-                          }),
-                    ],
-                  ),
-                ],
-              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    // App Logo (Rounded blue icon)
+                    IconButton(
+                        icon: const Icon(Icons.close, color: Colors.black),
+                        onPressed: () {
+                          context.pop();
+                        }),
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            const Expanded(
-              child: _MenuListView(),
-            ),
-            // Padding(
-            //   padding: const EdgeInsets.all(20.0),
-            //   child: AppTextButton(
-            //     buttonText: "تسجيل دخول",
-            //     textStyle: StylesManager.font16White,
-            //     onPressed: () {},
-            //   ),
-            // ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 20),
+          const Expanded(
+            child: _MenuListView(),
+          ),
+        ],
       ),
     );
   }
@@ -138,8 +129,16 @@ class _MenuListViewState extends State<_MenuListView> {
     }
   }
 
-  changeLanguage() async {
-    await changeAppLanguage();
+  changeLanguage(bool isArabic) async {
+    //await changeAppLanguage();
+    if (isArabic) {
+      await context.setLocale(
+          const Locale('ar', 'SA')); // تأكد من الرموز المستخدمة في main
+      await SharedPrefHelper.setData(SharedPrefKeys.langKey, 'ar');
+    } else {
+      await context.setLocale(const Locale('en', 'US'));
+      await SharedPrefHelper.setData(SharedPrefKeys.langKey, 'en');
+    }
     // restart app
     // ignore: use_build_context_synchronously
     Phoenix.rebirth(context);
@@ -150,12 +149,12 @@ class _MenuListViewState extends State<_MenuListView> {
     return ListView(
       children: <Widget>[
         _MenuItem(
-          title: 'ادارة الحساب',
+          title: AppStrings.accountManagement.tr(),
           isTitle: true,
           onTap: () {},
         ),
         _MenuItem(
-          title: 'اعدادات الحساب',
+          title: AppStrings.profileTitle.tr(),
           icon: Icons.settings,
           onTap: () async {
             final int userId =
@@ -186,12 +185,12 @@ class _MenuListViewState extends State<_MenuListView> {
         ),
         const Divider(),
         _MenuItem(
-          title: 'عام',
+          title: AppStrings.general.tr(),
           isTitle: true,
           onTap: () {},
         ),
         _MenuItem(
-          title: ' لغة التطبيق',
+          title: AppStrings.appLanguage.tr(),
           icon: Icons.language_outlined,
           trailingWidget: Row(
             mainAxisSize: MainAxisSize.min,
@@ -205,12 +204,19 @@ class _MenuListViewState extends State<_MenuListView> {
               const SizedBox(width: 8),
               Switch(
                 value: _isArabicSelected,
-                onChanged: (bool value) {
+                onChanged: (bool value) async {
                   setState(() {
                     _isArabicSelected = value;
                   });
-                  // apply language change and restart
-                  changeLanguage();
+
+                  Locale newLocale =
+                      value ? const Locale('ar', '') : const Locale('en', '');
+                  await context.setLocale(newLocale);
+
+                  await SharedPrefHelper.setData(
+                      SharedPrefKeys.langKey, value ? "ar" : "en");
+
+                  Phoenix.rebirth(context);
                 },
                 activeColor: ColorManager.primary,
                 // inactiveThumbColor: Colors.grey,
@@ -223,7 +229,7 @@ class _MenuListViewState extends State<_MenuListView> {
           onTap: () {},
         ),
         _MenuItem(
-          title: 'اعلاناتي',
+          title: AppStrings.myAdvertisements.tr(),
           icon: Icons.campaign,
           onTap: () {
             Navigator.push(
@@ -243,14 +249,14 @@ class _MenuListViewState extends State<_MenuListView> {
           },
         ),
         _MenuItem(
-          title: 'عن دار أفاق',
+          title: AppStrings.aboutDarAfaq.tr(),
           icon: Icons.info_outline,
           onTap: () {
             context.pushNamed(Routes.aboutUsRoute);
           },
         ),
         _MenuItem(
-          title: 'تسجيل الخروج',
+          title: AppStrings.logout.tr(),
           icon: Icons.lock_outline,
           onTap: () async {
             showDialogWidget(context);
@@ -309,21 +315,21 @@ class _MenuListViewState extends State<_MenuListView> {
             borderRadius: BorderRadius.circular(16),
           ),
           title: Text(
-            "تسجيل الخروج",
+            AppStrings.logoutConfirmationTitle.tr(),
             textAlign: TextAlign.right,
             style: StylesManager.font12GrayRegular.copyWith(
               fontSize: 16.sp,
               color: Colors.black,
             ),
           ),
-          content: const Text(
-            "هل أنت متأكد من رغبتك في تسجيل الخروج",
+          content: Text(
+            AppStrings.logoutConfirmationMessage.tr(),
             textAlign: TextAlign.right,
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(),
-              child: const Text("إلغاء"),
+              child: Text(AppStrings.cancel.tr()),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -335,7 +341,7 @@ class _MenuListViewState extends State<_MenuListView> {
                 // ignore: use_build_context_synchronously
                 context.pushNamed(Routes.loginRoute);
               },
-              child: const Text("تأكيد الخروج"),
+              child: Text(AppStrings.confirm.tr()),
             ),
           ],
         );
@@ -374,7 +380,7 @@ class _MenuItem extends StatelessWidget {
             Text(
               title,
               style: StylesManager.font12GrayRegular.copyWith(
-                fontSize: 20.sp,
+                fontSize: 16.sp,
                 color: Colors.black,
               ),
             ),

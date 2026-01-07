@@ -1,5 +1,6 @@
 import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:dar_afaq/features/dashboard/ui/view/advertisements/view/ads/ads_view.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/di/di.dart';
 import '../../../../core/helper/constants.dart';
 import '../../../../core/helper/shared_pref.dart';
+import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../../auctions/auction_view.dart';
 import '../../../auth/logic/cubit_cubit.dart';
@@ -45,11 +47,11 @@ class _DashboardViewState extends State<DashboardView> {
   ];
 
   final List<String> _titel = [
-    "دار أفاق",
-    "المزادات",
-    " اضافة اعلان",
-    "الصفقات",
-    "الاعلانات",
+    AppStrings.appName.tr(),
+    AppStrings.auctions.tr(),
+    AppStrings.addAd.tr(),
+    AppStrings.deals.tr(),
+    AppStrings.advertisements.tr(),
   ];
 
   final PageController _pageController = PageController();
@@ -68,113 +70,110 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      endDrawer: FutureBuilder(
+        future: SharedPrefHelper.getInt(SharedPrefKeys.userId),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return BlocProvider(
+              create: (context) => di<UserInfoCubit>()..emitGetUserInfo(21),
+              child: Profile(),
+            );
+          } else {
+            return const Drawer(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        },
+      ),
+      appBar: AppBar(
         backgroundColor: Colors.white,
-        endDrawer: FutureBuilder(
-          future: SharedPrefHelper.getInt(SharedPrefKeys.userId),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return BlocProvider(
-                create: (context) => di<UserInfoCubit>()..emitGetUserInfo(21),
-                child: Profile(),
-              );
-            } else {
-              return const Drawer(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            }
-          },
-        ),
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Stack(
-              children: [
-                Icon(
-                  Icons.notifications_none,
-                  color: ColorManager.black,
-                  size: 30.sp,
-                ),
-              ],
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BlocProvider(
-                    create: (context) => di<NotificationsCubit>(),
-                    child: const NotificationsView(),
-                  ),
-                ),
-              );
-            },
+        leading: IconButton(
+          icon: Stack(
+            children: [
+              Icon(
+                Icons.notifications_none,
+                color: ColorManager.black,
+                size: 30.sp,
+              ),
+            ],
           ),
-          title: Text(
-            _titel[_currentIndex],
-            style: StylesManager.font12GrayRegular.copyWith(
-              color: ColorManager.black,
-              fontSize: 20.sp,
-            ),
-          ),
-          centerTitle: true,
-        ),
-        body: PageView(
-          controller: _pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: _pages,
-          onPageChanged: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-        ),
-        floatingActionButton: FloatingActionButton(
-          shape: const CircleBorder(),
-          backgroundColor: ColorManager.primary,
           onPressed: () {
-            _onItemTapped(2);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BlocProvider(
+                  create: (context) => di<NotificationsCubit>(),
+                  child: const NotificationsView(),
+                ),
+              ),
+            );
           },
-          child: Icon(
-            Icons.ads_click_outlined,
-            color: Colors.white,
-            size: 30.sp,
+        ),
+        title: Text(
+          _titel[_currentIndex],
+          style: StylesManager.font12GrayRegular.copyWith(
+            color: ColorManager.black,
+            fontSize: 20.sp,
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'الرئيسية',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.gavel),
-              label: 'المزادات',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.ads_click_outlined),
-              label: 'اضافة اعلان',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.swap_calls),
-              label: 'الصفقات',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.campaign),
-              label: 'الاعلانات',
-            ),
-          ],
-          currentIndex: _currentIndex,
-          selectedItemColor: ColorManager.primary,
-          backgroundColor: Colors.white,
-          unselectedItemColor: Colors.grey,
-          type: BottomNavigationBarType.fixed,
-          onTap: _onItemTapped,
+        centerTitle: true,
+      ),
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: _pages,
+        onPageChanged: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
+        backgroundColor: ColorManager.primary,
+        onPressed: () {
+          _onItemTapped(2);
+        },
+        child: Icon(
+          Icons.ads_click_outlined,
+          color: Colors.white,
+          size: 30.sp,
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavigationBar(
+        items:  <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: AppStrings.home.tr(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.gavel),
+            label:AppStrings.auctions.tr(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.ads_click_outlined),
+            label: AppStrings.addAd.tr(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.swap_calls),
+            label: AppStrings.deals.tr(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.campaign),
+            label: AppStrings.advertisements.tr(),
+          ),
+        ],
+        currentIndex: _currentIndex,
+        selectedItemColor: ColorManager.primary,
+        backgroundColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
+        onTap: _onItemTapped,
       ),
     );
   }

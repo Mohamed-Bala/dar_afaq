@@ -63,13 +63,11 @@ class _PackageSelectionState extends State<PackageSelection> {
                       final selectedItem =
                           sectionServicesList[_selectedAdTypeIndex!];
 
-                      // تأكد أن item.title يحتوي فعلاً على نص (بيع، إيجار، الخ)
-                      print("Sending Title: ${selectedItem.label}");
+                     // print("Sending Title: ${selectedItem.label}");
 
                       context.pushNamed(
                         Routes.addRoute,
-                        arguments:
-                            selectedItem.label, // تأكد أن الاسم هنا arguments
+                        arguments: selectedItem.label,
                       );
                     }
                   },

@@ -1,3 +1,5 @@
+import 'package:dar_afaq/core/resources/strings_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,11 +24,11 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
       child: Column(
         children: [
           AppTextFormField(
-            hintText: 'Phone number',
+            hintText: AppStrings.phoneNumber.tr(),
             keyboardType: TextInputType.phone,
             validator: (value) {
               if (value!.isEmpty) {
-                return 'Please enter a valid phone number';
+                return AppStrings.phoneValidationEmpty.tr();
               }
             },
             controller: context.read<LoginCubit>().phoneController,
@@ -34,7 +36,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           verticalSpace(18),
           AppTextFormField(
             controller: context.read<LoginCubit>().passwordController,
-            hintText: 'Password',
+            hintText: AppStrings.password.tr(),
             isObscureText: isObscureText,
             suffixIcon: GestureDetector(
               onTap: () {
@@ -48,7 +50,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
+                return AppStrings.passwordValidationEmpty.tr();
               }
             },
           ),

@@ -116,3 +116,14 @@ class FilterState with _$FilterState {
   const factory FilterState.filterError(ApiErrorModel apiErrorModel) =
       FilterError;
 }
+
+@freezed
+class FilterSectionState with _$FilterSectionState {
+  const factory FilterSectionState.initial() = _FilterSectionInitial;
+  const factory FilterSectionState.filterSectionLoading() =
+      FilterSectionLoading;
+  const factory FilterSectionState.filterSectionSuccess(
+      FilterSectionResponse filterSectionResponse) = FilterSectionSuccess;
+  const factory FilterSectionState.filterSectionError(
+      ApiErrorModel apiErrorModel) = FilterSectionError;
+}

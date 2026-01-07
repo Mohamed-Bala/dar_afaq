@@ -363,3 +363,59 @@ Map<String, dynamic> _$UpdateAdResponseToJson(UpdateAdResponse instance) =>
       'message': instance.message,
       'status': instance.status,
     };
+
+FilterSectionResponse _$FilterSectionResponseFromJson(
+        Map<String, dynamic> json) =>
+    FilterSectionResponse(
+      success: json['success'] as bool?,
+      count: (json['count'] as num?)?.toInt(),
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => FilterSectionModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$FilterSectionResponseToJson(
+        FilterSectionResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+      'count': instance.count,
+      'data': instance.data,
+    };
+
+FilterSectionModel _$FilterSectionModelFromJson(Map<String, dynamic> json) =>
+    FilterSectionModel(
+      id: (json['id'] as num?)?.toInt(),
+      planPrice: json['plan_price'] as String?,
+      planName: json['plan_name'] as String?,
+      transactionType: json['transaction_type'] as String?,
+      phone: json['phone'] as String?,
+      status: json['status'] as String?,
+      description: json['description'] as String?,
+      auctionDate: json['auction_date'] as String?,
+      type: json['type'] as String?,
+      region: json['region'] as String?,
+      price: json['price'] as String?,
+      images: json['images'] as String?,
+      userId: json['user_id'] as String?,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+    );
+
+Map<String, dynamic> _$FilterSectionModelToJson(FilterSectionModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'plan_price': instance.planPrice,
+      'plan_name': instance.planName,
+      'transaction_type': instance.transactionType,
+      'phone': instance.phone,
+      'status': instance.status,
+      'description': instance.description,
+      'auction_date': instance.auctionDate,
+      'type': instance.type,
+      'region': instance.region,
+      'price': instance.price,
+      'images': instance.images,
+      'user_id': instance.userId,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+    };

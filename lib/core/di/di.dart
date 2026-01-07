@@ -67,6 +67,11 @@ Future<void> init() async {
       () => AdsSearchRepository(di()));
   di.registerFactory<FilterCubit>(() => FilterCubit(di()));
 
+  // filter Section
+  di.registerLazySingleton<FilterSectionRepository>(
+      () => FilterSectionRepository(di()));
+  di.registerFactory<FilterSctionCubit>(() => FilterSctionCubit(di()));
+
   // User Info
   di.registerLazySingleton<UserInfoRepository>(() => UserInfoRepository(di()));
   di.registerFactory<UserInfoCubit>(() => UserInfoCubit(di()));

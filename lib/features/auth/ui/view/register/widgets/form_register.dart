@@ -1,3 +1,5 @@
+import 'package:dar_afaq/core/resources/strings_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,40 +18,6 @@ class FormRegister extends StatefulWidget {
 class _FormRegisterState extends State<FormRegister> {
   bool isPasswordObscureText = true;
   bool isPasswordConfirmationObscureText = true;
-  // Future<void> selectDate() async {
-  //   DateTime? picked = await showDatePicker(
-  //     context: context,
-  //     initialDate: DateTime.now(),
-  //     firstDate: DateTime(1990),
-  //     lastDate: DateTime(2050),
-  //   );
-  //   if (picked != null) {
-  //     setState(() {
-  //       _dateController.text = picked.toString().split(" ")[0];
-  //     });
-  //   }
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   passwordController = context.read<RegisterCubit>().passwordController;
-  //   setupPasswordControllerListener();
-  // }
-
-  // void setupPasswordControllerListener() {
-  //   passwordController.addListener(() {
-  //     setState(() {
-  //       hasLowercase = AppRegex.hasLowerCase(passwordController.text);
-  //       hasUppercase = AppRegex.hasUpperCase(passwordController.text);
-  //       hasSpecialCharacters =
-  //           AppRegex.hasSpecialCharacter(passwordController.text);
-  //       hasNumber = AppRegex.hasNumber(passwordController.text);
-  //       hasMinLength = AppRegex.hasMinLength(passwordController.text);
-  //     });
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -57,43 +25,43 @@ class _FormRegisterState extends State<FormRegister> {
       child: Column(
         children: [
           AppTextFormField(
-            hintText: 'FirstName',
+            hintText: AppStrings.firstName.tr(),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid name';
+                return AppStrings.validNameError.tr();
               }
             },
             controller: context.read<RegisterCubit>().firstNameController,
           ),
           verticalSpace(18),
           AppTextFormField(
-            hintText: 'Last Name',
+            hintText: AppStrings.lastName.tr(),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid name';
+                return AppStrings.validNameError.tr();
               }
             },
             controller: context.read<RegisterCubit>().lastNameController,
           ),
           verticalSpace(18),
           AppTextFormField(
-            hintText: 'Email Address',
+            hintText: AppStrings.email.tr(),
             validator: (value) {
               if (value == null ||
                   value.isEmpty ||
                   !AppRegex.isEmailValid(value)) {
-                return 'Please enter a valid email';
+                return AppStrings.validEmailError.tr();
               }
             },
             controller: context.read<RegisterCubit>().emailController,
           ),
           verticalSpace(18),
           AppTextFormField(
-            hintText: 'Phone number',
+            hintText: AppStrings.phoneNumber.tr(),
             keyboardType: TextInputType.phone,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid phone number';
+                return AppStrings.validPhoneError.tr();
               }
             },
             controller: context.read<RegisterCubit>().phoneController,
@@ -101,7 +69,7 @@ class _FormRegisterState extends State<FormRegister> {
           verticalSpace(18),
           AppTextFormField(
             controller: context.read<RegisterCubit>().passwordController,
-            hintText: 'Password',
+            hintText: AppStrings.password.tr(),
             isObscureText: isPasswordObscureText,
             suffixIcon: GestureDetector(
               onTap: () {
@@ -115,7 +83,7 @@ class _FormRegisterState extends State<FormRegister> {
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
+                return AppStrings.validPasswordError.tr();
               }
             },
           ),
@@ -123,7 +91,7 @@ class _FormRegisterState extends State<FormRegister> {
           AppTextFormField(
             controller:
                 context.read<RegisterCubit>().passwordConfirmationController,
-            hintText: 'Password Confirmation',
+            hintText: AppStrings.passwordConfirmation.tr(),
             isObscureText: isPasswordConfirmationObscureText,
             suffixIcon: GestureDetector(
               onTap: () {
@@ -140,7 +108,7 @@ class _FormRegisterState extends State<FormRegister> {
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
+                return AppStrings.validPasswordError.tr();
               }
             },
           ),
@@ -149,109 +117,4 @@ class _FormRegisterState extends State<FormRegister> {
       ),
     );
   }
-
-  // @override
-  // void dispose() {
-  //   passwordController.dispose();
-  //   super.dispose();
-  // }
 }
-
-// class AddressData extends StatefulWidget {
-//   const AddressData({
-//     super.key,
-//   });
-
-//   @override
-//   State<AddressData> createState() => _AddressDataState();
-// }
-
-// class _AddressDataState extends State<AddressData> {
-//   String? _selectedValue; // State variable to hold the selected value
-//   final List<String> _options = [
-//     'القادسية',
-//     'قرطبة',
-//     'الروضة',
-//     'الشامية',
-//     'الشويخ',
-//     'الصليبخات',
-//     'القيروان'
-//   ];
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         areaWidget(),
-//         verticalSpace(18),
-//         AppTextFormField(
-//           hintText: 'Buliding Number',
-//           keyboardType: TextInputType.number,
-//           validator: (value) {},
-//         ),
-//         verticalSpace(18),
-//         AppTextFormField(
-//           hintText: 'Floor',
-//           keyboardType: TextInputType.number,
-//           validator: (value) {},
-//         ),
-//         verticalSpace(18),
-//         AppTextFormField(
-//           hintText: 'Avenue',
-//           keyboardType: TextInputType.number,
-//           validator: (value) {},
-//         ),
-//       ],
-//     );
-//   }
-
-//   DropdownButtonFormField<String> areaWidget() {
-//     return DropdownButtonFormField<String>(
-//       decoration: InputDecoration(
-//         isDense: true,
-//         contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-//         focusedBorder: OutlineInputBorder(
-//           borderSide: BorderSide(
-//             color: ColorManager.primary,
-//             width: 1.3,
-//           ),
-//           borderRadius: BorderRadius.circular(16.0),
-//         ),
-//         enabledBorder: OutlineInputBorder(
-//           borderSide: BorderSide(
-//             color: ColorManager.white,
-//             width: 1.3,
-//           ),
-//           borderRadius: BorderRadius.circular(16.0),
-//         ),
-//         focusedErrorBorder: OutlineInputBorder(
-//           borderSide: const BorderSide(
-//             color: Colors.red,
-//             width: 1.3,
-//           ),
-//           borderRadius: BorderRadius.circular(16.0),
-//         ),
-//         fillColor: ColorManager.lighterGray,
-//         filled: true,
-//       ),
-//       value: _selectedValue,
-//       hint: const Text('Area Name'),
-//       items: _options.map((String value) {
-//         return DropdownMenuItem<String>(
-//           value: value,
-//           child: Text(value),
-//         );
-//       }).toList(),
-//       onChanged: (String? newValue) {
-//         setState(() {
-//           _selectedValue = newValue;
-//         });
-//       },
-//       validator: (value) {
-//         if (value == null || value.isEmpty) {
-//           return 'Please select an option';
-//         }
-//         return null;
-//       },
-//     );
-//   }
-// }

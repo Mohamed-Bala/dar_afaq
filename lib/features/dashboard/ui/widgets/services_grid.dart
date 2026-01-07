@@ -1,45 +1,210 @@
-// import 'package:dar_afaq/core/resources/color_manager.dart';
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// import 'build_gridItem.dart';
-// import 'sections/section_services.dart';
+import '../../../../core/helper/spacing.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../logic/home_cubit.dart';
+import '../view/advertisements/view/ads_result_section/ads_result_section_view.dart';
 
+// ويدجت منفصل للتحكم في الأنيميشن داخل النافذة
+class AnimatedSheetContent extends StatefulWidget {
+  final String title;
+  final List<SubCategoryModel> subCategories; // القائمة التي ستتغير حسب كل قسم
 
+  const AnimatedSheetContent({
+    super.key,
+    required this.title,
+    required this.subCategories,
+  });
 
-// class ServicesGrid extends StatelessWidget {
-//   const ServicesGrid({super.key});
+  @override
+  State<AnimatedSheetContent> createState() => _AnimatedSheetContentState();
+}
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       appBar: AppBar(
-//         backgroundColor: Colors.white,
-//         title: const Text('الأقسام'),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(12.0),
-//         child: GridView.builder(
-//           shrinkWrap: true,
-//           physics: const NeverScrollableScrollPhysics(),
-//           itemCount: sectionServicesList.length,
-//           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//             crossAxisCount: 4,
-//             crossAxisSpacing: 10.0,
-//             mainAxisSpacing: 10.0,
-//             childAspectRatio: 0.75,
-//           ),
-//           itemBuilder: (context, index) {
-//             final item = sectionServicesList[index];
-//             return buildGridItem(
-//               item,
-//               ColorManager.iconColor,
-//               ColorManager.itemBackgroundColor,
+class _AnimatedSheetContentState extends State<AnimatedSheetContent>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+  late Animation<Offset> _slideAnimation;
 
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+    );
+
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0, 0.4), end: Offset.zero).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
+    );
+
+    _controller.forward(); // تشغيل الأنميشن فور الفتح
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30.r)),
+      ),
+      child: FadeTransition(
+        opacity: _fadeAnimation,
+        child: SlideTransition(
+          position: _slideAnimation,
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // لجعل النافذة تأخذ حجم المحتوى فقط
+            children: [
+              // مقبض السحب العلوي (Handle)
+              Container(
+                width: 45.w,
+                height: 4.h,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+              ),
+              verticalSpace(20),
+              // عنوان القسم
+              Text(
+                widget.title,
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.bold,
+                  color: ColorManager.black,
+                ),
+              ),
+              verticalSpace(20),
+              // بناء قائمة الخيارات ديناميكياً
+              Flexible(
+                child: ListView.separated(
+                  shrinkWrap: true, // مهم جداً داخل الـ BottomSheet
+                  physics:
+                      const NeverScrollableScrollPhysics(), // ليعمل السكرول الخارجي
+                  itemCount: widget.subCategories.length,
+                  separatorBuilder: (context, index) => verticalSpace(12),
+                  itemBuilder: (context, index) {
+                    return _optionRow(context, widget.subCategories[index]);
+                  },
+                ),
+              ),
+              verticalSpace(25),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _optionRow(BuildContext context, SubCategoryModel sub) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(0xFFF7F8F9),
+        borderRadius: BorderRadius.circular(15.r),
+        border: Border.all(color: Colors.grey.withOpacity(0.1)),
+      ),
+      child: ListTile(
+        onTap: () {
+          final FilterSctionCubit cubitInstance =
+              BlocProvider.of<FilterSctionCubit>(context);
+          Navigator.pop(context); // إغلاق النافذة
+          context.read<FilterSctionCubit>().getfilterSection(
+                section: widget.title,
+                type: sub.title,
+              );
+          if (sub.routeName != null) {
+            Navigator.pushNamed(context, sub.routeName!,
+                arguments: sub.arguments);
+          }
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BlocProvider.value(
+                value: cubitInstance,
+                child: const AdsResultSectionView(),
+              ),
+            ),
+          );
+
+          // if (sub.routeName != null) {
+          //   Navigator.pushNamed(context, sub.routeName!,
+          //       arguments: sub.arguments);
+          // }
+        },
+        // الأيقونة الجانبية للقسم
+        trailing: Container(
+          padding: EdgeInsets.all(8.r),
+          decoration: BoxDecoration(
+            color: ColorManager.primary.withOpacity(0.1),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(sub.icon, color: ColorManager.primary, size: 20.sp),
+        ),
+        // عنوان القسم الفرعي
+        title: Text(
+          sub.title,
+          style: TextStyle(
+            fontSize: 15.sp,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
+        ),
+        // سهم الانتقال (يتغير اتجاهه حسب اللغة)
+        leading: Icon(
+          Icons.arrow_back_ios_new,
+          size: 14.sp,
+          color: Colors.black26,
+        ),
+      ),
+    );
+  }
+}
+
+class SubCategoryModel {
+  final String title; // عنوان القسم الفرعي (مثلاً: تصميم معماري)
+  final IconData icon; // الأيقونة الخاصة به
+  final String? routeName; // اسم الصفحة التي سيتم الانتقال إليها (Route Name)
+  final dynamic
+      arguments; // أي بيانات تريد إرسالها للصفحة التالية (مثل ID القسم)
+
+  SubCategoryModel({
+    required this.title,
+    required this.icon,
+    this.routeName,
+    this.arguments,
+  });
+}
+
+void showAnimatedOptions(
+    BuildContext context, String title, List<SubCategoryModel> options) {
+  final filterCubit = context.read<FilterSctionCubit>();
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: Colors.transparent,
+    isScrollControlled: true,
+    builder: (context) {
+      return BlocProvider.value(
+        value: filterCubit,
+        child: AnimatedSheetContent(
+          title: title,
+          subCategories: options, // نمرر القائمة المستلمة هنا
+        ),
+      );
+    },
+  );
+}

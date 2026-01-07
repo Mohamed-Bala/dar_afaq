@@ -154,8 +154,7 @@ class AppRoute {
             child: const MyAdvertisementsView(),
           ),
         );
-      // case Routes.articlesNewsRoute:
-      //   return MaterialPageRoute(builder: (_) => const ArticlesNews());
+
       case Routes.editAdRoute:
         final args = settings.arguments as Map<String, dynamic>;
         final adData = args['adData'] as ShowUserAdvertisementData;

@@ -137,3 +137,20 @@ class AdsSearchRepository {
     }
   }
 }
+
+class FilterSectionRepository {
+  final HomeApi _homeApi;
+
+  FilterSectionRepository(this._homeApi);
+
+  Future<ApiResult<FilterSectionResponse>> getfilterSection(
+      FilterSectionRequest filterSectionRequest) async {
+    try {
+      final response = await _homeApi.getfilterSection(filterSectionRequest);
+
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+}

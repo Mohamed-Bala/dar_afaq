@@ -19,12 +19,12 @@ class _CategoryListViewState extends State<CategoryListView> {
     {'label': 'حسبه تكليف \nالبناء', 'icon': Icons.apartment, 'index': 1},
     {'label': 'التقييم العقاري', 'icon': Icons.calendar_month, 'index': 2},
     {'label': 'طلب تقييم رسمي', 'icon': Icons.local_post_office, 'index': 3},
-    // {'label': 'للبدل', 'icon': Icons.swap_vert, 'index': 4},
+   
   ];
 
   int _selectedIndex = 0;
 
-  // Reverse to match RTL visual order
+  
 
   @override
   Widget build(BuildContext context) {

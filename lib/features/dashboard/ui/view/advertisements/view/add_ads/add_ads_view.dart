@@ -9,7 +9,6 @@ import '../../../../../../../core/widgets/app_text_form_field.dart';
 import '../../../../../logic/home_cubit.dart';
 import '../../../../../logic/home_state.dart';
 import '../../widgets/add_ads/add_ads_BlocListener.dart';
-import '../../widgets/add_ads/build_package_banner.dart';
 import '../../widgets/add_ads/custom_decoration.dart';
 
 class AddAdsView extends StatefulWidget {

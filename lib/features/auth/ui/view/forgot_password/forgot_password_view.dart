@@ -1,9 +1,11 @@
 import 'package:dar_afaq/features/auth/logic/cubit_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helper/spacing.dart';
+import '../../../../../core/resources/strings_manager.dart';
 import '../../../../../core/resources/styles_manager.dart';
 import '../../../../../core/widgets/app_text_button.dart';
 import '../../../../../core/widgets/app_text_form_field.dart';
@@ -27,8 +29,6 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
 
   @override
   Widget build(BuildContext context) {
-    // final String? phoneNumber =
-    //     ModalRoute.of(context)?.settings.arguments as String?;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -39,12 +39,12 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
               children: [
                 verticalSpace(70),
                 Text(
-                  'Verification',
+                  AppStrings.verificationTitle.tr(),
                   style: StylesManager.font25PrimaryBold,
                 ),
                 verticalSpace(8),
                 Text(
-                  'A Verification code will be sent you,please check your email.',
+                  AppStrings.verificationMessage.tr(),
                   style: StylesManager.font13Grey,
                 ),
                 verticalSpace(36),
@@ -54,17 +54,16 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                     children: [
                       verticalSpace(18),
                       AppTextFormField(
-                        hintText: 'Email Address',
+                        hintText: AppStrings.email.tr(),
                         validator: (value) {},
                         controller:
                             context.read<ForgotPasswordCubit>().emailController,
                       ),
                       verticalSpace(24),
                       AppTextButton(
-                        buttonText: "Send",
+                        buttonText: AppStrings.sendButton.tr(),
                         textStyle: StylesManager.font16White,
                         onPressed: () {
-                          // context.read().setPhoneNumber(phoneNumber);
                           validateThenDoaSendCode(context);
                         },
                       ),

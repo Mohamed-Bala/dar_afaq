@@ -27,23 +27,14 @@ Widget buildActionButton(IconData icon, Color color) {
 }
 
 Future<void> launchWhatsApp(String number) async {
-  // // Universal link format works on both Android and iOS
-  // final url = Uri.parse('wa.me');
-
-  // if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-  //   throw Exception('Could not launch $url');
-  // }
-
-  // مثال: 96650xxxxxxx
   final String url = "https://wa.me/+249$number";
 
   if (await canLaunchUrl(Uri.parse(url))) {
     await launchUrl(
       Uri.parse(url),
-      mode: LaunchMode.externalApplication, // يفتح التطبيق الخارجي مباشرة
+      mode: LaunchMode.externalApplication,
     );
   } else {
-    // في حال عدم وجود واتساب، يمكنك فتح المتصفح أو إظهار رسالة خطأ
     throw 'تعذر فتح الرابط $url';
   }
 }

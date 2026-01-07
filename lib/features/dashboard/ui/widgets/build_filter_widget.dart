@@ -14,7 +14,6 @@ class FilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // نجعل الـ Row ثابتاً دائماً، ونستخدم الكيوبيت فقط لجلب القيم الحالية
     return Container(
       color: Colors.white,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
@@ -23,7 +22,6 @@ class FilterWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // --- فلتر نوع المعاملة ---
             Expanded(
               child: BlocBuilder<FilterCubit, FilterState>(
                 buildWhen: (previous, current) =>
@@ -31,7 +29,7 @@ class FilterWidget extends StatelessWidget {
                 builder: (context, state) {
                   return buildFilterDropdown(
                     label: 'فئة العقار',
-                    // نأخذ القيمة المخزنة في الكيوبيت حالياً
+
                     value: context.read<FilterCubit>().currentTransactionType,
                     items: context.read<AddAdvertisementCubit>().propertyTypes,
                     // .map((service) => service.label)
@@ -46,8 +44,6 @@ class FilterWidget extends StatelessWidget {
               ),
             ),
             horizontalSpace(5),
-
-            // --- فلتر المناطق ---
             Expanded(
               child: BlocBuilder<FilterCubit, FilterState>(
                 builder: (context, state) {
@@ -63,8 +59,6 @@ class FilterWidget extends StatelessWidget {
               ),
             ),
             horizontalSpace(5),
-
-            // زر إعادة الضبط (Refresh)
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -86,7 +80,6 @@ class FilterWidget extends StatelessWidget {
   }
 }
 
-// --- دالة الـ Dropdown (بدون تغيير كبير في التصميم) ---
 Widget buildFilterDropdown({
   required String label,
   required String? value,

@@ -13,9 +13,9 @@ class AdsListViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      shrinkWrap: true, // let ListView size itself to its children
-      physics: const NeverScrollableScrollPhysics(), // disable internal scroll
-      padding: EdgeInsets.zero, // Remove default listview padding
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.zero,
       itemCount: adsDataResponseList.length,
       itemBuilder: (context, index) {
         return AdCard(adsData: adsDataResponseList[index]);

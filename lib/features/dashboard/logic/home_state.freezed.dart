@@ -6506,3 +6506,618 @@ abstract class FilterError implements FilterState {
   _$$FilterErrorImplCopyWith<_$FilterErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$FilterSectionState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterSectionLoading,
+    required TResult Function(FilterSectionResponse filterSectionResponse)
+        filterSectionSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterSectionError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterSectionLoading,
+    TResult? Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterSectionError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterSectionLoading,
+    TResult Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterSectionError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterSectionInitial value) initial,
+    required TResult Function(FilterSectionLoading value) filterSectionLoading,
+    required TResult Function(FilterSectionSuccess value) filterSectionSuccess,
+    required TResult Function(FilterSectionError value) filterSectionError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterSectionInitial value)? initial,
+    TResult? Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult? Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult? Function(FilterSectionError value)? filterSectionError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterSectionInitial value)? initial,
+    TResult Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult Function(FilterSectionError value)? filterSectionError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $FilterSectionStateCopyWith<$Res> {
+  factory $FilterSectionStateCopyWith(
+          FilterSectionState value, $Res Function(FilterSectionState) then) =
+      _$FilterSectionStateCopyWithImpl<$Res, FilterSectionState>;
+}
+
+/// @nodoc
+class _$FilterSectionStateCopyWithImpl<$Res, $Val extends FilterSectionState>
+    implements $FilterSectionStateCopyWith<$Res> {
+  _$FilterSectionStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$FilterSectionInitialImplCopyWith<$Res> {
+  factory _$$FilterSectionInitialImplCopyWith(_$FilterSectionInitialImpl value,
+          $Res Function(_$FilterSectionInitialImpl) then) =
+      __$$FilterSectionInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FilterSectionInitialImplCopyWithImpl<$Res>
+    extends _$FilterSectionStateCopyWithImpl<$Res, _$FilterSectionInitialImpl>
+    implements _$$FilterSectionInitialImplCopyWith<$Res> {
+  __$$FilterSectionInitialImplCopyWithImpl(_$FilterSectionInitialImpl _value,
+      $Res Function(_$FilterSectionInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FilterSectionInitialImpl implements _FilterSectionInitial {
+  const _$FilterSectionInitialImpl();
+
+  @override
+  String toString() {
+    return 'FilterSectionState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterSectionInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterSectionLoading,
+    required TResult Function(FilterSectionResponse filterSectionResponse)
+        filterSectionSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterSectionError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterSectionLoading,
+    TResult? Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterSectionError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterSectionLoading,
+    TResult Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterSectionError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterSectionInitial value) initial,
+    required TResult Function(FilterSectionLoading value) filterSectionLoading,
+    required TResult Function(FilterSectionSuccess value) filterSectionSuccess,
+    required TResult Function(FilterSectionError value) filterSectionError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterSectionInitial value)? initial,
+    TResult? Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult? Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult? Function(FilterSectionError value)? filterSectionError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterSectionInitial value)? initial,
+    TResult Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult Function(FilterSectionError value)? filterSectionError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FilterSectionInitial implements FilterSectionState {
+  const factory _FilterSectionInitial() = _$FilterSectionInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$FilterSectionLoadingImplCopyWith<$Res> {
+  factory _$$FilterSectionLoadingImplCopyWith(_$FilterSectionLoadingImpl value,
+          $Res Function(_$FilterSectionLoadingImpl) then) =
+      __$$FilterSectionLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FilterSectionLoadingImplCopyWithImpl<$Res>
+    extends _$FilterSectionStateCopyWithImpl<$Res, _$FilterSectionLoadingImpl>
+    implements _$$FilterSectionLoadingImplCopyWith<$Res> {
+  __$$FilterSectionLoadingImplCopyWithImpl(_$FilterSectionLoadingImpl _value,
+      $Res Function(_$FilterSectionLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FilterSectionLoadingImpl implements FilterSectionLoading {
+  const _$FilterSectionLoadingImpl();
+
+  @override
+  String toString() {
+    return 'FilterSectionState.filterSectionLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterSectionLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterSectionLoading,
+    required TResult Function(FilterSectionResponse filterSectionResponse)
+        filterSectionSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterSectionError,
+  }) {
+    return filterSectionLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterSectionLoading,
+    TResult? Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterSectionError,
+  }) {
+    return filterSectionLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterSectionLoading,
+    TResult Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterSectionError,
+    required TResult orElse(),
+  }) {
+    if (filterSectionLoading != null) {
+      return filterSectionLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterSectionInitial value) initial,
+    required TResult Function(FilterSectionLoading value) filterSectionLoading,
+    required TResult Function(FilterSectionSuccess value) filterSectionSuccess,
+    required TResult Function(FilterSectionError value) filterSectionError,
+  }) {
+    return filterSectionLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterSectionInitial value)? initial,
+    TResult? Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult? Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult? Function(FilterSectionError value)? filterSectionError,
+  }) {
+    return filterSectionLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterSectionInitial value)? initial,
+    TResult Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult Function(FilterSectionError value)? filterSectionError,
+    required TResult orElse(),
+  }) {
+    if (filterSectionLoading != null) {
+      return filterSectionLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterSectionLoading implements FilterSectionState {
+  const factory FilterSectionLoading() = _$FilterSectionLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$FilterSectionSuccessImplCopyWith<$Res> {
+  factory _$$FilterSectionSuccessImplCopyWith(_$FilterSectionSuccessImpl value,
+          $Res Function(_$FilterSectionSuccessImpl) then) =
+      __$$FilterSectionSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({FilterSectionResponse filterSectionResponse});
+}
+
+/// @nodoc
+class __$$FilterSectionSuccessImplCopyWithImpl<$Res>
+    extends _$FilterSectionStateCopyWithImpl<$Res, _$FilterSectionSuccessImpl>
+    implements _$$FilterSectionSuccessImplCopyWith<$Res> {
+  __$$FilterSectionSuccessImplCopyWithImpl(_$FilterSectionSuccessImpl _value,
+      $Res Function(_$FilterSectionSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filterSectionResponse = null,
+  }) {
+    return _then(_$FilterSectionSuccessImpl(
+      null == filterSectionResponse
+          ? _value.filterSectionResponse
+          : filterSectionResponse // ignore: cast_nullable_to_non_nullable
+              as FilterSectionResponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilterSectionSuccessImpl implements FilterSectionSuccess {
+  const _$FilterSectionSuccessImpl(this.filterSectionResponse);
+
+  @override
+  final FilterSectionResponse filterSectionResponse;
+
+  @override
+  String toString() {
+    return 'FilterSectionState.filterSectionSuccess(filterSectionResponse: $filterSectionResponse)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterSectionSuccessImpl &&
+            (identical(other.filterSectionResponse, filterSectionResponse) ||
+                other.filterSectionResponse == filterSectionResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, filterSectionResponse);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterSectionSuccessImplCopyWith<_$FilterSectionSuccessImpl>
+      get copyWith =>
+          __$$FilterSectionSuccessImplCopyWithImpl<_$FilterSectionSuccessImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterSectionLoading,
+    required TResult Function(FilterSectionResponse filterSectionResponse)
+        filterSectionSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterSectionError,
+  }) {
+    return filterSectionSuccess(filterSectionResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterSectionLoading,
+    TResult? Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterSectionError,
+  }) {
+    return filterSectionSuccess?.call(filterSectionResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterSectionLoading,
+    TResult Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterSectionError,
+    required TResult orElse(),
+  }) {
+    if (filterSectionSuccess != null) {
+      return filterSectionSuccess(filterSectionResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterSectionInitial value) initial,
+    required TResult Function(FilterSectionLoading value) filterSectionLoading,
+    required TResult Function(FilterSectionSuccess value) filterSectionSuccess,
+    required TResult Function(FilterSectionError value) filterSectionError,
+  }) {
+    return filterSectionSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterSectionInitial value)? initial,
+    TResult? Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult? Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult? Function(FilterSectionError value)? filterSectionError,
+  }) {
+    return filterSectionSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterSectionInitial value)? initial,
+    TResult Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult Function(FilterSectionError value)? filterSectionError,
+    required TResult orElse(),
+  }) {
+    if (filterSectionSuccess != null) {
+      return filterSectionSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterSectionSuccess implements FilterSectionState {
+  const factory FilterSectionSuccess(
+          final FilterSectionResponse filterSectionResponse) =
+      _$FilterSectionSuccessImpl;
+
+  FilterSectionResponse get filterSectionResponse;
+  @JsonKey(ignore: true)
+  _$$FilterSectionSuccessImplCopyWith<_$FilterSectionSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FilterSectionErrorImplCopyWith<$Res> {
+  factory _$$FilterSectionErrorImplCopyWith(_$FilterSectionErrorImpl value,
+          $Res Function(_$FilterSectionErrorImpl) then) =
+      __$$FilterSectionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$FilterSectionErrorImplCopyWithImpl<$Res>
+    extends _$FilterSectionStateCopyWithImpl<$Res, _$FilterSectionErrorImpl>
+    implements _$$FilterSectionErrorImplCopyWith<$Res> {
+  __$$FilterSectionErrorImplCopyWithImpl(_$FilterSectionErrorImpl _value,
+      $Res Function(_$FilterSectionErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$FilterSectionErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilterSectionErrorImpl implements FilterSectionError {
+  const _$FilterSectionErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'FilterSectionState.filterSectionError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilterSectionErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilterSectionErrorImplCopyWith<_$FilterSectionErrorImpl> get copyWith =>
+      __$$FilterSectionErrorImplCopyWithImpl<_$FilterSectionErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() filterSectionLoading,
+    required TResult Function(FilterSectionResponse filterSectionResponse)
+        filterSectionSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) filterSectionError,
+  }) {
+    return filterSectionError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? filterSectionLoading,
+    TResult? Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? filterSectionError,
+  }) {
+    return filterSectionError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? filterSectionLoading,
+    TResult Function(FilterSectionResponse filterSectionResponse)?
+        filterSectionSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? filterSectionError,
+    required TResult orElse(),
+  }) {
+    if (filterSectionError != null) {
+      return filterSectionError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FilterSectionInitial value) initial,
+    required TResult Function(FilterSectionLoading value) filterSectionLoading,
+    required TResult Function(FilterSectionSuccess value) filterSectionSuccess,
+    required TResult Function(FilterSectionError value) filterSectionError,
+  }) {
+    return filterSectionError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FilterSectionInitial value)? initial,
+    TResult? Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult? Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult? Function(FilterSectionError value)? filterSectionError,
+  }) {
+    return filterSectionError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FilterSectionInitial value)? initial,
+    TResult Function(FilterSectionLoading value)? filterSectionLoading,
+    TResult Function(FilterSectionSuccess value)? filterSectionSuccess,
+    TResult Function(FilterSectionError value)? filterSectionError,
+    required TResult orElse(),
+  }) {
+    if (filterSectionError != null) {
+      return filterSectionError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilterSectionError implements FilterSectionState {
+  const factory FilterSectionError(final ApiErrorModel apiErrorModel) =
+      _$FilterSectionErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$FilterSectionErrorImplCopyWith<_$FilterSectionErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

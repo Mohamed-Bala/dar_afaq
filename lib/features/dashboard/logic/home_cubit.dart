@@ -344,7 +344,6 @@ class UpdateAdCubit extends Cubit<UpdateAdState> {
 class FilterCubit extends Cubit<FilterState> {
   final AdsSearchRepository adsSearchRepository;
 
-  // متغيرات لتخزين الاختيارات الحالية داخل الكيوبيت
   String? currentRegion;
   String? currentTransactionType;
 
@@ -357,11 +356,10 @@ class FilterCubit extends Cubit<FilterState> {
 
     emit(FilterState.filterLoading());
 
-    // 2. إرسال الطلب بالقيم المحفوظة كاملة
     final response = await adsSearchRepository.getAdsSearch(
       AdsSearchRequest(
-        region: currentRegion, // نستخدم القيمة المحفوظة
-        transactionType: currentTransactionType, // نستخدم القيمة المحفوظة
+        region: currentRegion,
+        transactionType: currentTransactionType,
       ),
     );
 
@@ -376,5 +374,36 @@ class FilterCubit extends Cubit<FilterState> {
     currentRegion = null;
     currentTransactionType = null;
     getAdsSearch(); // جلب كل البيانات بدون فلاتر
+  }
+}
+
+//==============================================================================
+
+class FilterSctionCubit extends Cubit<FilterSectionState> {
+  final FilterSectionRepository filterSectionRepository;
+
+  String? currentSection;
+  String? currentType;
+
+  FilterSctionCubit(this.filterSectionRepository)
+      : super(FilterSectionState.initial());
+
+  Future<void> getfilterSection({String? section, String? type}) async {
+    if (section != null) currentSection = section;
+    if (type != null) currentType = type;
+
+    emit(FilterSectionState.filterSectionLoading());
+
+    final response = await filterSectionRepository.getfilterSection(
+      FilterSectionRequest(
+        section: currentSection,
+        type: currentType,
+      ),
+    );
+
+    response.when(
+      success: (data) => emit(FilterSectionState.filterSectionSuccess(data)),
+      failure: (error) => emit(FilterSectionState.filterSectionError(error)),
+    );
   }
 }

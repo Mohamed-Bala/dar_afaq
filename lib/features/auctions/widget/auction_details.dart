@@ -1,9 +1,11 @@
 import 'package:dar_afaq/core/resources/color_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/helper/spacing.dart';
+import '../../../core/resources/strings_manager.dart';
 import '../../dashboard/data/response/response.dart';
 import '../../dashboard/ui/widgets/build_action_button.dart';
 
@@ -16,89 +18,78 @@ class AuctionDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl, // Ensure RTL layout
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        extendBodyBehindAppBar: true, // Image goes behind app bar
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () => Navigator.pop(context),
-          ),
-          // actions: [
-          //   IconButton(
-          //     icon: const Icon(Icons.favorite, color: Colors.white),
-          //     onPressed: () {},
-          //   ),
-          //   // IconButton(
-          //   //   icon: const Icon(Icons.share, color: Colors.white),
-          //   //   onPressed: () {},
-          //   // ),
-          // ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildImageHeader(context),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    verticalSpace(8),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on,
-                          color: ColorManager.primary,
-                          size: 18.sp,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildImageHeader(context),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  verticalSpace(8),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.location_on,
+                        color: ColorManager.primary,
+                        size: 18.sp,
+                      ),
+                      horizontalSpace(4),
+                      Text(
+                        auctionData?.region ?? "",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
                         ),
-                        horizontalSpace(4),
-                        Text(
-                          auctionData?.region ?? "",
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey,
-                          ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        auctionData?.auctionDate ?? "",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
                         ),
-                        const Spacer(),
-                        Text(
-                          auctionData?.auctionDate ?? "",
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
+                      ),
+                    ],
+                  ),
+                  verticalSpace(10),
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [],
+                  ),
+                  Divider(height: 25.h),
+                  Text(
+                    AppStrings.aboutAuction.tr(),
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
                     ),
-                    verticalSpace(10),
-                    const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [],
-                    ),
-                    Divider(height: 25.h),
-                    Text(
-                      'عن المزاد',
-                      style: TextStyle(
-                          fontSize: 18.sp, fontWeight: FontWeight.bold),
-                    ),
-                    verticalSpace(8),
-                    Text(
-                      auctionData?.description ?? "",
-                      style: TextStyle(fontSize: 15.sp, height: 1.5),
-                    ),
-                    verticalSpace(10),
-                  ],
-                ),
+                  ),
+                  verticalSpace(8),
+                  Text(
+                    auctionData?.description ?? "",
+                    style: TextStyle(fontSize: 15.sp, height: 1.5),
+                  ),
+                  verticalSpace(10),
+                ],
               ),
-              _buildAgencyFooter(),
-            ],
-          ),
+            ),
+            _buildAgencyFooter(),
+          ],
         ),
       ),
     );
@@ -156,13 +147,14 @@ class AuctionDetails extends StatelessWidget {
           ),
           horizontalSpace(15),
           GestureDetector(
-              onTap: () {
-                makePhoneCall(auctionData?.phone ?? '');
-              },
-              child: buildActionButton(
-                Icons.phone,
-                Colors.blue,
-              )),
+            onTap: () {
+              makePhoneCall(auctionData?.phone ?? '');
+            },
+            child: buildActionButton(
+              Icons.phone,
+              Colors.blue,
+            ),
+          ),
         ],
       ),
     );

@@ -22,6 +22,7 @@ class ApiConstants {
   static const String adsAuction = 'adsauction';
   static const String adsVip = 'adsvip';
   static const String searchAds = 'adSsearch';
+  static const String filterSection = 'advertisements/filter';
   // User Info
   static const String userInfo = 'userinfo';
   static const String userUpdateInfo = 'profile/update';

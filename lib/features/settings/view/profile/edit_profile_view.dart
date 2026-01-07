@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/spacing.dart';
+import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../../../core/widgets/app_text_button.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
@@ -44,90 +46,91 @@ class _EditProfileViewState extends State<EditProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('تعديل الملف الشخصي'),
-          centerTitle: true,
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(16.h),
-          child: Form(
-            key: _formKey,
-            child: BlocConsumer<UpdateUserInfoCubit, UpdateUserInfoState>(
-              listener: (context, state) {
-                state.maybeWhen(
-                  updateSuccess: (response) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('تم تحديث البيانات بنجاح')),
-                    );
-                    Navigator.pop(context, true);
-                  },
-                  updateInfoError: (apiErrorModel) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(apiErrorModel.message ?? 'حدث خطأ ما'),
-                        backgroundColor: Colors.red,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppStrings.editProfileTitle.tr()),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.h),
+        child: Form(
+          key: _formKey,
+          child: BlocConsumer<UpdateUserInfoCubit, UpdateUserInfoState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                updateSuccess: (response) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(AppStrings.profileUpdatedSuccess.tr()),
+                    ),
+                  );
+                  Navigator.pop(context, true);
+                },
+                updateInfoError: (apiErrorModel) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        apiErrorModel.message ?? AppStrings.errorOccurred.tr(),
                       ),
-                    );
-                  },
-                  orElse: () {},
-                );
-              },
-              builder: (context, state) {
-                return ListView(
-                  children: [
-                    verticalSpace(18),
-                    AppTextFormField(
-                      hintText: 'الاسم الكامل',
-                      keyboardType: TextInputType.name,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty)
-                          return 'الاسم مطلوب';
-                        return null;
-                      },
-                      controller: _nameCtrl,
+                      backgroundColor: Colors.red,
                     ),
-                    verticalSpace(12),
-                    AppTextFormField(
-                      hintText: 'رقم الهاتف',
-                      keyboardType: TextInputType.phone,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty)
-                          return 'الهاتف مطلوب';
-                        return null;
-                      },
-                      controller: _phoneCtrl,
+                  );
+                },
+                orElse: () {},
+              );
+            },
+            builder: (context, state) {
+              return ListView(
+                children: [
+                  verticalSpace(18),
+                  AppTextFormField(
+                    hintText: AppStrings.fullName.tr(),
+                    keyboardType: TextInputType.name,
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty)
+                        return AppStrings.nameRequired.tr();
+                      return null;
+                    },
+                    controller: _nameCtrl,
+                  ),
+                  verticalSpace(12),
+                  AppTextFormField(
+                    hintText: AppStrings.phoneNumber.tr(),
+                    keyboardType: TextInputType.phone,
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty)
+                        return AppStrings.phoneRequired.tr();
+                      return null;
+                    },
+                    controller: _phoneCtrl,
+                  ),
+                  verticalSpace(12),
+                  AppTextFormField(
+                    hintText: AppStrings.email.tr(),
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty)
+                        return 'البريد مطلوب';
+                      final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+                      if (!emailRegex.hasMatch(value.trim()))
+                        return AppStrings.emailRequired.tr();
+                      return null;
+                    },
+                    controller: _emailCtrl,
+                  ),
+                  verticalSpace(24),
+                  state.maybeWhen(
+                    updateLoading: () =>
+                        const Center(child: CircularProgressIndicator()),
+                    orElse: () => AppTextButton(
+                      buttonText: AppStrings.saveChanges.tr(),
+                      textStyle: StylesManager.font16White,
+                      onPressed: () => _validateAndSave(context),
                     ),
-                    verticalSpace(12),
-                    AppTextFormField(
-                      hintText: 'البريد الإلكتروني',
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty)
-                          return 'البريد مطلوب';
-                        final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
-                        if (!emailRegex.hasMatch(value.trim()))
-                          return 'بريد إلكتروني غير صالح';
-                        return null;
-                      },
-                      controller: _emailCtrl,
-                    ),
-                    verticalSpace(24),
-                    state.maybeWhen(
-                      updateLoading: () =>
-                          const Center(child: CircularProgressIndicator()),
-                      orElse: () => AppTextButton(
-                        buttonText: "حفظ التغييرات",
-                        textStyle: StylesManager.font16White,
-                        onPressed: () => _validateAndSave(context),
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),
@@ -136,7 +139,6 @@ class _EditProfileViewState extends State<EditProfileView> {
 
   void _validateAndSave(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      // نرسل النص من الـ Controller مباشرة دون تقسيم
       context.read<UpdateUserInfoCubit>().emitUpdateUserInfo(
             fullName: _nameCtrl.text.trim(),
             email: _emailCtrl.text.trim(),

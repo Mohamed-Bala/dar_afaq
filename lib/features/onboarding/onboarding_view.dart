@@ -1,8 +1,10 @@
 import 'package:dar_afaq/core/helper/extensions.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/helper/spacing.dart';
+import '../../core/resources/strings_manager.dart';
 import '../../core/resources/styles_manager.dart';
 import '../../core/routing/routes.dart';
 import '../../core/widgets/app_text_button.dart';
@@ -36,13 +38,13 @@ class OnboardingView extends StatelessWidget {
                   ),
                   verticalSpace(30),
                   Text(
-                    'مرجعك العقاري الموثوق',
+                    AppStrings.onboardingTitle.tr(),
                     textAlign: TextAlign.center,
                     style: StylesManager.font12GrayRegular,
                   ),
                   verticalSpace(15),
                   Text(
-                    'منصة عقارية موثوقة تجمع التقييم\nوالوساطة والإعلانات وبيانات المزادات\nوالصفقات في تجربة واحدة متكاملة.',
+                    AppStrings.onboardingSubTitle.tr(),
                     textAlign: TextAlign.center,
                     style: StylesManager.font13Grey.copyWith(fontSize: 16.sp),
                   ),
@@ -57,7 +59,7 @@ class OnboardingView extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(20.0.h),
               child: AppTextButton(
-                buttonText: "ابدأ",
+                buttonText: AppStrings.getStarted.tr(),
                 textStyle: StylesManager.font16White,
                 onPressed: () {
                   context.pushNamed(Routes.loginRoute);

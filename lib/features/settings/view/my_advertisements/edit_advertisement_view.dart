@@ -1,15 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../../core/helper/spacing.dart';
-import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../../../core/widgets/app_text_button.dart';
 import '../../../../core/widgets/app_text_form_field.dart';
@@ -51,10 +50,10 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
             base64Image = "data:image/jpeg;base64,${base64Encode(bytes)}";
           });
         }
-        debugPrint("SUCCESS: Image updated in memory, length: ${bytes.length}");
+        //   debugPrint("SUCCESS: Image updated in memory, length: ${bytes.length}");
       }
     } catch (e) {
-      debugPrint("ERROR PICKING IMAGE: $e");
+      //  debugPrint("ERROR PICKING IMAGE: $e");
     }
   }
 
@@ -92,8 +91,8 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
             if (!mounted) return;
 
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text("تم التعديل بنجاح"),
+              SnackBar(
+                content: Text(AppStrings.updateSuccess.tr()),
                 backgroundColor: Colors.green,
               ),
             );
@@ -102,96 +101,99 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
           },
           updateAdError: (error) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(error.message ?? "حدث خطأ")),
+              SnackBar(
+                content: Text(
+                  error.message ?? AppStrings.errorOccurred.tr(),
+                ),
+              ),
             );
           },
         );
       },
       builder: (context, state) {
-        return Directionality(
-          textDirection: TextDirection.rtl,
-          child: Scaffold(
-            key: _scaffoldKey,
-            appBar: AppBar(
-              title:
-                  Text("تعديل الإعلان", style: StylesManager.font18BlackBold),
-              centerTitle: true,
+        return Scaffold(
+          key: _scaffoldKey,
+          appBar: AppBar(
+            title: Text(
+              AppStrings.editAdTitle.tr(),
+              style: StylesManager.font18BlackBold,
             ),
-            body: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                child: Form(
-                  key: updateCubit.formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildLabel("صورة الإعلان"),
-                      _buildImageSection(),
-                      verticalSpace(20),
-                      _buildLabel("نوغ العقار"),
-                      AppTextFormField(
-                        controller: updateCubit.typeController,
-                        hintText: "العقار",
-                        keyboardType: TextInputType.text,
-                        validator: (v) =>
-                            v!.isEmpty ? "يرجى إدخال العقار" : null,
-                      ),
+            centerTitle: true,
+          ),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+              child: Form(
+                key: updateCubit.formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildLabel(AppStrings.adImage.tr()),
+                    _buildImageSection(),
+                    verticalSpace(20),
+                    _buildLabel(AppStrings.propertyType.tr()),
+                    AppTextFormField(
+                      controller: updateCubit.typeController,
+                      hintText: AppStrings.property.tr(),
+                      keyboardType: TextInputType.text,
+                      validator: (v) =>
+                          v!.isEmpty ? AppStrings.enterPropertyType.tr() : null,
+                    ),
 
-                      // الحقول (TextFormFields)
-                      _buildLabel("العنوان"),
-                      AppTextFormField(
-                        controller: updateCubit.regionController,
-                        hintText: "عنوان الإعلان",
-                        validator: (v) =>
-                            v!.isEmpty ? "يرجى إدخال العنوان" : null,
-                      ),
+                    // الحقول (TextFormFields)
+                    _buildLabel(AppStrings.adTitleLabel.tr()),
+                    AppTextFormField(
+                      controller: updateCubit.regionController,
+                      hintText: AppStrings.adTitleLabel.tr(),
+                      validator: (v) =>
+                          v!.isEmpty ? AppStrings.adTitleHint.tr() : null,
+                    ),
 
-                      verticalSpace(16),
-                      _buildLabel("السعر"),
-                      AppTextFormField(
-                        controller: updateCubit.priceController,
-                        hintText: "السعر",
-                        keyboardType: TextInputType.number,
-                        validator: (v) =>
-                            v!.isEmpty ? "يرجى إدخال السعر" : null,
-                      ),
+                    verticalSpace(16),
+                    _buildLabel(AppStrings.price.tr()),
+                    AppTextFormField(
+                      controller: updateCubit.priceController,
+                      hintText: AppStrings.priceCurrencyHint.tr(),
+                      keyboardType: TextInputType.number,
+                      validator: (v) => v!.isEmpty
+                          ? AppStrings.priceValidationError.tr()
+                          : null,
+                    ),
 
-                      _buildLabel("وصف الإعلان"),
-                      AppTextFormField(
-                        controller: updateCubit.descriptionController,
-                        hintText: "اكتب تفاصيل الإعلان هنا...",
-                        // maxLines: 4,
-                        validator: (v) =>
-                            v!.isEmpty ? "يرجى إدخال الوصف" : null,
-                      ),
+                    _buildLabel(AppStrings.adDescription.tr()),
+                    AppTextFormField(
+                      controller: updateCubit.descriptionController,
+                      hintText: AppStrings.adDescriptionHint.tr(),
+                      // maxLines: 4,
+                      validator: (v) =>
+                          v!.isEmpty ? AppStrings.enterDescription.tr() : null,
+                    ),
 
-                      verticalSpace(30),
+                    verticalSpace(30),
 
-                      // الزر المحدث
-                      AppTextButton(
-                        buttonText: state is UpdateAdLoading
-                            ? "جاري الحفظ..."
-                            : "حفظ التعديلات",
-                        textStyle: StylesManager.font16White,
-                        onPressed: state is UpdateAdLoading
-                            ? () {}
-                            : () {
-                                if (updateCubit.formKey.currentState!
-                                    .validate()) {
-                                  // إرسال القيم من الـ Controllers إلى الـ Cubit
-                                  updateCubit.emitUpdateAd(
-                                    adId: widget.adData.id ?? 0,
-                                    selectedPlanName:
-                                        widget.adData.planName ?? "",
-                                    transactionType:
-                                        widget.adData.transactionType ?? "",
-                                    imageBase64: base64Image,
-                                  );
-                                }
-                              },
-                      ),
-                    ],
-                  ),
+                    // الزر المحدث
+                    AppTextButton(
+                      buttonText: state is UpdateAdLoading
+                          ? AppStrings.saving.tr()
+                          : AppStrings.saveChanges.tr(),
+                      textStyle: StylesManager.font16White,
+                      onPressed: state is UpdateAdLoading
+                          ? () {}
+                          : () {
+                              if (updateCubit.formKey.currentState!
+                                  .validate()) {
+                                updateCubit.emitUpdateAd(
+                                  adId: widget.adData.id ?? 0,
+                                  selectedPlanName:
+                                      widget.adData.planName ?? "",
+                                  transactionType:
+                                      widget.adData.transactionType ?? "",
+                                  imageBase64: base64Image,
+                                );
+                              }
+                            },
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -214,7 +216,6 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
         onTap: _pickImage,
         child: Stack(
           children: [
-            // الحالة 1: إذا تم اختيار صورة جديدة (نعرضها من الذاكرة)
             if (imageRawBytes != null)
               Image.memory(
                 imageRawBytes!,
@@ -222,7 +223,6 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
                 width: double.infinity,
                 height: double.infinity,
               )
-            // الحالة 2: إذا لم يتم اختيار صورة، نعرض الصورة القديمة
             else if (widget.adData.images != null &&
                 widget.adData.images!.isNotEmpty)
               CachedNetworkImage(
@@ -233,11 +233,8 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
                 errorWidget: (context, url, error) =>
                     const Icon(Icons.broken_image),
               )
-            // الحالة 3: لا توجد صورة أصلاً
             else
               const Center(child: Icon(Icons.add_a_photo, size: 40)),
-
-            // أيقونة التعديل
             Positioned(
               bottom: 8,
               right: 8,
@@ -256,8 +253,10 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
   Widget _buildLabel(String text) {
     return Padding(
       padding: EdgeInsets.only(bottom: 8.h),
-      child: Text(text,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+      ),
     );
   }
 }

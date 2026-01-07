@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../dashboard/data/response/response.dart';
 import '../../dashboard/logic/home_cubit.dart';
 import '../../dashboard/logic/home_state.dart';
-import '../auction_view.dart';
 import 'auction_List_view_widget.dart';
 
 class AuctionBlocbuilder extends StatelessWidget {

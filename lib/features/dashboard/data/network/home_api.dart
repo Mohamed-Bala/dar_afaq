@@ -45,4 +45,9 @@ abstract class HomeApi {
 
   @POST(ApiConstants.notifications)
   Future<NotificationsResponse> getNotifications();
+
+  @GET(ApiConstants.filterSection)
+  Future<FilterSectionResponse> getfilterSection(
+    @Body() FilterSectionRequest filterSectionRequest,
+  );
 }

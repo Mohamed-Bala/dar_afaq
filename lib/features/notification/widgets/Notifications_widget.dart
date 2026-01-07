@@ -1,9 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 import '../../../core/helper/spacing.dart';
 import '../../../core/resources/color_manager.dart';
+import '../../../core/resources/strings_manager.dart';
 import '../../dashboard/data/response/response.dart';
 import '../../dashboard/logic/home_cubit.dart';
 
@@ -18,8 +19,8 @@ Widget buildEmptyState() {
           color: Colors.grey.shade300,
         ),
         const SizedBox(height: 16),
-        const Text(
-          'لا توجد إشعارات حالياً',
+        Text(
+          AppStrings.noNotifications.tr(),
           style: TextStyle(color: Colors.grey),
         ),
       ],
@@ -59,7 +60,9 @@ class _NotificationItemState extends State<NotificationItem> {
       ),
       onDismissed: (direction) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('تم حذف الاشعار')),
+          SnackBar(
+            content: Text(AppStrings.noNotifications.tr()),
+          ),
         );
         context.read<NotificationsCubit>().emitGetNotifications();
       },

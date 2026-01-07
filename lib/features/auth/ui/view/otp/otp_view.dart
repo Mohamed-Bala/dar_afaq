@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helper/spacing.dart';
 import '../../../../../core/resources/color_manager.dart';
+import '../../../../../core/resources/strings_manager.dart';
 import '../../../../../core/resources/styles_manager.dart';
 import '../../../logic/cubit_cubit.dart';
 import 'widget/otp_BlocListener.dart';
@@ -40,12 +42,12 @@ class _OtpViewState extends State<OtpView> {
               children: [
                 verticalSpace(70),
                 Text(
-                  'Verfication Code',
+                  AppStrings.verificationCodeTitle.tr(),
                   style: StylesManager.font25PrimaryBold,
                 ),
                 verticalSpace(8),
                 Text(
-                  "verfication Code sent to ${widget.email} ",
+                  "${AppStrings.verificationCodeSentTo.tr()} ${widget.email}",
                   style: StylesManager.font13Grey,
                 ),
                 verticalSpace(36),
@@ -56,13 +58,7 @@ class _OtpViewState extends State<OtpView> {
                     borderRadius: BorderRadius.circular(12.r),
                     borderColor: ColorManager.primary,
                     showFieldAsBox: true,
-
-                    // لا تستدعي التحقق عند كل حرف يتغير، بل انتظر حتى يكتمل الرمز
-                    onCodeChanged: (String code) {
-                      // يمكنك حفظ الكود هنا إذا أردت
-                    },
-
-                    // هذه هي الدالة الأهم التي تعمل عند اكتمال الـ 4 أرقام
+                    onCodeChanged: (String code) {},
                     onSubmit: (String verificationCode) {
                       newContext.read<VerifyCodeCubit>().emitVerifyCode(
                             code: int.parse(verificationCode),
