@@ -1,4 +1,4 @@
-import 'package:dar_afaq/core/resources/color_manager.dart';
+import 'package:afaq_real_estate/core/helper/extensions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helper/constants.dart';
 import '../../../../core/helper/shared_pref.dart';
 import '../../../../core/helper/spacing.dart';
+import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../../../core/routing/routes.dart';
@@ -26,16 +27,22 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final int userId =
-          await SharedPrefHelper.getInt(SharedPrefKeys.userId) ?? 0;
-      // ignore: use_build_context_synchronously
-      context.read<UserInfoCubit>().emitGetUserInfo(userId);
-    });
+    if (isLoggedInUser) {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        final int userId =
+            await SharedPrefHelper.getInt(SharedPrefKeys.userId) ?? 0;
+        if (userId != 0 && context.mounted) {
+          context.read<UserInfoCubit>().emitGetUserInfo(userId);
+        }
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    if (!isLoggedInUser) {
+      return CheckUserGuest(context);
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(AppStrings.profileTitle.tr()),
@@ -92,20 +99,17 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                     ),
                     verticalSpace(20),
-                    // داخل زر التعديل في صفحة البروفايل
                     AppTextButton(
                       buttonText: AppStrings.editProfileTitle.tr(),
                       onPressed: () {
                         context.read<UserInfoCubit>().state.maybeWhen(
                           userInfoSuccess: (userData) {
-                            // هنا userData هو الكائن الذي يحتوي على البيانات فعلياً
                             Navigator.pushNamed(
                               context,
                               Routes.editProfileRoute,
                               arguments: EditProfileArgs(userData: userData),
                             ).then((didUpdate) {
                               if (didUpdate == true) {
-                                // يمكنك طلب البيانات من السيرفر لضمان الدقة
                                 context
                                     .read<UserInfoCubit>()
                                     .emitGetUserInfo(user.id ?? 0);
@@ -113,7 +117,6 @@ class _ProfileViewState extends State<ProfileView> {
                             });
                           },
                           orElse: () {
-                            // اختياري: تنبيه المستخدم إذا كانت البيانات لا تزال تحمل
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(AppStrings.loading.tr()),
@@ -136,6 +139,44 @@ class _ProfileViewState extends State<ProfileView> {
             orElse: () => const SizedBox.shrink(),
           );
         },
+      ),
+    );
+  }
+
+  Scaffold CheckUserGuest(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          AppStrings.profileTitle.tr(),
+        ),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.person_outline, size: 80.sp, color: Colors.grey),
+            verticalSpace(16),
+            Text(
+              AppStrings.browsingAsGuest.tr(),
+              style: StylesManager.font14Grey,
+            ),
+            verticalSpace(8),
+            Text(
+              AppStrings.pleaseLoginToViewData.tr(),
+              style: StylesManager.font13Grey,
+            ),
+            verticalSpace(24),
+            AppTextButton(
+              buttonText: AppStrings.loginNow.tr(),
+              buttonWidth: 200.w,
+              onPressed: () => context.pushNamed(Routes.loginRoute),
+              textStyle: StylesManager.font14Grey.copyWith(
+                color: ColorManager.white,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

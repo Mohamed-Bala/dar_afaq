@@ -1,28 +1,30 @@
+import 'package:afaq_real_estate/core/resources/strings_manager.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../core/helper/extensions.dart';
-import '../../../core/helper/spacing.dart';
-import '../../../core/resources/color_manager.dart';
-import '../../../core/resources/constants_manager.dart';
-import '../../../core/resources/strings_manager.dart';
-import '../../../core/resources/styles_manager.dart';
-import '../../dashboard/data/response/response.dart';
-import '../../dashboard/ui/widgets/build_action_button.dart';
 
-class AuctionDetails extends StatelessWidget {
-  final AuctionDataResponse? auctionData;
-  const AuctionDetails({super.key, required this.auctionData});
+import '../../../../../../../core/helper/extensions.dart';
+import '../../../../../../../core/helper/spacing.dart';
+import '../../../../../../../core/resources/color_manager.dart';
+import '../../../../../../../core/resources/styles_manager.dart';
+import '../../../../../data/response/response.dart';
+import '../../../../widgets/build_action_button.dart';
+
+class AdDetailsView extends StatelessWidget {
+  final AdModel adsData;
+
+  const AdDetailsView({super.key, required this.adsData});
 
   @override
   Widget build(BuildContext context) {
+    final bool isAr = Localizations.localeOf(context).languageCode == 'ar';
+    final String currency = isAr ? 'د.ك' : 'KWD';
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(auctionData?.type ?? ""),
+        title: Text(adsData.type ?? "تفاصيل الإعلان"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -30,9 +32,9 @@ class AuctionDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Hero(
-              tag: 'ad-image-${auctionData?.id}',
+              tag: 'ad-image-${adsData.id}',
               child: CachedNetworkImage(
-                imageUrl: auctionData?.images ?? '',
+                imageUrl: adsData.images ?? '',
                 width: double.infinity,
                 height: 300.h,
                 fit: BoxFit.cover,
@@ -65,10 +67,10 @@ class AuctionDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        auctionData?.auctionDate ?? "",
+                        '${adsData.price ?? '0'} $currency',
                         style: StylesManager.font16White.copyWith(
                           color: ColorManager.primary,
-                          fontSize: 18.sp,
+                          fontSize: 22.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -82,7 +84,7 @@ class AuctionDetails extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Text(
-                          auctionData?.transactionType ?? "",
+                          adsData.transactionType ?? "",
                           style: TextStyle(
                             color: ColorManager.primary,
                             fontWeight: FontWeight.bold,
@@ -101,7 +103,7 @@ class AuctionDetails extends StatelessWidget {
                       ),
                       horizontalSpace(8),
                       Text(
-                        auctionData?.region ?? "",
+                        adsData.region ?? "الموقع غير محدد",
                         style: StylesManager.font12GrayRegular.copyWith(
                           fontSize: 16.sp,
                           color: Colors.black87,
@@ -121,7 +123,7 @@ class AuctionDetails extends StatelessWidget {
                   ),
                   verticalSpace(10),
                   Text(
-                    auctionData?.description ?? "",
+                    adsData.description ?? "لا يوجد وصف متاح لهذا الإعلان.",
                     style: TextStyle(
                       fontSize: 15.sp,
                       color: Colors.black54,
@@ -188,13 +190,11 @@ class AuctionDetails extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: () {
                   AuthGuard.runAction(context, onAuthenticated: () {
-                    makePhoneCall(AppConstants.afaqPhoneNumber);
+                    makePhoneCall(adsData.phone ?? "");
                   });
                 },
                 icon: const Icon(Icons.phone),
-                label: Text(
-                  AppStrings.call.tr(),
-                ),
+                label: Text(AppStrings.call.tr()),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorManager.primary,
                   foregroundColor: Colors.white,
@@ -206,13 +206,11 @@ class AuctionDetails extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: () {
                   AuthGuard.runAction(context, onAuthenticated: () {
-                    launchWhatsApp(AppConstants.afaqPhoneNumber);
+                    launchWhatsApp(adsData.phone ?? "");
                   });
                 },
                 icon: const Icon(Icons.chat),
-                label: Text(
-                  AppStrings.whatsapp.tr(),
-                ),
+                label: Text(AppStrings.whatsapp.tr()),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorManager.primary,
                   foregroundColor: Colors.white,

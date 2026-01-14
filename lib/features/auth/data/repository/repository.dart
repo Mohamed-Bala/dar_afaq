@@ -132,3 +132,22 @@ class UpdateUserInfoRepository {
     }
   }
 }
+
+// ====== Verify Code Registr Repository  =====================================
+
+class VerifyCodeRegistrRepository {
+  final ApiService _apiService;
+
+  VerifyCodeRegistrRepository(this._apiService);
+
+  Future<ApiResult<VerifyCodeRegisterResponse>> verifyCodeRegister(
+      VerifyCodeRegisterRequest verifyCodeRegisterRequest) async {
+    try {
+      final response =
+          await _apiService.verifyCodeRegister(verifyCodeRegisterRequest);
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+}

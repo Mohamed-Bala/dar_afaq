@@ -1,8 +1,10 @@
-import 'package:dar_afaq/core/resources/color_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../../core/resources/color_manager.dart';
+import '../../../../../../../core/resources/strings_manager.dart';
 import '../../../../../data/response/response.dart';
 import '../../../../../logic/home_cubit.dart';
 import '../../../../../logic/home_state.dart';
@@ -46,7 +48,7 @@ class AdsBlocBuilder extends StatelessWidget {
             Icon(Icons.search_off, size: 60.sp, color: ColorManager.primary),
             SizedBox(height: 10.h),
             Text(
-              "لا توجد نتائج تطابق بحثك حالياً",
+              AppStrings.noResultsMatchYourSearchCurrently.tr(),
               style: TextStyle(fontSize: 16.sp, color: Colors.black54),
             ),
           ],

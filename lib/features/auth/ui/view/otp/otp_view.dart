@@ -4,12 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/helper/extensions.dart';
 import '../../../../../core/helper/spacing.dart';
 import '../../../../../core/resources/color_manager.dart';
 import '../../../../../core/resources/strings_manager.dart';
 import '../../../../../core/resources/styles_manager.dart';
 import '../../../logic/cubit_cubit.dart';
 import 'widget/otp_BlocListener.dart';
+import 'dart:ui' as ui;
 
 class OtpView extends StatefulWidget {
   final String email;
@@ -52,18 +54,24 @@ class _OtpViewState extends State<OtpView> {
                 ),
                 verticalSpace(36),
                 Builder(builder: (newContext) {
-                  return OtpTextField(
-                    numberOfFields: 4,
-                    fieldWidth: 50.0,
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderColor: ColorManager.primary,
-                    showFieldAsBox: true,
-                    onCodeChanged: (String code) {},
-                    onSubmit: (String verificationCode) {
-                      newContext.read<VerifyCodeCubit>().emitVerifyCode(
-                            code: int.parse(verificationCode),
-                          );
-                    },
+                  return Directionality(
+                    textDirection: ui.TextDirection.ltr,
+                    child: OtpTextField(
+                      numberOfFields: 4,
+                      fieldWidth: 50.0,
+                      borderRadius: BorderRadius.circular(12.r),
+                      borderColor: ColorManager.primary,
+                      showFieldAsBox: true,
+                      autoFocus: true,
+                      onCodeChanged: (String code) {},
+                      onSubmit: (String verificationCode) {
+                        String englishCode =
+                            convertArabicToEnglish(verificationCode);
+                        newContext.read<VerifyCodeCubit>().emitVerifyCode(
+                              code: int.parse(englishCode),
+                            );
+                      },
+                    ),
                   );
                 }),
                 verticalSpace(30),
@@ -75,4 +83,6 @@ class _OtpViewState extends State<OtpView> {
       ),
     );
   }
+
+
 }

@@ -28,17 +28,11 @@ class LoginCubit extends Cubit<LoginState> {
       final String token = loginResponse.token ?? '';
       final int userId = loginResponse.loginData?.id ?? 0;
       final String userPhone = loginResponse.loginData?.phone ?? '';
-      //  await saveUserToken(loginResponse.token ?? '');
+
       await saveUserToken(token);
       await SharedPrefHelper.setData(SharedPrefKeys.userId, userId);
       await SharedPrefHelper.setData(SharedPrefKeys.userPhone, userPhone);
-      // await SharedPrefHelper.setData(
-      //     SharedPrefKeys.userId, loginResponse.loginData?.id);
-      // await SharedPrefHelper.setData(
-      //     SharedPrefKeys.userPhone, loginResponse.loginData?.phone);
-      // print(loginResponse.loginData?.id);
-      // print(loginResponse.loginData?.phone);
-      // print(loginResponse.token);
+
       emit(LoginState.success(loginResponse));
     }, failure: (apiErrorModel) {
       emit(LoginState.error(apiErrorModel));
@@ -48,7 +42,7 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> saveUserToken(String token) async {
     if (token.isNotEmpty) {
       await SharedPrefHelper.setSecuredString(SharedPrefKeys.userToken, token);
-
+      isLoggedInUser = true;
       DioFactory.setTokenIntoHeaderAfterLogin(token);
       debugPrint("Token saved and Dio Header updated successfully.");
     } else {
@@ -74,14 +68,14 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void emitRegister() async {
     emit(const RegisterState.registerLoading());
-    final rawPhone = phoneController.text;
-    final sanitizedPhone = rawPhone.replaceAll(RegExp(r'\D'), '');
+    await SharedPrefHelper.clearAllData();
+    final String phoneToSend = phoneController.text.trim();
     final response = await _registerRepository.register(
       RegisterRequest(
         firstName: firstNameController.text,
         lastName: lastNameController.text,
         email: emailController.text,
-        phone: sanitizedPhone,
+        phone: phoneToSend,
         password: passwordController.text,
         passwordConfirmation: passwordConfirmationController.text,
       ),
@@ -89,10 +83,24 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     response.when(success: (registerResponse) async {
       await SharedPrefHelper.saveUser(registerResponse);
+      if (registerResponse.token != null) {
+        DioFactory.setTokenIntoHeaderAfterLogin(registerResponse.token!);
+      }
       emit(RegisterState.registerSuccess(registerResponse));
     }, failure: (apiErrorModel) {
       emit(RegisterState.registerError(apiErrorModel));
     });
+  }
+
+  @override
+  Future<void> close() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    phoneController.dispose();
+    passwordConfirmationController.dispose();
+    return super.close();
   }
 }
 
@@ -147,6 +155,32 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
 }
 
 //==============================================================================
+
+class VerifyCodeRegisterCubit extends Cubit<VerifyCodeRegisterState> {
+  final VerifyCodeRegistrRepository _verifyCodeRegistrRepository;
+
+  VerifyCodeRegisterCubit(this._verifyCodeRegistrRepository)
+      : super(VerifyCodeRegisterState.verifyCodeRegisterInitial());
+
+  void emitVerifyCodeRegister(
+      {required int code, required String phone}) async {
+    emit(const VerifyCodeRegisterState.verifyCodeRegisterLoading());
+    final response = await _verifyCodeRegistrRepository.verifyCodeRegister(
+      VerifyCodeRegisterRequest(
+        code: code,
+        phone: phone,
+      ),
+    );
+    response.when(success: (verifyCodeResponse) async {
+      emit(VerifyCodeRegisterState.verifyCodeRegisterSuccess(
+          verifyCodeResponse));
+    }, failure: (apiErrorModel) {
+      emit(VerifyCodeRegisterState.verifyCodeRegisterError(apiErrorModel));
+    });
+  }
+}
+
+//==============================================================================
 class UserInfoCubit extends Cubit<UserInfoState> {
   final UserInfoRepository _userInfoRepository;
 
@@ -170,6 +204,10 @@ class UserInfoCubit extends Cubit<UserInfoState> {
         emit(UserInfoState.userInfoError(apiErrorModel));
       },
     );
+  }
+
+  void resetState() {
+    emit(const UserInfoState.userInfoInitial());
   }
 }
 

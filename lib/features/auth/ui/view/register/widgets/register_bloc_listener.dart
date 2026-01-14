@@ -1,8 +1,7 @@
-import 'package:dar_afaq/core/helper/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/network/api_error_model.dart';
+import '../../../../../../core/helper/extensions.dart';
 import '../../../../../../core/resources/color_manager.dart';
 import '../../../../../../core/resources/styles_manager.dart';
 import '../../../../../../core/routing/routes.dart';
@@ -24,6 +23,7 @@ class RegisterpBlocListener extends StatelessWidget {
           registerLoading: () {
             showDialog(
               context: context,
+              barrierDismissible: false,
               builder: (context) => Center(
                 child: CircularProgressIndicator(
                   color: ColorManager.primary,
@@ -32,11 +32,21 @@ class RegisterpBlocListener extends StatelessWidget {
             );
           },
           registerSuccess: (registerResponse) {
+            final cubit = context.read<RegisterCubit>();
+            final String currentPhone = cubit.phoneController.text.trim();
+            final String currentEmail = cubit.emailController.text.trim();
             context.pop();
-            context.pushNamed(Routes.dashboardRoute);
+            context.pushNamed(
+              Routes.otpRegisterRoute,
+              arguments: {
+                'phone': currentPhone,
+                'email': currentEmail,
+              },
+            );
           },
           registerError: (apiErrorModel) {
-            setupErrorState(context, apiErrorModel);
+            context.pop();
+            setupErrorState(context, apiErrorModel.message ?? "");
           },
         );
       },
@@ -44,31 +54,27 @@ class RegisterpBlocListener extends StatelessWidget {
     );
   }
 
-  void setupErrorState(BuildContext context, ApiErrorModel apiErrorModel) {
-    context.pop();
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: const Icon(
-          Icons.error,
-          color: Colors.red,
-          size: 32,
-        ),
+  void setupErrorState(BuildContext context, String error) {
+    // تخصيص الرسالة إذا كانت تحتوي على خطأ قاعدة البيانات المشهور
+    String userFriendlyMessage = error;
+
+    if (error.contains("users_phone_unique") ||
+        error.contains("Duplicate entry")) {
+      userFriendlyMessage = "رقم الهاتف هذا مسجل مسبقاً، يرجى استخدام رقم آخر.";
+    } else if (error.contains("users_email_unique")) {
+      userFriendlyMessage = "البريد الإلكتروني مستخدم بالفعل.";
+    }
+
+    // إظهار الرسالة أسفل الشاشة
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
         content: Text(
-          apiErrorModel.message ?? 'Unknown error',
-          style: StylesManager.font24Black700Weight,
+          userFriendlyMessage,
+          style: StylesManager.font13Grey.copyWith(color: ColorManager.white),
         ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              context.pop();
-            },
-            child: Text(
-              'Got it',
-              style: StylesManager.font14Grey,
-            ),
-          ),
-        ],
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 4),
       ),
     );
   }

@@ -138,6 +138,18 @@ Map<String, dynamic> _$VerifyCodeResponseToJson(VerifyCodeResponse instance) =>
       'message': instance.message,
     };
 
+VerifyCodeRegisterResponse _$VerifyCodeRegisterResponseFromJson(
+        Map<String, dynamic> json) =>
+    VerifyCodeRegisterResponse(
+      message: json['message'] as String?,
+    );
+
+Map<String, dynamic> _$VerifyCodeRegisterResponseToJson(
+        VerifyCodeRegisterResponse instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+    };
+
 UpdateUserInfoResponse _$UpdateUserInfoResponseFromJson(
         Map<String, dynamic> json) =>
     UpdateUserInfoResponse(

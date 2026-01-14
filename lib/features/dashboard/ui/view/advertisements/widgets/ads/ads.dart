@@ -1,151 +1,132 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dar_afaq/core/helper/spacing.dart';
-import 'package:dar_afaq/core/resources/color_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+import '../../../../../../../core/helper/extensions.dart';
+import '../../../../../../../core/helper/spacing.dart';
+import '../../../../../../../core/resources/color_manager.dart';
 import '../../../../../../../core/resources/constants_manager.dart';
+import '../../../../../../../core/resources/strings_manager.dart';
 import '../../../../../../../core/resources/styles_manager.dart';
 import '../../../../../data/response/response.dart';
 import '../../../../widgets/build_action_button.dart';
+import '../../view/ads/ad_details_view.dart';
 
 class AdCard extends StatelessWidget {
   final AdModel? adsData;
-
-  const AdCard({
-    super.key,
-    this.adsData,
-  });
+  const AdCard({super.key, this.adsData});
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
+    final bool isAr = Localizations.localeOf(context).languageCode == 'ar';
+    final String currency = isAr ? 'د.ك' : 'KWD';
+
+    return GestureDetector(
+      onTap: () {
+        if (adsData != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AdDetailsView(adsData: adsData!),
+            ),
+          );
+        }
+      },
       child: Card(
         color: Colors.white,
         margin: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 14.0.w),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
         elevation: 2,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(12.0.h),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  adsData?.images?.isNotEmpty ?? false
-                      ? CachedNetworkImage(
-                          imageUrl: adsData?.images ?? '',
-                          width: 110.w,
-                          height: 120.h,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Shimmer.fromColors(
-                            baseColor: Colors.grey[300]!,
-                            highlightColor: Colors.grey[100]!,
-                            child: Container(
-                              width: 110.w,
-                              height: 100.h,
-                              color: Colors.white,
-                            ),
-                          ),
-                          errorWidget: (context, url, error) => Container(
-                            width: 110.w,
-                            height: 120.h,
-                            color: Colors.grey[200],
-                            child: const Icon(
-                              Icons.broken_image,
-                              size: 40,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        )
-                      : Container(
-                          width: 110.w,
-                          height: 120.h,
-                          color: Colors.grey[200],
-                          child: Center(
-                            child: Icon(
-                              Icons.image,
-                              size: 40.sp,
-                              color: Colors.grey,
-                            ),
-                          ),
+                  // FIX: Fixed size container to prevent "RenderBox was not laid out"
+                  SizedBox(
+                    width: 110.w,
+                    height: 120.h,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12.0.r),
+                      child: CachedNetworkImage(
+                        imageUrl: adsData?.images ?? "",
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: ColorManager.lightGrey,
+                          highlightColor: Colors.white,
+                          child: Container(color: Colors.white),
                         ),
-
+                        // FIX: Added errorWidget to handle missing files/cache issues
+                        errorWidget: (context, url, error) => Container(
+                          color: ColorManager.lightGrey,
+                          child: Icon(Icons.broken_image,
+                              color: Colors.grey, size: 30.sp),
+                        ),
+                      ),
+                    ),
+                  ),
                   horizontalSpace(12),
-                  // Details Column
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Tags Row
-                        Row(
+                        // FIX: Use Wrap to prevent overflow from tags
+                        Wrap(
+                          spacing: 4.w,
+                          runSpacing: 4.h,
                           children: [
-                            _buildTag(
-                              adsData?.transactionType ?? "",
-                              color: Colors.blue,
-                            ),
-                            horizontalSpace(8),
-                            _buildTag(
-                              adsData?.type ?? "",
-                              color: Colors.brown,
-                            ),
+                            if (adsData?.transactionType != null)
+                              _buildTag(adsData!.transactionType!,
+                                  color: Colors.blue),
+                            if (adsData?.type != null)
+                              _buildTag(adsData!.type!, color: Colors.brown),
                           ],
                         ),
-
                         verticalSpace(10),
                         Text(
                           adsData?.type ?? "",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 16.sp,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
-
                         verticalSpace(4),
                         Row(
                           children: [
-                            if (adsData?.region == 'الزهراء')
-                              Icon(
-                                Icons.star_half,
-                                color: Colors.amber,
-                                size: 16.sp,
-                              ),
-                            const SizedBox(width: 4),
-                            Flexible(
+                            Icon(Icons.star_half,
+                                color: Colors.amber, size: 16.sp),
+                            horizontalSpace(4),
+                            Expanded(
                               child: Text(
-                                adsData?.description ?? "description",
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                ),
+                                adsData?.description ?? "",
+                                style: TextStyle(
+                                    fontSize: 12.sp, color: Colors.grey),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ],
                         ),
-
                         verticalSpace(10),
-                        // Location, Area, and Price
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            // Location and Area
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.location_on,
-                                  color: ColorManager.primary,
-                                  size: 16,
-                                ),
-                                horizontalSpace(4),
-                                Text(
-                                  adsData?.region ?? "",
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                                horizontalSpace(12),
-                              ],
+                          children: [
+                            Icon(Icons.location_on,
+                                color: ColorManager.primary, size: 16.sp),
+                            horizontalSpace(4),
+                            Expanded(
+                              child: Text(
+                                adsData?.region ?? "",
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(fontSize: 14.sp),
+                              ),
                             ),
                           ],
                         ),
@@ -155,58 +136,51 @@ class AdCard extends StatelessWidget {
                 ],
               ),
             ),
+
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0.h),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Text(
-                  '${adsData?.price ?? '0'} ألف د.ك',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: ColorManager.primary,
-                  ),
+              padding: EdgeInsets.symmetric(horizontal: 14.w),
+              child: Text(
+                '${adsData?.price ?? '0'} $currency',
+                style: TextStyle(
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.bold,
+                  color: ColorManager.primary,
                 ),
               ),
             ),
             verticalSpace(10),
-            const Divider(height: 1, thickness: 1),
+            Divider(height: 1.h, thickness: 1),
+            // Footer Section
             Padding(
               padding: EdgeInsets.all(12.0.h),
               child: Row(
                 children: [
-                  // Agency Info
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "شركه دار أفاق العقاريه",
-                          style: StylesManager.font12GrayRegular.copyWith(
-                            color: ColorManager.black,
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      AppStrings.appName.tr(),
+                      style: StylesManager.font12GrayRegular.copyWith(
+                        color: ColorManager.black,
+                        fontSize: 14.sp,
+                      ),
                     ),
                   ),
-                  // Action Buttons (Call, Chat)
-                  horizontalSpace(10),
                   GestureDetector(
                     onTap: () {
-                      makePhoneCall(AppConstants.afaqPhoneNumber);
+                      AuthGuard.runAction(context, onAuthenticated: () {
+                        makePhoneCall(adsData?.phone ?? "");
+                      });
                     },
-                    child: buildActionButton(Icons.phone, Colors.blue),
+                    child: buildActionButton(Icons.phone, ColorManager.primary),
                   ),
                   horizontalSpace(10),
                   GestureDetector(
                     onTap: () {
-                      launchWhatsApp(AppConstants.afaqPhoneNumber);
+                      AuthGuard.runAction(context, onAuthenticated: () {
+                        launchWhatsApp(adsData?.phone ?? "");
+                      });
                     },
                     child: buildActionButton(
-                      Icons.chat_bubble_outline,
-                      Colors.blue,
-                    ),
+                        Icons.chat_bubble_outline, ColorManager.primary),
                   ),
                 ],
               ),
@@ -217,18 +191,21 @@ class AdCard extends StatelessWidget {
     );
   }
 
-  // Helper method to build the property tags
-  Widget _buildTag(String text, {MaterialColor color = Colors.blueGrey}) {
+  Widget _buildTag(String text, {required Color color}) {
+    if (text.isEmpty) return const SizedBox.shrink();
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
-      margin: EdgeInsets.only(left: 8.w),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
       decoration: BoxDecoration(
-        color: color.shade100,
-        borderRadius: BorderRadius.circular(20.r),
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(12.r),
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 10.sp, color: color.shade800),
+        style: TextStyle(
+          fontSize: 10.sp,
+          color: color,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }

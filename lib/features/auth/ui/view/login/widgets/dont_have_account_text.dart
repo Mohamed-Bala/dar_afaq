@@ -1,4 +1,4 @@
-import 'package:dar_afaq/core/helper/extensions.dart';
+import 'package:afaq_real_estate/core/helper/extensions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,11 +19,11 @@ class DontHaveAccountText extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text:  AppStrings.dontHaveAccount.tr(),
+              text: AppStrings.dontHaveAccount.tr(),
               style: StylesManager.font13Grey,
             ),
             TextSpan(
-              text:  AppStrings.registerNow.tr(),
+              text: AppStrings.registerNow.tr(),
               style: StylesManager.font25PrimaryBold.copyWith(fontSize: 17.sp),
             ),
           ],

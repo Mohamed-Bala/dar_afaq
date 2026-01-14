@@ -35,6 +35,10 @@ Future<void> init() async {
       () => VerifyCodeRepository(di()));
   di.registerFactory<VerifyCodeCubit>(() => VerifyCodeCubit(di()));
 
+    di.registerLazySingleton<VerifyCodeRegistrRepository>(
+      () => VerifyCodeRegistrRepository(di()));
+  di.registerFactory<VerifyCodeRegisterCubit>(() => VerifyCodeRegisterCubit(di()));
+
   // ResetPassword
   di.registerLazySingleton<ResetPasswordRepository>(
       () => ResetPasswordRepository(di()));

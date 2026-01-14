@@ -1,9 +1,8 @@
-import 'package:dar_afaq/core/helper/spacing.dart';
-import 'package:dar_afaq/core/resources/color_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../core/helper/spacing.dart';
+import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 
@@ -16,7 +15,7 @@ class AboutUsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(AppStrings.aboutDarAfaq.tr()),
+        title: Text(AppStrings.aboutUs.tr()),
         backgroundColor: Colors.white,
       ),
       // ListView makes the content scrollable
@@ -50,7 +49,7 @@ class AppIdentitySection extends StatelessWidget {
     return Column(
       children: <Widget>[
         Image.asset(
-          'assets/images/splash_image.png',
+          'assets/images/splash_image.jpg',
           width: 70.w,
           height: 70.h,
         ),

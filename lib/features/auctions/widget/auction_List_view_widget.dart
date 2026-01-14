@@ -12,9 +12,14 @@ class AutionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (auctionDataList.isEmpty) {
+      return const Center(child: Text("لا توجد مزادات حالياً"));
+    }
     return ListView.builder(
       padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 8.0.h),
       itemCount: auctionDataList.length,
+      shrinkWrap: false,
+      physics: const AlwaysScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return AuctionListItem(auctionData: auctionDataList[index]);
       },
@@ -22,14 +27,10 @@ class AutionWidget extends StatelessWidget {
   }
 }
 
-//==============================================================================
 class AuctionListItem extends StatelessWidget {
   final AuctionDataResponse? auctionData;
 
-  const AuctionListItem({
-    super.key,
-    this.auctionData,
-  });
+  const AuctionListItem({super.key, this.auctionData});
 
   @override
   Widget build(BuildContext context) {
@@ -44,17 +45,15 @@ class AuctionListItem extends StatelessWidget {
       },
       child: Card(
         color: ColorManager.white,
-        margin: EdgeInsets.symmetric(vertical: 8.0.w, horizontal: 8.0.h),
-        elevation: 1,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        margin: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 8.0.w),
+        elevation: 2,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
         child: Padding(
-          padding: EdgeInsets.all(15.0.h),
+          padding: EdgeInsets.all(12.0.h),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              horizontalSpace(12),
-
-              // Middle Section (Details)
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,64 +61,25 @@ class AuctionListItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.bookmark_border,
-                              color: ColorManager.primary,
-                            ),
-                            horizontalSpace(4),
-                            Text(
-                              auctionData?.planName ?? "",
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                          ],
+                        _buildInfoItem(
+                          Icons.home,
+                          auctionData?.type ?? "عقار",
                         ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.home,
-                              size: 16.sp,
-                              color: ColorManager.primary,
-                            ),
-                            horizontalSpace(4),
-                            Text(
-                              auctionData?.type ?? "",
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.calendar_today,
-                              size: 16.sp,
-                              color: ColorManager.primary,
-                            ),
-                            horizontalSpace(4),
-                            Text(
-                              auctionData?.auctionDate ?? "",
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                        _buildInfoItem(
+                          Icons.calendar_today,
+                          auctionData?.auctionDate ?? "قريباً",
                         ),
                       ],
                     ),
-                    verticalSpace(20),
+                    verticalSpace(15.h),
                     Row(
                       children: [
-                        Icon(
-                          Icons.location_on,
-                          size: 16.sp,
-                          color: ColorManager.primary,
-                        ),
-                        horizontalSpace(4),
+                        Icon(Icons.location_on,
+                            size: 16.sp, color: ColorManager.primary),
+                        horizontalSpace(4.w),
                         Expanded(
                           child: Text(
-                            auctionData?.region ?? "",
+                            auctionData?.region ?? "غير محدد",
                             style: TextStyle(
                               color: ColorManager.grey,
                               fontSize: 13.sp,
@@ -136,6 +96,27 @@ class AuctionListItem extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildInfoItem(IconData icon, String label, {int flex = 1}) {
+    return Expanded(
+      flex: flex,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 14.sp, color: ColorManager.primary),
+          horizontalSpace(4.w),
+          Expanded(
+            child: Text(
+              label,
+              style: TextStyle(fontSize: 11.sp, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
       ),
     );
   }

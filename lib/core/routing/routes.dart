@@ -1,14 +1,16 @@
-import 'package:dar_afaq/features/auth/ui/view/forgot_password/forgot_password_view.dart';
-import 'package:dar_afaq/features/auth/ui/view/login/view/login_view.dart';
-import 'package:dar_afaq/features/dashboard/ui/view/advertisements/view/add_ads/add_ads_view.dart';
-import 'package:dar_afaq/features/dashboard/ui/view/dashboard_view.dart';
-import 'package:dar_afaq/features/dashboard/ui/view/home_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/auth/data/models/response/response.dart';
+import '../../features/auth/ui/view/forgot_password/forgot_password_view.dart';
+import '../../features/auth/ui/view/login/view/login_view.dart';
+import '../../features/auth/ui/view/register/view/register_otp_view.dart';
 import '../../features/calculation_cost/calculation_cost_view.dart';
 import '../../features/dashboard/data/response/response.dart';
+import '../../features/dashboard/ui/view/advertisements/view/add_ads/add_ads_view.dart';
+import '../../features/dashboard/ui/view/dashboard_view.dart';
+import '../../features/dashboard/ui/view/home_details_view.dart';
+import '../../features/dashboard/ui/widgets/sections/section_services.dart';
 import '../../features/settings/view/about_us/about_us_view.dart';
 import '../../features/auth/logic/cubit_cubit.dart';
 import '../../features/auth/ui/view/otp/otp_view.dart';
@@ -16,7 +18,6 @@ import '../../features/auth/ui/view/register/view/register_view.dart';
 import '../../features/auth/ui/view/reset_password/reset_password_view.dart';
 import '../../features/dashboard/logic/home_cubit.dart';
 import '../../features/dashboard/ui/view/advertisements/widgets/ads/ads_details.dart';
-import '../../features/dashboard/ui/widgets/articles_news.dart';
 import '../../features/onboarding/onboarding_view.dart';
 import '../../features/settings/view/my_advertisements/edit_advertisement_view.dart';
 import '../../features/settings/view/profile/edit_profile_view.dart';
@@ -39,6 +40,7 @@ class Routes {
   static const String forgotPasswordRoute = "/forgot-password";
   static const String resetPasswordRoute = "/reset-password";
   static const String otpRoute = "/otp";
+  static const String otpRegisterRoute = "/otp-register";
 
   // User
   static const String myAdvertisementsRoute = '/my-advertisements';
@@ -99,6 +101,19 @@ class AppRoute {
             ),
           ),
         );
+      case Routes.otpRegisterRoute:
+        final arguments = settings.arguments as Map<String, dynamic>;
+        final phone = arguments['phone'] as String;
+        final email = arguments['email'] as String;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => di<VerifyCodeRegisterCubit>(),
+            child: RegisterOtpView(
+              phone: phone,
+              email: email,
+            ),
+          ),
+        );
       case Routes.resetPasswordRoute:
         final email = settings.arguments as String? ?? "No Email Found";
         return MaterialPageRoute(
@@ -108,11 +123,11 @@ class AppRoute {
           ),
         );
       case Routes.addRoute:
-        final args = settings.arguments as String?;
+        final sectionItem = settings.arguments as SectionServices;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => di<AddAdvertisementCubit>(),
-            child: AddAdsView(transactionType: args),
+            child: AddAdsView(transactionType: sectionItem.dbValue),
           ),
         );
       case Routes.homeDetailsRoute:

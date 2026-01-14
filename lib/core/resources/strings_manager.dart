@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AppStrings {
   static const noRouteFound = "noRouteFound";
 
@@ -37,6 +39,20 @@ class AppStrings {
   static const validPhoneError = "valid_phone_error";
   static const validPasswordError = "valid_password_error";
 
+  static const String selectedSection = "selectedSection";
+  static const String adDescription = "adDescription";
+  static const String adDetails = "adDetails";
+  static const String propertyType = "propertyType";
+  static const String choosePropertyType = "choosePropertyType";
+  static const String region = "region";
+  static const String chooseRegion = "chooseRegion";
+  static const String priceHint = "priceHint";
+  static const String uploadPhotos = "uploadPhotos";
+  static const String clickToUpload = "clickToUpload";
+  static const String changePhoto = "changePhoto";
+  static const String enterPriceError = "enterPriceError";
+  static const String fillAllFieldsError = "fillAllFieldsError";
+
   // --- Verification & Reset Password ---
   static const verificationCodeTitle = "verification_code_title";
   static const verificationCodeSentTo = "verification_code_sent_to";
@@ -69,20 +85,14 @@ class AppStrings {
   // --- Add/Edit Advertisement ---
   static const addAdTitle = "add_ad_title";
   static const editAdTitle = "edit_ad_title";
-  static const adDescription = "ad_description";
   static const adDescriptionHint = "ad_description_hint";
   static const adDetailsHint = "ad_details_hint";
-  static const propertyType = "property_type";
   static const property = "property";
-  static const choosePropertyType = "choose_property_type";
   static const enterPropertyType = "enter_property_type";
-  static const region = "region";
-  static const chooseRegion = "choose_region";
   static const price = "price";
   static const priceCurrencyHint = "price_currency_hint";
   static const uploadImages = "upload_property_images";
   static const changeImage = "change_image";
-  static const clickToUpload = "click_to_upload";
   static const saveChanges = "save_changes";
   static const saving = "saving";
   static const updateSuccess = "update_success";
@@ -92,6 +102,14 @@ class AppStrings {
   static const enterDescription = "enter_description";
   static const adTitleHint = "enter_ad_title";
   static const advertisements = "advertisements";
+  static const propertyCategory = "property_category";
+  static const regions = "regions";
+  static const adStatus = " ad_status";
+  static const active = " active";
+static const underReview = " under_review";
+
+  static const call = "call";
+  static const whatsapp = "whatsapp";
 
   // --- Errors & Alerts ---
   static const errorOccurred = "error_occurred";
@@ -106,17 +124,18 @@ class AppStrings {
   static const serviceSale = "service_sale";
   static const serviceRent = "service_rent";
   static const serviceAuction = "service_auction";
+  static const newsAndArticles = "news_and_articles";
 
   // --- Profile & Settings ---
   static const profileTitle = "profile_title";
   static const editProfileTitle = "edit_profile_title";
-  static const accountManagement = "account_management";
+  static const account = "account";
   static const appLanguage = "app_language";
   static const logout = "logout";
   static const logoutConfirmationTitle = "logout_confirmation_title";
   static const logoutConfirmationMessage = "logout_confirmation_message";
   static const myAdvertisements = "my_advertisements";
-  static const aboutDarAfaq = "about_dar_afaq";
+  static const aboutUs = "about_us";
   static const profileUpdatedSuccess = "profile_updated_success";
   static const appIdentityDesc = "app_identity_desc";
   static const whoWeAre = "who_we_are";
@@ -126,15 +145,14 @@ class AppStrings {
   static const valueProjects = "value_projects";
   static const valueInnovation = "value_innovation";
   static const contactUs = "contact_us";
-
   static const fullName = "full_name";
   static const nameRequired = "name_required";
   static const phoneRequired = "phone_required";
   static const emailRequired = "email_required";
   static const invalidEmail = "invalid_email";
-
   static const general = "general";
   static const noName = "no_name";
+  static const guest = "guest";
 
   static const expiryDate = "expiry_date";
   static const edit = "edit";
@@ -146,6 +164,8 @@ class AppStrings {
   static const notificationsTitle = "notifications_title";
   static const onboardingSubTitle = "onboarding_subtitle";
   static const aboutAuction = "about_auction";
+  static const noResultsMatchYourSearchCurrently =
+      "no_results-match_your_search_currently";
 
   // --- Calculator ---
   static const calculatorTitle = "calculator_title";
@@ -159,6 +179,18 @@ class AppStrings {
   static const currency = "currency";
   static const estimatedValue = "estimated_value";
   static const close = "close";
+  static const String searchResults = "searchResults";
+  static const String browsingAsGuest = "browsing_asGuest";
+  static const String pleaseLoginToViewData = "please_login_to_viewData";
+
+  // المفاتيح الرئيسية للأقسام
+  static const forSale = "for_sale";
+  static const forRent = "for_rent";
+  static const forExchange = "for_exchange";
+  static const contractors = "contractors";
+  static const realEstateOffices = "real_estate_offices";
+  static const internationalProperties = "international_properties";
+  static const engineeringOffices = "engineering_offices";
 
   // --- Dialogs & Actions ---
   static const confirmDeleteMsg = "confirm_delete_msg";
@@ -187,4 +219,124 @@ class AppStrings {
   static const swimmingPool = "swimming_pool";
   static const garden = "garden";
   static const calculationResult = "calculation_result";
+
+  // عقارات للبيع
+  static const houseSale = "house_sale";
+  static const buildingFloors = "building_floors";
+  static const aptSale = "apt_sale";
+  static const restHouse = "rest_house";
+  static const chaletSale = "chalet_sale";
+  static const farmSale = "farm_sale";
+  static const landSale = "land_sale";
+  static const resPlot = "res_plot";
+  static const invPlot = "inv_plot";
+  static const shopSale = "shop_sale";
+  static const companySale = "company_sale";
+
+  // عقارات للإيجار
+  static const houseRent = "house_rent";
+  static const fullFloor = "full_floor";
+  static const furnishedApt = "furnished_apt";
+  static const duplexApt = "duplex_apt";
+  static const shopRent = "shop_rent";
+  static const office = "office";
+  static const warehouse = "warehouse";
+  static const farmRent = "farm_rent";
+  static const indPlot = "ind_plot";
+  static const restHouseRent = "rest_house_rent";
+  static const chaletRent = "chalet_rent";
+
+  // بدل ومقاولون وهندسة
+  static const houseExchange = "house_exchange";
+  static const constServices = "const_services";
+  static const finishingServices = "finishing_services";
+  static const equippedOffices = "equipped_offices";
+  static const intlProperty = "intl_property";
+  static const archDesign = "arch_design";
+  static const engDesign = "eng_design";
+  static const supervision = "supervision";
+
+  static Map<String, Map<String, String>> _localizedValues = {
+    'ar': {
+      'rent_calc': 'حسبة الإيجار',
+      'build_calc': 'حسبة تكلفة \nالبناء',
+      'valuation': 'التقييم العقاري',
+      'official_request': 'طلب تقييم رسمي',
+      'property_mgmt': 'إدارة أملاك الغير',
+
+      // بدل ومقاولون وهندسة
+      'house_exchange': 'تبادل بيت',
+      'const_services': 'خدمات البناء',
+      'finishing_services': 'خدمات التشطيب',
+      'equipped_offices': 'مكاتب مجهزة',
+      'intl_property': 'عقار دولي',
+      'arch_design': 'تصميم معماري',
+      'eng_design': 'تصميم هندسي',
+      'supervision': 'إشراف ومتابعة',
+    },
+    'en': {
+      'rent_calc': 'Rent\nCalculator',
+      'build_calc': 'Construction\nCost',
+      'valuation': 'Real Estate\nValuation',
+      'official_request': 'Official\nRequest',
+      'property_mgmt': 'Property\nManagement',
+      // Main Sections
+      'for_sale': 'Properties\nfor Sale',
+      'for_rent': 'Properties\nfor Rent',
+      'for_exchange': 'Property\nExchange',
+      'contractors': 'Contractors',
+      'real_estate_offices': 'Real Estate\nOffices',
+      'international_properties': 'International\nProperties',
+      'engineering_offices': 'Engineering\nOffices',
+
+      // For Sale
+      'house_sale': 'House for Sale',
+      'building_floors': 'Building or Floors',
+      'apt_sale': 'Apartment for Sale',
+      'rest_house': 'Rest House',
+      'chalet_sale': 'Chalet for Sale',
+      'farm_sale': 'Farm for Sale',
+      'land_sale': 'Land for Sale',
+      'res_plot': 'Residential Plot',
+      'inv_plot': 'Investment Plot',
+      'shop_sale': 'Shop for Sale',
+      'company_sale': 'Companies for Sale',
+
+      // For Rent
+      'house_rent': 'House for Rent',
+      'full_floor': 'Full Floor',
+      'furnished_apt': 'Furnished Apartment',
+      'duplex_apt': 'Duplex Apartment',
+      'shop_rent': 'Shop for Rent',
+      'office': 'Office',
+      'warehouse': 'Warehouses',
+      'farm_rent': 'Farm for Rent',
+      'ind_plot': 'Industrial Plot',
+      'rest_house_rent': 'Rest House for Rent',
+      'chalet_rent': 'Chalet for Rent',
+
+      // Exchange, Contractors & Engineering
+      'house_exchange': 'House Exchange',
+      'const_services': 'Construction Services',
+      'finishing_services': 'Finishing Services',
+      'equipped_offices': 'Equipped Offices',
+      'intl_property': 'International Property',
+      'arch_design': 'Architectural Design',
+      'eng_design': 'Engineering Design',
+      'supervision': 'Supervision',
+    },
+  };
+
+  // وظيفة مساعدة لجلب النص بناءً على اللغة الحالية
+  static String getString(String key, String langCode) {
+    return _localizedValues[langCode]?[key] ?? key;
+  }
+
+  static String tr(BuildContext context, String key) {
+    // جلب رمز اللغة الحالي (ar أو en) من نظام التطبيق
+    final String langCode = Localizations.localeOf(context).languageCode;
+
+    // البحث عن القيمة، وإذا لم توجد نرجع المفتاح نفسه لتجنب كراش التطبيق
+    return _localizedValues[langCode]?[key] ?? key;
+  }
 }

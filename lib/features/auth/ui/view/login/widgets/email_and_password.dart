@@ -1,9 +1,11 @@
-import 'package:dar_afaq/core/resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../core/helper/app_regex.dart';
 import '../../../../../../core/helper/spacing.dart';
+import '../../../../../../core/resources/strings_manager.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
 import '../../../../logic/cubit_cubit.dart';
 
@@ -30,7 +32,16 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               if (value!.isEmpty) {
                 return AppStrings.phoneValidationEmpty.tr();
               }
+              if (!AppRegex.isPhoneNumberValid(value)) {
+                return AppStrings.validPhoneError.tr();
+              }
+
+              return null;
             },
+            inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(10),
+            ],
             controller: context.read<LoginCubit>().phoneController,
           ),
           verticalSpace(18),

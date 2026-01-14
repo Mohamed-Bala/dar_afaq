@@ -13,7 +13,7 @@ Widget buildGridItem(
     elevation: 4,
     borderRadius: BorderRadius.circular(15.0.r),
     child: Container(
-      width: 90.w,
+      width: double.infinity,
       height: 90.h,
       decoration: BoxDecoration(
         color: isSelected ? ColorManager.primary : Colors.transparent,
@@ -34,13 +34,16 @@ Widget buildGridItem(
             ],
           ),
           SizedBox(height: 5.h),
-          Text(
-            item.label,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: isSelected ? ColorManager.white : ColorManager.black,
-              fontSize: 13.sp,
-              fontWeight: FontWeight.bold,
+          Flexible(
+            child: Text(
+              item.label,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              style: TextStyle(
+                color: isSelected ? ColorManager.white : ColorManager.black,
+                fontSize: 13.sp,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ],

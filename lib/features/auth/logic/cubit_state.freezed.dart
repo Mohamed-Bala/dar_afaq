@@ -2424,6 +2424,689 @@ abstract class VerifyCodeError<T> implements VerifyCodeState<T> {
 }
 
 /// @nodoc
+mixin _$VerifyCodeRegisterState<T> {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() verifyCodeRegisterInitial,
+    required TResult Function() verifyCodeRegisterLoading,
+    required TResult Function(T data) verifyCodeRegisterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        verifyCodeRegisterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? verifyCodeRegisterInitial,
+    TResult? Function()? verifyCodeRegisterLoading,
+    TResult? Function(T data)? verifyCodeRegisterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? verifyCodeRegisterInitial,
+    TResult Function()? verifyCodeRegisterLoading,
+    TResult Function(T data)? verifyCodeRegisterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_VerifyCodeRegisterInitial<T> value)
+        verifyCodeRegisterInitial,
+    required TResult Function(VerifyCodeRegisterLoading<T> value)
+        verifyCodeRegisterLoading,
+    required TResult Function(VerifyCodeRegisterSuccess<T> value)
+        verifyCodeRegisterSuccess,
+    required TResult Function(VerifyCodeRegisterError<T> value)
+        verifyCodeRegisterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult? Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult? Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult? Function(VerifyCodeRegisterError<T> value)?
+        verifyCodeRegisterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult Function(VerifyCodeRegisterError<T> value)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $VerifyCodeRegisterStateCopyWith<T, $Res> {
+  factory $VerifyCodeRegisterStateCopyWith(VerifyCodeRegisterState<T> value,
+          $Res Function(VerifyCodeRegisterState<T>) then) =
+      _$VerifyCodeRegisterStateCopyWithImpl<T, $Res,
+          VerifyCodeRegisterState<T>>;
+}
+
+/// @nodoc
+class _$VerifyCodeRegisterStateCopyWithImpl<T, $Res,
+        $Val extends VerifyCodeRegisterState<T>>
+    implements $VerifyCodeRegisterStateCopyWith<T, $Res> {
+  _$VerifyCodeRegisterStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$VerifyCodeRegisterInitialImplCopyWith<T, $Res> {
+  factory _$$VerifyCodeRegisterInitialImplCopyWith(
+          _$VerifyCodeRegisterInitialImpl<T> value,
+          $Res Function(_$VerifyCodeRegisterInitialImpl<T>) then) =
+      __$$VerifyCodeRegisterInitialImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$VerifyCodeRegisterInitialImplCopyWithImpl<T, $Res>
+    extends _$VerifyCodeRegisterStateCopyWithImpl<T, $Res,
+        _$VerifyCodeRegisterInitialImpl<T>>
+    implements _$$VerifyCodeRegisterInitialImplCopyWith<T, $Res> {
+  __$$VerifyCodeRegisterInitialImplCopyWithImpl(
+      _$VerifyCodeRegisterInitialImpl<T> _value,
+      $Res Function(_$VerifyCodeRegisterInitialImpl<T>) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$VerifyCodeRegisterInitialImpl<T>
+    implements _VerifyCodeRegisterInitial<T> {
+  const _$VerifyCodeRegisterInitialImpl();
+
+  @override
+  String toString() {
+    return 'VerifyCodeRegisterState<$T>.verifyCodeRegisterInitial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VerifyCodeRegisterInitialImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() verifyCodeRegisterInitial,
+    required TResult Function() verifyCodeRegisterLoading,
+    required TResult Function(T data) verifyCodeRegisterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterInitial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? verifyCodeRegisterInitial,
+    TResult? Function()? verifyCodeRegisterLoading,
+    TResult? Function(T data)? verifyCodeRegisterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterInitial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? verifyCodeRegisterInitial,
+    TResult Function()? verifyCodeRegisterLoading,
+    TResult Function(T data)? verifyCodeRegisterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) {
+    if (verifyCodeRegisterInitial != null) {
+      return verifyCodeRegisterInitial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_VerifyCodeRegisterInitial<T> value)
+        verifyCodeRegisterInitial,
+    required TResult Function(VerifyCodeRegisterLoading<T> value)
+        verifyCodeRegisterLoading,
+    required TResult Function(VerifyCodeRegisterSuccess<T> value)
+        verifyCodeRegisterSuccess,
+    required TResult Function(VerifyCodeRegisterError<T> value)
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterInitial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult? Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult? Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult? Function(VerifyCodeRegisterError<T> value)?
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterInitial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult Function(VerifyCodeRegisterError<T> value)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) {
+    if (verifyCodeRegisterInitial != null) {
+      return verifyCodeRegisterInitial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _VerifyCodeRegisterInitial<T>
+    implements VerifyCodeRegisterState<T> {
+  const factory _VerifyCodeRegisterInitial() =
+      _$VerifyCodeRegisterInitialImpl<T>;
+}
+
+/// @nodoc
+abstract class _$$VerifyCodeRegisterLoadingImplCopyWith<T, $Res> {
+  factory _$$VerifyCodeRegisterLoadingImplCopyWith(
+          _$VerifyCodeRegisterLoadingImpl<T> value,
+          $Res Function(_$VerifyCodeRegisterLoadingImpl<T>) then) =
+      __$$VerifyCodeRegisterLoadingImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$VerifyCodeRegisterLoadingImplCopyWithImpl<T, $Res>
+    extends _$VerifyCodeRegisterStateCopyWithImpl<T, $Res,
+        _$VerifyCodeRegisterLoadingImpl<T>>
+    implements _$$VerifyCodeRegisterLoadingImplCopyWith<T, $Res> {
+  __$$VerifyCodeRegisterLoadingImplCopyWithImpl(
+      _$VerifyCodeRegisterLoadingImpl<T> _value,
+      $Res Function(_$VerifyCodeRegisterLoadingImpl<T>) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$VerifyCodeRegisterLoadingImpl<T>
+    implements VerifyCodeRegisterLoading<T> {
+  const _$VerifyCodeRegisterLoadingImpl();
+
+  @override
+  String toString() {
+    return 'VerifyCodeRegisterState<$T>.verifyCodeRegisterLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VerifyCodeRegisterLoadingImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() verifyCodeRegisterInitial,
+    required TResult Function() verifyCodeRegisterLoading,
+    required TResult Function(T data) verifyCodeRegisterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? verifyCodeRegisterInitial,
+    TResult? Function()? verifyCodeRegisterLoading,
+    TResult? Function(T data)? verifyCodeRegisterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? verifyCodeRegisterInitial,
+    TResult Function()? verifyCodeRegisterLoading,
+    TResult Function(T data)? verifyCodeRegisterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) {
+    if (verifyCodeRegisterLoading != null) {
+      return verifyCodeRegisterLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_VerifyCodeRegisterInitial<T> value)
+        verifyCodeRegisterInitial,
+    required TResult Function(VerifyCodeRegisterLoading<T> value)
+        verifyCodeRegisterLoading,
+    required TResult Function(VerifyCodeRegisterSuccess<T> value)
+        verifyCodeRegisterSuccess,
+    required TResult Function(VerifyCodeRegisterError<T> value)
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult? Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult? Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult? Function(VerifyCodeRegisterError<T> value)?
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult Function(VerifyCodeRegisterError<T> value)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) {
+    if (verifyCodeRegisterLoading != null) {
+      return verifyCodeRegisterLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class VerifyCodeRegisterLoading<T>
+    implements VerifyCodeRegisterState<T> {
+  const factory VerifyCodeRegisterLoading() =
+      _$VerifyCodeRegisterLoadingImpl<T>;
+}
+
+/// @nodoc
+abstract class _$$VerifyCodeRegisterSuccessImplCopyWith<T, $Res> {
+  factory _$$VerifyCodeRegisterSuccessImplCopyWith(
+          _$VerifyCodeRegisterSuccessImpl<T> value,
+          $Res Function(_$VerifyCodeRegisterSuccessImpl<T>) then) =
+      __$$VerifyCodeRegisterSuccessImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T data});
+}
+
+/// @nodoc
+class __$$VerifyCodeRegisterSuccessImplCopyWithImpl<T, $Res>
+    extends _$VerifyCodeRegisterStateCopyWithImpl<T, $Res,
+        _$VerifyCodeRegisterSuccessImpl<T>>
+    implements _$$VerifyCodeRegisterSuccessImplCopyWith<T, $Res> {
+  __$$VerifyCodeRegisterSuccessImplCopyWithImpl(
+      _$VerifyCodeRegisterSuccessImpl<T> _value,
+      $Res Function(_$VerifyCodeRegisterSuccessImpl<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$VerifyCodeRegisterSuccessImpl<T>(
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$VerifyCodeRegisterSuccessImpl<T>
+    implements VerifyCodeRegisterSuccess<T> {
+  const _$VerifyCodeRegisterSuccessImpl(this.data);
+
+  @override
+  final T data;
+
+  @override
+  String toString() {
+    return 'VerifyCodeRegisterState<$T>.verifyCodeRegisterSuccess(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VerifyCodeRegisterSuccessImpl<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VerifyCodeRegisterSuccessImplCopyWith<T,
+          _$VerifyCodeRegisterSuccessImpl<T>>
+      get copyWith => __$$VerifyCodeRegisterSuccessImplCopyWithImpl<T,
+          _$VerifyCodeRegisterSuccessImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() verifyCodeRegisterInitial,
+    required TResult Function() verifyCodeRegisterLoading,
+    required TResult Function(T data) verifyCodeRegisterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterSuccess(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? verifyCodeRegisterInitial,
+    TResult? Function()? verifyCodeRegisterLoading,
+    TResult? Function(T data)? verifyCodeRegisterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterSuccess?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? verifyCodeRegisterInitial,
+    TResult Function()? verifyCodeRegisterLoading,
+    TResult Function(T data)? verifyCodeRegisterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) {
+    if (verifyCodeRegisterSuccess != null) {
+      return verifyCodeRegisterSuccess(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_VerifyCodeRegisterInitial<T> value)
+        verifyCodeRegisterInitial,
+    required TResult Function(VerifyCodeRegisterLoading<T> value)
+        verifyCodeRegisterLoading,
+    required TResult Function(VerifyCodeRegisterSuccess<T> value)
+        verifyCodeRegisterSuccess,
+    required TResult Function(VerifyCodeRegisterError<T> value)
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult? Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult? Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult? Function(VerifyCodeRegisterError<T> value)?
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult Function(VerifyCodeRegisterError<T> value)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) {
+    if (verifyCodeRegisterSuccess != null) {
+      return verifyCodeRegisterSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class VerifyCodeRegisterSuccess<T>
+    implements VerifyCodeRegisterState<T> {
+  const factory VerifyCodeRegisterSuccess(final T data) =
+      _$VerifyCodeRegisterSuccessImpl<T>;
+
+  T get data;
+  @JsonKey(ignore: true)
+  _$$VerifyCodeRegisterSuccessImplCopyWith<T,
+          _$VerifyCodeRegisterSuccessImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VerifyCodeRegisterErrorImplCopyWith<T, $Res> {
+  factory _$$VerifyCodeRegisterErrorImplCopyWith(
+          _$VerifyCodeRegisterErrorImpl<T> value,
+          $Res Function(_$VerifyCodeRegisterErrorImpl<T>) then) =
+      __$$VerifyCodeRegisterErrorImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$VerifyCodeRegisterErrorImplCopyWithImpl<T, $Res>
+    extends _$VerifyCodeRegisterStateCopyWithImpl<T, $Res,
+        _$VerifyCodeRegisterErrorImpl<T>>
+    implements _$$VerifyCodeRegisterErrorImplCopyWith<T, $Res> {
+  __$$VerifyCodeRegisterErrorImplCopyWithImpl(
+      _$VerifyCodeRegisterErrorImpl<T> _value,
+      $Res Function(_$VerifyCodeRegisterErrorImpl<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$VerifyCodeRegisterErrorImpl<T>(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$VerifyCodeRegisterErrorImpl<T> implements VerifyCodeRegisterError<T> {
+  const _$VerifyCodeRegisterErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'VerifyCodeRegisterState<$T>.verifyCodeRegisterError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VerifyCodeRegisterErrorImpl<T> &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VerifyCodeRegisterErrorImplCopyWith<T, _$VerifyCodeRegisterErrorImpl<T>>
+      get copyWith => __$$VerifyCodeRegisterErrorImplCopyWithImpl<T,
+          _$VerifyCodeRegisterErrorImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() verifyCodeRegisterInitial,
+    required TResult Function() verifyCodeRegisterLoading,
+    required TResult Function(T data) verifyCodeRegisterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? verifyCodeRegisterInitial,
+    TResult? Function()? verifyCodeRegisterLoading,
+    TResult? Function(T data)? verifyCodeRegisterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? verifyCodeRegisterInitial,
+    TResult Function()? verifyCodeRegisterLoading,
+    TResult Function(T data)? verifyCodeRegisterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) {
+    if (verifyCodeRegisterError != null) {
+      return verifyCodeRegisterError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_VerifyCodeRegisterInitial<T> value)
+        verifyCodeRegisterInitial,
+    required TResult Function(VerifyCodeRegisterLoading<T> value)
+        verifyCodeRegisterLoading,
+    required TResult Function(VerifyCodeRegisterSuccess<T> value)
+        verifyCodeRegisterSuccess,
+    required TResult Function(VerifyCodeRegisterError<T> value)
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult? Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult? Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult? Function(VerifyCodeRegisterError<T> value)?
+        verifyCodeRegisterError,
+  }) {
+    return verifyCodeRegisterError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_VerifyCodeRegisterInitial<T> value)?
+        verifyCodeRegisterInitial,
+    TResult Function(VerifyCodeRegisterLoading<T> value)?
+        verifyCodeRegisterLoading,
+    TResult Function(VerifyCodeRegisterSuccess<T> value)?
+        verifyCodeRegisterSuccess,
+    TResult Function(VerifyCodeRegisterError<T> value)? verifyCodeRegisterError,
+    required TResult orElse(),
+  }) {
+    if (verifyCodeRegisterError != null) {
+      return verifyCodeRegisterError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class VerifyCodeRegisterError<T>
+    implements VerifyCodeRegisterState<T> {
+  const factory VerifyCodeRegisterError(final ApiErrorModel apiErrorModel) =
+      _$VerifyCodeRegisterErrorImpl<T>;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$VerifyCodeRegisterErrorImplCopyWith<T, _$VerifyCodeRegisterErrorImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$UserInfoState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({

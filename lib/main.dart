@@ -1,14 +1,13 @@
-import 'package:dar_afaq/core/helper/extensions.dart';
-import 'package:dar_afaq/core/resources/color_manager.dart';
+import 'package:afaq_real_estate/core/helper/extensions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'core/di/di.dart';
 import 'core/helper/constants.dart';
 import 'core/helper/shared_pref.dart';
 import 'core/network/dio_factory.dart';
+import 'core/resources/color_manager.dart';
 import 'core/resources/langauge_manager.dart';
 import 'core/routing/routes.dart';
 
@@ -40,17 +39,19 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       builder: (context, child) {
         return MaterialApp(
-          title: 'Dar Afaq',
+          title: 'Afaq Real Estate',
           debugShowCheckedModeBanner: false,
+          locale: context.locale,
+
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: ColorManager.primary),
             useMaterial3: true,
           ),
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          initialRoute:
-              isLoggedInUser ? Routes.dashboardRoute : Routes.loginRoute,
+
+          initialRoute: Routes.dashboardRoute,
+          //  isLoggedInUser ? Routes.dashboardRoute : Routes.loginRoute,
           onGenerateRoute: AppRoute.onGeneratorRoute,
         );
       },

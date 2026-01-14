@@ -1,4 +1,4 @@
-import 'package:dar_afaq/core/helper/extensions.dart';
+import 'package:afaq_real_estate/core/helper/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +19,6 @@ class LoginBlocListener extends StatelessWidget {
       listener: (context, state) {
         state.whenOrNull(
           loading: () {
-            // show loading dialog on root navigator and prevent back dismiss
             showDialog(
               context: context,
               barrierDismissible: false,
@@ -31,7 +30,8 @@ class LoginBlocListener extends StatelessWidget {
           },
           success: (loginResponse) {
             context.pop();
-            context.pushNamed(Routes.dashboardRoute);
+            context.pushNamedAndRemoveUntil(Routes.dashboardRoute,
+                predicate: (Route<dynamic> route) => false);
           },
           error: (apiErrorModel) {
             setupErrorState(context, apiErrorModel);

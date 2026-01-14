@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 8.0.h),
             child: Align(
-              alignment: Alignment.centerRight,
+              alignment: AlignmentDirectional.centerStart,
               child: Text(
                 AppStrings.sections.tr(),
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 8.0.h),
             child: Align(
-              alignment: Alignment.centerRight,
+              alignment: AlignmentDirectional.centerStart,
               child: Text(
                 AppStrings.ourServices.tr(),
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
@@ -85,7 +85,7 @@ class _HomeState extends State<Home> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 8.0.h),
             child: Align(
-              alignment: Alignment.centerRight,
+              alignment: AlignmentDirectional.centerStart,
               child: Text(
                 AppStrings.featuredAds.tr(),
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),

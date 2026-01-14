@@ -400,9 +400,6 @@ class UpdateAdResponse {
       _$UpdateAdResponseFromJson(json);
 }
 
-
-
-
 @JsonSerializable()
 class FilterSectionResponse {
   final bool? success;
@@ -458,5 +455,23 @@ class FilterSectionModel {
     this.updatedAt,
   });
 
-  factory FilterSectionModel.fromJson(Map<String, dynamic> json) => _$FilterSectionModelFromJson(json);
+  // --- أضف الدالة هنا ---
+  VipAdsDataResponse toVipResponse() {
+    return VipAdsDataResponse(
+      id: id,
+      planPrice: planPrice,
+      planName: planName,
+      transactionType: transactionType,
+      phone: phone,
+      description: description,
+      type: type.toString(),
+      region: region,
+      price: price,
+      images: images,
+      userId: userId,
+    );
+  }
+
+  factory FilterSectionModel.fromJson(Map<String, dynamic> json) =>
+      _$FilterSectionModelFromJson(json);
 }

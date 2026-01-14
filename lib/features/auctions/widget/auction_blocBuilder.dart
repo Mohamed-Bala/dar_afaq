@@ -28,7 +28,7 @@ class AuctionBlocbuilder extends StatelessWidget {
           },
           auctionError: (apiErrorModel) => setupError(),
           orElse: () {
-            return const SizedBox.shrink();
+            return const Center(child: CircularProgressIndicator.adaptive());
           },
         );
       },

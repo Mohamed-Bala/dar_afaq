@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -15,39 +18,46 @@ class DioFactory {
       dio!
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
+
+      // تهيئة الـ Adapter للتعامل مع استقرار الاتصال
+      dio!.httpClientAdapter = IOHttpClientAdapter(
+        createHttpClient: () {
+          final client = HttpClient();
+          client.badCertificateCallback =
+              (cert, host, port) => true; // لتجنب مشاكل الـ SSL
+          return client;
+        },
+      );
+
       addDioHeaders();
       addDioInterceptor();
-      return dio!;
-    } else {
-      return dio!;
     }
+    return dio!;
   }
 
-  static void addDioHeaders() async {
-    dio?.options.headers = {
+  static void addDioHeaders() {
+    dio?.options.headers.addAll({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-    };
+      'Connection': 'keep-alive',
+    });
   }
 
   static void setTokenIntoHeaderAfterLogin(String token) {
-    dio?.options.headers = {
+    dio?.options.headers.addAll({
       "Authorization": "Bearer $token",
-    };
+    });
   }
 
   static void addDioInterceptor() {
-    // its debug mode so print app logs
     if (!kReleaseMode) {
-      dio?.interceptors.add(LogInterceptor(
-        requestBody: true,
-        responseBody: true,
-      ));
       dio?.interceptors.add(
         PrettyDioLogger(
           requestBody: true,
           requestHeader: true,
           responseHeader: true,
+          error: true,
+          compact: true,
         ),
       );
     }

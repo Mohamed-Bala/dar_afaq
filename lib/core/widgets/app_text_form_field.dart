@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../resources/color_manager.dart';
@@ -20,9 +21,12 @@ class AppTextFormField extends StatelessWidget {
   final Function(String?) validator;
   final VoidCallback? onTap;
   final bool? readOnly;
+  final List<TextInputFormatter>? inputFormatters;
+  final AutovalidateMode? autovalidateMode;
   const AppTextFormField({
     super.key,
     this.contentPadding,
+    this.inputFormatters,
     this.focusedBorder,
     this.errorBorder,
     this.enabledBorder,
@@ -37,6 +41,7 @@ class AppTextFormField extends StatelessWidget {
     this.keyboardType,
     this.onTap,
     this.readOnly,
+    this.autovalidateMode,
   });
 
   @override
@@ -46,6 +51,9 @@ class AppTextFormField extends StatelessWidget {
       controller: controller,
       readOnly: readOnly ?? false,
       keyboardType: keyboardType,
+      enabled: true,
+      inputFormatters: inputFormatters,
+      autovalidateMode: autovalidateMode ?? AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         isDense: true,
         contentPadding: contentPadding ??

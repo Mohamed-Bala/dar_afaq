@@ -1,14 +1,19 @@
+import 'package:afaq_real_estate/core/resources/strings_manager.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shimmer/shimmer.dart';
 
+import '../../../../../../../core/helper/extensions.dart';
+import '../../../../../../../core/helper/spacing.dart';
 import '../../../../../../../core/resources/color_manager.dart';
+import '../../../../../../../core/resources/constants_manager.dart';
 import '../../../../../data/response/response.dart';
 import '../../../../../logic/home_cubit.dart';
 import '../../../../../logic/home_state.dart';
 import '../../../../widgets/build_action_button.dart';
+import '../../../home_details_view.dart';
 
 class AdsResultSectionView extends StatelessWidget {
   const AdsResultSectionView({super.key});
@@ -18,7 +23,7 @@ class AdsResultSectionView extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorManager.white,
       appBar: AppBar(
-        title: const Text("نتائج البحث"),
+        title: Text(AppStrings.searchResults.tr()),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,
@@ -34,21 +39,18 @@ class AdsResultSectionView extends StatelessWidget {
                 Center(child: Text("حدث خطأ: $error")),
             filterSectionSuccess: (adsList) {
               if (adsList.data == null || adsList.data!.isEmpty) {
-                return const Center(child: Text("لا توجد بيانات حالياً"));
+                return Center(child: Text(AppStrings.noAdsAvailable.tr()));
               }
 
-              return GridView.builder(
-                padding: EdgeInsets.all(12.w),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10.h,
-                  crossAxisSpacing: 10.w,
-                  childAspectRatio: 0.55,
-                ),
+              return ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
                 itemCount: adsList.data!.length,
                 itemBuilder: (context, index) {
-                  return GridHomeCard(
-                    vipAdsDataResponse: adsList.data![index],
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 12.h),
+                    child: GridHomeCard(
+                      vipAdsDataResponse: adsList.data![index],
+                    ),
                   );
                 },
               );
@@ -66,121 +68,127 @@ class GridHomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: GestureDetector(
-        onTap: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) =>
-          //         HomeDetailsView(vipAdsDataResponse: vipAdsDataResponse),
-          //   ),
-          // );
-        },
-        child: Card(
+    final bool isAr = Localizations.localeOf(context).languageCode == 'ar';
+    final String currency = isAr ? 'د.ك' : 'KWD';
+
+    return GestureDetector(
+      onTap: () {
+        if (vipAdsDataResponse != null) {
+          // نحصل على البيانات المحولة
+          final detailData = vipAdsDataResponse!.toVipResponse();
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeDetailsView(
+                vipAdsDataResponse: detailData,
+              ),
+            ),
+          );
+        }
+      },
+      child: Container(
+        height: 150.h,
+        decoration: BoxDecoration(
           color: Colors.white,
-          elevation: 3,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // 1. الصورة في الأعلى
-              ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
+          borderRadius: BorderRadius.circular(12.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
+            )
+          ],
+        ),
+        child: Row(
+          // تغيير لـ Row لأننا في ListView (تصميم عرضي أجمل)
+          children: <Widget>[
+            // 1. قسم الصورة
+            SizedBox(
+              width: 130.w,
+              height: double.infinity,
+              child: ClipRRect(
+                borderRadius: isAr
+                    ? BorderRadius.horizontal(right: Radius.circular(12.r))
+                    : BorderRadius.horizontal(left: Radius.circular(12.r)),
                 child: CachedNetworkImage(
                   imageUrl: vipAdsDataResponse?.images ?? "",
-                  height: 130.h,
-                  width: double.infinity,
                   fit: BoxFit.cover,
-                  placeholder: (context, url) => Shimmer.fromColors(
-                    baseColor: Colors.grey[300]!,
-                    highlightColor: Colors.white,
-                    child: Container(color: Colors.white),
-                  ),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.broken_image),
                 ),
               ),
+            ),
 
-              // 2. تفاصيل الإعلان
-              Padding(
-                padding: EdgeInsets.all(8.r),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(10.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${vipAdsDataResponse?.price} د.ك',
+                      vipAdsDataResponse?.type ?? "",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 14.sp,
+                          fontSize: 14.sp, fontWeight: FontWeight.bold),
+                    ),
+                    verticalSpace(4),
+                    Text(
+                      '${vipAdsDataResponse?.price ?? '0'} $currency',
+                      style: TextStyle(
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.bold,
                         color: ColorManager.primary,
                       ),
                     ),
-                    SizedBox(height: 4.h),
-                    Text(
-                      vipAdsDataResponse?.type ?? "إعلان",
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 13.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(height: 4.h),
                     Row(
                       children: [
-                        Icon(
-                          Icons.location_on,
-                          size: 12.sp,
-                          color: Colors.grey,
-                        ),
+                        Icon(Icons.location_on,
+                            color: ColorManager.primary, size: 14.sp),
+                        horizontalSpace(4),
                         Expanded(
                           child: Text(
                             vipAdsDataResponse?.region ?? "",
-                            style:
-                                TextStyle(fontSize: 11.sp, color: Colors.grey),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
+                            style:
+                                TextStyle(fontSize: 12.sp, color: Colors.grey),
                           ),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            AuthGuard.runAction(context, onAuthenticated: () {
+                              makePhoneCall(AppConstants.afaqPhoneNumber);
+                            });
+                          },
+                          child: buildActionButton(
+                              Icons.phone, ColorManager.primary),
+                        ),
+                        horizontalSpace(10),
+                        GestureDetector(
+                          onTap: () {
+                            AuthGuard.runAction(context, onAuthenticated: () {
+                              launchWhatsApp(AppConstants.afaqPhoneNumber);
+                            });
+                          },
+                          child: buildActionButton(
+                              Icons.chat_bubble_outline, ColorManager.primary),
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
-              const Spacer(),
-              // 3. أزرار التواصل في الأسفل
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildSmallAction(Icons.phone, ColorManager.primary, () {
-                      makePhoneCall(vipAdsDataResponse?.phone ?? "");
-                    }),
-                    _buildSmallAction(Icons.chat, ColorManager.primary, () {
-                      launchWhatsApp(vipAdsDataResponse?.phone ?? "");
-                    }),
-                  ],
-                ),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildSmallAction(IconData icon, Color color, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(6.r),
-        decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(icon, color: color, size: 16.sp),
       ),
     );
   }

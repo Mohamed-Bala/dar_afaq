@@ -1,25 +1,25 @@
-import 'package:afaq_real_estate/core/helper/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../../core/helper/extensions.dart';
 import '../../../../../../core/resources/color_manager.dart';
 import '../../../../../../core/routing/routes.dart';
 import '../../../../logic/cubit_cubit.dart';
 import '../../../../logic/cubit_state.dart';
 
-class OtpBloclistener extends StatelessWidget {
-  final String email;
-  const OtpBloclistener({super.key, required this.email});
+class RegisterOtpBlocListener extends StatelessWidget {
+  const RegisterOtpBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<VerifyCodeCubit, VerifyCodeState>(
+    return BlocListener<VerifyCodeRegisterCubit, VerifyCodeRegisterState>(
       listenWhen: (previous, current) =>
-          current is VerifyCodeLoading ||
-          current is VerifyCodeSuccess ||
-          current is VerifyCodeError,
+          current is VerifyCodeRegisterLoading ||
+          current is VerifyCodeRegisterSuccess ||
+          current is VerifyCodeRegisterError,
       listener: (context, state) {
         state.whenOrNull(
-          verifyCodeLoading: () {
+          verifyCodeRegisterLoading: () {
             showDialog(
               context: context,
               builder: (context) => Center(
@@ -29,14 +29,14 @@ class OtpBloclistener extends StatelessWidget {
               ),
             );
           },
-          verifyCodeSuccess: (response) {
+          verifyCodeRegisterSuccess: (response) {
             context.pop();
-            context.pushNamed(
-              Routes.resetPasswordRoute,
-              arguments: email,
+            context.pushNamedAndRemoveUntil(
+              Routes.loginRoute,
+              predicate: (Route<dynamic> route) => false,
             );
           },
-          verifyCodeError: (apiErrorModel) {
+          verifyCodeRegisterError: (apiErrorModel) {
             setupErrorState(context, apiErrorModel);
           },
         );

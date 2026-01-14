@@ -1,3 +1,5 @@
+import 'package:afaq_real_estate/core/resources/strings_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,90 +9,127 @@ import '../services_grid.dart';
 class SectionServices {
   final IconData icon;
   final String label;
+  final String dbValue;
+
   final List<SubCategoryModel> subCategories;
 
   SectionServices({
     required this.label,
     required this.icon,
     required this.subCategories,
+    required this.dbValue,
   });
 }
 
-final List<SectionServices> sectionServicesList = [
-  SectionServices(
-    icon: Icons.home,
-    label: 'عقارات للبيع',
-    subCategories: [
-      SubCategoryModel(title: "بيت للبيع", icon: Icons.domain),
-      SubCategoryModel(title: "عماره او ادوار", icon: Icons.home),
-      SubCategoryModel(title: "شقة للبيع", icon: Icons.door_front_door),
-      SubCategoryModel(title: "استراحه", icon: Icons.bungalow),
-      SubCategoryModel(title: "شاليه للبيع", icon: Icons.storefront),
-      SubCategoryModel(title: "مزارع للبيع", icon: Icons.agriculture),
-      SubCategoryModel(title: "ارض للبيع", icon: Icons.landscape),
-      SubCategoryModel(title: "قسيمه سكنيه", icon: Icons.factory),
-      SubCategoryModel(title: "قسيمه استثماريه", icon: Icons.layers),
-      SubCategoryModel(title: "محل للبيع", icon: Icons.store),
-      SubCategoryModel(title: "شركات للبيع", icon: Icons.business),
-    ],
-  ),
-  SectionServices(
-    icon: Icons.vpn_key,
-    label: 'عقارات للإيجار',
-    subCategories: [
-      SubCategoryModel(title: "بيت للإيجار", icon: Icons.domain),
-      SubCategoryModel(title: "دور كامل", icon: Icons.home),
-      SubCategoryModel(
-          title: "شقة مفروشة للإيجار", icon: Icons.door_front_door),
-      SubCategoryModel(title: "شقة للإيجار دوبليكس", icon: Icons.bungalow),
-      SubCategoryModel(title: "محل للإيجار", icon: Icons.storefront),
-      SubCategoryModel(title: "مكتب", icon: Icons.business_center),
-      SubCategoryModel(title: "مخازن", icon: Icons.warehouse),
-      SubCategoryModel(title: "مزارع للإيجار", icon: Icons.agriculture),
-      SubCategoryModel(title: "قسيمه صناعيه", icon: Icons.factory),
-      SubCategoryModel(title: "استراحه للإيجار", icon: Icons.holiday_village),
-      SubCategoryModel(title: "شاليه للإيجار", icon: Icons.store),
-    ],
-  ),
-  SectionServices(
-    icon: Icons.sync,
-    label: 'عقار للبدل',
-    subCategories: [
-      SubCategoryModel(title: "تبادل بيت", icon: Icons.apartment),
-    ],
-  ),
-  SectionServices(
-    icon: Icons.engineering,
-    label: 'مقاولون',
-    subCategories: [
-      SubCategoryModel(title: "خدمات البناء", icon: Icons.construction),
-      SubCategoryModel(title: "خدمات التشطيب", icon: Icons.format_paint),
-    ],
-  ),
-  SectionServices(
-    icon: Icons.business,
-    label: 'مكاتب عقارية',
-    subCategories: [
-      SubCategoryModel(title: "مكاتب مجهزة", icon: Icons.settings_suggest),
-    ],
-  ),
-  SectionServices(
-    icon: Icons.public,
-    label: 'العقارات الدولية',
-    subCategories: [
-      SubCategoryModel(title: "عقار دولي", icon: Icons.language),
-    ],
-  ),
-  SectionServices(
-    icon: Icons.architecture,
-    label: 'مكاتب هندسية',
-    subCategories: [
-      SubCategoryModel(title: "تصميم معماري", icon: Icons.architecture),
-      SubCategoryModel(title: "تصميم هندسي", icon: Icons.layers),
-      SubCategoryModel(title: "إشراف ومتابعة", icon: Icons.remove_red_eye),
-    ],
-  ),
-];
+List<SectionServices> get sectionServicesList => [
+      SectionServices(
+        icon: Icons.home,
+        label: AppStrings.forSale.tr(),
+        dbValue: "عقارات للبيع",
+        subCategories: [
+          SubCategoryModel(
+              title: AppStrings.houseSale.tr(), icon: Icons.domain),
+          SubCategoryModel(
+              title: AppStrings.buildingFloors.tr(), icon: Icons.home),
+          SubCategoryModel(
+              title: AppStrings.aptSale.tr(), icon: Icons.door_front_door),
+          SubCategoryModel(
+              title: AppStrings.restHouse.tr(), icon: Icons.bungalow),
+          SubCategoryModel(
+              title: AppStrings.chaletSale.tr(), icon: Icons.storefront),
+          SubCategoryModel(
+              title: AppStrings.farmSale.tr(), icon: Icons.agriculture),
+          SubCategoryModel(
+              title: AppStrings.landSale.tr(), icon: Icons.landscape),
+          SubCategoryModel(title: AppStrings.resPlot.tr(), icon: Icons.factory),
+          SubCategoryModel(title: AppStrings.invPlot.tr(), icon: Icons.layers),
+          SubCategoryModel(title: AppStrings.shopSale.tr(), icon: Icons.store),
+          SubCategoryModel(
+              title: AppStrings.companySale.tr(), icon: Icons.business),
+        ],
+      ),
+      SectionServices(
+        icon: Icons.vpn_key,
+        label: AppStrings.forRent.tr(),
+        dbValue: "عقارات للإيجار",
+        subCategories: [
+          SubCategoryModel(
+              title: AppStrings.houseRent.tr(), icon: Icons.domain),
+          SubCategoryModel(title: AppStrings.fullFloor.tr(), icon: Icons.home),
+          SubCategoryModel(
+              title: AppStrings.furnishedApt.tr(), icon: Icons.door_front_door),
+          SubCategoryModel(
+              title: AppStrings.duplexApt.tr(), icon: Icons.bungalow),
+          SubCategoryModel(
+              title: AppStrings.shopRent.tr(), icon: Icons.storefront),
+          SubCategoryModel(
+              title: AppStrings.office.tr(), icon: Icons.business_center),
+          SubCategoryModel(
+              title: AppStrings.warehouse.tr(), icon: Icons.warehouse),
+          SubCategoryModel(
+              title: AppStrings.farmRent.tr(), icon: Icons.agriculture),
+          SubCategoryModel(title: AppStrings.indPlot.tr(), icon: Icons.factory),
+          SubCategoryModel(
+              title: AppStrings.restHouseRent.tr(),
+              icon: Icons.holiday_village),
+          SubCategoryModel(
+              title: AppStrings.chaletRent.tr(), icon: Icons.store),
+        ],
+      ),
+      SectionServices(
+        icon: Icons.sync,
+        label: AppStrings.forExchange.tr(),
+        dbValue: "عقار للبدل",
+        subCategories: [
+          SubCategoryModel(
+              title: AppStrings.houseExchange.tr(), icon: Icons.apartment),
+        ],
+      ),
+      SectionServices(
+        icon: Icons.engineering,
+        label: AppStrings.contractors.tr(),
+        dbValue: "مقاولون",
+        subCategories: [
+          SubCategoryModel(
+              title: AppStrings.constServices.tr(), icon: Icons.construction),
+          SubCategoryModel(
+              title: AppStrings.finishingServices.tr(),
+              icon: Icons.format_paint),
+        ],
+      ),
+      SectionServices(
+        icon: Icons.business,
+        label: AppStrings.realEstateOffices.tr(),
+        dbValue: "مكاتب عقارية",
+        subCategories: [
+          SubCategoryModel(
+              title: AppStrings.equippedOffices.tr(),
+              icon: Icons.settings_suggest),
+        ],
+      ),
+      SectionServices(
+        icon: Icons.public,
+        label: AppStrings.internationalProperties.tr(),
+        dbValue: "العقارات الدولية",
+        subCategories: [
+          SubCategoryModel(
+              title: AppStrings.intlProperty.tr(), icon: Icons.language),
+        ],
+      ),
+      SectionServices(
+        icon: Icons.architecture,
+        label: AppStrings.engineeringOffices.tr(),
+        dbValue: "مكاتب هندسية",
+        subCategories: [
+          SubCategoryModel(
+              title: AppStrings.archDesign.tr(), icon: Icons.architecture),
+          SubCategoryModel(
+              title: AppStrings.engDesign.tr(), icon: Icons.layers),
+          SubCategoryModel(
+              title: AppStrings.supervision.tr(), icon: Icons.remove_red_eye),
+        ],
+      ),
+    ];
 
 Widget buildSectionItem(BuildContext context, SectionServices item,
     List<SubCategoryModel> subOptions // أضفنا هذا البارامتر لجعله ديناميكياً

@@ -7,7 +7,8 @@ class ApiConstants {
   static const String forgotPassword = 'forgotPassword';
   static const String verifyCode = 'verify-code-forgot';
   static const String resetPassword = 'resetPassword';
-
+  static const String verifyCodeRegister = 'verify-code';
+  
   // user Ads
   static const String showUserAdvertisement = 'show_all';
 

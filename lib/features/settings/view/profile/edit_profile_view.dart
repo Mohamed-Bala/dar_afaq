@@ -59,11 +59,21 @@ class _EditProfileViewState extends State<EditProfileView> {
             listener: (context, state) {
               state.maybeWhen(
                 updateSuccess: (response) {
+                  final userId = widget.userData?.user?.id;
+                  if (userId != null) {
+                    try {
+                      context.read<UserInfoCubit>().emitGetUserInfo(userId);
+                    } catch (e) {}
+                  }
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(AppStrings.profileUpdatedSuccess.tr()),
+                      backgroundColor: Colors.green,
+                      content: Text(
+                        AppStrings.profileUpdatedSuccess.tr(),
+                      ),
                     ),
                   );
+
                   Navigator.pop(context, true);
                 },
                 updateInfoError: (apiErrorModel) {
@@ -123,10 +133,11 @@ class _EditProfileViewState extends State<EditProfileView> {
                     updateLoading: () =>
                         const Center(child: CircularProgressIndicator()),
                     orElse: () => AppTextButton(
-                      buttonText: AppStrings.saveChanges.tr(),
-                      textStyle: StylesManager.font16White,
-                      onPressed: () => _validateAndSave(context),
-                    ),
+                        buttonText: AppStrings.saveChanges.tr(),
+                        textStyle: StylesManager.font16White,
+                        onPressed: () {
+                          _validateAndSave(context);
+                        }),
                   ),
                 ],
               );

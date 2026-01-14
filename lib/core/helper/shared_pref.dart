@@ -18,10 +18,17 @@ class SharedPrefHelper {
   }
 
   /// Removes all keys and values in the SharedPreferences
-  static clearAllData() async {
-    debugPrint('SharedPrefHelper : all data has been cleared');
+/// مسح شامل لكل بيانات المستخدم عند تسجيل الخروج
+  static Future<void> clearAllData() async {
+    // 1. مسح SharedPreferences (المعرف، الهاتف، الإعدادات)
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.clear();
+
+    // 2. مسح FlutterSecureStorage (التوكن)
+    const flutterSecureStorage = FlutterSecureStorage();
+    await flutterSecureStorage.deleteAll();
+
+    debugPrint('SharedPrefHelper : All user data has been cleared successfully');
   }
 
   /// Saves a [value] with a [key] in the SharedPreferences.
@@ -45,10 +52,6 @@ class SharedPrefHelper {
         return null;
     }
   }
-
-
-
-
 
   /// Gets a bool value from SharedPreferences with given [key].
   static getBool(String key) async {
@@ -93,12 +96,21 @@ class SharedPrefHelper {
     return await flutterSecureStorage.read(key: key) ?? '';
   }
 
-  static Future<void> saveUser(RegisterResponse  userInfo) async {
+  static Future<void> saveUser(RegisterResponse userInfo) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  // تحويل الكائن إلى نص JSON String
-  String userData = jsonEncode(userInfo.registerData); 
-  await sharedPreferences.setString('user_data', userData); // هنا يقبل String فقط
-}
+
+    if (userInfo.registerData != null) {
+      String userData = jsonEncode(userInfo.registerData!.toJson());
+      await sharedPreferences.setString('user_data', userData);
+      debugPrint("User data saved successfully");
+    }
+  }
+
+  static Future<void> clearUserData() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    await sharedPreferences.remove('user_data');
+    debugPrint("SharedPrefHelper : User data cleared");
+  }
 
   /// Removes all keys and values in the FlutterSecureStorage
   static clearAllSecuredData() async {

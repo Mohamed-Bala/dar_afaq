@@ -82,6 +82,7 @@ class RegisterData {
 
   factory RegisterData.fromJson(Map<String, dynamic> json) =>
       _$RegisterDataFromJson(json);
+  Map<String, dynamic> toJson() => _$RegisterDataToJson(this);
 }
 
 // Send Code Response
@@ -165,6 +166,18 @@ class VerifyCodeResponse {
 
   factory VerifyCodeResponse.fromJson(Map<String, dynamic> json) =>
       _$VerifyCodeResponseFromJson(json);
+}
+
+@JsonSerializable()
+class VerifyCodeRegisterResponse {
+  String? message;
+
+  VerifyCodeRegisterResponse({
+    this.message,
+  });
+
+  factory VerifyCodeRegisterResponse.fromJson(Map<String, dynamic> json) =>
+      _$VerifyCodeRegisterResponseFromJson(json);
 }
 
 // Update User Info

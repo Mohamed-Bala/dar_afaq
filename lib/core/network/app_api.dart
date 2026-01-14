@@ -33,7 +33,6 @@ abstract class ApiService {
     @Body() UpdateUserInfoRequest updateUserInfo,
   );
 
-
   @POST(ApiConstants.forgotPassword)
   Future<ForgotPasswordResponse> forgotPassword(
     @Body() ForgotPasswordRequest forgotPasswordRequest,
@@ -42,5 +41,10 @@ abstract class ApiService {
   @POST(ApiConstants.verifyCode)
   Future<VerifyCodeResponse> verifyCode(
     @Body() VerifyCodeRequest verifyCodeRequest,
+  );
+
+  @POST(ApiConstants.verifyCodeRegister)
+  Future<VerifyCodeRegisterResponse> verifyCodeRegister(
+    @Body() VerifyCodeRegisterRequest verifyCodeRegisterRequest,
   );
 }

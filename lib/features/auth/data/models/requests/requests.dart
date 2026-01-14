@@ -1,17 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'requests.g.dart';
 
-// helper: convert phone string to int when possible
-dynamic _serializePhone(dynamic phone) {
-  if (phone == null) return null;
-  if (phone is int) return phone;
-  if (phone is String) {
-    final parsed = int.tryParse(phone);
-    return parsed ?? phone;
-  }
-  return phone;
-}
-
 // Login
 @JsonSerializable()
 class LoginRequest {
@@ -50,7 +39,7 @@ class RegisterRequest {
     return {
       'name': firstName,
       'last_name': lastName,
-      'phone': _serializePhone(phone),
+      'phone': phone,
       'email': email,
       'password': password,
       'password_confirmation': passwordConfirmation,
@@ -124,4 +113,17 @@ class VerifyCodeRequest {
   });
 
   Map<String, dynamic> toJson() => _$VerifyCodeRequestToJson(this);
+}
+
+@JsonSerializable()
+class VerifyCodeRegisterRequest {
+  final int code;
+  final String phone;
+
+  VerifyCodeRegisterRequest({
+    required this.code,
+    required this.phone,
+  });
+
+  Map<String, dynamic> toJson() => _$VerifyCodeRegisterRequestToJson(this);
 }

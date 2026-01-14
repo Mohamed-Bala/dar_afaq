@@ -1,10 +1,12 @@
 // Helper method to build filter dropdowns
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper/spacing.dart';
 import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../logic/home_cubit.dart';
 import '../../logic/home_state.dart';
@@ -17,64 +19,60 @@ class FilterWidget extends StatelessWidget {
     return Container(
       color: Colors.white,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: BlocBuilder<FilterCubit, FilterState>(
-                buildWhen: (previous, current) =>
-                    true, // يضمن تحديث الـ Dropdown
-                builder: (context, state) {
-                  return buildFilterDropdown(
-                    label: 'فئة العقار',
-
-                    value: context.read<FilterCubit>().currentTransactionType,
-                    items: context.read<AddAdvertisementCubit>().propertyTypes,
-                    // .map((service) => service.label)
-                    // .toList(),
-                    onChanged: (value) {
-                      context
-                          .read<FilterCubit>()
-                          .getAdsSearch(transactionType: value);
-                    },
-                  );
-                },
-              ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: BlocBuilder<FilterCubit, FilterState>(
+              buildWhen: (previous, current) => true, // يضمن تحديث الـ Dropdown
+              builder: (context, state) {
+                return buildFilterDropdown(
+                  label: AppStrings.propertyCategory.tr(),
+                  value: context.read<FilterCubit>().currentTransactionType,
+                  items: context.read<AddAdvertisementCubit>().propertyTypes,
+                  onChanged: (value) {
+                    context
+                        .read<FilterCubit>()
+                        .getAdsSearch(transactionType: value);
+                  },
+                );
+              },
             ),
-            horizontalSpace(5),
-            Expanded(
-              child: BlocBuilder<FilterCubit, FilterState>(
-                builder: (context, state) {
-                  return buildFilterDropdown(
-                    label: 'المناطق',
-                    value: context.read<FilterCubit>().currentRegion,
-                    items: context.read<AddAdvertisementCubit>().regions,
-                    onChanged: (value) {
-                      context.read<FilterCubit>().getAdsSearch(region: value);
-                    },
-                  );
-                },
-              ),
+          ),
+          horizontalSpace(5),
+          Expanded(
+            child: BlocBuilder<FilterCubit, FilterState>(
+              builder: (context, state) {
+                return buildFilterDropdown(
+                  label: AppStrings.region.tr(),
+                  value: context.read<FilterCubit>().currentRegion,
+                  items: context.read<AddAdvertisementCubit>().regions,
+                  onChanged: (value) {
+                    context.read<FilterCubit>().getAdsSearch(region: value);
+                  },
+                );
+              },
             ),
-            horizontalSpace(5),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8.r),
-                border: Border.all(color: Colors.grey.shade300),
-              ),
-              child: IconButton(
-                icon: Icon(Icons.refresh,
-                    color: ColorManager.primary, size: 20.sp),
-                onPressed: () {
-                  context.read<FilterCubit>().clearFilters();
-                },
-              ),
+          ),
+          horizontalSpace(5),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8.r),
+              border: Border.all(color: Colors.grey.shade300),
             ),
-          ],
-        ),
+            child: IconButton(
+              icon: Icon(
+                Icons.refresh,
+                color: ColorManager.primary,
+                size: 20.sp,
+              ),
+              onPressed: () {
+                context.read<FilterCubit>().clearFilters();
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -104,8 +102,11 @@ Widget buildFilterDropdown({
         items: items.toSet().map<DropdownMenuItem<String>>((String item) {
           return DropdownMenuItem<String>(
             value: item,
-            child: Text(item,
-                textDirection: TextDirection.rtl, textAlign: TextAlign.right),
+            child: Text(
+              item,
+              //  textDirection: TextDirection.rtl,
+              textAlign: TextAlign.right,
+            ),
           );
         }).toList(),
       ),

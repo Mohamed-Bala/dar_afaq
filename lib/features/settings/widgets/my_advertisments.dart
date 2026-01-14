@@ -1,11 +1,10 @@
+import 'package:afaq_real_estate/core/helper/extensions.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dar_afaq/core/helper/extensions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../../../core/di/di.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/resources/color_manager.dart';
@@ -103,28 +102,91 @@ class ShowUserAdCard extends StatelessWidget {
           verticalSpace(8),
           Row(
             children: [
-              Icon(Icons.location_on, size: 20.sp, color: ColorManager.primary),
+              Row(
+                children: [
+                  Icon(Icons.location_on,
+                      size: 20.sp, color: ColorManager.primary),
+                  Text(
+                    showUserAdvertisementData?.region ?? "",
+                    style: StylesManager.font13Grey.copyWith(fontSize: 14.sp),
+                  ),
+                ],
+              ),
+              Spacer(),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                decoration: BoxDecoration(
+                  color: (showUserAdvertisementData?.status == "1")
+                      ? Colors.green.withOpacity(0.1)
+                      : Colors.orange.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(20.r),
+                  border: Border.all(
+                    color: (showUserAdvertisementData?.status == "1")
+                        ? Colors.green.withOpacity(0.5)
+                        : Colors.orange.withOpacity(0.5),
+                    width: 1,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      (showUserAdvertisementData?.status == "1")
+                          ? Icons.check_circle_rounded
+                          : Icons.access_time_filled_rounded,
+                      size: 14.sp,
+                      color: (showUserAdvertisementData?.status == "1")
+                          ? Colors.green
+                          : Colors.orange,
+                    ),
+                    SizedBox(width: 5.w),
+                    Text(
+                      (showUserAdvertisementData?.status == "1")
+                          ? 'active'.tr()
+                          : 'under_review'.tr(),
+                      style: StylesManager.font13Grey.copyWith(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.bold,
+                        color: (showUserAdvertisementData?.status == "1")
+                            ? Colors.green
+                            : Colors.orange,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              horizontalSpace(7),
               Text(
-                showUserAdvertisementData?.region ?? "",
-                style: StylesManager.font13Grey.copyWith(fontSize: 14.sp),
+                'ad_status'.tr(),
+                style: StylesManager.font13Grey.copyWith(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.bold,
+                  color: ColorManager.primary,
+                ),
               ),
             ],
           ),
           verticalSpace(12),
-          Text(
-            'السعر: ${showUserAdvertisementData?.price ?? ""}',
-            style: StylesManager.font13Grey.copyWith(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold,
-              color: ColorManager.primary,
-            ),
+          Row(
+            children: [
+              Text(
+                "price_with_value".tr(
+                    args: [showUserAdvertisementData?.price?.toString() ?? ""]),
+                style: StylesManager.font13Grey.copyWith(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                  color: ColorManager.primary,
+                ),
+              ),
+              Spacer(),
+            ],
           ),
           verticalSpace(15),
           Row(
             children: [
               Expanded(
                 child: AppTextButton(
-                  buttonText:AppStrings.edit.tr(),
+                  buttonText: AppStrings.edit.tr(),
                   textStyle: StylesManager.font16White,
                   onPressed: () {
                     Navigator.pushNamed(
@@ -153,7 +215,7 @@ class ShowUserAdCard extends StatelessWidget {
                     builder: (context, state) {
                       return Builder(builder: (newcontext) {
                         return AppTextButton(
-                          buttonText:AppStrings.delete.tr(),
+                          buttonText: AppStrings.delete.tr(),
                           backgroundColor: Colors.red.shade400,
                           textStyle: StylesManager.font16White,
                           onPressed: () {
@@ -183,21 +245,21 @@ class ShowUserAdCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           title: Text(
-         AppStrings.confirmDeleteTitle.tr(),
+            AppStrings.confirmDeleteTitle.tr(),
             textAlign: TextAlign.right,
             style: StylesManager.font12GrayRegular.copyWith(
               fontSize: 16.sp,
               color: Colors.black,
             ),
           ),
-          content:  Text(
+          content: Text(
             AppStrings.confirmDeleteMessage.tr(),
             textAlign: TextAlign.right,
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(),
-              child:  Text(AppStrings.cancel.tr()),
+              child: Text(AppStrings.cancel.tr()),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(

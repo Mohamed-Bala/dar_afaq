@@ -1,26 +1,26 @@
-import 'package:dar_afaq/core/helper/extensions.dart';
-import 'package:dar_afaq/core/resources/color_manager.dart';
-import 'package:dar_afaq/features/dashboard/logic/home_cubit.dart';
-import 'package:dar_afaq/features/settings/view/profile/profile_view.dart';
+import 'package:afaq_real_estate/core/helper/extensions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../../core/di/di.dart';
 import '../../../../core/helper/constants.dart';
 import '../../../../core/helper/shared_pref.dart';
+import '../../../../core/helper/spacing.dart';
+import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/langauge_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../../../core/routing/routes.dart';
+import '../../../../core/widgets/app_text_button.dart';
 import '../../../auth/logic/cubit_cubit.dart';
 import '../../../auth/logic/cubit_state.dart';
+import '../../../dashboard/logic/home_cubit.dart';
 import '../my_advertisements/my_advertisements_view.dart';
+import 'profile_view.dart';
 
-// --- Main Widget ---
 class Profile extends StatefulWidget {
   const Profile({
     super.key,
@@ -33,7 +33,6 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    // Crucial for Arabic/RTL: forces the layout to start from the right
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -51,37 +50,49 @@ class _ProfileState extends State<Profile> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    BlocBuilder<UserInfoCubit, UserInfoState>(
-                      builder: (context, state) {
-                        String name = AppStrings.loading.tr();
-                        String email = "";
-                        if (state is UserInfoSuccess) {
-                          name = state.data.user?.name ?? "بدون اسم";
-                          email = state.data.user?.email ?? "";
-                        }
+                    !isLoggedInUser
+                        ? Text(
+                            AppStrings.guest.tr(),
+                            style: StylesManager.font18BlackBold,
+                          )
+                        : BlocBuilder<UserInfoCubit, UserInfoState>(
+                            builder: (context, state) {
+                              String name = AppStrings.loading.tr();
+                              String email = "";
+                              if (state is UserInfoInitial) {
+                                name = AppStrings.loading.tr();
+                                email = "";
+                              } else if (state is UserInfoSuccess) {
+                                name =
+                                    state.data.user?.name ?? AppStrings.noName;
+                                email = state.data.user?.email ?? "";
+                              } else if (state is UserInfoError) {
+                                name = "خطأ في التحميل";
+                              }
 
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(height: 10.h),
-                            Text(
-                              name,
-                              style: StylesManager.font12GrayRegular.copyWith(
-                                color: Colors.black,
-                                fontSize: 14.sp,
-                              ),
-                            ),
-                            Text(
-                              email,
-                              style: StylesManager.font12GrayRegular.copyWith(
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                    // App Logo (Rounded blue icon)
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  verticalSpace(10),
+                                  Text(
+                                    name,
+                                    style: StylesManager.font12GrayRegular
+                                        .copyWith(
+                                      color: Colors.black,
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
+                                  Text(
+                                    email,
+                                    style: StylesManager.font12GrayRegular
+                                        .copyWith(
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
                     IconButton(
                         icon: const Icon(Icons.close, color: Colors.black),
                         onPressed: () {
@@ -92,7 +103,7 @@ class _ProfileState extends State<Profile> {
               ],
             ),
           ),
-          const SizedBox(height: 20),
+          verticalSpace(10),
           const Expanded(
             child: _MenuListView(),
           ),
@@ -133,14 +144,13 @@ class _MenuListViewState extends State<_MenuListView> {
     //await changeAppLanguage();
     if (isArabic) {
       await context.setLocale(
-          const Locale('ar', 'SA')); // تأكد من الرموز المستخدمة في main
+          const Locale('ar', '')); // تأكد من الرموز المستخدمة في main
       await SharedPrefHelper.setData(SharedPrefKeys.langKey, 'ar');
     } else {
-      await context.setLocale(const Locale('en', 'US'));
+      await context.setLocale(const Locale('en', ''));
       await SharedPrefHelper.setData(SharedPrefKeys.langKey, 'en');
     }
     // restart app
-    // ignore: use_build_context_synchronously
     Phoenix.rebirth(context);
   }
 
@@ -149,7 +159,7 @@ class _MenuListViewState extends State<_MenuListView> {
     return ListView(
       children: <Widget>[
         _MenuItem(
-          title: AppStrings.accountManagement.tr(),
+          title: AppStrings.account.tr(),
           isTitle: true,
           onTap: () {},
         ),
@@ -160,27 +170,21 @@ class _MenuListViewState extends State<_MenuListView> {
             final int userId =
                 await SharedPrefHelper.getInt(SharedPrefKeys.userId) ?? 0;
 
-            // 1. استلام القيمة العائدة من الصفحة عند إغلاقها
+            final userInfoCubit = context.read<UserInfoCubit>();
+
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => BlocProvider(
-                  create: (ctx) {
-                    final cubit = di<UserInfoCubit>();
-                    cubit.emitGetUserInfo(userId);
-                    return cubit;
-                  },
+                builder: (_) => BlocProvider.value(
+                  value: userInfoCubit,
                   child: const ProfileView(),
                 ),
               ),
             ).then((didUpdate) {
-              // 2. التحقق مما إذا كان التحديث قد تم بنجاح (راجع Navigator.pop في صفحة التعديل)
               if (didUpdate == true && context.mounted) {
-                // 3. إعادة استدعاء بيانات المستخدم لتحديث الواجهة الحالية
-                context.read<UserInfoCubit>().emitGetUserInfo(userId);
+                userInfoCubit.emitGetUserInfo(userId);
               }
             });
-            ;
           },
         ),
         const Divider(),
@@ -201,7 +205,7 @@ class _MenuListViewState extends State<_MenuListView> {
                   color: Colors.black,
                 ),
               ),
-              const SizedBox(width: 8),
+              horizontalSpace(8),
               Switch(
                 value: _isArabicSelected,
                 onChanged: (bool value) async {
@@ -219,9 +223,7 @@ class _MenuListViewState extends State<_MenuListView> {
                   Phoenix.rebirth(context);
                 },
                 activeColor: ColorManager.primary,
-                // inactiveThumbColor: Colors.grey,
                 inactiveTrackColor: Colors.white,
-
                 activeTrackColor: Colors.black.withOpacity(0.5),
               )
             ],
@@ -245,11 +247,10 @@ class _MenuListViewState extends State<_MenuListView> {
                 ),
               ),
             );
-            //  context.pushNamed(Routes.myAdvertisementsRoute);
           },
         ),
         _MenuItem(
-          title: AppStrings.aboutDarAfaq.tr(),
+          title: AppStrings.aboutUs.tr(),
           icon: Icons.info_outline,
           onTap: () {
             context.pushNamed(Routes.aboutUsRoute);
@@ -262,6 +263,21 @@ class _MenuListViewState extends State<_MenuListView> {
             showDialogWidget(context);
           },
         ),
+        verticalSpace(100),
+        if (!isLoggedInUser)
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: AppTextButton(
+              buttonText: AppStrings.loginNow.tr(),
+              textStyle: StylesManager.font16White,
+              onPressed: () {
+                context.pushNamedAndRemoveUntil(
+                  Routes.loginRoute,
+                  predicate: (route) => false,
+                );
+              },
+            ),
+          ),
       ],
     );
   }
@@ -337,9 +353,8 @@ class _MenuListViewState extends State<_MenuListView> {
                 foregroundColor: Colors.white,
               ),
               onPressed: () async {
-                await SharedPrefHelper.removeData(SharedPrefKeys.userToken);
-                // ignore: use_build_context_synchronously
-                context.pushNamed(Routes.loginRoute);
+                Navigator.of(dialogContext).pop();
+                performLogout(context);
               },
               child: Text(AppStrings.confirm.tr()),
             ),
@@ -350,7 +365,6 @@ class _MenuListViewState extends State<_MenuListView> {
   }
 }
 
-// --- Reusable Menu Item Widget ---
 // ignore: must_be_immutable
 class _MenuItem extends StatelessWidget {
   final String title;
@@ -370,10 +384,13 @@ class _MenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isTitle) {
-      // Custom Row layout for the 'General' title and Language Selector
       return Padding(
-        padding:
-            const EdgeInsets.only(right: 20.0, left: 20.0, top: 10, bottom: 5),
+        padding: EdgeInsets.only(
+          right: 20.0.w,
+          left: 20.0.w,
+          top: 10.h,
+          bottom: 5.h,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -411,7 +428,7 @@ class _MenuItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           if (trailingWidget != null) trailingWidget!,
-          const SizedBox(width: 8),
+          SizedBox(width: 8.w),
           // The directional arrow icon
           const Icon(
             Icons.keyboard_arrow_left_outlined,

@@ -27,7 +27,7 @@ Widget buildActionButton(IconData icon, Color color) {
 }
 
 Future<void> launchWhatsApp(String number) async {
-  final String url = "https://wa.me/+249$number";
+  final String url = "https://wa.me/$number";
 
   if (await canLaunchUrl(Uri.parse(url))) {
     await launchUrl(

@@ -1,6 +1,6 @@
-import 'package:dar_afaq/core/network/api_error_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/network/api_error_model.dart';
 import '../data/models/response/response.dart';
 
 part 'cubit_state.freezed.dart';
@@ -43,6 +43,17 @@ class VerifyCodeState<T> with _$VerifyCodeState<T> {
       VerifyCodeSuccess<T>;
   const factory VerifyCodeState.verifyCodeError(ApiErrorModel apiErrorModel) =
       VerifyCodeError<T>;
+}
+
+// =============================================================================
+@freezed
+class VerifyCodeRegisterState<T> with _$VerifyCodeRegisterState<T> {
+  const factory VerifyCodeRegisterState.verifyCodeRegisterInitial() = _VerifyCodeRegisterInitial<T>;
+  const factory VerifyCodeRegisterState.verifyCodeRegisterLoading() = VerifyCodeRegisterLoading<T>;
+  const factory VerifyCodeRegisterState.verifyCodeRegisterSuccess(T data) =
+     VerifyCodeRegisterSuccess<T>;
+  const factory VerifyCodeRegisterState.verifyCodeRegisterError(ApiErrorModel apiErrorModel) =
+      VerifyCodeRegisterError<T>;
 }
 
 @freezed

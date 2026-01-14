@@ -1,13 +1,15 @@
-import 'package:dar_afaq/core/resources/color_manager.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:shimmer/shimmer.dart';
+import '../../../../core/helper/extensions.dart';
 import '../../../../core/helper/spacing.dart';
-import '../../../../core/resources/constants_manager.dart';
+import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../data/response/response.dart';
+import '../widgets/build_action_button.dart';
 
 class HomeDetailsView extends StatelessWidget {
   final VipAdsDataResponse? vipAdsDataResponse;
@@ -15,191 +17,209 @@ class HomeDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isAr = Localizations.localeOf(context).languageCode == 'ar';
+    final String currency = isAr ? 'د.ك' : 'KWD';
     return Scaffold(
       backgroundColor: Colors.white,
-      // Image goes behind app bar
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite, color: Colors.white),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.share, color: Colors.white),
-            onPressed: () {},
-          ),
-        ],
+        title: Text(vipAdsDataResponse?.type ?? "تفاصيل الإعلان"),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: double.infinity,
-              height: 250.h,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    vipAdsDataResponse?.images ?? "",
+            Hero(
+              tag: 'ad-image-${vipAdsDataResponse?.id}',
+              child: CachedNetworkImage(
+                imageUrl: vipAdsDataResponse?.images ?? '',
+                width: double.infinity,
+                height: 300.h,
+                fit: BoxFit.cover,
+                // --- إضافة الشيمر هنا ---
+                placeholder: (context, url) => Shimmer.fromColors(
+                  baseColor: Colors.grey[300]!,
+                  highlightColor: Colors.grey[100]!,
+                  child: Container(
+                    width: double.infinity,
+                    height: 300.h,
+                    color: Colors.white,
                   ),
-                  fit: BoxFit.cover,
+                ),
+                errorWidget: (context, url, error) => Container(
+                  height: 300.h,
+                  color: Colors.grey[200],
+                  child: Icon(
+                    Icons.broken_image,
+                    size: 50.sp,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
             ),
-            verticalSpace(10),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: EdgeInsets.all(16.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '${vipAdsDataResponse?.price ?? '0'} $currency',
+                        style: StylesManager.font16White.copyWith(
+                          color: ColorManager.primary,
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 12.w,
+                          vertical: 6.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.blue.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        child: Text(
+                          vipAdsDataResponse?.transactionType ?? "",
+                          style: TextStyle(
+                            color: ColorManager.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  verticalSpace(10),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.location_on,
+                        color: ColorManager.primary,
+                        size: 20.sp,
+                      ),
+                      horizontalSpace(8),
+                      Text(
+                        vipAdsDataResponse?.region ?? "الموقع غير محدد",
+                        style: StylesManager.font12GrayRegular.copyWith(
+                          fontSize: 16.sp,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                  verticalSpace(10),
+                  const Divider(),
+                  verticalSpace(10),
                   Text(
-                    vipAdsDataResponse?.type ?? "",
-                    textAlign: TextAlign.right,
-                    style: const TextStyle(
-                      fontSize: 18,
+                    AppStrings.description.tr(),
+                    style: TextStyle(
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   verticalSpace(10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        vipAdsDataResponse?.price ?? "",
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
-                          color: ColorManager.primary,
-                        ),
-                      ),
-                      horizontalSpace(5),
-                      Text(
-                        AppStrings.currency.tr(),
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
-                          color: ColorManager.primary,
-                        ),
-                      ),
-                    ],
-                  ),
-                  verticalSpace(8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: ColorManager.primary,
-                            size: 16,
-                          ),
-                          horizontalSpace(4),
-                          Text(
-                            vipAdsDataResponse?.region ?? " ",
-                            style: const TextStyle(color: Colors.grey),
-                          ),
-                        ],
-                      ),
-                      const Row(
-                        children: [],
-                      ),
-                      Text(
-                        vipAdsDataResponse?.auctionDate ?? "",
-                        style: const TextStyle(color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                  verticalSpace(10),
-                ],
-              ),
-            ),
-            verticalSpace(15),
-            const Divider(thickness: 1, height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  verticalSpace(8),
                   Text(
-                    (vipAdsDataResponse?.description ??
-                            AppStrings.noDescription.tr())
-                        .replaceAll('\n', ' ')
-                        .replaceAll('\r', ' ')
-                        .trim(),
-                    textAlign: TextAlign.right,
-                    maxLines: 5,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.black87,
+                    vipAdsDataResponse?.description ??
+                        "لا يوجد وصف متاح لهذا الإعلان.",
+                    style: TextStyle(
+                      fontSize: 15.sp,
+                      color: Colors.black54,
+                      height: 1.5,
                     ),
-                  )
+                  ),
+                  verticalSpace(30),
+                  Container(
+                    padding: EdgeInsets.all(16.h),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[50],
+                      borderRadius: BorderRadius.circular(12.r),
+                      border: Border.all(color: Colors.grey[200]!),
+                    ),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 15.r,
+                          backgroundImage: AssetImage(
+                            'assets/images/splash_image.jpg',
+                          ),
+                          backgroundColor: ColorManager.primary,
+                          child: const Icon(
+                            Icons.business,
+                            color: Colors.white,
+                          ),
+                        ),
+                        horizontalSpace(12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                AppStrings.appName.tr(),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.sp,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  verticalSpace(70),
                 ],
               ),
             ),
-            verticalSpace(80),
           ],
         ),
       ),
-      bottomSheet: bottomSheetWidget(),
-    );
-  }
-
-  Container bottomSheetWidget() {
-    return Container(
-      color: ColorManager.white,
-      padding: EdgeInsets.symmetric(vertical: 40.0.h, horizontal: 16.0.w),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    horizontalSpace(10),
-                    Text(
-                      AppConstants.companyName,
-                      style: StylesManager.font12GrayRegular.copyWith(
-                        color: ColorManager.black,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ],
+      bottomSheet: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(color: Colors.black12, blurRadius: 10, spreadRadius: 1)
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  AuthGuard.runAction(context, onAuthenticated: () {
+                    makePhoneCall(vipAdsDataResponse?.phone ?? "");
+                  });
+                },
+                icon: const Icon(Icons.phone),
+                label: Text(AppStrings.call.tr()),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorManager.primary,
+                  foregroundColor: Colors.white,
                 ),
-              ],
+              ),
             ),
-          ),
-          horizontalSpace(10),
-          _buildContactButton(Icons.call),
-          horizontalSpace(10),
-          _buildContactButton(Icons.chat_bubble_outline),
-          horizontalSpace(10),
-        ],
+            horizontalSpace(12),
+            Expanded(
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  AuthGuard.runAction(context, onAuthenticated: () {
+                    launchWhatsApp(vipAdsDataResponse?.phone ?? "");
+                  });
+                },
+                icon: const Icon(Icons.chat),
+                label: Text(AppStrings.whatsapp.tr()),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorManager.primary,
+                  foregroundColor: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-    );
-  }
-
-  // Helper Widget for Contact Buttons
-  Widget _buildContactButton(
-    IconData icon,
-  ) {
-    return Container(
-      padding: EdgeInsets.all(8.h),
-      decoration: BoxDecoration(
-        border: Border.all(color: ColorManager.primary),
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      child: Icon(icon, color: ColorManager.primary, size: 20.sp),
     );
   }
 }

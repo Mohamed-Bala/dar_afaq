@@ -98,3 +98,17 @@ Map<String, dynamic> _$VerifyCodeRequestToJson(VerifyCodeRequest instance) =>
     <String, dynamic>{
       'code': instance.code,
     };
+
+VerifyCodeRegisterRequest _$VerifyCodeRegisterRequestFromJson(
+        Map<String, dynamic> json) =>
+    VerifyCodeRegisterRequest(
+      code: (json['code'] as num).toInt(),
+      phone: json['phone'] as String,
+    );
+
+Map<String, dynamic> _$VerifyCodeRegisterRequestToJson(
+        VerifyCodeRegisterRequest instance) =>
+    <String, dynamic>{
+      'code': instance.code,
+      'phone': instance.phone,
+    };
