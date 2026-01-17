@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../../../../core/helper/extensions.dart';
@@ -209,7 +210,10 @@ class AdDetailsView extends StatelessWidget {
                     launchWhatsApp(adsData.phone ?? "");
                   });
                 },
-                icon: const Icon(Icons.chat),
+                icon: FaIcon(
+                  FontAwesomeIcons.whatsapp,
+                  color: ColorManager.white,
+                ),
                 label: Text(AppStrings.whatsapp.tr()),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorManager.primary,

@@ -5,12 +5,15 @@ import '../../features/auth/data/models/response/response.dart';
 import '../../features/auth/ui/view/forgot_password/forgot_password_view.dart';
 import '../../features/auth/ui/view/login/view/login_view.dart';
 import '../../features/auth/ui/view/register/view/register_otp_view.dart';
-import '../../features/calculation_cost/calculation_cost_view.dart';
+import '../../features/our_services/view/budget_calculator_view.dart';
+import '../../features/our_services/view/calculation_cost_view.dart';
 import '../../features/dashboard/data/response/response.dart';
 import '../../features/dashboard/ui/view/advertisements/view/add_ads/add_ads_view.dart';
 import '../../features/dashboard/ui/view/dashboard_view.dart';
 import '../../features/dashboard/ui/view/home_details_view.dart';
 import '../../features/dashboard/ui/widgets/sections/section_services.dart';
+import '../../features/our_services/view/managing_others_properties_view.dart';
+import '../../features/our_services/view/request_official_evaluation_view.dart';
 import '../../features/settings/view/about_us/about_us_view.dart';
 import '../../features/auth/logic/cubit_cubit.dart';
 import '../../features/auth/ui/view/otp/otp_view.dart';
@@ -20,6 +23,7 @@ import '../../features/dashboard/logic/home_cubit.dart';
 import '../../features/dashboard/ui/view/advertisements/widgets/ads/ads_details.dart';
 import '../../features/onboarding/onboarding_view.dart';
 import '../../features/settings/view/my_advertisements/edit_advertisement_view.dart';
+import '../../features/settings/view/privacy_policy/privacy_policy_view.dart';
 import '../../features/settings/view/profile/edit_profile_view.dart';
 import '../../features/settings/view/profile/profile_view.dart';
 import '../../features/settings/view/my_advertisements/my_advertisements_view.dart';
@@ -59,6 +63,13 @@ class Routes {
   static const String auctionDetailsRoute = "/auction-details";
 
   static const String calculationCostRoute = "/calculation-cost";
+
+  static const String rentCalculationRoute = "/rent-calculation";
+
+  static const String officialRequestRoute = "/officiar-Request";
+
+  static const String managingOthersPropertiesRoute = "/managing-others";
+  static const String privacyRoute = "/privacy";
 }
 
 class AppRoute {
@@ -130,8 +141,24 @@ class AppRoute {
             child: AddAdsView(transactionType: sectionItem.dbValue),
           ),
         );
+      case Routes.calculationCostRoute:
+        return MaterialPageRoute(
+          builder: (_) => const CalculationCostView(),
+        );
+      case Routes.officialRequestRoute:
+        return MaterialPageRoute(
+          builder: (_) => const RequestOfficialEvaluationView(),
+        );
+      case Routes.managingOthersPropertiesRoute:
+        return MaterialPageRoute(
+          builder: (_) => const ManagingOthersPropertiesView(),
+        );
+      case Routes.rentCalculationRoute:
+        return MaterialPageRoute(builder: (_) => const BudgetCalculatorView());
       case Routes.homeDetailsRoute:
         return MaterialPageRoute(builder: (_) => const HomeDetailsView());
+         case Routes.privacyRoute:
+        return MaterialPageRoute(builder: (_) => const PrivacyPolicyView());
       case Routes.adsDetailsRoute:
         return MaterialPageRoute(builder: (_) => AdsDetailsScreen());
       case Routes.editProfileRoute:
@@ -142,10 +169,7 @@ class AppRoute {
             child: EditProfileView(userData: args?.userData),
           ),
         );
-      case Routes.calculationCostRoute:
-        return MaterialPageRoute(
-          builder: (_) => const CalculationCostView(),
-        );
+
       case Routes.profileRoute:
         return MaterialPageRoute(builder: (_) => const ProfileView());
       case Routes.aboutUsRoute:

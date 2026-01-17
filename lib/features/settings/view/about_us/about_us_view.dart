@@ -1,10 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/helper/spacing.dart';
 import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/constants_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
+import '../../../dashboard/ui/widgets/build_action_button.dart';
+import 'dart:ui' as ui;
 
 // --- Main About Us Screen Widget ---
 class AboutUsView extends StatelessWidget {
@@ -18,23 +22,15 @@ class AboutUsView extends StatelessWidget {
         title: Text(AppStrings.aboutUs.tr()),
         backgroundColor: Colors.white,
       ),
-      // ListView makes the content scrollable
       body: ListView(
         padding: EdgeInsets.all(20.0.h),
         children: <Widget>[
-          // Section 1: App/Company Identity
           const AppIdentitySection(),
           Divider(height: 30.h, thickness: 1),
-
-          // Section 2: Mission Statement
           const MissionSection(),
           Divider(height: 30.h, thickness: 1),
-
-          // Section 3: Contact Information / Links
           const ContactSection(),
           Divider(height: 20.h, thickness: 1),
-
-          // const LegalInfoSection(),
         ],
       ),
     );
@@ -118,22 +114,58 @@ class ContactSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
-        SectionHeader(title: AppStrings.contactUs.tr()),
+        Directionality(
+          textDirection: context.locale.languageCode == 'ar'
+              ? ui.TextDirection.rtl
+              : ui.TextDirection.ltr,
+          child: SectionHeader(title: AppStrings.contactUs.tr()),
+        ),
         verticalSpace(10),
         ListTile(
           leading: Icon(Icons.email, color: ColorManager.primary),
-          title: const Text('AFAQ@gmail.com'),
-          onTap: () {},
+          title: const Text(AppConstants.companyEmail),
+          onTap: () {
+            launchURL('mailto:afaq98499@gmail.com');
+          },
         ),
         ListTile(
           leading: Icon(Icons.language, color: ColorManager.primary),
-          title: const Text('https://darafaqkw.com/'),
-          onTap: () {},
+          title: const Text(AppConstants.companyWebSite),
+          onTap: () {
+            launchURL('https://darafaqkw.com/');
+          },
         ),
         ListTile(
-          leading: Icon(Icons.call, color: ColorManager.primary),
-          title: const Text('+965 5552 5030'),
-          onTap: () {},
+          leading: Icon(
+            Icons.call,
+            color: ColorManager.primary,
+          ),
+          title: Text(
+            AppConstants.afaqPhoneNumber,
+            textDirection: ui.TextDirection.ltr,
+            textAlign: context.locale.languageCode == 'ar'
+                ? TextAlign.right
+                : TextAlign.left,
+          ),
+          onTap: () {
+            makePhoneCall(AppConstants.afaqPhoneNumber);
+          },
+        ),
+        ListTile(
+          leading: FaIcon(
+            FontAwesomeIcons.whatsapp,
+            color: ColorManager.primary,
+          ),
+          title: Text(
+            AppConstants.afaqPhoneNumber,
+            textDirection: ui.TextDirection.ltr,
+            textAlign: context.locale.languageCode == 'ar'
+                ? TextAlign.right
+                : TextAlign.left,
+          ),
+          onTap: () {
+            launchWhatsApp(AppConstants.afaqPhoneNumber);
+          },
         ),
       ],
     );

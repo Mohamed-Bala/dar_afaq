@@ -117,7 +117,7 @@ class VerifyCodeRequest {
 
 @JsonSerializable()
 class VerifyCodeRegisterRequest {
-  final int code;
+  final String code;
   final String phone;
 
   VerifyCodeRegisterRequest({
@@ -125,5 +125,8 @@ class VerifyCodeRegisterRequest {
     required this.phone,
   });
 
-  Map<String, dynamic> toJson() => _$VerifyCodeRegisterRequestToJson(this);
+  Map<String, dynamic> toJson() => {
+        "code": code.toString(),
+        "phone": phone.toString(),
+      };
 }

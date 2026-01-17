@@ -62,18 +62,7 @@ class _RegisterViewState extends State<RegisterView> {
                     ),
                     verticalSpace(30),
                     const AlreadyHaveAccountText(),
-                    RegisterpBlocListener(
-                      // phone: context
-                      //     .read<RegisterCubit>()
-                      //     .phoneController
-                      //     .text
-                      //     .trim(),
-                      // email: context
-                      //     .read<RegisterCubit>()
-                      //     .emailController
-                      //     .text
-                      //     .trim(),
-                    ),
+                    RegisterpBlocListener(),
                   ],
                 ),
               ],

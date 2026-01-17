@@ -257,6 +257,13 @@ class _MenuListViewState extends State<_MenuListView> {
           },
         ),
         _MenuItem(
+          title: 'privacy'.tr(),
+          icon: Icons.privacy_tip,
+          onTap: () {
+            context.pushNamed(Routes.privacyRoute);
+          },
+        ),
+        _MenuItem(
           title: AppStrings.logout.tr(),
           icon: Icons.lock_outline,
           onTap: () async {

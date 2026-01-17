@@ -14,12 +14,19 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-
+  String countryDialCode = "+249";
   void emitLogin() async {
     emit(const LoginState.loading());
+
+    String enteredPhone = phoneController.text.trim();
+    if (enteredPhone.startsWith('0')) {
+      enteredPhone = enteredPhone.substring(1);
+    }
+    final String cleanCountryCode = countryDialCode.replaceAll('+', '');
+    final String fullPhoneToSend = "$cleanCountryCode$enteredPhone";
     final response = await _loginRepository.login(
       LoginRequest(
-        phone: phoneController.text,
+        phone: fullPhoneToSend,
         password: passwordController.text,
       ),
     );
@@ -65,21 +72,31 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController passwordConfirmationController =
       TextEditingController();
   final formKey = GlobalKey<FormState>();
-
+  String countryDialCode = "+249";
   void emitRegister() async {
     emit(const RegisterState.registerLoading());
     await SharedPrefHelper.clearAllData();
-    final String phoneToSend = phoneController.text.trim();
+    String enteredPhone = phoneController.text.trim();
+    if (enteredPhone.startsWith('0')) {
+      enteredPhone = enteredPhone.substring(1);
+    }
+// حذف علامة الـ + من كود الدولة قبل الدمج
+    final String cleanCountryCode = countryDialCode.replaceAll('+', '');
+
+    // 2. دمج كود الدولة (النظيف) مع الرقم
+    final String fullPhoneToSend = "$cleanCountryCode$enteredPhone";
     final response = await _registerRepository.register(
       RegisterRequest(
         firstName: firstNameController.text,
         lastName: lastNameController.text,
         email: emailController.text,
-        phone: phoneToSend,
+        phone: fullPhoneToSend,
         password: passwordController.text,
         passwordConfirmation: passwordConfirmationController.text,
       ),
     );
+
+    print("الرقم المرسل للـ API هو: $fullPhoneToSend");
 
     response.when(success: (registerResponse) async {
       await SharedPrefHelper.saveUser(registerResponse);
@@ -163,7 +180,7 @@ class VerifyCodeRegisterCubit extends Cubit<VerifyCodeRegisterState> {
       : super(VerifyCodeRegisterState.verifyCodeRegisterInitial());
 
   void emitVerifyCodeRegister(
-      {required int code, required String phone}) async {
+      {required String code, required String phone}) async {
     emit(const VerifyCodeRegisterState.verifyCodeRegisterLoading());
     final response = await _verifyCodeRegistrRepository.verifyCodeRegister(
       VerifyCodeRegisterRequest(

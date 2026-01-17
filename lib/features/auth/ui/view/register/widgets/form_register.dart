@@ -1,13 +1,17 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/helper/app_regex.dart';
 import '../../../../../../core/helper/spacing.dart';
+import '../../../../../../core/resources/color_manager.dart';
 import '../../../../../../core/resources/strings_manager.dart';
 import '../../../../../../core/widgets/app_text_form_field.dart';
 import '../../../../logic/cubit_cubit.dart';
+import 'dart:ui' as ui;
 
 class FormRegister extends StatefulWidget {
   const FormRegister({super.key});
@@ -57,25 +61,61 @@ class _FormRegisterState extends State<FormRegister> {
             controller: context.read<RegisterCubit>().emailController,
           ),
           verticalSpace(18),
-          AppTextFormField(
-            hintText: AppStrings.phoneNumber.tr(),
-            keyboardType: TextInputType.phone,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return AppStrings.validPhoneError.tr();
-              }
-              if (!AppRegex.isPhoneNumberValid(value)) {
-                return AppStrings.validPhoneError.tr();
-              }
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 2,
+                child: Directionality(
+                  textDirection: ui.TextDirection.ltr,
+                  child: Container(
+                    height: 47.h,
+                    decoration: BoxDecoration(
+                      color: ColorManager.lighterGray,
+                      borderRadius: BorderRadius.circular(16.0.r),
+                    ),
+                    child: CountryCodePicker(
+                      initialSelection: '+249',
+                      favorite: const ['+965', '+966', 'KW', 'SA'],
+                      showFlagMain: true,
+                      showFlagDialog: true,
+                      hideMainText: false,
+                      alignLeft: false,
+                      padding: EdgeInsets.zero,
+                      onChanged: ((countryCode) {
+                        context.read<RegisterCubit>().countryDialCode =
+                            countryCode.dialCode ?? "+249";
+                        print("Selected code without plus: $countryCode");
+                      }),
+                    ),
+                  ),
+                ),
+              ),
+              horizontalSpace(5),
+              Expanded(
+                flex: 5,
+                child: AppTextFormField(
+                  hintText: AppStrings.phoneNumber.tr(),
+                  keyboardType: TextInputType.phone,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return AppStrings.validPhoneError.tr();
+                    }
+                    // if (!AppRegex.isPhoneNumberValid(value)) {
+                    //   return AppStrings.validPhoneError.tr();
+                    // }
 
-              return null;
-            },
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(10),
+                    // return null;
+                  },
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    // LengthLimitingTextInputFormatter(10),
+                  ],
+                  controller: context.read<RegisterCubit>().phoneController,
+                ),
+              ),
             ],
-            controller: context.read<RegisterCubit>().phoneController,
           ),
           verticalSpace(18),
           AppTextFormField(

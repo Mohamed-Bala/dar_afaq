@@ -4,11 +4,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../../../core/helper/extensions.dart';
 import '../../../../../../../core/helper/spacing.dart';
 import '../../../../../../../core/resources/color_manager.dart';
-import '../../../../../../../core/resources/constants_manager.dart';
 import '../../../../../data/response/response.dart';
 import '../../../../../logic/home_cubit.dart';
 import '../../../../../logic/home_state.dart';
@@ -74,7 +74,6 @@ class GridHomeCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (vipAdsDataResponse != null) {
-          // نحصل على البيانات المحولة
           final detailData = vipAdsDataResponse!.toVipResponse();
 
           Navigator.push(
@@ -101,9 +100,7 @@ class GridHomeCard extends StatelessWidget {
           ],
         ),
         child: Row(
-          // تغيير لـ Row لأننا في ListView (تصميم عرضي أجمل)
           children: <Widget>[
-            // 1. قسم الصورة
             SizedBox(
               width: 130.w,
               height: double.infinity,
@@ -119,7 +116,6 @@ class GridHomeCard extends StatelessWidget {
                 ),
               ),
             ),
-
             Expanded(
               child: Padding(
                 padding: EdgeInsets.all(10.w),
@@ -131,7 +127,9 @@ class GridHomeCard extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          fontSize: 14.sp, fontWeight: FontWeight.bold),
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     verticalSpace(4),
                     Text(
@@ -144,16 +142,21 @@ class GridHomeCard extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Icon(Icons.location_on,
-                            color: ColorManager.primary, size: 14.sp),
+                        Icon(
+                          Icons.location_on,
+                          color: ColorManager.primary,
+                          size: 14.sp,
+                        ),
                         horizontalSpace(4),
                         Expanded(
                           child: Text(
                             vipAdsDataResponse?.region ?? "",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style:
-                                TextStyle(fontSize: 12.sp, color: Colors.grey),
+                            style: TextStyle(
+                              fontSize: 12.sp,
+                              color: Colors.grey,
+                            ),
                           ),
                         ),
                       ],
@@ -165,7 +168,7 @@ class GridHomeCard extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             AuthGuard.runAction(context, onAuthenticated: () {
-                              makePhoneCall(AppConstants.afaqPhoneNumber);
+                              makePhoneCall(vipAdsDataResponse?.phone ?? "");
                             });
                           },
                           child: buildActionButton(
@@ -175,11 +178,11 @@ class GridHomeCard extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             AuthGuard.runAction(context, onAuthenticated: () {
-                              launchWhatsApp(AppConstants.afaqPhoneNumber);
+                              launchWhatsApp(vipAdsDataResponse?.phone ?? "");
                             });
                           },
                           child: buildActionButton(
-                              Icons.chat_bubble_outline, ColorManager.primary),
+                              FontAwesomeIcons.whatsapp, ColorManager.primary),
                         ),
                       ],
                     ),

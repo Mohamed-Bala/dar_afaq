@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../core/helper/extensions.dart';
 import '../../../../core/helper/spacing.dart';
 import '../../../../core/resources/color_manager.dart';
-import '../../../../core/resources/constants_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../data/response/response.dart';
@@ -42,7 +42,7 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isAr = Localizations.localeOf(context).languageCode == 'ar';
-    final String currency = isAr ? 'ألف د.ك' : 'k KWD';
+    final String currency = isAr ? ' د.ك' : 'KWD';
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -223,7 +223,9 @@ class HomeCard extends StatelessWidget {
                       });
                     },
                     child: buildActionButton(
-                        Icons.chat_bubble_outline, ColorManager.primary),
+                      FontAwesomeIcons.whatsapp,
+                      ColorManager.primary,
+                    ),
                   ),
                 ],
               ),

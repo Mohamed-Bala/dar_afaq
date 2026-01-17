@@ -7,20 +7,22 @@ import '../../../../core/resources/color_manager.dart';
 
 Widget buildActionButton(IconData icon, Color color) {
   // Only the call and chat buttons have the blue circular border in the image
-  bool isPrimaryAction =
-      (icon == Icons.phone || icon == Icons.chat_bubble_outline);
+  // bool isPrimaryAction =
+  //     (icon == Icons.phone || icon == Icons.chat_bubble_outline);
 
   return Container(
     padding: EdgeInsets.all(8.h),
-    decoration: isPrimaryAction
-        ? BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: ColorManager.primary),
-          )
-        : null, // No specific decoration for the share icon
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      border: Border.all(
+        color: ColorManager.grey,
+        width: 1,
+      ),
+    ),
+    // No specific decoration for the share icon
     child: Icon(
       icon,
-      color: isPrimaryAction ? ColorManager.primary : color,
+      color: ColorManager.primary,
       size: 20.sp,
     ),
   );
@@ -45,4 +47,11 @@ Future<void> makePhoneCall(String phoneNumber) async {
     path: phoneNumber,
   );
   await launchUrl(launchUri);
+}
+
+Future<void> launchURL(String urlString) async {
+  final Uri url = Uri.parse(urlString);
+  if (!await launchUrl(url)) {
+    throw Exception('Could not launch $urlString');
+  }
 }

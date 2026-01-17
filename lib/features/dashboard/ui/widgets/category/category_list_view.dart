@@ -15,11 +15,30 @@ class CategoryListView extends StatefulWidget {
 class _CategoryListViewState extends State<CategoryListView> {
   // Menu items for the horizontal scroller (same as previous example)
   final List<Map<String, dynamic>> _menuItems = [
-    {'label': "rent_calc", 'icon': Icons.calculate_outlined, 'index': 0},
-    {'label': "build_calc", 'icon': Icons.construction, 'index': 1},
-    {'label': "valuation", 'icon': Icons.calendar_month, 'index': 2},
-    {'label': "official_request", 'icon': Icons.local_post_office, 'index': 3},
-    {'label': "property_mgmt", 'icon': Icons.apartment, 'index': 4},
+    {
+      'label': "rent_calc",
+      'icon': Icons.calculate_outlined,
+      'index': 0,
+      'route': Routes.calculationCostRoute,
+    },
+    {
+      'label': "build_calc",
+      'icon': Icons.construction,
+      'index': 1,
+      'route': Routes.rentCalculationRoute,
+    },
+    {
+      'label': "valuation",
+      'icon': Icons.calendar_month,
+      'index': 2,
+      'route': Routes.officialRequestRoute,
+    },
+    {
+      'label': "property_mgmt",
+      'icon': Icons.apartment,
+      'index': 3,
+      'route': Routes.managingOthersPropertiesRoute,
+    },
   ];
 
   int _selectedIndex = 0;
@@ -57,7 +76,9 @@ class _CategoryListViewState extends State<CategoryListView> {
                 isSelected: isSelected,
                 onTap: () {
                   AuthGuard.runAction(context, onAuthenticated: () {
-                    context.pushNamed(Routes.calculationCostRoute);
+                    if (category['route'] != null) {
+                      context.pushNamed(category['route'] as String);
+                    }
                   });
 
                   setState(() {

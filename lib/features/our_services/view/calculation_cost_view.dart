@@ -2,12 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/helper/spacing.dart';
-import '../../core/resources/color_manager.dart';
-import '../../core/resources/strings_manager.dart';
-import '../../core/resources/styles_manager.dart';
-import '../../core/widgets/app_text_button.dart';
-import '../../core/widgets/app_text_form_field.dart';
+import '../../../core/helper/spacing.dart';
+import '../../../core/resources/color_manager.dart';
+import '../../../core/resources/strings_manager.dart';
+import '../../../core/resources/styles_manager.dart';
+import '../../../core/widgets/app_text_button.dart';
+import '../../../core/widgets/app_text_form_field.dart';
+import '../widget/build_dropdown.dart';
+import '../widget/build_label.dart';
 
 class CalculationCostView extends StatefulWidget {
   const CalculationCostView({super.key});
@@ -102,7 +104,7 @@ class _CalculationCostViewState extends State<CalculationCostView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildLabel(AppStrings.landArea.tr()),
+              buildLabel(AppStrings.landArea.tr()),
               AppTextFormField(
                 controller: areaController,
                 hintText: AppStrings.example400.tr(),
@@ -115,8 +117,8 @@ class _CalculationCostViewState extends State<CalculationCostView> {
                 },
               ),
               verticalSpace(10),
-              _buildLabel(AppStrings.geographicLocation.tr()),
-              _buildDropdown(
+              buildLabel(AppStrings.geographicLocation.tr()),
+              buildDropdown(
                 hint: AppStrings.locationHint.tr(),
                 items: ["العاصمة - مناطق داخلية", "حولي", "الفروانية"],
                 onChanged: (val) {
@@ -124,8 +126,8 @@ class _CalculationCostViewState extends State<CalculationCostView> {
                 },
               ),
               verticalSpace(10),
-              _buildLabel(AppStrings.plotPosition.tr()),
-              _buildDropdown(
+              buildLabel(AppStrings.plotPosition.tr()),
+              buildDropdown(
                 hint: AppStrings.oneStreet.tr(),
                 items: ["شارع واحد", "زاوية", "بطن وظهر"],
                 onChanged: (val) {
@@ -133,8 +135,8 @@ class _CalculationCostViewState extends State<CalculationCostView> {
                 },
               ),
               verticalSpace(10),
-              _buildLabel(AppStrings.buildingAge.tr()),
-              _buildDropdown(
+              buildLabel(AppStrings.buildingAge.tr()),
+              buildDropdown(
                 hint: AppStrings.newAge.tr(),
                 items: ["جديد (0-3 سنوات)", "متوسط (4-10 سنوات)", "قديم"],
                 onChanged: (val) {
@@ -142,8 +144,8 @@ class _CalculationCostViewState extends State<CalculationCostView> {
                 },
               ),
               verticalSpace(10),
-              _buildLabel(AppStrings.finishingType.tr()),
-              _buildDropdown(
+              buildLabel(AppStrings.finishingType.tr()),
+              buildDropdown(
                 hint: AppStrings.vacantLand.tr(),
                 items: ["أرض فضاء", "سوبر لوكس", "عادي"],
                 onChanged: (val) {
@@ -151,8 +153,8 @@ class _CalculationCostViewState extends State<CalculationCostView> {
                 },
               ),
               verticalSpace(10),
-              _buildLabel(AppStrings.extraFeatures.tr()),
-              _buildDropdown(
+              buildLabel(AppStrings.extraFeatures.tr()),
+              buildDropdown(
                 hint: AppStrings.none.tr(),
                 items: ["لا يوجد", "حمام سباحة", "حديقة"],
                 onChanged: (val) {
@@ -171,83 +173,6 @@ class _CalculationCostViewState extends State<CalculationCostView> {
           ),
         ),
       ),
-    );
-  }
-
-  // Helper Widget for Labels
-  Widget _buildLabel(String text) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
-          color: ColorManager.black,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildDropdown({
-    required String hint,
-    required List<String> items,
-    required Function(String?) onChanged,
-    String? value,
-    String? Function(String?)? validator,
-  }) {
-    return DropdownButtonFormField<String>(
-      value: value,
-      decoration: InputDecoration(
-        isDense: true,
-        contentPadding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 16.h),
-        hintText: hint,
-        hintStyle: StylesManager.font12GrayRegular,
-        fillColor: ColorManager.lighterGray,
-        filled: true,
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: ColorManager.lighterGray,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: ColorManager.primary,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-      ),
-      icon: Icon(Icons.keyboard_arrow_down, color: ColorManager.grey),
-      style: StylesManager.font12GrayRegular,
-      hint: Text(hint, style: StylesManager.font12GrayRegular),
-      items: items.map((String item) {
-        return DropdownMenuItem<String>(
-          value: item,
-          child: Text(item),
-        );
-      }).toList(),
-      onChanged: onChanged,
-      validator: validator ??
-          (value) {
-            return null;
-          },
     );
   }
 }

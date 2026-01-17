@@ -102,7 +102,7 @@ Map<String, dynamic> _$VerifyCodeRequestToJson(VerifyCodeRequest instance) =>
 VerifyCodeRegisterRequest _$VerifyCodeRegisterRequestFromJson(
         Map<String, dynamic> json) =>
     VerifyCodeRegisterRequest(
-      code: (json['code'] as num).toInt(),
+      code: json['code'] as String,
       phone: json['phone'] as String,
     );
 

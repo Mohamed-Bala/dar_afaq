@@ -60,28 +60,13 @@ class _RegisterOtpViewState extends State<RegisterOtpView> {
                       onSubmit: (String verificationCode) {
                         String englishCode =
                             convertArabicToEnglish(verificationCode).trim();
-                        int? parsedCode = int.tryParse(englishCode);
-                        if (parsedCode != null) {
-                          newContext
-                              .read<VerifyCodeRegisterCubit>()
-                              .emitVerifyCodeRegister(
-                                code: parsedCode,
-                                phone: widget.phone,
-                              );
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                "خطأ: الكود المدخل غير صالح",
-                                style: StylesManager.font13Grey
-                                    .copyWith(color: ColorManager.white),
-                              ),
-                              backgroundColor: Colors.red,
-                              behavior: SnackBarBehavior.floating,
-                              duration: const Duration(seconds: 4),
-                            ),
-                          );
-                        }
+                        String? parsedCode = (englishCode);
+                        newContext
+                            .read<VerifyCodeRegisterCubit>()
+                            .emitVerifyCodeRegister(
+                              code: parsedCode,
+                              phone: widget.phone,
+                            );
                       },
                     ),
                   );

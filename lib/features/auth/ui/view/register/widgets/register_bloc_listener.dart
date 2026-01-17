@@ -33,13 +33,17 @@ class RegisterpBlocListener extends StatelessWidget {
           },
           registerSuccess: (registerResponse) {
             final cubit = context.read<RegisterCubit>();
-            final String currentPhone = cubit.phoneController.text.trim();
+            String enteredPhone = cubit.phoneController.text.trim();
+            final String cleanCountryCode =
+                cubit.countryDialCode.replaceAll('+', '');
+            final String fullPhone = "$cleanCountryCode$enteredPhone";
+
             final String currentEmail = cubit.emailController.text.trim();
             context.pop();
             context.pushNamed(
               Routes.otpRegisterRoute,
               arguments: {
-                'phone': currentPhone,
+                'phone': fullPhone,
                 'email': currentEmail,
               },
             );
