@@ -1,13 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/di/di.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/resources/color_manager.dart';
 import '../../../core/resources/strings_manager.dart';
 import '../../../core/resources/styles_manager.dart';
 import '../../../core/widgets/app_text_button.dart';
 import '../../../core/widgets/app_text_form_field.dart';
+import '../../dashboard/logic/home_cubit.dart';
+import '../../dashboard/logic/home_state.dart';
 import '../widget/build_dropdown.dart';
 import '../widget/build_label.dart';
 
@@ -118,12 +122,19 @@ class _CalculationCostViewState extends State<CalculationCostView> {
               ),
               verticalSpace(10),
               buildLabel(AppStrings.geographicLocation.tr()),
-              buildDropdown(
-                hint: AppStrings.locationHint.tr(),
-                items: ["العاصمة - مناطق داخلية", "حولي", "الفروانية"],
-                onChanged: (val) {
-                  setState(() => selectedLocation = val);
-                },
+              BlocProvider(
+                create: (context) => di<AddAdvertisementCubit>(),
+                child:
+                    BlocBuilder<AddAdvertisementCubit, AddAdvertisementState>(
+                  builder: (context, state) {
+                    return buildDropdown(
+                      hint: AppStrings.locationHint.tr(),
+                      items: context.watch<AddAdvertisementCubit>().regions,
+                      onChanged: (val) =>
+                          setState(() => selectedLocation = val),
+                    );
+                  },
+                ),
               ),
               verticalSpace(10),
               buildLabel(AppStrings.plotPosition.tr()),

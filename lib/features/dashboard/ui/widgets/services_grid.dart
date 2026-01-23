@@ -7,10 +7,9 @@ import '../../../../core/resources/color_manager.dart';
 import '../../logic/home_cubit.dart';
 import '../view/advertisements/view/ads_result_section/ads_result_section_view.dart';
 
-// ويدجت منفصل للتحكم في الأنيميشن داخل النافذة
 class AnimatedSheetContent extends StatefulWidget {
   final String title;
-  final List<SubCategoryModel> subCategories; // القائمة التي ستتغير حسب كل قسم
+  final List<SubCategoryModel> subCategories;
 
   const AnimatedSheetContent({
     super.key,
@@ -67,9 +66,8 @@ class _AnimatedSheetContentState extends State<AnimatedSheetContent>
         child: SlideTransition(
           position: _slideAnimation,
           child: Column(
-            mainAxisSize: MainAxisSize.min, // لجعل النافذة تأخذ حجم المحتوى فقط
+            mainAxisSize: MainAxisSize.min,
             children: [
-              // مقبض السحب العلوي (Handle)
               Container(
                 width: 45.w,
                 height: 4.h,
@@ -79,7 +77,6 @@ class _AnimatedSheetContentState extends State<AnimatedSheetContent>
                 ),
               ),
               verticalSpace(20),
-              // عنوان القسم
               Text(
                 widget.title,
                 style: TextStyle(
@@ -89,12 +86,10 @@ class _AnimatedSheetContentState extends State<AnimatedSheetContent>
                 ),
               ),
               verticalSpace(20),
-              // بناء قائمة الخيارات ديناميكياً
               Flexible(
                 child: ListView.separated(
-                  shrinkWrap: true, // مهم جداً داخل الـ BottomSheet
-                  physics:
-                      const NeverScrollableScrollPhysics(), // ليعمل السكرول الخارجي
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
                   itemCount: widget.subCategories.length,
                   separatorBuilder: (context, index) => verticalSpace(12),
                   itemBuilder: (context, index) {
@@ -112,12 +107,14 @@ class _AnimatedSheetContentState extends State<AnimatedSheetContent>
 
   Widget _optionRow(BuildContext context, SubCategoryModel sub) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 5.h),
       decoration: BoxDecoration(
         color: const Color(0xFFF7F8F9),
         borderRadius: BorderRadius.circular(15.r),
         border: Border.all(color: Colors.grey.withOpacity(0.1)),
       ),
       child: ListTile(
+        contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
         onTap: () {
           final FilterSctionCubit cubitInstance =
               BlocProvider.of<FilterSctionCubit>(context);
@@ -140,26 +137,27 @@ class _AnimatedSheetContentState extends State<AnimatedSheetContent>
               ),
             ),
           );
-
-          // if (sub.routeName != null) {
-          //   Navigator.pushNamed(context, sub.routeName!,
-          //       arguments: sub.arguments);
-          // }
         },
         // الأيقونة الجانبية للقسم
-        trailing: Container(
-          padding: EdgeInsets.all(8.r),
-          decoration: BoxDecoration(
-            color: ColorManager.primary.withOpacity(0.1),
-            shape: BoxShape.circle,
+        trailing: SizedBox(
+          width: 40.w,
+          height: 40.w,
+          child: Container(
+            padding: EdgeInsets.all(8.r),
+            decoration: BoxDecoration(
+              color: ColorManager.primary.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(sub.icon, color: ColorManager.primary, size: 18.sp),
           ),
-          child: Icon(sub.icon, color: ColorManager.primary, size: 20.sp),
         ),
         // عنوان القسم الفرعي
         title: Text(
           sub.title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 15.sp,
+            fontSize: 14.sp,
             fontWeight: FontWeight.w600,
             color: Colors.black87,
           ),
@@ -202,7 +200,7 @@ void showAnimatedOptions(
         value: filterCubit,
         child: AnimatedSheetContent(
           title: title,
-          subCategories: options, // نمرر القائمة المستلمة هنا
+          subCategories: options,
         ),
       );
     },

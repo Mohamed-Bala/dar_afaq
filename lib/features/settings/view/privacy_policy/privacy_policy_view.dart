@@ -34,6 +34,8 @@ class PrivacyPolicyView extends StatelessWidget {
             _buildContentItem('section_1_sub1'.tr(), 'section_1_body1'.tr()),
             _buildContentItem('section_1_sub2'.tr(), 'section_1_body2'.tr()),
 
+            _buildContentItem('section_1_sub3'.tr(), 'section_1_body3'.tr()),
+
             // القسم الثاني: شروط الاستخدام
             _buildSectionTitle('section_2_title'.tr()),
             _buildContentItem('section_2_sub1'.tr(), 'section_2_body1'.tr()),

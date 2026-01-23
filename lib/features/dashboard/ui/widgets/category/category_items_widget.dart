@@ -22,34 +22,55 @@ class CircularIconMenuItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+        padding: EdgeInsets.symmetric(horizontal: 4.0.w),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              width: 50.w,
-              height: 50.h,
+              constraints: BoxConstraints(
+                maxWidth: 70.w,
+                maxHeight: 70.w,
+              ),
+              width: 55.w,
+              height: 55.h,
               decoration: BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: isSelected ? ColorManager.primary : Colors.grey[300]!,
-                  width: isSelected ? 3.0.w : 1.0.w,
+                  width: isSelected ? 2.5.w : 1.0.w,
                 ),
+                boxShadow: [
+                  if (isSelected)
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 4,
+                      spreadRadius: 1,
+                    )
+                ],
               ),
-              child: Icon(
-                icon,
-                color: isSelected ? ColorManager.primary : Colors.grey[700],
-                size: 30.sp,
+              child: Center(
+                child: Icon(
+                  icon,
+                  color: isSelected ? ColorManager.primary : Colors.grey[700],
+                  size: 28.sp,
+                ),
               ),
             ),
             verticalSpace(8),
-            Text(
-              label,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: ColorManager.black,
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                fontSize: 14.sp,
+            SizedBox(
+              width: 80.w,
+              child: Text(
+                label,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: ColorManager.black,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                  fontSize: 12.sp,
+                  height: 1.2,
+                ),
               ),
             ),
           ],

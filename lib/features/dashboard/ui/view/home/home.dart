@@ -36,35 +36,28 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8),
-              child: BlocProvider(
-                create: (context) => di<FilterSctionCubit>(),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    SizedBox(
-                      height: 100.h,
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) =>
-                            SizedBox(width: 10.w),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: sectionServicesList.length,
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        itemBuilder: (context, index) {
-                          final sectionItem = sectionServicesList[index];
-                          return buildSectionItem(
-                            context,
-                            sectionServicesList[index],
-                            sectionItem.subCategories,
-                          );
-                        },
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.h),
+            child: BlocProvider(
+              create: (context) => di<FilterSctionCubit>(),
+              child: SizedBox(
+                height: 100.h,
+                child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  scrollDirection: Axis.horizontal,
+                  separatorBuilder: (context, index) => SizedBox(width: 12.w),
+                  itemCount: sectionServicesList.length,
+                  itemBuilder: (context, index) {
+                    final sectionItem = sectionServicesList[index];
+                    return Center(
+                      child: buildSectionItem(
+                        context,
+                        sectionServicesList[index],
+                        sectionItem.subCategories,
                       ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
             ),

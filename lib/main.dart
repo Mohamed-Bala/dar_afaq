@@ -42,7 +42,6 @@ class MyApp extends StatelessWidget {
           title: 'Afaq Real Estate',
           debugShowCheckedModeBanner: false,
           locale: context.locale,
-
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: ColorManager.primary),
             useMaterial3: true,
@@ -63,17 +62,16 @@ Future<void> checkIfLoggedInUser() async {
   String? userToken =
       await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
 
-  String userPhone = await SharedPrefHelper.getString(SharedPrefKeys.userPhone);
+  //String userPhone = await SharedPrefHelper.getString(SharedPrefKeys.userPhone);
 
   await SharedPrefHelper.getSecuredString(SharedPrefKeys.userId);
-  debugPrint("Token: $userToken");
-  debugPrint("Phone: $userPhone");
+
   if (!userToken.isNullOrEmpty()) {
     isLoggedInUser = true;
     DioFactory.setTokenIntoHeaderAfterLogin(userToken!);
 
-    int? userId = await SharedPrefHelper.getInt(SharedPrefKeys.userId);
-    debugPrint("User is logged in with ID: $userId");
+    // int? userId = await SharedPrefHelper.getInt(SharedPrefKeys.userId);
+    // debugPrint("User is logged in with ID: $userId");
   } else {
     isLoggedInUser = false;
   }

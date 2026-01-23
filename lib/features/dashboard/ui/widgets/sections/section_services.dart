@@ -132,41 +132,44 @@ List<SectionServices> get sectionServicesList => [
     ];
 
 Widget buildSectionItem(BuildContext context, SectionServices item,
-    List<SubCategoryModel> subOptions // أضفنا هذا البارامتر لجعله ديناميكياً
-    ) {
+    List<SubCategoryModel> subOptions) {
   return Material(
     color: Colors.white,
     elevation: 4,
     borderRadius: BorderRadius.circular(15.0.r),
     child: InkWell(
-      // أفضل من GestureDetector لإعطاء تأثير النقر (Ripple Effect)
       borderRadius: BorderRadius.circular(15.0.r),
       onTap: () {
-        // نمرر العنوان والخيارات الخاصة بهذا القسم تحديداً
         showAnimatedOptions(context, item.label, subOptions);
       },
       child: Container(
         width: 90.w,
-        height: 75.h,
+        height: 85.h,
         padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Icon(
               item.icon,
-              size: 25.sp,
+              size: 24.sp,
               color: ColorManager.primary,
             ),
-            SizedBox(height: 8.h),
-            Text(
-              item.label,
-              textAlign: TextAlign.center,
-              maxLines: 2, // لمنع تمدد النص وتخريب التصميم
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: ColorManager.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 12.sp, // صغرنا الخط قليلاً ليتناسب مع العرض
+            SizedBox(height: 4.h),
+            Expanded(
+              child: Center(
+                child: Text(
+                  item.label,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: ColorManager.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12.sp,
+                    height: 1.1,
+                  ),
+                ),
               ),
             ),
           ],
