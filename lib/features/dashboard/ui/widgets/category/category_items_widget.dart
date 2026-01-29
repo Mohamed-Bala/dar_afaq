@@ -58,8 +58,10 @@ class CircularIconMenuItem extends StatelessWidget {
               ),
             ),
             verticalSpace(8),
-            SizedBox(
-              width: 80.w,
+            /// I replaced sized box with expanded to fix overflow issue in ipad
+            Expanded(
+              // width: 80.w,
+
               child: Text(
                 label,
                 textAlign: TextAlign.center,

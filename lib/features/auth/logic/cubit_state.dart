@@ -14,6 +14,14 @@ class LoginState<T> with _$LoginState<T> {
 }
 
 @freezed
+class DeleteUserAccountState<T> with _$DeleteUserAccountState<T> {
+  const factory DeleteUserAccountState.initial() = DeleteUserAccountInitial<T>;
+  const factory DeleteUserAccountState.loading() = DeleteUserAccountLoading<T>;
+  const factory DeleteUserAccountState.success(T data) = DeleteUserAccountSuccess<T>;
+  const factory DeleteUserAccountState.error(ApiErrorModel apiErrorModel) = DeleteUserAccountError;
+}
+
+@freezed
 class RegisterState<T> with _$RegisterState<T> {
   const factory RegisterState.registerInitial() = RegisterInitial<T>;
   const factory RegisterState.registerLoading() = RegisterLoading<T>;

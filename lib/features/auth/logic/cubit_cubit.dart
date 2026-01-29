@@ -4,17 +4,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/helper/constants.dart';
 import '../../../core/helper/shared_pref.dart';
 import '../../../core/network/dio_factory.dart';
+import '../../settings/data/model/DeleteAccountRequest.dart';
 import '../data/models/requests/requests.dart';
 import '../data/repository/repository.dart';
 import 'cubit_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepository _loginRepository;
+
   LoginCubit(this._loginRepository) : super(const LoginState.initial());
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   String countryDialCode = "+249";
+
   void emitLogin() async {
     emit(const LoginState.loading());
 
@@ -58,6 +61,33 @@ class LoginCubit extends Cubit<LoginState> {
   }
 }
 
+class DeleteUserAccountCubit extends Cubit<DeleteUserAccountState> {
+  final DeleteUserAccountRepository _repository;
+
+  DeleteUserAccountCubit(this._repository)
+      : super(const DeleteUserAccountState.initial());
+
+  void deleteAccount(String userId) async {
+    emit(const DeleteUserAccountState.loading());
+
+    final response = await _repository.deleteAccount(
+      DeleteAccountRequest(userId: userId),
+    );
+
+    response.when(success: (deleteResponse) async {
+      emit(DeleteUserAccountState.success(deleteResponse));
+    }, failure: (apiErrorModel) {
+      emit(DeleteUserAccountState.error(apiErrorModel));
+    });
+  }
+
+  Future<void> deleteUserToken() async {
+    await SharedPrefHelper.removeData(SharedPrefKeys.userToken);
+    isLoggedInUser = true;
+    debugPrint("Token deleted  successfully.");
+  }
+}
+
 //==============================================================================
 class RegisterCubit extends Cubit<RegisterState> {
   final RegisterRepository _registerRepository;
@@ -73,6 +103,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       TextEditingController();
   final formKey = GlobalKey<FormState>();
   String countryDialCode = "+249";
+
   void emitRegister() async {
     emit(const RegisterState.registerLoading());
     await SharedPrefHelper.clearAllData();
@@ -279,6 +310,7 @@ class UpdateUserInfoCubit extends Cubit<UpdateUserInfoState> {
 
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final ResetPasswordRepository resetPasswordRepository;
+
   ResetPasswordCubit(this.resetPasswordRepository)
       : super(const ResetPasswordState.resetPasswordInitial());
   TextEditingController passwordController = TextEditingController();

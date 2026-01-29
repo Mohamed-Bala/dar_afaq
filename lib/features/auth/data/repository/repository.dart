@@ -1,6 +1,9 @@
+import 'package:afaq_real_estate/features/settings/data/model/DeleteAccountRequest.dart';
+
 import '../../../../core/network/api_result.dart';
 import '../../../../core/network/app_api.dart';
 import '../../../../core/network/error_handler.dart';
+import '../../../settings/data/model/response/delete_account_response.dart';
 import '../models/requests/requests.dart';
 import '../models/response/response.dart';
 
@@ -152,16 +155,15 @@ class VerifyCodeRegistrRepository {
   }
 }
 
-//====== DeleteAccountRepository ===============================================
-class DeleteAccountRepository {
+
+class DeleteUserAccountRepository {
   final ApiService _apiService;
 
-  DeleteAccountRepository(this._apiService);
+  DeleteUserAccountRepository(this._apiService);
 
-  Future<ApiResult<DeleteAccounResponse>> deleteAccount(
-      DeleteAccountRequest deleteAccountRequest) async {
+  Future<ApiResult<DeleteAccountResponse>> deleteAccount(DeleteAccountRequest request) async {
     try {
-      final response = await _apiService.deleteAccount(deleteAccountRequest);
+      final response = await _apiService.deleteAccount(request);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));

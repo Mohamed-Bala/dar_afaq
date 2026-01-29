@@ -28,6 +28,13 @@ class AppStrings {
   static const registerButton = "register_button";
   static const alreadyHaveAccount = "already_have_account";
   static const loginNow = "login_now";
+  static const deleteAccount = "delete_account";
+  static const deleteAccountNotAllowedTitle =
+      "delete_account_not_allowed_title";
+
+  static const deleteAccountNotAllowedMessage =
+      "delete_account_not_allowed_message";
+  static const ok = "ok";
   static const firstName = "first_name";
   static const lastName = "last_name";
   static const email = "email";

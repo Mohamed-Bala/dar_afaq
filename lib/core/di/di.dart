@@ -21,6 +21,10 @@ Future<void> init() async {
   di.registerLazySingleton<LoginRepository>(() => LoginRepository(di()));
   di.registerFactory<LoginCubit>(() => LoginCubit(di()));
 
+  // delete user account
+  di.registerLazySingleton<DeleteUserAccountRepository>(() => DeleteUserAccountRepository(di()));
+  di.registerFactory<DeleteUserAccountCubit>(() => DeleteUserAccountCubit(di()));
+
   // signup
   di.registerLazySingleton<RegisterRepository>(() => RegisterRepository(di()));
   di.registerFactory<RegisterCubit>(() => RegisterCubit(di()));
