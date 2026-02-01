@@ -306,3 +306,27 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     });
   }
 }
+
+class DeleteAccountCubit extends Cubit<DeleteAccountState> {
+  final DeleteAccountRepository _deleteAccountRepository;
+
+  DeleteAccountCubit(this._deleteAccountRepository)
+      : super(const DeleteAccountState.deleteAccountInitial());
+
+  void emitDeleteAccount() async {
+    emit(const DeleteAccountState.deleteAccountLoading());
+    final userId = await SharedPrefHelper.getInt(SharedPrefKeys.userId);
+
+    final response = await _deleteAccountRepository
+        .deleteAccount(DeleteAccountRequest(userId: userId));
+
+    response.when(
+      success: (deleteResponse) {
+        emit(DeleteAccountState.deleteAccountSuccess(deleteResponse));
+      },
+      failure: (apiErrorModel) {
+        emit(DeleteAccountState.deleteAccountError(apiErrorModel));
+      },
+    );
+  }
+}

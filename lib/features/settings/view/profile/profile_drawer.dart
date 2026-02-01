@@ -33,81 +33,115 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        toolbarHeight: 0,
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    !isLoggedInUser
-                        ? Text(
-                            AppStrings.guest.tr(),
-                            style: StylesManager.font18BlackBold,
-                          )
-                        : BlocBuilder<UserInfoCubit, UserInfoState>(
-                            builder: (context, state) {
-                              String name = AppStrings.loading.tr();
-                              String email = "";
-                              if (state is UserInfoInitial) {
-                                name = AppStrings.loading.tr();
-                                email = "";
-                              } else if (state is UserInfoSuccess) {
-                                name =
-                                    state.data.user?.name ?? AppStrings.noName;
-                                email = state.data.user?.email ?? "";
-                              } else if (state is UserInfoError) {
-                                name = "خطأ في التحميل";
-                              }
+    return BlocProvider(
+      create: (context) => di<DeleteAccountCubit>(),
+      child: BlocListener<DeleteAccountCubit, DeleteAccountState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            deleteAccountLoading: () => showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) =>
+                  const Center(child: CircularProgressIndicator()),
+            ),
+            deleteAccountSuccess: (response) async {
+              Navigator.pop(context); // إغلاق لودينج
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('account_deleted_successfully'.tr())),
+              );
 
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  verticalSpace(10),
-                                  Text(
-                                    name,
-                                    style: StylesManager.font12GrayRegular
-                                        .copyWith(
-                                      color: Colors.black,
-                                      fontSize: 14.sp,
-                                    ),
-                                  ),
-                                  Text(
-                                    email,
-                                    style: StylesManager.font12GrayRegular
-                                        .copyWith(
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                    IconButton(
-                        icon: const Icon(Icons.close, color: Colors.black),
-                        onPressed: () {
-                          context.pop();
-                        }),
+              // تنفيذ طلبك بمسح البيانات عند الخروج
+              await SharedPrefHelper.clearAllData();
+              if (!context.mounted) return;
+              Navigator.pushNamedAndRemoveUntil(
+                  context, Routes.loginRoute, (route) => false);
+            },
+            deleteAccountError: (error) {
+              Navigator.pop(context); // إغلاق لودينج
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(error.message ?? "Error")),
+              );
+            },
+          );
+        },
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            toolbarHeight: 0,
+          ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        !isLoggedInUser
+                            ? Text(
+                                AppStrings.guest.tr(),
+                                style: StylesManager.font18BlackBold,
+                              )
+                            : BlocBuilder<UserInfoCubit, UserInfoState>(
+                                builder: (context, state) {
+                                  String name = AppStrings.loading.tr();
+                                  String email = "";
+                                  if (state is UserInfoInitial) {
+                                    name = AppStrings.loading.tr();
+                                    email = "";
+                                  } else if (state is UserInfoSuccess) {
+                                    name = state.data.user?.name ??
+                                        AppStrings.noName;
+                                    email = state.data.user?.email ?? "";
+                                  } else if (state is UserInfoError) {
+                                    name = "خطأ في التحميل";
+                                  }
+
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      verticalSpace(10),
+                                      Text(
+                                        name,
+                                        style: StylesManager.font12GrayRegular
+                                            .copyWith(
+                                          color: Colors.black,
+                                          fontSize: 14.sp,
+                                        ),
+                                      ),
+                                      Text(
+                                        email,
+                                        style: StylesManager.font12GrayRegular
+                                            .copyWith(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
+                        IconButton(
+                            icon: const Icon(Icons.close, color: Colors.black),
+                            onPressed: () {
+                              context.pop();
+                            }),
+                      ],
+                    ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              verticalSpace(10),
+              const Expanded(
+                child: _MenuListView(),
+              ),
+            ],
           ),
-          verticalSpace(10),
-          const Expanded(
-            child: _MenuListView(),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -249,6 +283,16 @@ class _MenuListViewState extends State<_MenuListView> {
             );
           },
         ),
+        Material(
+          color: Colors.transparent,
+          child: _MenuItem(
+            title: 'delete_account'.tr(),
+            icon: Icons.delete_outline,
+            onTap: () {
+              _showConfirmDeleteDialog(context);
+            },
+          ),
+        ),
         _MenuItem(
           title: AppStrings.aboutUs.tr(),
           icon: Icons.info_outline,
@@ -258,7 +302,7 @@ class _MenuListViewState extends State<_MenuListView> {
         ),
         _MenuItem(
           title: 'privacy'.tr(),
-          icon: Icons.privacy_tip,
+          icon: Icons.privacy_tip_outlined,
           onTap: () {
             context.pushNamed(Routes.privacyRoute);
           },
@@ -286,6 +330,32 @@ class _MenuListViewState extends State<_MenuListView> {
             ),
           ),
       ],
+    );
+  }
+
+  void _showConfirmDeleteDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text('delete_account'.tr()),
+        content: Text('delete_account_confirmation'.tr()),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: Text('cancel'.tr()),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(dialogContext);
+              context.read<DeleteAccountCubit>().emitDeleteAccount();
+            },
+            child: Text(
+              'delete'.tr(),
+              style: const TextStyle(color: Colors.red),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

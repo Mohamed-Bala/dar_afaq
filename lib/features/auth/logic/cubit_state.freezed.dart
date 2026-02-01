@@ -4921,3 +4921,602 @@ abstract class ResetPasswordError<T> implements ResetPasswordState<T> {
   _$$ResetPasswordErrorImplCopyWith<T, _$ResetPasswordErrorImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$DeleteAccountState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteAccountLoading,
+    required TResult Function(dynamic response) deleteAccountSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteAccountLoading,
+    TResult? Function(dynamic response)? deleteAccountSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteAccountLoading,
+    TResult Function(dynamic response)? deleteAccountSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
+    required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
+    required TResult Function(DeleteAccountError value) deleteAccountError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult? Function(DeleteAccountError value)? deleteAccountError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult Function(DeleteAccountError value)? deleteAccountError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeleteAccountStateCopyWith<$Res> {
+  factory $DeleteAccountStateCopyWith(
+          DeleteAccountState value, $Res Function(DeleteAccountState) then) =
+      _$DeleteAccountStateCopyWithImpl<$Res, DeleteAccountState>;
+}
+
+/// @nodoc
+class _$DeleteAccountStateCopyWithImpl<$Res, $Val extends DeleteAccountState>
+    implements $DeleteAccountStateCopyWith<$Res> {
+  _$DeleteAccountStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$DeleteAccountInitialImplCopyWith<$Res> {
+  factory _$$DeleteAccountInitialImplCopyWith(_$DeleteAccountInitialImpl value,
+          $Res Function(_$DeleteAccountInitialImpl) then) =
+      __$$DeleteAccountInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteAccountInitialImplCopyWithImpl<$Res>
+    extends _$DeleteAccountStateCopyWithImpl<$Res, _$DeleteAccountInitialImpl>
+    implements _$$DeleteAccountInitialImplCopyWith<$Res> {
+  __$$DeleteAccountInitialImplCopyWithImpl(_$DeleteAccountInitialImpl _value,
+      $Res Function(_$DeleteAccountInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteAccountInitialImpl implements _DeleteAccountInitial {
+  const _$DeleteAccountInitialImpl();
+
+  @override
+  String toString() {
+    return 'DeleteAccountState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAccountInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteAccountLoading,
+    required TResult Function(dynamic response) deleteAccountSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteAccountLoading,
+    TResult? Function(dynamic response)? deleteAccountSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteAccountLoading,
+    TResult Function(dynamic response)? deleteAccountSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
+    required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
+    required TResult Function(DeleteAccountError value) deleteAccountError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult? Function(DeleteAccountError value)? deleteAccountError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult Function(DeleteAccountError value)? deleteAccountError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteAccountInitial implements DeleteAccountState {
+  const factory _DeleteAccountInitial() = _$DeleteAccountInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteAccountLoadingImplCopyWith<$Res> {
+  factory _$$DeleteAccountLoadingImplCopyWith(_$DeleteAccountLoadingImpl value,
+          $Res Function(_$DeleteAccountLoadingImpl) then) =
+      __$$DeleteAccountLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteAccountLoadingImplCopyWithImpl<$Res>
+    extends _$DeleteAccountStateCopyWithImpl<$Res, _$DeleteAccountLoadingImpl>
+    implements _$$DeleteAccountLoadingImplCopyWith<$Res> {
+  __$$DeleteAccountLoadingImplCopyWithImpl(_$DeleteAccountLoadingImpl _value,
+      $Res Function(_$DeleteAccountLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteAccountLoadingImpl implements DeleteAccountLoading {
+  const _$DeleteAccountLoadingImpl();
+
+  @override
+  String toString() {
+    return 'DeleteAccountState.deleteAccountLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAccountLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteAccountLoading,
+    required TResult Function(dynamic response) deleteAccountSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
+  }) {
+    return deleteAccountLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteAccountLoading,
+    TResult? Function(dynamic response)? deleteAccountSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+  }) {
+    return deleteAccountLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteAccountLoading,
+    TResult Function(dynamic response)? deleteAccountSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountLoading != null) {
+      return deleteAccountLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
+    required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
+    required TResult Function(DeleteAccountError value) deleteAccountError,
+  }) {
+    return deleteAccountLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult? Function(DeleteAccountError value)? deleteAccountError,
+  }) {
+    return deleteAccountLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult Function(DeleteAccountError value)? deleteAccountError,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountLoading != null) {
+      return deleteAccountLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteAccountLoading implements DeleteAccountState {
+  const factory DeleteAccountLoading() = _$DeleteAccountLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteAccountSuccessImplCopyWith<$Res> {
+  factory _$$DeleteAccountSuccessImplCopyWith(_$DeleteAccountSuccessImpl value,
+          $Res Function(_$DeleteAccountSuccessImpl) then) =
+      __$$DeleteAccountSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({dynamic response});
+}
+
+/// @nodoc
+class __$$DeleteAccountSuccessImplCopyWithImpl<$Res>
+    extends _$DeleteAccountStateCopyWithImpl<$Res, _$DeleteAccountSuccessImpl>
+    implements _$$DeleteAccountSuccessImplCopyWith<$Res> {
+  __$$DeleteAccountSuccessImplCopyWithImpl(_$DeleteAccountSuccessImpl _value,
+      $Res Function(_$DeleteAccountSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? response = freezed,
+  }) {
+    return _then(_$DeleteAccountSuccessImpl(
+      freezed == response
+          ? _value.response
+          : response // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteAccountSuccessImpl implements DeleteAccountSuccess {
+  const _$DeleteAccountSuccessImpl(this.response);
+
+  @override
+  final dynamic response;
+
+  @override
+  String toString() {
+    return 'DeleteAccountState.deleteAccountSuccess(response: $response)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAccountSuccessImpl &&
+            const DeepCollectionEquality().equals(other.response, response));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(response));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteAccountSuccessImplCopyWith<_$DeleteAccountSuccessImpl>
+      get copyWith =>
+          __$$DeleteAccountSuccessImplCopyWithImpl<_$DeleteAccountSuccessImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteAccountLoading,
+    required TResult Function(dynamic response) deleteAccountSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
+  }) {
+    return deleteAccountSuccess(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteAccountLoading,
+    TResult? Function(dynamic response)? deleteAccountSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+  }) {
+    return deleteAccountSuccess?.call(response);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteAccountLoading,
+    TResult Function(dynamic response)? deleteAccountSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountSuccess != null) {
+      return deleteAccountSuccess(response);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
+    required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
+    required TResult Function(DeleteAccountError value) deleteAccountError,
+  }) {
+    return deleteAccountSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult? Function(DeleteAccountError value)? deleteAccountError,
+  }) {
+    return deleteAccountSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult Function(DeleteAccountError value)? deleteAccountError,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountSuccess != null) {
+      return deleteAccountSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteAccountSuccess implements DeleteAccountState {
+  const factory DeleteAccountSuccess(final dynamic response) =
+      _$DeleteAccountSuccessImpl;
+
+  dynamic get response;
+  @JsonKey(ignore: true)
+  _$$DeleteAccountSuccessImplCopyWith<_$DeleteAccountSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteAccountErrorImplCopyWith<$Res> {
+  factory _$$DeleteAccountErrorImplCopyWith(_$DeleteAccountErrorImpl value,
+          $Res Function(_$DeleteAccountErrorImpl) then) =
+      __$$DeleteAccountErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$DeleteAccountErrorImplCopyWithImpl<$Res>
+    extends _$DeleteAccountStateCopyWithImpl<$Res, _$DeleteAccountErrorImpl>
+    implements _$$DeleteAccountErrorImplCopyWith<$Res> {
+  __$$DeleteAccountErrorImplCopyWithImpl(_$DeleteAccountErrorImpl _value,
+      $Res Function(_$DeleteAccountErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$DeleteAccountErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteAccountErrorImpl implements DeleteAccountError {
+  const _$DeleteAccountErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'DeleteAccountState.deleteAccountError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAccountErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteAccountErrorImplCopyWith<_$DeleteAccountErrorImpl> get copyWith =>
+      __$$DeleteAccountErrorImplCopyWithImpl<_$DeleteAccountErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() deleteAccountLoading,
+    required TResult Function(dynamic response) deleteAccountSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
+  }) {
+    return deleteAccountError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? deleteAccountLoading,
+    TResult? Function(dynamic response)? deleteAccountSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+  }) {
+    return deleteAccountError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? deleteAccountLoading,
+    TResult Function(dynamic response)? deleteAccountSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountError != null) {
+      return deleteAccountError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
+    required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
+    required TResult Function(DeleteAccountError value) deleteAccountError,
+  }) {
+    return deleteAccountError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult? Function(DeleteAccountError value)? deleteAccountError,
+  }) {
+    return deleteAccountError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
+    TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
+    TResult Function(DeleteAccountError value)? deleteAccountError,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountError != null) {
+      return deleteAccountError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteAccountError implements DeleteAccountState {
+  const factory DeleteAccountError(final ApiErrorModel apiErrorModel) =
+      _$DeleteAccountErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$DeleteAccountErrorImplCopyWith<_$DeleteAccountErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

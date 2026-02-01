@@ -216,3 +216,17 @@ class UpdateUserDataResponse {
   factory UpdateUserDataResponse.fromJson(Map<String, dynamic> json) =>
       _$UpdateUserDataResponseFromJson(json);
 }
+
+@JsonSerializable()
+class DeleteAccounResponse {
+  bool? status;
+  String? message;
+
+  DeleteAccounResponse({
+    this.status,
+    this.message,
+  });
+
+  factory DeleteAccounResponse.fromJson(Map<String, dynamic> json) =>
+      _$DeleteAccounResponseFromJson(json);
+}

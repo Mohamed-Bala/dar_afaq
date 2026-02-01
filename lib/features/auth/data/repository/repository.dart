@@ -151,3 +151,20 @@ class VerifyCodeRegistrRepository {
     }
   }
 }
+
+//====== DeleteAccountRepository ===============================================
+class DeleteAccountRepository {
+  final ApiService _apiService;
+
+  DeleteAccountRepository(this._apiService);
+
+  Future<ApiResult<DeleteAccounResponse>> deleteAccount(
+      DeleteAccountRequest deleteAccountRequest) async {
+    try {
+      final response = await _apiService.deleteAccount(deleteAccountRequest);
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+}

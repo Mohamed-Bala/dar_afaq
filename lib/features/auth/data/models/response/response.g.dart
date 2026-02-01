@@ -186,3 +186,17 @@ Map<String, dynamic> _$UpdateUserDataResponseToJson(
       'email': instance.email,
       'phone': instance.phone,
     };
+
+DeleteAccounResponse _$DeleteAccounResponseFromJson(
+        Map<String, dynamic> json) =>
+    DeleteAccounResponse(
+      status: json['status'] as bool?,
+      message: json['message'] as String?,
+    );
+
+Map<String, dynamic> _$DeleteAccounResponseToJson(
+        DeleteAccounResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'message': instance.message,
+    };

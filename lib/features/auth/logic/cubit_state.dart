@@ -94,3 +94,12 @@ class ResetPasswordState<T> with _$ResetPasswordState<T> {
   const factory ResetPasswordState.resetPasswordError(
       ApiErrorModel apiErrorModel) = ResetPasswordError<T>;
 }
+
+
+@freezed
+class DeleteAccountState with _$DeleteAccountState {
+  const factory DeleteAccountState.deleteAccountInitial() = _DeleteAccountInitial;
+  const factory DeleteAccountState.deleteAccountLoading() = DeleteAccountLoading;
+  const factory DeleteAccountState.deleteAccountSuccess(dynamic response) = DeleteAccountSuccess;
+  const factory DeleteAccountState.deleteAccountError(ApiErrorModel apiErrorModel) = DeleteAccountError;
+}

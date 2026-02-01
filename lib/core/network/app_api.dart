@@ -47,4 +47,9 @@ abstract class ApiService {
   Future<VerifyCodeRegisterResponse> verifyCodeRegister(
     @Body() VerifyCodeRegisterRequest verifyCodeRegisterRequest,
   );
+
+  @POST(ApiConstants.deleteAccount)
+  Future<DeleteAccounResponse> deleteAccount(
+    @Body() DeleteAccountRequest deleteAccountRequest,
+  );
 }

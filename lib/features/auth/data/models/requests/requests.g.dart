@@ -112,3 +112,15 @@ Map<String, dynamic> _$VerifyCodeRegisterRequestToJson(
       'code': instance.code,
       'phone': instance.phone,
     };
+
+DeleteAccountRequest _$DeleteAccountRequestFromJson(
+        Map<String, dynamic> json) =>
+    DeleteAccountRequest(
+      userId: (json['user_id'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$DeleteAccountRequestToJson(
+        DeleteAccountRequest instance) =>
+    <String, dynamic>{
+      'user_id': instance.userId,
+    };

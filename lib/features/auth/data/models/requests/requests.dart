@@ -130,3 +130,17 @@ class VerifyCodeRegisterRequest {
         "phone": phone.toString(),
       };
 }
+
+
+// ============= Delete Account Request ========================================
+@JsonSerializable()
+class DeleteAccountRequest {
+  @JsonKey(name: 'user_id')
+  final int userId;
+
+  DeleteAccountRequest({
+    required this.userId,
+  });
+
+  Map<String, dynamic> toJson() => _$DeleteAccountRequestToJson(this);
+}

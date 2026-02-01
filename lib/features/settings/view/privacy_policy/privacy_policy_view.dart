@@ -10,151 +10,176 @@ class PrivacyPolicyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorManager.white,
-      appBar: AppBar(
-        title: Text(
-          'privacy_title'.tr(),
-          style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: ColorManager.white,
-        elevation: 0,
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // مقدمة الاتفاقية
-            _buildIntroSection(),
-            verticalSpace(20),
+      backgroundColor: const Color(0xFFF8FAFC), // خلفية فاتحة ومريحة
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 120.0,
+            floating: false,
+            pinned: true,
+            elevation: 0,
+            backgroundColor: Colors.white,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                'privacy_title'.tr(),
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+              ),
+              centerTitle: true,
+              background: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.white, Colors.white],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+              ),
+            ),
+          ),
 
-            // القسم الأول: الخصوصية
-            _buildSectionTitle('section_1_title'.tr()),
-            _buildContentItem('section_1_sub1'.tr(), 'section_1_body1'.tr()),
-            _buildContentItem('section_1_sub2'.tr(), 'section_1_body2'.tr()),
-
-            _buildContentItem('section_1_sub3'.tr(), 'section_1_body3'.tr()),
-
-            // القسم الثاني: شروط الاستخدام
-            _buildSectionTitle('section_2_title'.tr()),
-            _buildContentItem('section_2_sub1'.tr(), 'section_2_body1'.tr()),
-            _buildContentItem('section_2_sub3'.tr(), 'section_2_body3'.tr()),
-
-            // القسم الثالث: إخلاء المسؤولية
-            _buildWarningSection(context),
-
-            // القسم الرابع: الملكية الفكرية
-            _buildSectionTitle('section_4_title'.tr()),
-            _buildContentText('section_4_body'.tr()),
-
-            // القسم الخامس: حقوق المستخدم
-            _buildSectionTitle('section_5_title'.tr()),
-            _buildContentText('section_5_body'.tr()),
-
-            // القانون المطبق
-            _buildSectionTitle('section_7_title'.tr()),
-            _buildContentText('section_7_body'.tr()),
-
-            verticalSpace(40),
-          ],
-        ),
+          // محتوى الاتفاقية
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(16.0.h),
+              child: Column(
+                children: [
+                  _buildPrivacyCard(
+                    titleAr: "1. البيانات التي نجمعها",
+                    titleEn: "Data We Collect",
+                    contentAr:
+                        "نلتزم في تطبيق \"آفاق\" بجمع البيانات الضرورية فقط لتقديم خدماتنا، وتشمل معلومات المستخدم الأساسية، بيانات الجهاز، ونشاط المستخدم داخل التطبيق.",
+                    contentEn:
+                        "We collect essential information to provide our services, including basic user info, device data, and in-app activity.",
+                    icon: Icons.analytics_outlined,
+                  ),
+                  _buildPrivacyCard(
+                    titleAr: "2. كيف نستخدم بياناتك",
+                    titleEn: "How We Use Your Data",
+                    contentAr:
+                        "يتم استخدام بياناتكم للأغراض التشغيلية، تقديم الخدمات المطلوبة مثل التقييم العقاري، توليد تقديرات دقيقة للأسعار، وتحسين أداء التطبيق.",
+                    contentEn:
+                        "Your data is processed for providing requested services, generating precise estimates, and improving app performance.",
+                    icon: Icons.settings_suggest_outlined,
+                  ),
+                  _buildPrivacyCard(
+                    titleAr: "3. مشاركة البيانات",
+                    titleEn: "Data Sharing",
+                    contentAr:
+                        "لا نقوم ببيع أو تأجير بياناتكم الشخصية لأي طرف ثالث نهائياً. قد يتم مشاركة بعض المعلومات فقط مع مزودي خدمات موثوقين ضمن قيود صارمة.",
+                    contentEn:
+                        "We do not sell or rent your personal data. Information may be shared with trusted providers under strict privacy constraints.",
+                    icon: Icons.share_outlined,
+                  ),
+                  _buildPrivacyCard(
+                    titleAr: "4. أمن وحماية البيانات",
+                    titleEn: "Data Security",
+                    contentAr:
+                        "نستخدم أحدث بروتوكولات التشفير (SSL/TLS) لحماية بياناتكم. يقر المستخدم بأن التطبيق لا يضمن الحماية المطلقة من كافة التهديدات الإلكترونية.",
+                    contentEn:
+                        "We use SSL/TLS encryption to protect your data. Absolute protection against all cyber threats cannot be guaranteed.",
+                    icon: Icons.security_outlined,
+                  ),
+                  _buildPrivacyCard(
+                    titleAr: "5. حقوق المستخدم وحذف الحساب",
+                    titleEn: "User Rights & Account Deletion",
+                    contentAr:
+                        "نوفر للمستخدمين الحق الكامل في حذف حساباتهم وبياناتهم نهائياً وبشكل فوري من خلال إعدادات التطبيق. عند الحذف، سيتم إزالة كافة بياناتك بشكل نهائي.",
+                    contentEn:
+                        "You can permanently delete your account via app settings. This will immediately and irreversibly remove all your data from our servers.",
+                    icon: Icons.person_remove_outlined,
+                    isWarning: true,
+                  ),
+                  _buildPrivacyCard(
+                    titleAr: "6. المسؤولية والقانون",
+                    titleEn: "Liability & Law",
+                    contentAr:
+                        "تطبيق \"آفاق\" هو منصة تقنية وسيطة، والتقييمات هي تقديرات استرشادية. تخضع هذه الاتفاقية لقوانين دولة الكويت.",
+                    contentEn:
+                        "Afaq App is a technical intermediary platform. Estimates are for guidance only. Governed by the laws of the State of Kuwait.",
+                    icon: Icons.gavel_outlined,
+                  ),
+                  verticalSpace(40),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
   // --- UI Helpers ---
 
-  Widget _buildIntroSection() {
+  Widget _buildPrivacyCard({
+    required String titleAr,
+    required String titleEn,
+    required String contentAr,
+    required String contentEn,
+    required IconData icon,
+    bool isWarning = false,
+  }) {
     return Container(
-      padding: EdgeInsets.all(15.h),
+      margin: EdgeInsets.only(bottom: 16.w),
       decoration: BoxDecoration(
-        color: ColorManager.white,
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: ColorManager.primary),
-      ),
-      child: Text(
-        'intro_text'.tr(),
-        style:
-            TextStyle(fontSize: 14.sp, color: ColorManager.black, height: 1.6),
-        textAlign: TextAlign.center,
-      ),
-    );
-  }
-
-  Widget _buildSectionTitle(String title) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.h),
-      child: Text(
-        title,
-        style: TextStyle(
-          fontSize: 15.sp,
-          fontWeight: FontWeight.bold,
-          color: ColorManager.black, // لونك الأساسي
-        ),
-      ),
-    );
-  }
-
-  Widget _buildContentItem(String subtitle, String body) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 15.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(subtitle,
-              style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.bold,
-                  color: ColorManager.black)),
-          verticalSpace(4),
-          Text(body,
-              style: TextStyle(
-                  fontSize: 14.sp, color: ColorManager.grey, height: 1.5)),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildContentText(String text) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 10.h),
-      child: Text(text,
-          style: TextStyle(
-              fontSize: 14.sp, color: ColorManager.grey, height: 1.5)),
-    );
-  }
-
-  Widget _buildWarningSection(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 15.h),
-      padding: EdgeInsets.all(12.h),
-      decoration: BoxDecoration(
-        color: Colors.red.withOpacity(0.05),
-        border: Border(
-          right: context.locale.languageCode == 'ar'
-              ? BorderSide(color: Colors.red, width: 4.w)
-              : BorderSide.none,
-          left: context.locale.languageCode == 'en'
-              ? BorderSide(color: Colors.red, width: 4.w)
-              : BorderSide.none,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('section_3_title'.tr(),
-              style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red)),
-          verticalSpace(5),
-          Text(
-            'section_3_body'.tr(),
-            style: TextStyle(
-                fontSize: 12.sp, color: ColorManager.black, height: 1.6),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
         ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: isWarning ? Colors.red : ColorManager.primary,
+                width: 5,
+              ),
+            ),
+          ),
+          child: ExpansionTile(
+            leading: Icon(icon,
+                color: isWarning ? Colors.red : ColorManager.primary),
+            title: Text(
+              titleAr,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+            ),
+            subtitle: Text(titleEn,
+                style: TextStyle(color: Colors.grey.shade600, fontSize: 13.sp)),
+            children: [
+              Padding(
+                padding: EdgeInsets.all(16.0.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      contentAr,
+                      style: TextStyle(
+                          height: 1.4, fontSize: 14.sp, color: Colors.black87),
+                      textAlign: TextAlign.justify,
+                    ),
+                    verticalSpace(10),
+                    const Divider(),
+                    verticalSpace(10),
+                    Text(
+                      contentEn,
+                      style: TextStyle(
+                          height: 1.4,
+                          fontSize: 14.sp,
+                          color: Colors.grey.shade700),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

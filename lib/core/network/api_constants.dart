@@ -27,8 +27,8 @@ class ApiConstants {
   // User Info
   static const String userInfo = 'userinfo';
   static const String userUpdateInfo = 'profile/update';
-
   static const String notifications = 'Notifications';
+  static const String deleteAccount = 'delete-account';
 }
 
 class ApiErrors {

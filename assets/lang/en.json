@@ -266,33 +266,10 @@
   "active" : "Active",
   "under_review" : "Under Review",
   "price_with_value": "Price: {}",
-
-  
-  
   "privacy_title": "Privacy Policy & Terms",
-  "intro_text": "Your use of the \"Afaq\" application constitutes an express acknowledgment and unconditional legal consent to all the terms and conditions contained in this document.",
-  "section_1_title": "SECTION I: Privacy Policy & Data Protection",
-  "section_1_sub1": "1. Data Collection and Processing:",
-  "section_1_body1": "We collect only essential identification data (Name, Digital ID, Email, and Contact Numbers). GPS technology is used for real estate search and engineering maps under strict confidentiality. We utilize (SSL/AES) encryption protocols for data protection.",
-  "section_1_sub2": "2. Data Sharing:",
-  "section_1_sub3": "3. Account and Data Deletion:",
-  "section_1_body2": "User data is never sold to third parties. It is shared only with service providers (Contractors/Engineering Offices/Real Estate Firms) based on your direct request.",
-  "section_1_body3": "We provide users with the full right to delete their accounts and data at any time by contacting us",
-
-  "section_2_title": "SECTION II: Terms of Service",
-  "section_2_sub1": "1. Legal Eligibility:",
-  "section_2_body1": "The service provider acknowledges being a legally licensed entity under Kuwaiti law. Both users and providers bear full criminal and civil liability for the accuracy of data and documents uploaded.",
-  "section_2_sub3": "3. Independence of Contractual Relationship:",
-  "section_2_body3": "\"Afaq\" is strictly a technical intermediary platform. Any bilateral agreements (construction or consulting) are independent; the Application is not a party and bears no liability for performance quality.",
-  "section_3_title": "IMPORTANT: Disclaimer",
-  "section_3_body": "All price evaluations are indicative data based on AI algorithms and do not constitute an official appraisal. The user acknowledges that they have no right to claim any civil or commercial compensation, nor any refunds after payment.",
-  "section_4_title": "SECTION IV: Intellectual Property",
-  "section_4_body": "All content, algorithms, and logos are the exclusive property of \"Dar Afaq Real Estate Company\".",
-  "section_5_title": "SECTION V: User Rights",
-  "section_5_body": "Users have the right to access, correct, erase (Right to be Forgotten), and withdraw consent for tracking.",
-  "section_7_title": "SECTION VII: Governing Law",
-  "section_7_body": "This agreement is governed by the Laws of the State of Kuwait and its courts shall have exclusive jurisdiction over disputes.",
-  "privacy": "Privacy"
-
+  "privacy": "Privacy",
+  "delete_account": "Delete Account",
+  "delete_account_confirmation": "Are you sure you want to delete your account? All your data and listings will be permanently removed and cannot be recovered",
+   "account_deleted_successfully": "Account Deleted Successfully"
 
   }
