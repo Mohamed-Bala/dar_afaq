@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +11,8 @@ import '../data/repository/repository.dart';
 import 'cubit_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
+  final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+
   final LoginRepository _loginRepository;
 
   LoginCubit(this._loginRepository) : super(const LoginState.initial());
@@ -27,11 +30,20 @@ class LoginCubit extends Cubit<LoginState> {
     }
     final String cleanCountryCode = countryDialCode.replaceAll('+', '');
     final String fullPhoneToSend = "$cleanCountryCode$enteredPhone";
-    final response = await _loginRepository.login(
-      LoginRequest(
+    var loginRequest = LoginRequest(
         phone: fullPhoneToSend,
         password: passwordController.text,
-      ),
+      );
+    final response = await _loginRepository.login(
+      loginRequest,
+    );
+
+    await FirebaseAnalytics.instance.logEvent(
+      name: 'login_event',
+      parameters: {
+        'request': loginRequest.toJson(),
+        'response': response.toString(),
+      },
     );
 
     response.when(success: (loginResponse) async {
