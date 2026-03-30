@@ -83,7 +83,7 @@ class DeleteUserAccountCubit extends Cubit<DeleteUserAccountState> {
     emit(const DeleteUserAccountState.loading());
 
     final response = await _repository.deleteAccount(
-      DeleteAccountRequest(userId: userId),
+      DeleteAccountRequest(userId: num.parse(userId).toInt()),
     );
 
     response.when(success: (deleteResponse) async {
@@ -353,7 +353,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
 }
 
 class DeleteAccountCubit extends Cubit<DeleteAccountState> {
-  final DeleteAccountRepository _deleteAccountRepository;
+  final DeleteUserAccountRepository _deleteAccountRepository;
 
   DeleteAccountCubit(this._deleteAccountRepository)
       : super(const DeleteAccountState.deleteAccountInitial());

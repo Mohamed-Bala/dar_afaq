@@ -164,7 +164,7 @@ class DeleteUserAccountRepository {
   Future<ApiResult<DeleteAccountResponse>> deleteAccount(DeleteAccountRequest request) async {
     try {
       final response = await _apiService.deleteAccount(request);
-      return ApiResult.success(response);
+      return ApiResult.success(response as DeleteAccountResponse);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
