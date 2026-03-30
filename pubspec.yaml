@@ -72,6 +72,8 @@ dependencies:
   country_code_picker: ^3.4.1
   font_awesome_flutter: 10.7.0
   app_links: ^3.5.0
+  firebase_core: ^4.6.0
+  firebase_analytics: ^12.2.0
 
 
 

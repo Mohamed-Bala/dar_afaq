@@ -23,13 +23,6 @@ void main() async {
   await Firebase.initializeApp();
 
 
-  await FirebaseAnalytics.instance.logEvent(
-    name: 'test_event',
-    parameters: {
-      'app_started': 'app_started',
-    },
-  );
-
   await EasyLocalization.ensureInitialized();
   await init(); // ensure all services registered before proceeding
   await checkIfLoggedInUser();
