@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:afaq_real_estate/core/helper/extensions.dart';
 import 'package:app_links/app_links.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -18,6 +20,9 @@ import 'features/dashboard/logic/home_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+
   await EasyLocalization.ensureInitialized();
   await init(); // ensure all services registered before proceeding
   await checkIfLoggedInUser();

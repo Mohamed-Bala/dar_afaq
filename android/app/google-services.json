@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1089971006943",
+    "project_id": "darafaq-3e95e",
+    "storage_bucket": "darafaq-3e95e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089971006943:android:446743c52ab16cb73d286a",
+        "android_client_info": {
+          "package_name": "com.afaq.realestate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBibLDwaTzKEW1GJJr5mSgEjwAdI_wxMi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -21,6 +21,10 @@ Future<void> init() async {
   di.registerLazySingleton<LoginRepository>(() => LoginRepository(di()));
   di.registerFactory<LoginCubit>(() => LoginCubit(di()));
 
+  // delete user account
+  di.registerLazySingleton<DeleteUserAccountRepository>(() => DeleteUserAccountRepository(di()));
+  di.registerFactory<DeleteUserAccountCubit>(() => DeleteUserAccountCubit(di()));
+
   // signup
   di.registerLazySingleton<RegisterRepository>(() => RegisterRepository(di()));
   di.registerFactory<RegisterCubit>(() => RegisterCubit(di()));
@@ -94,9 +98,9 @@ Future<void> init() async {
   di.registerLazySingleton<DeleteAdRepository>(() => DeleteAdRepository(di()));
   di.registerFactory<DeleteAdCubit>(() => DeleteAdCubit(di()));
   // Delete Account
-  di.registerLazySingleton<DeleteAccountRepository>(
-      () => DeleteAccountRepository(di()));
-  di.registerFactory<DeleteAccountCubit>(() => DeleteAccountCubit(di()));
+  // di.registerLazySingleton<DeleteAccountRepository>(
+  //     () => DeleteAccountRepository(di()));
+  // di.registerFactory<DeleteAccountCubit>(() => DeleteAccountCubit(di()));
 
   // Notifications
   // تأكد من وجود الـ Repository وتسجيله أولاً
