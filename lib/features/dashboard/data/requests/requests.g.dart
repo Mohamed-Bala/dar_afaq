@@ -106,6 +106,18 @@ Map<String, dynamic> _$AdsSearchRequestToJson(AdsSearchRequest instance) =>
       'transaction_type': instance.transactionType,
     };
 
+UserMonthlyPointsRequest _$UserMonthlyPointsRequestFromJson(
+        Map<String, dynamic> json) =>
+    UserMonthlyPointsRequest(
+      userId: (json['user_id'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$UserMonthlyPointsRequestToJson(
+        UserMonthlyPointsRequest instance) =>
+    <String, dynamic>{
+      'user_id': instance.userId,
+    };
+
 FilterSectionRequest _$FilterSectionRequestFromJson(
         Map<String, dynamic> json) =>
     FilterSectionRequest(
@@ -118,4 +130,71 @@ Map<String, dynamic> _$FilterSectionRequestToJson(
     <String, dynamic>{
       'section': instance.section,
       'type': instance.type,
+    };
+
+SearchFilterRequest _$SearchFilterRequestFromJson(Map<String, dynamic> json) =>
+    SearchFilterRequest(
+      transactionType: json['transaction_type'] as String,
+      type: (json['type'] as List<dynamic>).map((e) => e as String).toList(),
+      region:
+          (json['region'] as List<dynamic>).map((e) => e as String).toList(),
+      priceRange: json['price_range'] as String,
+    );
+
+Map<String, dynamic> _$SearchFilterRequestToJson(
+        SearchFilterRequest instance) =>
+    <String, dynamic>{
+      'transaction_type': instance.transactionType,
+      'type': instance.type,
+      'region': instance.region,
+      'price_range': instance.priceRange,
+    };
+
+CalculateMarketValueRequest _$CalculateMarketValueRequestFromJson(
+        Map<String, dynamic> json) =>
+    CalculateMarketValueRequest(
+      landSize: (json['land_size'] as num).toInt(),
+      location: json['location'] as String,
+      position: (json['position'] as num).toInt(),
+      buildingAge: json['building_age'] as String,
+      finishingLevel: (json['finishing_level'] as num).toInt(),
+      features:
+          (json['features'] as List<dynamic>).map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$CalculateMarketValueRequestToJson(
+        CalculateMarketValueRequest instance) =>
+    <String, dynamic>{
+      'land_size': instance.landSize,
+      'location': instance.location,
+      'position': instance.position,
+      'building_age': instance.buildingAge,
+      'finishing_level': instance.finishingLevel,
+      'features': instance.features,
+    };
+
+CalculateConstructionCostRequest _$CalculateConstructionCostRequestFromJson(
+        Map<String, dynamic> json) =>
+    CalculateConstructionCostRequest(
+      buildingArea: (json['building_area'] as num).toInt(),
+      structureType: (json['structure_type'] as num).toInt(),
+      finishingType: (json['finishing_type'] as num).toInt(),
+      acType: (json['ac_type'] as num).toInt(),
+      energySaving: json['energy_saving'] as bool,
+      elevators: (json['elevators'] as num).toInt(),
+      plumbingType: (json['plumbing_type'] as num).toInt(),
+      hasBasement: json['has_basement'] as bool,
+    );
+
+Map<String, dynamic> _$CalculateConstructionCostRequestToJson(
+        CalculateConstructionCostRequest instance) =>
+    <String, dynamic>{
+      'building_area': instance.buildingArea,
+      'structure_type': instance.structureType,
+      'finishing_type': instance.finishingType,
+      'ac_type': instance.acType,
+      'energy_saving': instance.energySaving,
+      'elevators': instance.elevators,
+      'plumbing_type': instance.plumbingType,
+      'has_basement': instance.hasBasement,
     };

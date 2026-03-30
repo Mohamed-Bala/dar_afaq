@@ -5,8 +5,8 @@ import '../../features/auth/data/models/response/response.dart';
 import '../../features/auth/ui/view/forgot_password/forgot_password_view.dart';
 import '../../features/auth/ui/view/login/view/login_view.dart';
 import '../../features/auth/ui/view/register/view/register_otp_view.dart';
-import '../../features/our_services/view/budget_calculator_view.dart';
-import '../../features/our_services/view/calculation_cost_view.dart';
+import '../../features/our_services/view/calculate_construction_cost_view.dart';
+import '../../features/our_services/view/calculate_market_value_view.dart';
 import '../../features/dashboard/data/response/response.dart';
 import '../../features/dashboard/ui/view/advertisements/view/add_ads/add_ads_view.dart';
 import '../../features/dashboard/ui/view/dashboard_view.dart';
@@ -28,7 +28,6 @@ import '../../features/settings/view/profile/edit_profile_view.dart';
 import '../../features/settings/view/profile/profile_view.dart';
 import '../../features/settings/view/my_advertisements/my_advertisements_view.dart';
 import '../di/di.dart';
-import '../resources/strings_manager.dart';
 
 class EditProfileArgs {
   final UserInfoResponse? userData;
@@ -62,14 +61,15 @@ class Routes {
   static const String articlesNewsRoute = "/articles-news";
   static const String auctionDetailsRoute = "/auction-details";
 
-  static const String calculationCostRoute = "/calculation-cost";
+  static const String calculateMarketValueRoute = "/calculate-marketValue";
 
-  static const String rentCalculationRoute = "/rent-calculation";
+  static const String calculateConstructionCostRoute = "/calculate-constructionCost";
 
   static const String officialRequestRoute = "/officiar-Request";
 
   static const String managingOthersPropertiesRoute = "/managing-others";
   static const String privacyRoute = "/privacy";
+  static const String adDetailsRoute = "/ad_details";
 }
 
 class AppRoute {
@@ -141,9 +141,12 @@ class AppRoute {
             child: AddAdsView(transactionType: sectionItem.dbValue),
           ),
         );
-      case Routes.calculationCostRoute:
+      case Routes.calculateMarketValueRoute:
         return MaterialPageRoute(
-          builder: (_) => const CalculationCostView(),
+          builder: (_) => BlocProvider(
+            create: (context) => di<CalculateMarketValueCubit>(),
+            child: CalculateMarketValueView(),
+          ),
         );
       case Routes.officialRequestRoute:
         return MaterialPageRoute(
@@ -153,11 +156,11 @@ class AppRoute {
         return MaterialPageRoute(
           builder: (_) => const ManagingOthersPropertiesView(),
         );
-      case Routes.rentCalculationRoute:
-        return MaterialPageRoute(builder: (_) => const BudgetCalculatorView());
+      case Routes.calculateConstructionCostRoute:
+        return MaterialPageRoute(builder: (_) => const CalculateConstructionCostView());
       case Routes.homeDetailsRoute:
         return MaterialPageRoute(builder: (_) => const HomeDetailsView());
-         case Routes.privacyRoute:
+      case Routes.privacyRoute:
         return MaterialPageRoute(builder: (_) => const PrivacyPolicyView());
       case Routes.adsDetailsRoute:
         return MaterialPageRoute(builder: (_) => AdsDetailsScreen());
@@ -179,7 +182,6 @@ class AppRoute {
           builder: (_) => BlocProvider(
             create: (context) => HomeCubit(di())
               ..getAllAds()
-              ..getAllAuction()
               ..getVipAds(),
             child: const DashboardView(),
           ),
@@ -207,25 +209,37 @@ class AppRoute {
               BlocProvider(
                 create: (context) => di<UpdateAdCubit>(),
               ),
+              // إضافة كيوبيت الإعلانات للحصول على المناطق
+              BlocProvider(
+                create: (context) => di<AddAdvertisementCubit>()
+                  ..getRegions()
+                  ..getPropertyTypes(),
+              ),
             ],
             child: EditAdvertisementView(adData: adData),
           ),
         );
+      case Routes.adDetailsRoute:
+        return MaterialPageRoute(
+          builder: (_) => const ManagingOthersPropertiesView(),
+        );
       default:
-        return unDefinedRoute();
+        return MaterialPageRoute(
+          builder: (_) => const DashboardView(),
+        );
     }
   }
 
-  static Route<dynamic> unDefinedRoute() {
-    return MaterialPageRoute(
-      builder: (_) => Scaffold(
-        appBar: AppBar(
-          title: const Text(AppStrings.noRouteFound),
-        ),
-        body: const Center(
-          child: Text(AppStrings.noRouteFound),
-        ),
-      ),
-    );
-  }
+  // static Route<dynamic> unDefinedRoute() {
+  //   return MaterialPageRoute(
+  //     builder: (_) => Scaffold(
+  //       appBar: AppBar(
+  //         title: const Text(AppStrings.noRouteFound),
+  //       ),
+  //       body: const Center(
+  //         child: Text(AppStrings.noRouteFound),
+  //       ),
+  //     ),
+  //   );
+  // }
 }

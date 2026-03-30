@@ -28,11 +28,11 @@ class CircularIconMenuItem extends StatelessWidget {
           children: [
             Container(
               constraints: BoxConstraints(
-                maxWidth: 70.w,
-                maxHeight: 70.w,
+                maxWidth: 50.w,
+                maxHeight: 50.w,
               ),
-              width: 55.w,
-              height: 55.h,
+              width: 45.w,
+              height: 45.h,
               decoration: BoxDecoration(
                 color: Colors.white,
                 shape: BoxShape.circle,

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,15 +10,41 @@ import '../../../../core/helper/shared_pref.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
-import '../../../auctions/auction_view.dart';
+import '../../../search/search_view.dart';
 import '../../../auth/logic/cubit_cubit.dart';
-import '../../../deals/deals_view.dart';
+import '../../../sections/sections_view.dart';
 import '../../../notification/notification_view.dart';
 import '../../../settings/view/profile/profile_drawer.dart';
 import '../../logic/home_cubit.dart';
+import '../../logic/home_state.dart';
 import 'advertisements/view/ads/ads_view.dart';
 import 'advertisements/widgets/add_ads/package_selection.dart';
 import 'home/home.dart';
+
+class EdgeSwipeExit extends StatelessWidget {
+  final Widget child;
+  final double edgeThreshold =
+      30.0; // زيادة الحساسية قليلاً لتناسب الشاشات الكبيرة
+
+  EdgeSwipeExit({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onHorizontalDragStart: (details) {
+        double screenWidth = MediaQuery.of(context).size.width;
+        double startX = details.globalPosition.dx;
+
+        // إذا سحب المستخدم من الحافة اليسرى أو اليمنى
+        if (startX < edgeThreshold || startX > (screenWidth - edgeThreshold)) {
+          // تنفيذ الخروج
+          SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+        }
+      },
+      child: child,
+    );
+  }
+}
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
@@ -35,11 +62,13 @@ class _DashboardViewState extends State<DashboardView> {
       child: const Home(),
     ),
     BlocProvider(
-      create: (context) => HomeCubit(di())..getAllAuction(),
-      child: const AuctionView(),
+      create: (context) => di<SearchFilterCubit>(),
+      child: const SearchView(),
     ),
-    const PackageSelection(),
-    const DealsView(),
+    BlocProvider(
+        create: (BuildContext context) => di<FilterSctionCubit>(),
+        child: const PackageSelection()),
+    const SectionsView(),
     BlocProvider(
       create: (context) => HomeCubit(di())..getAllAds(),
       child: const AdsView(),
@@ -48,18 +77,29 @@ class _DashboardViewState extends State<DashboardView> {
 
   final List<String> _titel = [
     AppStrings.appName.tr(),
-    AppStrings.auctions.tr(),
+    AppStrings.search.tr(),
     AppStrings.addAd.tr(),
-    AppStrings.deals.tr(),
+    AppStrings.sections.tr(),
     AppStrings.advertisements.tr(),
   ];
 
   final PageController _pageController = PageController();
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _currentIndex = index;
+  //   });
+  //   _pageController.jumpToPage(index);
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<NavigationCubit>().setController(_pageController);
+    context.read<NotificationsCubit>().emitGetNotifications();
+  }
+
   void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-    _pageController.jumpToPage(index);
+    context.read<NavigationCubit>().changeIndex(index);
   }
 
   @override
@@ -68,10 +108,25 @@ class _DashboardViewState extends State<DashboardView> {
     super.dispose();
   }
 
+  Future<bool> onWillPop() async {
+    if (_currentIndex != 0) {
+      _pageController.jumpToPage(0);
+
+      setState(() {
+        _currentIndex = 0;
+      });
+
+      return false;
+    }
+
+    SystemNavigator.pop();
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
+    return WillPopScope(
+      onWillPop: onWillPop,
       child: Scaffold(
         backgroundColor: Colors.white,
         endDrawer: FutureBuilder(
@@ -79,9 +134,16 @@ class _DashboardViewState extends State<DashboardView> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final int currentUserId = snapshot.data as int;
-              return BlocProvider(
-                create: (context) =>
-                    di<UserInfoCubit>()..emitGetUserInfo(currentUserId),
+              return MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) =>
+                        di<UserInfoCubit>()..emitGetUserInfo(currentUserId),
+                  ),
+                  BlocProvider(
+                    create: (context) => di<UserMonthlyPointsCubit>(),
+                  )
+                ],
                 child: Profile(),
               );
             } else {
@@ -95,24 +157,67 @@ class _DashboardViewState extends State<DashboardView> {
         ),
         appBar: AppBar(
           backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Stack(
-              children: [
-                Icon(
-                  Icons.notifications_none,
-                  color: ColorManager.black,
-                  size: 30.sp,
-                ),
-              ],
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BlocProvider(
-                    create: (context) => di<NotificationsCubit>(),
-                    child: const NotificationsView(),
-                  ),
+          leading: BlocBuilder<NotificationsCubit, NotificationsState>(
+            builder: (context, state) {
+              int count = 0;
+
+              state.maybeWhen(
+                notificationsSuccess: (data) {
+                  count = data.notificationsDataResponse?.length ?? 0;
+                },
+                orElse: () {},
+              );
+
+              return IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                        create: (context) =>
+                            di<NotificationsCubit>()..emitGetNotifications(),
+                        child: const NotificationsView(),
+                      ),
+                    ),
+                  );
+                },
+                icon: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Icon(
+                      Icons.notifications_none,
+                      color: ColorManager.black,
+                      size: 30.sp,
+                    ),
+
+                    /// 🔴 BADGE
+                    if (count > 0)
+                      Positioned(
+                        right: -2,
+                        top: -2,
+                        child: Container(
+                          padding: EdgeInsets.all(4.h),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          constraints: BoxConstraints(
+                            minWidth: 14.w,
+                            minHeight: 14.h,
+                          ),
+                          child: Center(
+                            child: Text(
+                              count > 99 ? "99+" : "$count",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 9.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
               );
             },
@@ -149,35 +254,40 @@ class _DashboardViewState extends State<DashboardView> {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: AppStrings.home.tr(),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.gavel),
-              label: AppStrings.auctions.tr(),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.ads_click_outlined),
-              label: AppStrings.addAd.tr(),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.swap_calls),
-              label: AppStrings.deals.tr(),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.campaign),
-              label: AppStrings.advertisements.tr(),
-            ),
-          ],
-          currentIndex: _currentIndex,
-          selectedItemColor: ColorManager.primary,
-          backgroundColor: Colors.white,
-          unselectedItemColor: Colors.grey,
-          type: BottomNavigationBarType.fixed,
-          onTap: _onItemTapped,
+        bottomNavigationBar: BlocBuilder<NavigationCubit, int>(
+          builder: (context, currentIndex) {
+            return BottomNavigationBar(
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: AppStrings.home.tr(),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.search),
+                  label: AppStrings.search.tr(),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.ads_click_outlined),
+                  label: AppStrings.addAd.tr(),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.grid_view),
+                  label: AppStrings.sections.tr(),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.campaign),
+                  label: AppStrings.advertisements.tr(),
+                ),
+              ],
+              currentIndex: currentIndex,
+              selectedItemColor: ColorManager.primary,
+              backgroundColor: Colors.white,
+              unselectedItemColor: Colors.grey,
+              type: BottomNavigationBarType.fixed,
+              // onTap: (index) => _onItemTapped,
+              onTap: (index) => _onItemTapped(index),
+            );
+          },
         ),
       ),
     );

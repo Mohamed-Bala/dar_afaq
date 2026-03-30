@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/src/widgets/basic.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/network/api_error_model.dart';
@@ -17,12 +18,7 @@ class HomeState with _$HomeState {
   const factory HomeState.allAdsError(ApiErrorModel apiErrorModel) =
       AllAdsError;
 
-  const factory HomeState.auctionLoading() = AuctionLoading;
-  const factory HomeState.auctionSuccess(AuctionResponse auctionResponse) =
-      AuctionSuccess;
-  const factory HomeState.auctionError(ApiErrorModel apiErrorModel) =
-      AuctionError;
-
+//************* vip Ads State **************************************************
   const factory HomeState.vipAdsLoading() = VipAdsLoading;
   const factory HomeState.vipAdsSuccess(HomeResponse homeResponse) =
       VipAdsSuccess;
@@ -48,6 +44,19 @@ class AddAdvertisementState with _$AddAdvertisementState {
       PropertyTypeChanged;
   const factory AddAdvertisementState.regionChanged(String region) =
       RegionChanged;
+
+  const factory AddAdvertisementState.propertyTypesLoading() =
+      PropertyTypesLoading;
+  const factory AddAdvertisementState.propertyTypesSuccess(
+      List<String> propertyTypes) = PropertyTypesSuccess;
+  const factory AddAdvertisementState.propertyTypesError(
+      ApiErrorModel apiErrorModel) = PropertyTypesError;
+
+  const factory AddAdvertisementState.regionsLoading() = RegionsLoading;
+  const factory AddAdvertisementState.regionsSuccess(List<String> regions) =
+      RegionsSuccess;
+  const factory AddAdvertisementState.regionsError(
+      ApiErrorModel apiErrorModel) = RegionsError;
   // داخل ملف الـ State
   const factory AddAdvertisementState.transactionTypeChanged(String type) =
       TransactionTypeChanged;
@@ -79,6 +88,18 @@ class NotificationsState with _$NotificationsState {
       NotificationsResponse notificationsResponse) = NotificationsSuccess;
   const factory NotificationsState.notificationsError(
       ApiErrorModel apiErrorModel) = NotificationsError;
+}
+
+// ============= NewsState =====================================================
+@freezed
+class NewsState with _$NewsState {
+  const factory NewsState.initial() = _NewsInitial;
+
+  const factory NewsState.newsLoading() = NewsLoading;
+
+  const factory NewsState.newsSuccess(NewsResponse newsResponse) = NewsSuccess;
+
+  const factory NewsState.newsError(ApiErrorModel apiErrorModel) = NewsError;
 }
 
 //======== Delete Ad State =====================================================
@@ -126,4 +147,55 @@ class FilterSectionState with _$FilterSectionState {
       FilterSectionResponse filterSectionResponse) = FilterSectionSuccess;
   const factory FilterSectionState.filterSectionError(
       ApiErrorModel apiErrorModel) = FilterSectionError;
+}
+//==============================================================================
+
+@freezed
+class UserMonthlyPointsState with _$UserMonthlyPointsState {
+  const factory UserMonthlyPointsState.initial() = UserMonthlyPointsInitial;
+  const factory UserMonthlyPointsState.userMonthlyPointsLoading() =
+      UserMonthlyPointsLoading;
+  const factory UserMonthlyPointsState.userMonthlyPointsSuccess(
+          UserMonthlyPointsResponse userMonthlyPointsResponse) =
+      UserMonthlyPointsSuccess;
+  const factory UserMonthlyPointsState.userMonthlyPointsError(
+      ApiErrorModel apiErrorModel) = UserMonthlyPointsError;
+}
+
+//************* searchFilter State *********************************************
+@freezed
+class SearchFilterState with _$SearchFilterState {
+  const factory SearchFilterState.initial() = _SearchFilterStateInitial;
+
+  const factory SearchFilterState.searchFilterLoading() = SearchFilterLoading;
+  const factory SearchFilterState.searchFilterSuccess(
+      SearchFilterResponse searchFilterResponse) = SearchFilterSuccess;
+  const factory SearchFilterState.searchFilterError(
+      ApiErrorModel apiErrorModel) = SearchFilterError;
+}
+
+@freezed
+class CalculateMarketValueState with _$CalculateMarketValueState {
+  const factory CalculateMarketValueState.initial() =
+      _CalculateMarketValueInitial;
+  const factory CalculateMarketValueState.calculateMarketValueLoading() =
+      CalculateMarketValueLoading;
+  const factory CalculateMarketValueState.calculateMarketValueSuccess(
+          CalculateMarketValueRsponse calculateMarketValueRsponse) =
+      CalculateMarketValueSuccess;
+  const factory CalculateMarketValueState.calculateMarketValueError(
+      ApiErrorModel apiErrorModel) = CalculateMarketValueError;
+}
+
+@freezed
+class CalculateConstructionCostState with _$CalculateConstructionCostState {
+  const factory CalculateConstructionCostState.initial() =
+      _CalculateConstructionCostInitial;
+  const factory CalculateConstructionCostState.calculateConstructionCostLoading() =
+      CalculateConstructionCostLoading;
+  const factory CalculateConstructionCostState.calculateConstructionCostSuccess(
+          CalculateConstructionCostRsponse calculateConstructionCostRsponse) =
+      CalculateConstructionCostSuccess;
+  const factory CalculateConstructionCostState.calculateConstructionCostError(
+      ApiErrorModel apiErrorModel) = CalculateConstructionCostError;
 }

@@ -164,7 +164,11 @@ class ContactSection extends StatelessWidget {
                 : TextAlign.left,
           ),
           onTap: () {
-            launchWhatsApp(AppConstants.afaqPhoneNumber);
+            launchWhatsAppAd(
+              context,
+              phone: AppConstants.afaqPhoneNumber,
+              adId: "",
+            );
           },
         ),
       ],

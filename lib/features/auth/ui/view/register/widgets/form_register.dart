@@ -75,8 +75,8 @@ class _FormRegisterState extends State<FormRegister> {
                       borderRadius: BorderRadius.circular(16.0.r),
                     ),
                     child: CountryCodePicker(
-                      initialSelection: '+249',
-                      favorite: const ['+965', '+966', 'KW', 'SA'],
+                      initialSelection: '+965',
+                      //favorite: const ['+965', '+966', 'KW', 'SA'],
                       showFlagMain: true,
                       showFlagDialog: true,
                       hideMainText: false,
@@ -84,7 +84,7 @@ class _FormRegisterState extends State<FormRegister> {
                       padding: EdgeInsets.zero,
                       onChanged: ((countryCode) {
                         context.read<RegisterCubit>().countryDialCode =
-                            countryCode.dialCode ?? "+249";
+                            countryCode.dialCode ?? "+965";
                         print("Selected code without plus: $countryCode");
                       }),
                     ),

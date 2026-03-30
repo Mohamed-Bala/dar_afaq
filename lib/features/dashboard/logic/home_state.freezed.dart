@@ -22,9 +22,6 @@ mixin _$HomeState {
     required TResult Function() allAdsLoading,
     required TResult Function(AdsResponse adsResponse) allAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
     required TResult Function() vipAdsLoading,
     required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
@@ -36,9 +33,6 @@ mixin _$HomeState {
     TResult? Function()? allAdsLoading,
     TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult? Function()? vipAdsLoading,
     TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -50,9 +44,6 @@ mixin _$HomeState {
     TResult Function()? allAdsLoading,
     TResult Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult Function()? vipAdsLoading,
     TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -65,9 +56,6 @@ mixin _$HomeState {
     required TResult Function(AllAdsLoading value) allAdsLoading,
     required TResult Function(AllAdsSuccess value) allAdsSuccess,
     required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
     required TResult Function(VipAdsLoading value) vipAdsLoading,
     required TResult Function(VipAdsSuccess value) vipAdsSuccess,
     required TResult Function(VipAdsError value) vipAdsError,
@@ -79,9 +67,6 @@ mixin _$HomeState {
     TResult? Function(AllAdsLoading value)? allAdsLoading,
     TResult? Function(AllAdsSuccess value)? allAdsSuccess,
     TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
     TResult? Function(VipAdsLoading value)? vipAdsLoading,
     TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult? Function(VipAdsError value)? vipAdsError,
@@ -93,9 +78,6 @@ mixin _$HomeState {
     TResult Function(AllAdsLoading value)? allAdsLoading,
     TResult Function(AllAdsSuccess value)? allAdsSuccess,
     TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
     TResult Function(VipAdsLoading value)? vipAdsLoading,
     TResult Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult Function(VipAdsError value)? vipAdsError,
@@ -163,9 +145,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function() allAdsLoading,
     required TResult Function(AdsResponse adsResponse) allAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
     required TResult Function() vipAdsLoading,
     required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
@@ -180,9 +159,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? allAdsLoading,
     TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult? Function()? vipAdsLoading,
     TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -197,9 +173,6 @@ class _$InitialImpl implements _Initial {
     TResult Function()? allAdsLoading,
     TResult Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult Function()? vipAdsLoading,
     TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -218,9 +191,6 @@ class _$InitialImpl implements _Initial {
     required TResult Function(AllAdsLoading value) allAdsLoading,
     required TResult Function(AllAdsSuccess value) allAdsSuccess,
     required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
     required TResult Function(VipAdsLoading value) vipAdsLoading,
     required TResult Function(VipAdsSuccess value) vipAdsSuccess,
     required TResult Function(VipAdsError value) vipAdsError,
@@ -235,9 +205,6 @@ class _$InitialImpl implements _Initial {
     TResult? Function(AllAdsLoading value)? allAdsLoading,
     TResult? Function(AllAdsSuccess value)? allAdsSuccess,
     TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
     TResult? Function(VipAdsLoading value)? vipAdsLoading,
     TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult? Function(VipAdsError value)? vipAdsError,
@@ -252,9 +219,6 @@ class _$InitialImpl implements _Initial {
     TResult Function(AllAdsLoading value)? allAdsLoading,
     TResult Function(AllAdsSuccess value)? allAdsSuccess,
     TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
     TResult Function(VipAdsLoading value)? vipAdsLoading,
     TResult Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult Function(VipAdsError value)? vipAdsError,
@@ -313,9 +277,6 @@ class _$AllAdsLoadingImpl implements AllAdsLoading {
     required TResult Function() allAdsLoading,
     required TResult Function(AdsResponse adsResponse) allAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
     required TResult Function() vipAdsLoading,
     required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
@@ -330,9 +291,6 @@ class _$AllAdsLoadingImpl implements AllAdsLoading {
     TResult? Function()? allAdsLoading,
     TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult? Function()? vipAdsLoading,
     TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -347,9 +305,6 @@ class _$AllAdsLoadingImpl implements AllAdsLoading {
     TResult Function()? allAdsLoading,
     TResult Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult Function()? vipAdsLoading,
     TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -368,9 +323,6 @@ class _$AllAdsLoadingImpl implements AllAdsLoading {
     required TResult Function(AllAdsLoading value) allAdsLoading,
     required TResult Function(AllAdsSuccess value) allAdsSuccess,
     required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
     required TResult Function(VipAdsLoading value) vipAdsLoading,
     required TResult Function(VipAdsSuccess value) vipAdsSuccess,
     required TResult Function(VipAdsError value) vipAdsError,
@@ -385,9 +337,6 @@ class _$AllAdsLoadingImpl implements AllAdsLoading {
     TResult? Function(AllAdsLoading value)? allAdsLoading,
     TResult? Function(AllAdsSuccess value)? allAdsSuccess,
     TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
     TResult? Function(VipAdsLoading value)? vipAdsLoading,
     TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult? Function(VipAdsError value)? vipAdsError,
@@ -402,9 +351,6 @@ class _$AllAdsLoadingImpl implements AllAdsLoading {
     TResult Function(AllAdsLoading value)? allAdsLoading,
     TResult Function(AllAdsSuccess value)? allAdsSuccess,
     TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
     TResult Function(VipAdsLoading value)? vipAdsLoading,
     TResult Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult Function(VipAdsError value)? vipAdsError,
@@ -490,9 +436,6 @@ class _$AllAdsSuccessImpl implements AllAdsSuccess {
     required TResult Function() allAdsLoading,
     required TResult Function(AdsResponse adsResponse) allAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
     required TResult Function() vipAdsLoading,
     required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
@@ -507,9 +450,6 @@ class _$AllAdsSuccessImpl implements AllAdsSuccess {
     TResult? Function()? allAdsLoading,
     TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult? Function()? vipAdsLoading,
     TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -524,9 +464,6 @@ class _$AllAdsSuccessImpl implements AllAdsSuccess {
     TResult Function()? allAdsLoading,
     TResult Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult Function()? vipAdsLoading,
     TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -545,9 +482,6 @@ class _$AllAdsSuccessImpl implements AllAdsSuccess {
     required TResult Function(AllAdsLoading value) allAdsLoading,
     required TResult Function(AllAdsSuccess value) allAdsSuccess,
     required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
     required TResult Function(VipAdsLoading value) vipAdsLoading,
     required TResult Function(VipAdsSuccess value) vipAdsSuccess,
     required TResult Function(VipAdsError value) vipAdsError,
@@ -562,9 +496,6 @@ class _$AllAdsSuccessImpl implements AllAdsSuccess {
     TResult? Function(AllAdsLoading value)? allAdsLoading,
     TResult? Function(AllAdsSuccess value)? allAdsSuccess,
     TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
     TResult? Function(VipAdsLoading value)? vipAdsLoading,
     TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult? Function(VipAdsError value)? vipAdsError,
@@ -579,9 +510,6 @@ class _$AllAdsSuccessImpl implements AllAdsSuccess {
     TResult Function(AllAdsLoading value)? allAdsLoading,
     TResult Function(AllAdsSuccess value)? allAdsSuccess,
     TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
     TResult Function(VipAdsLoading value)? vipAdsLoading,
     TResult Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult Function(VipAdsError value)? vipAdsError,
@@ -673,9 +601,6 @@ class _$AllAdsErrorImpl implements AllAdsError {
     required TResult Function() allAdsLoading,
     required TResult Function(AdsResponse adsResponse) allAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
     required TResult Function() vipAdsLoading,
     required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
@@ -690,9 +615,6 @@ class _$AllAdsErrorImpl implements AllAdsError {
     TResult? Function()? allAdsLoading,
     TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult? Function()? vipAdsLoading,
     TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -707,9 +629,6 @@ class _$AllAdsErrorImpl implements AllAdsError {
     TResult Function()? allAdsLoading,
     TResult Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult Function()? vipAdsLoading,
     TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -728,9 +647,6 @@ class _$AllAdsErrorImpl implements AllAdsError {
     required TResult Function(AllAdsLoading value) allAdsLoading,
     required TResult Function(AllAdsSuccess value) allAdsSuccess,
     required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
     required TResult Function(VipAdsLoading value) vipAdsLoading,
     required TResult Function(VipAdsSuccess value) vipAdsSuccess,
     required TResult Function(VipAdsError value) vipAdsError,
@@ -745,9 +661,6 @@ class _$AllAdsErrorImpl implements AllAdsError {
     TResult? Function(AllAdsLoading value)? allAdsLoading,
     TResult? Function(AllAdsSuccess value)? allAdsSuccess,
     TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
     TResult? Function(VipAdsLoading value)? vipAdsLoading,
     TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult? Function(VipAdsError value)? vipAdsError,
@@ -762,9 +675,6 @@ class _$AllAdsErrorImpl implements AllAdsError {
     TResult Function(AllAdsLoading value)? allAdsLoading,
     TResult Function(AllAdsSuccess value)? allAdsSuccess,
     TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
     TResult Function(VipAdsLoading value)? vipAdsLoading,
     TResult Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult Function(VipAdsError value)? vipAdsError,
@@ -784,523 +694,6 @@ abstract class AllAdsError implements HomeState {
   ApiErrorModel get apiErrorModel;
   @JsonKey(ignore: true)
   _$$AllAdsErrorImplCopyWith<_$AllAdsErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AuctionLoadingImplCopyWith<$Res> {
-  factory _$$AuctionLoadingImplCopyWith(_$AuctionLoadingImpl value,
-          $Res Function(_$AuctionLoadingImpl) then) =
-      __$$AuctionLoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuctionLoadingImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$AuctionLoadingImpl>
-    implements _$$AuctionLoadingImplCopyWith<$Res> {
-  __$$AuctionLoadingImplCopyWithImpl(
-      _$AuctionLoadingImpl _value, $Res Function(_$AuctionLoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$AuctionLoadingImpl implements AuctionLoading {
-  const _$AuctionLoadingImpl();
-
-  @override
-  String toString() {
-    return 'HomeState.auctionLoading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuctionLoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() allAdsLoading,
-    required TResult Function(AdsResponse adsResponse) allAdsSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
-    required TResult Function() vipAdsLoading,
-    required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
-  }) {
-    return auctionLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? allAdsLoading,
-    TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
-    TResult? Function()? vipAdsLoading,
-    TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
-  }) {
-    return auctionLoading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? allAdsLoading,
-    TResult Function(AdsResponse adsResponse)? allAdsSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
-    TResult Function()? vipAdsLoading,
-    TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
-    required TResult orElse(),
-  }) {
-    if (auctionLoading != null) {
-      return auctionLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(AllAdsLoading value) allAdsLoading,
-    required TResult Function(AllAdsSuccess value) allAdsSuccess,
-    required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
-    required TResult Function(VipAdsLoading value) vipAdsLoading,
-    required TResult Function(VipAdsSuccess value) vipAdsSuccess,
-    required TResult Function(VipAdsError value) vipAdsError,
-  }) {
-    return auctionLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(AllAdsLoading value)? allAdsLoading,
-    TResult? Function(AllAdsSuccess value)? allAdsSuccess,
-    TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
-    TResult? Function(VipAdsLoading value)? vipAdsLoading,
-    TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
-    TResult? Function(VipAdsError value)? vipAdsError,
-  }) {
-    return auctionLoading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(AllAdsLoading value)? allAdsLoading,
-    TResult Function(AllAdsSuccess value)? allAdsSuccess,
-    TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
-    TResult Function(VipAdsLoading value)? vipAdsLoading,
-    TResult Function(VipAdsSuccess value)? vipAdsSuccess,
-    TResult Function(VipAdsError value)? vipAdsError,
-    required TResult orElse(),
-  }) {
-    if (auctionLoading != null) {
-      return auctionLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuctionLoading implements HomeState {
-  const factory AuctionLoading() = _$AuctionLoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$AuctionSuccessImplCopyWith<$Res> {
-  factory _$$AuctionSuccessImplCopyWith(_$AuctionSuccessImpl value,
-          $Res Function(_$AuctionSuccessImpl) then) =
-      __$$AuctionSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({AuctionResponse auctionResponse});
-}
-
-/// @nodoc
-class __$$AuctionSuccessImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$AuctionSuccessImpl>
-    implements _$$AuctionSuccessImplCopyWith<$Res> {
-  __$$AuctionSuccessImplCopyWithImpl(
-      _$AuctionSuccessImpl _value, $Res Function(_$AuctionSuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? auctionResponse = null,
-  }) {
-    return _then(_$AuctionSuccessImpl(
-      null == auctionResponse
-          ? _value.auctionResponse
-          : auctionResponse // ignore: cast_nullable_to_non_nullable
-              as AuctionResponse,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AuctionSuccessImpl implements AuctionSuccess {
-  const _$AuctionSuccessImpl(this.auctionResponse);
-
-  @override
-  final AuctionResponse auctionResponse;
-
-  @override
-  String toString() {
-    return 'HomeState.auctionSuccess(auctionResponse: $auctionResponse)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuctionSuccessImpl &&
-            (identical(other.auctionResponse, auctionResponse) ||
-                other.auctionResponse == auctionResponse));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, auctionResponse);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuctionSuccessImplCopyWith<_$AuctionSuccessImpl> get copyWith =>
-      __$$AuctionSuccessImplCopyWithImpl<_$AuctionSuccessImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() allAdsLoading,
-    required TResult Function(AdsResponse adsResponse) allAdsSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
-    required TResult Function() vipAdsLoading,
-    required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
-  }) {
-    return auctionSuccess(auctionResponse);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? allAdsLoading,
-    TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
-    TResult? Function()? vipAdsLoading,
-    TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
-  }) {
-    return auctionSuccess?.call(auctionResponse);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? allAdsLoading,
-    TResult Function(AdsResponse adsResponse)? allAdsSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
-    TResult Function()? vipAdsLoading,
-    TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
-    required TResult orElse(),
-  }) {
-    if (auctionSuccess != null) {
-      return auctionSuccess(auctionResponse);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(AllAdsLoading value) allAdsLoading,
-    required TResult Function(AllAdsSuccess value) allAdsSuccess,
-    required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
-    required TResult Function(VipAdsLoading value) vipAdsLoading,
-    required TResult Function(VipAdsSuccess value) vipAdsSuccess,
-    required TResult Function(VipAdsError value) vipAdsError,
-  }) {
-    return auctionSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(AllAdsLoading value)? allAdsLoading,
-    TResult? Function(AllAdsSuccess value)? allAdsSuccess,
-    TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
-    TResult? Function(VipAdsLoading value)? vipAdsLoading,
-    TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
-    TResult? Function(VipAdsError value)? vipAdsError,
-  }) {
-    return auctionSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(AllAdsLoading value)? allAdsLoading,
-    TResult Function(AllAdsSuccess value)? allAdsSuccess,
-    TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
-    TResult Function(VipAdsLoading value)? vipAdsLoading,
-    TResult Function(VipAdsSuccess value)? vipAdsSuccess,
-    TResult Function(VipAdsError value)? vipAdsError,
-    required TResult orElse(),
-  }) {
-    if (auctionSuccess != null) {
-      return auctionSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuctionSuccess implements HomeState {
-  const factory AuctionSuccess(final AuctionResponse auctionResponse) =
-      _$AuctionSuccessImpl;
-
-  AuctionResponse get auctionResponse;
-  @JsonKey(ignore: true)
-  _$$AuctionSuccessImplCopyWith<_$AuctionSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$AuctionErrorImplCopyWith<$Res> {
-  factory _$$AuctionErrorImplCopyWith(
-          _$AuctionErrorImpl value, $Res Function(_$AuctionErrorImpl) then) =
-      __$$AuctionErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ApiErrorModel apiErrorModel});
-}
-
-/// @nodoc
-class __$$AuctionErrorImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$AuctionErrorImpl>
-    implements _$$AuctionErrorImplCopyWith<$Res> {
-  __$$AuctionErrorImplCopyWithImpl(
-      _$AuctionErrorImpl _value, $Res Function(_$AuctionErrorImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? apiErrorModel = null,
-  }) {
-    return _then(_$AuctionErrorImpl(
-      null == apiErrorModel
-          ? _value.apiErrorModel
-          : apiErrorModel // ignore: cast_nullable_to_non_nullable
-              as ApiErrorModel,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$AuctionErrorImpl implements AuctionError {
-  const _$AuctionErrorImpl(this.apiErrorModel);
-
-  @override
-  final ApiErrorModel apiErrorModel;
-
-  @override
-  String toString() {
-    return 'HomeState.auctionError(apiErrorModel: $apiErrorModel)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuctionErrorImpl &&
-            (identical(other.apiErrorModel, apiErrorModel) ||
-                other.apiErrorModel == apiErrorModel));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, apiErrorModel);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuctionErrorImplCopyWith<_$AuctionErrorImpl> get copyWith =>
-      __$$AuctionErrorImplCopyWithImpl<_$AuctionErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() allAdsLoading,
-    required TResult Function(AdsResponse adsResponse) allAdsSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
-    required TResult Function() vipAdsLoading,
-    required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
-  }) {
-    return auctionError(apiErrorModel);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? allAdsLoading,
-    TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
-    TResult? Function()? vipAdsLoading,
-    TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
-  }) {
-    return auctionError?.call(apiErrorModel);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? allAdsLoading,
-    TResult Function(AdsResponse adsResponse)? allAdsSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
-    TResult Function()? vipAdsLoading,
-    TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
-    required TResult orElse(),
-  }) {
-    if (auctionError != null) {
-      return auctionError(apiErrorModel);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(AllAdsLoading value) allAdsLoading,
-    required TResult Function(AllAdsSuccess value) allAdsSuccess,
-    required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
-    required TResult Function(VipAdsLoading value) vipAdsLoading,
-    required TResult Function(VipAdsSuccess value) vipAdsSuccess,
-    required TResult Function(VipAdsError value) vipAdsError,
-  }) {
-    return auctionError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(AllAdsLoading value)? allAdsLoading,
-    TResult? Function(AllAdsSuccess value)? allAdsSuccess,
-    TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
-    TResult? Function(VipAdsLoading value)? vipAdsLoading,
-    TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
-    TResult? Function(VipAdsError value)? vipAdsError,
-  }) {
-    return auctionError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(AllAdsLoading value)? allAdsLoading,
-    TResult Function(AllAdsSuccess value)? allAdsSuccess,
-    TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
-    TResult Function(VipAdsLoading value)? vipAdsLoading,
-    TResult Function(VipAdsSuccess value)? vipAdsSuccess,
-    TResult Function(VipAdsError value)? vipAdsError,
-    required TResult orElse(),
-  }) {
-    if (auctionError != null) {
-      return auctionError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuctionError implements HomeState {
-  const factory AuctionError(final ApiErrorModel apiErrorModel) =
-      _$AuctionErrorImpl;
-
-  ApiErrorModel get apiErrorModel;
-  @JsonKey(ignore: true)
-  _$$AuctionErrorImplCopyWith<_$AuctionErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1346,9 +739,6 @@ class _$VipAdsLoadingImpl implements VipAdsLoading {
     required TResult Function() allAdsLoading,
     required TResult Function(AdsResponse adsResponse) allAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
     required TResult Function() vipAdsLoading,
     required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
@@ -1363,9 +753,6 @@ class _$VipAdsLoadingImpl implements VipAdsLoading {
     TResult? Function()? allAdsLoading,
     TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult? Function()? vipAdsLoading,
     TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -1380,9 +767,6 @@ class _$VipAdsLoadingImpl implements VipAdsLoading {
     TResult Function()? allAdsLoading,
     TResult Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult Function()? vipAdsLoading,
     TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -1401,9 +785,6 @@ class _$VipAdsLoadingImpl implements VipAdsLoading {
     required TResult Function(AllAdsLoading value) allAdsLoading,
     required TResult Function(AllAdsSuccess value) allAdsSuccess,
     required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
     required TResult Function(VipAdsLoading value) vipAdsLoading,
     required TResult Function(VipAdsSuccess value) vipAdsSuccess,
     required TResult Function(VipAdsError value) vipAdsError,
@@ -1418,9 +799,6 @@ class _$VipAdsLoadingImpl implements VipAdsLoading {
     TResult? Function(AllAdsLoading value)? allAdsLoading,
     TResult? Function(AllAdsSuccess value)? allAdsSuccess,
     TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
     TResult? Function(VipAdsLoading value)? vipAdsLoading,
     TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult? Function(VipAdsError value)? vipAdsError,
@@ -1435,9 +813,6 @@ class _$VipAdsLoadingImpl implements VipAdsLoading {
     TResult Function(AllAdsLoading value)? allAdsLoading,
     TResult Function(AllAdsSuccess value)? allAdsSuccess,
     TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
     TResult Function(VipAdsLoading value)? vipAdsLoading,
     TResult Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult Function(VipAdsError value)? vipAdsError,
@@ -1523,9 +898,6 @@ class _$VipAdsSuccessImpl implements VipAdsSuccess {
     required TResult Function() allAdsLoading,
     required TResult Function(AdsResponse adsResponse) allAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
     required TResult Function() vipAdsLoading,
     required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
@@ -1540,9 +912,6 @@ class _$VipAdsSuccessImpl implements VipAdsSuccess {
     TResult? Function()? allAdsLoading,
     TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult? Function()? vipAdsLoading,
     TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -1557,9 +926,6 @@ class _$VipAdsSuccessImpl implements VipAdsSuccess {
     TResult Function()? allAdsLoading,
     TResult Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult Function()? vipAdsLoading,
     TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -1578,9 +944,6 @@ class _$VipAdsSuccessImpl implements VipAdsSuccess {
     required TResult Function(AllAdsLoading value) allAdsLoading,
     required TResult Function(AllAdsSuccess value) allAdsSuccess,
     required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
     required TResult Function(VipAdsLoading value) vipAdsLoading,
     required TResult Function(VipAdsSuccess value) vipAdsSuccess,
     required TResult Function(VipAdsError value) vipAdsError,
@@ -1595,9 +958,6 @@ class _$VipAdsSuccessImpl implements VipAdsSuccess {
     TResult? Function(AllAdsLoading value)? allAdsLoading,
     TResult? Function(AllAdsSuccess value)? allAdsSuccess,
     TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
     TResult? Function(VipAdsLoading value)? vipAdsLoading,
     TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult? Function(VipAdsError value)? vipAdsError,
@@ -1612,9 +972,6 @@ class _$VipAdsSuccessImpl implements VipAdsSuccess {
     TResult Function(AllAdsLoading value)? allAdsLoading,
     TResult Function(AllAdsSuccess value)? allAdsSuccess,
     TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
     TResult Function(VipAdsLoading value)? vipAdsLoading,
     TResult Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult Function(VipAdsError value)? vipAdsError,
@@ -1706,9 +1063,6 @@ class _$VipAdsErrorImpl implements VipAdsError {
     required TResult Function() allAdsLoading,
     required TResult Function(AdsResponse adsResponse) allAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) allAdsError,
-    required TResult Function() auctionLoading,
-    required TResult Function(AuctionResponse auctionResponse) auctionSuccess,
-    required TResult Function(ApiErrorModel apiErrorModel) auctionError,
     required TResult Function() vipAdsLoading,
     required TResult Function(HomeResponse homeResponse) vipAdsSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) vipAdsError,
@@ -1723,9 +1077,6 @@ class _$VipAdsErrorImpl implements VipAdsError {
     TResult? Function()? allAdsLoading,
     TResult? Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult? Function()? auctionLoading,
-    TResult? Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult? Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult? Function()? vipAdsLoading,
     TResult? Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -1740,9 +1091,6 @@ class _$VipAdsErrorImpl implements VipAdsError {
     TResult Function()? allAdsLoading,
     TResult Function(AdsResponse adsResponse)? allAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? allAdsError,
-    TResult Function()? auctionLoading,
-    TResult Function(AuctionResponse auctionResponse)? auctionSuccess,
-    TResult Function(ApiErrorModel apiErrorModel)? auctionError,
     TResult Function()? vipAdsLoading,
     TResult Function(HomeResponse homeResponse)? vipAdsSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? vipAdsError,
@@ -1761,9 +1109,6 @@ class _$VipAdsErrorImpl implements VipAdsError {
     required TResult Function(AllAdsLoading value) allAdsLoading,
     required TResult Function(AllAdsSuccess value) allAdsSuccess,
     required TResult Function(AllAdsError value) allAdsError,
-    required TResult Function(AuctionLoading value) auctionLoading,
-    required TResult Function(AuctionSuccess value) auctionSuccess,
-    required TResult Function(AuctionError value) auctionError,
     required TResult Function(VipAdsLoading value) vipAdsLoading,
     required TResult Function(VipAdsSuccess value) vipAdsSuccess,
     required TResult Function(VipAdsError value) vipAdsError,
@@ -1778,9 +1123,6 @@ class _$VipAdsErrorImpl implements VipAdsError {
     TResult? Function(AllAdsLoading value)? allAdsLoading,
     TResult? Function(AllAdsSuccess value)? allAdsSuccess,
     TResult? Function(AllAdsError value)? allAdsError,
-    TResult? Function(AuctionLoading value)? auctionLoading,
-    TResult? Function(AuctionSuccess value)? auctionSuccess,
-    TResult? Function(AuctionError value)? auctionError,
     TResult? Function(VipAdsLoading value)? vipAdsLoading,
     TResult? Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult? Function(VipAdsError value)? vipAdsError,
@@ -1795,9 +1137,6 @@ class _$VipAdsErrorImpl implements VipAdsError {
     TResult Function(AllAdsLoading value)? allAdsLoading,
     TResult Function(AllAdsSuccess value)? allAdsSuccess,
     TResult Function(AllAdsError value)? allAdsError,
-    TResult Function(AuctionLoading value)? auctionLoading,
-    TResult Function(AuctionSuccess value)? auctionSuccess,
-    TResult Function(AuctionError value)? auctionError,
     TResult Function(VipAdsLoading value)? vipAdsLoading,
     TResult Function(VipAdsSuccess value)? vipAdsSuccess,
     TResult Function(VipAdsError value)? vipAdsError,
@@ -1833,6 +1172,12 @@ mixin _$AddAdvertisementState {
     required TResult Function(File image) imagePicked,
     required TResult Function(String type) propertyTypeChanged,
     required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
     required TResult Function(String type) transactionTypeChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -1846,6 +1191,12 @@ mixin _$AddAdvertisementState {
     TResult? Function(File image)? imagePicked,
     TResult? Function(String type)? propertyTypeChanged,
     TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult? Function(String type)? transactionTypeChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -1859,6 +1210,12 @@ mixin _$AddAdvertisementState {
     TResult Function(File image)? imagePicked,
     TResult Function(String type)? propertyTypeChanged,
     TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult Function(String type)? transactionTypeChanged,
     required TResult orElse(),
   }) =>
@@ -1875,6 +1232,12 @@ mixin _$AddAdvertisementState {
     required TResult Function(ImagePicked value) imagePicked,
     required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
     required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
     required TResult Function(TransactionTypeChanged value)
         transactionTypeChanged,
   }) =>
@@ -1888,6 +1251,12 @@ mixin _$AddAdvertisementState {
     TResult? Function(ImagePicked value)? imagePicked,
     TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
     TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -1900,6 +1269,12 @@ mixin _$AddAdvertisementState {
     TResult Function(ImagePicked value)? imagePicked,
     TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
     TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
     required TResult orElse(),
   }) =>
@@ -1976,6 +1351,12 @@ class _$AddAdvertisementInitialImpl implements _AddAdvertisementInitial {
     required TResult Function(File image) imagePicked,
     required TResult Function(String type) propertyTypeChanged,
     required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
     required TResult Function(String type) transactionTypeChanged,
   }) {
     return initial();
@@ -1992,6 +1373,12 @@ class _$AddAdvertisementInitialImpl implements _AddAdvertisementInitial {
     TResult? Function(File image)? imagePicked,
     TResult? Function(String type)? propertyTypeChanged,
     TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult? Function(String type)? transactionTypeChanged,
   }) {
     return initial?.call();
@@ -2008,6 +1395,12 @@ class _$AddAdvertisementInitialImpl implements _AddAdvertisementInitial {
     TResult Function(File image)? imagePicked,
     TResult Function(String type)? propertyTypeChanged,
     TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult Function(String type)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2030,6 +1423,12 @@ class _$AddAdvertisementInitialImpl implements _AddAdvertisementInitial {
     required TResult Function(ImagePicked value) imagePicked,
     required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
     required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
     required TResult Function(TransactionTypeChanged value)
         transactionTypeChanged,
   }) {
@@ -2046,6 +1445,12 @@ class _$AddAdvertisementInitialImpl implements _AddAdvertisementInitial {
     TResult? Function(ImagePicked value)? imagePicked,
     TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
     TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
   }) {
     return initial?.call(this);
@@ -2061,6 +1466,12 @@ class _$AddAdvertisementInitialImpl implements _AddAdvertisementInitial {
     TResult Function(ImagePicked value)? imagePicked,
     TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
     TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2126,6 +1537,12 @@ class _$AddAdvertisementLoadingImpl implements AddAdvertisementLoading {
     required TResult Function(File image) imagePicked,
     required TResult Function(String type) propertyTypeChanged,
     required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
     required TResult Function(String type) transactionTypeChanged,
   }) {
     return addAdvertisementLoading();
@@ -2142,6 +1559,12 @@ class _$AddAdvertisementLoadingImpl implements AddAdvertisementLoading {
     TResult? Function(File image)? imagePicked,
     TResult? Function(String type)? propertyTypeChanged,
     TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult? Function(String type)? transactionTypeChanged,
   }) {
     return addAdvertisementLoading?.call();
@@ -2158,6 +1581,12 @@ class _$AddAdvertisementLoadingImpl implements AddAdvertisementLoading {
     TResult Function(File image)? imagePicked,
     TResult Function(String type)? propertyTypeChanged,
     TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult Function(String type)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2180,6 +1609,12 @@ class _$AddAdvertisementLoadingImpl implements AddAdvertisementLoading {
     required TResult Function(ImagePicked value) imagePicked,
     required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
     required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
     required TResult Function(TransactionTypeChanged value)
         transactionTypeChanged,
   }) {
@@ -2196,6 +1631,12 @@ class _$AddAdvertisementLoadingImpl implements AddAdvertisementLoading {
     TResult? Function(ImagePicked value)? imagePicked,
     TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
     TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
   }) {
     return addAdvertisementLoading?.call(this);
@@ -2211,6 +1652,12 @@ class _$AddAdvertisementLoadingImpl implements AddAdvertisementLoading {
     TResult Function(ImagePicked value)? imagePicked,
     TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
     TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2304,6 +1751,12 @@ class _$AddAdvertisementSuccessImpl implements AddAdvertisementSuccess {
     required TResult Function(File image) imagePicked,
     required TResult Function(String type) propertyTypeChanged,
     required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
     required TResult Function(String type) transactionTypeChanged,
   }) {
     return addAdvertisementSuccess(addAdvertisementResponse);
@@ -2320,6 +1773,12 @@ class _$AddAdvertisementSuccessImpl implements AddAdvertisementSuccess {
     TResult? Function(File image)? imagePicked,
     TResult? Function(String type)? propertyTypeChanged,
     TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult? Function(String type)? transactionTypeChanged,
   }) {
     return addAdvertisementSuccess?.call(addAdvertisementResponse);
@@ -2336,6 +1795,12 @@ class _$AddAdvertisementSuccessImpl implements AddAdvertisementSuccess {
     TResult Function(File image)? imagePicked,
     TResult Function(String type)? propertyTypeChanged,
     TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult Function(String type)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2358,6 +1823,12 @@ class _$AddAdvertisementSuccessImpl implements AddAdvertisementSuccess {
     required TResult Function(ImagePicked value) imagePicked,
     required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
     required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
     required TResult Function(TransactionTypeChanged value)
         transactionTypeChanged,
   }) {
@@ -2374,6 +1845,12 @@ class _$AddAdvertisementSuccessImpl implements AddAdvertisementSuccess {
     TResult? Function(ImagePicked value)? imagePicked,
     TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
     TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
   }) {
     return addAdvertisementSuccess?.call(this);
@@ -2389,6 +1866,12 @@ class _$AddAdvertisementSuccessImpl implements AddAdvertisementSuccess {
     TResult Function(ImagePicked value)? imagePicked,
     TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
     TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2487,6 +1970,12 @@ class _$AddAdvertisementErrorImpl implements AddAdvertisementError {
     required TResult Function(File image) imagePicked,
     required TResult Function(String type) propertyTypeChanged,
     required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
     required TResult Function(String type) transactionTypeChanged,
   }) {
     return addAdvertisementError(apiErrorModel);
@@ -2503,6 +1992,12 @@ class _$AddAdvertisementErrorImpl implements AddAdvertisementError {
     TResult? Function(File image)? imagePicked,
     TResult? Function(String type)? propertyTypeChanged,
     TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult? Function(String type)? transactionTypeChanged,
   }) {
     return addAdvertisementError?.call(apiErrorModel);
@@ -2519,6 +2014,12 @@ class _$AddAdvertisementErrorImpl implements AddAdvertisementError {
     TResult Function(File image)? imagePicked,
     TResult Function(String type)? propertyTypeChanged,
     TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult Function(String type)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2541,6 +2042,12 @@ class _$AddAdvertisementErrorImpl implements AddAdvertisementError {
     required TResult Function(ImagePicked value) imagePicked,
     required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
     required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
     required TResult Function(TransactionTypeChanged value)
         transactionTypeChanged,
   }) {
@@ -2557,6 +2064,12 @@ class _$AddAdvertisementErrorImpl implements AddAdvertisementError {
     TResult? Function(ImagePicked value)? imagePicked,
     TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
     TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
   }) {
     return addAdvertisementError?.call(this);
@@ -2572,6 +2085,12 @@ class _$AddAdvertisementErrorImpl implements AddAdvertisementError {
     TResult Function(ImagePicked value)? imagePicked,
     TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
     TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2665,6 +2184,12 @@ class _$ImagePickedImpl implements ImagePicked {
     required TResult Function(File image) imagePicked,
     required TResult Function(String type) propertyTypeChanged,
     required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
     required TResult Function(String type) transactionTypeChanged,
   }) {
     return imagePicked(image);
@@ -2681,6 +2206,12 @@ class _$ImagePickedImpl implements ImagePicked {
     TResult? Function(File image)? imagePicked,
     TResult? Function(String type)? propertyTypeChanged,
     TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult? Function(String type)? transactionTypeChanged,
   }) {
     return imagePicked?.call(image);
@@ -2697,6 +2228,12 @@ class _$ImagePickedImpl implements ImagePicked {
     TResult Function(File image)? imagePicked,
     TResult Function(String type)? propertyTypeChanged,
     TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult Function(String type)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2719,6 +2256,12 @@ class _$ImagePickedImpl implements ImagePicked {
     required TResult Function(ImagePicked value) imagePicked,
     required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
     required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
     required TResult Function(TransactionTypeChanged value)
         transactionTypeChanged,
   }) {
@@ -2735,6 +2278,12 @@ class _$ImagePickedImpl implements ImagePicked {
     TResult? Function(ImagePicked value)? imagePicked,
     TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
     TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
   }) {
     return imagePicked?.call(this);
@@ -2750,6 +2299,12 @@ class _$ImagePickedImpl implements ImagePicked {
     TResult Function(ImagePicked value)? imagePicked,
     TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
     TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2843,6 +2398,12 @@ class _$PropertyTypeChangedImpl implements PropertyTypeChanged {
     required TResult Function(File image) imagePicked,
     required TResult Function(String type) propertyTypeChanged,
     required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
     required TResult Function(String type) transactionTypeChanged,
   }) {
     return propertyTypeChanged(type);
@@ -2859,6 +2420,12 @@ class _$PropertyTypeChangedImpl implements PropertyTypeChanged {
     TResult? Function(File image)? imagePicked,
     TResult? Function(String type)? propertyTypeChanged,
     TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult? Function(String type)? transactionTypeChanged,
   }) {
     return propertyTypeChanged?.call(type);
@@ -2875,6 +2442,12 @@ class _$PropertyTypeChangedImpl implements PropertyTypeChanged {
     TResult Function(File image)? imagePicked,
     TResult Function(String type)? propertyTypeChanged,
     TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult Function(String type)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -2897,6 +2470,12 @@ class _$PropertyTypeChangedImpl implements PropertyTypeChanged {
     required TResult Function(ImagePicked value) imagePicked,
     required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
     required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
     required TResult Function(TransactionTypeChanged value)
         transactionTypeChanged,
   }) {
@@ -2913,6 +2492,12 @@ class _$PropertyTypeChangedImpl implements PropertyTypeChanged {
     TResult? Function(ImagePicked value)? imagePicked,
     TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
     TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
   }) {
     return propertyTypeChanged?.call(this);
@@ -2928,6 +2513,12 @@ class _$PropertyTypeChangedImpl implements PropertyTypeChanged {
     TResult Function(ImagePicked value)? imagePicked,
     TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
     TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -3021,6 +2612,12 @@ class _$RegionChangedImpl implements RegionChanged {
     required TResult Function(File image) imagePicked,
     required TResult Function(String type) propertyTypeChanged,
     required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
     required TResult Function(String type) transactionTypeChanged,
   }) {
     return regionChanged(region);
@@ -3037,6 +2634,12 @@ class _$RegionChangedImpl implements RegionChanged {
     TResult? Function(File image)? imagePicked,
     TResult? Function(String type)? propertyTypeChanged,
     TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult? Function(String type)? transactionTypeChanged,
   }) {
     return regionChanged?.call(region);
@@ -3053,6 +2656,12 @@ class _$RegionChangedImpl implements RegionChanged {
     TResult Function(File image)? imagePicked,
     TResult Function(String type)? propertyTypeChanged,
     TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult Function(String type)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -3075,6 +2684,12 @@ class _$RegionChangedImpl implements RegionChanged {
     required TResult Function(ImagePicked value) imagePicked,
     required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
     required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
     required TResult Function(TransactionTypeChanged value)
         transactionTypeChanged,
   }) {
@@ -3091,6 +2706,12 @@ class _$RegionChangedImpl implements RegionChanged {
     TResult? Function(ImagePicked value)? imagePicked,
     TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
     TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
   }) {
     return regionChanged?.call(this);
@@ -3106,6 +2727,12 @@ class _$RegionChangedImpl implements RegionChanged {
     TResult Function(ImagePicked value)? imagePicked,
     TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
     TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -3122,6 +2749,1249 @@ abstract class RegionChanged implements AddAdvertisementState {
   String get region;
   @JsonKey(ignore: true)
   _$$RegionChangedImplCopyWith<_$RegionChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PropertyTypesLoadingImplCopyWith<$Res> {
+  factory _$$PropertyTypesLoadingImplCopyWith(_$PropertyTypesLoadingImpl value,
+          $Res Function(_$PropertyTypesLoadingImpl) then) =
+      __$$PropertyTypesLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PropertyTypesLoadingImplCopyWithImpl<$Res>
+    extends _$AddAdvertisementStateCopyWithImpl<$Res,
+        _$PropertyTypesLoadingImpl>
+    implements _$$PropertyTypesLoadingImplCopyWith<$Res> {
+  __$$PropertyTypesLoadingImplCopyWithImpl(_$PropertyTypesLoadingImpl _value,
+      $Res Function(_$PropertyTypesLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PropertyTypesLoadingImpl implements PropertyTypesLoading {
+  const _$PropertyTypesLoadingImpl();
+
+  @override
+  String toString() {
+    return 'AddAdvertisementState.propertyTypesLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PropertyTypesLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() addAdvertisementLoading,
+    required TResult Function(AddAdvertisementResponse addAdvertisementResponse)
+        addAdvertisementSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        addAdvertisementError,
+    required TResult Function(File image) imagePicked,
+    required TResult Function(String type) propertyTypeChanged,
+    required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
+    required TResult Function(String type) transactionTypeChanged,
+  }) {
+    return propertyTypesLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult? Function(File image)? imagePicked,
+    TResult? Function(String type)? propertyTypeChanged,
+    TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult? Function(String type)? transactionTypeChanged,
+  }) {
+    return propertyTypesLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? addAdvertisementLoading,
+    TResult Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult Function(File image)? imagePicked,
+    TResult Function(String type)? propertyTypeChanged,
+    TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult Function(String type)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (propertyTypesLoading != null) {
+      return propertyTypesLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddAdvertisementInitial value) initial,
+    required TResult Function(AddAdvertisementLoading value)
+        addAdvertisementLoading,
+    required TResult Function(AddAdvertisementSuccess value)
+        addAdvertisementSuccess,
+    required TResult Function(AddAdvertisementError value)
+        addAdvertisementError,
+    required TResult Function(ImagePicked value) imagePicked,
+    required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
+    required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
+    required TResult Function(TransactionTypeChanged value)
+        transactionTypeChanged,
+  }) {
+    return propertyTypesLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddAdvertisementInitial value)? initial,
+    TResult? Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult? Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult? Function(ImagePicked value)? imagePicked,
+    TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
+    TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
+  }) {
+    return propertyTypesLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddAdvertisementInitial value)? initial,
+    TResult Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult Function(ImagePicked value)? imagePicked,
+    TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
+    TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (propertyTypesLoading != null) {
+      return propertyTypesLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PropertyTypesLoading implements AddAdvertisementState {
+  const factory PropertyTypesLoading() = _$PropertyTypesLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$PropertyTypesSuccessImplCopyWith<$Res> {
+  factory _$$PropertyTypesSuccessImplCopyWith(_$PropertyTypesSuccessImpl value,
+          $Res Function(_$PropertyTypesSuccessImpl) then) =
+      __$$PropertyTypesSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> propertyTypes});
+}
+
+/// @nodoc
+class __$$PropertyTypesSuccessImplCopyWithImpl<$Res>
+    extends _$AddAdvertisementStateCopyWithImpl<$Res,
+        _$PropertyTypesSuccessImpl>
+    implements _$$PropertyTypesSuccessImplCopyWith<$Res> {
+  __$$PropertyTypesSuccessImplCopyWithImpl(_$PropertyTypesSuccessImpl _value,
+      $Res Function(_$PropertyTypesSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? propertyTypes = null,
+  }) {
+    return _then(_$PropertyTypesSuccessImpl(
+      null == propertyTypes
+          ? _value._propertyTypes
+          : propertyTypes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PropertyTypesSuccessImpl implements PropertyTypesSuccess {
+  const _$PropertyTypesSuccessImpl(final List<String> propertyTypes)
+      : _propertyTypes = propertyTypes;
+
+  final List<String> _propertyTypes;
+  @override
+  List<String> get propertyTypes {
+    if (_propertyTypes is EqualUnmodifiableListView) return _propertyTypes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_propertyTypes);
+  }
+
+  @override
+  String toString() {
+    return 'AddAdvertisementState.propertyTypesSuccess(propertyTypes: $propertyTypes)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PropertyTypesSuccessImpl &&
+            const DeepCollectionEquality()
+                .equals(other._propertyTypes, _propertyTypes));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_propertyTypes));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PropertyTypesSuccessImplCopyWith<_$PropertyTypesSuccessImpl>
+      get copyWith =>
+          __$$PropertyTypesSuccessImplCopyWithImpl<_$PropertyTypesSuccessImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() addAdvertisementLoading,
+    required TResult Function(AddAdvertisementResponse addAdvertisementResponse)
+        addAdvertisementSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        addAdvertisementError,
+    required TResult Function(File image) imagePicked,
+    required TResult Function(String type) propertyTypeChanged,
+    required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
+    required TResult Function(String type) transactionTypeChanged,
+  }) {
+    return propertyTypesSuccess(propertyTypes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult? Function(File image)? imagePicked,
+    TResult? Function(String type)? propertyTypeChanged,
+    TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult? Function(String type)? transactionTypeChanged,
+  }) {
+    return propertyTypesSuccess?.call(propertyTypes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? addAdvertisementLoading,
+    TResult Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult Function(File image)? imagePicked,
+    TResult Function(String type)? propertyTypeChanged,
+    TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult Function(String type)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (propertyTypesSuccess != null) {
+      return propertyTypesSuccess(propertyTypes);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddAdvertisementInitial value) initial,
+    required TResult Function(AddAdvertisementLoading value)
+        addAdvertisementLoading,
+    required TResult Function(AddAdvertisementSuccess value)
+        addAdvertisementSuccess,
+    required TResult Function(AddAdvertisementError value)
+        addAdvertisementError,
+    required TResult Function(ImagePicked value) imagePicked,
+    required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
+    required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
+    required TResult Function(TransactionTypeChanged value)
+        transactionTypeChanged,
+  }) {
+    return propertyTypesSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddAdvertisementInitial value)? initial,
+    TResult? Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult? Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult? Function(ImagePicked value)? imagePicked,
+    TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
+    TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
+  }) {
+    return propertyTypesSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddAdvertisementInitial value)? initial,
+    TResult Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult Function(ImagePicked value)? imagePicked,
+    TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
+    TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (propertyTypesSuccess != null) {
+      return propertyTypesSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PropertyTypesSuccess implements AddAdvertisementState {
+  const factory PropertyTypesSuccess(final List<String> propertyTypes) =
+      _$PropertyTypesSuccessImpl;
+
+  List<String> get propertyTypes;
+  @JsonKey(ignore: true)
+  _$$PropertyTypesSuccessImplCopyWith<_$PropertyTypesSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PropertyTypesErrorImplCopyWith<$Res> {
+  factory _$$PropertyTypesErrorImplCopyWith(_$PropertyTypesErrorImpl value,
+          $Res Function(_$PropertyTypesErrorImpl) then) =
+      __$$PropertyTypesErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$PropertyTypesErrorImplCopyWithImpl<$Res>
+    extends _$AddAdvertisementStateCopyWithImpl<$Res, _$PropertyTypesErrorImpl>
+    implements _$$PropertyTypesErrorImplCopyWith<$Res> {
+  __$$PropertyTypesErrorImplCopyWithImpl(_$PropertyTypesErrorImpl _value,
+      $Res Function(_$PropertyTypesErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$PropertyTypesErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PropertyTypesErrorImpl implements PropertyTypesError {
+  const _$PropertyTypesErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'AddAdvertisementState.propertyTypesError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PropertyTypesErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PropertyTypesErrorImplCopyWith<_$PropertyTypesErrorImpl> get copyWith =>
+      __$$PropertyTypesErrorImplCopyWithImpl<_$PropertyTypesErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() addAdvertisementLoading,
+    required TResult Function(AddAdvertisementResponse addAdvertisementResponse)
+        addAdvertisementSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        addAdvertisementError,
+    required TResult Function(File image) imagePicked,
+    required TResult Function(String type) propertyTypeChanged,
+    required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
+    required TResult Function(String type) transactionTypeChanged,
+  }) {
+    return propertyTypesError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult? Function(File image)? imagePicked,
+    TResult? Function(String type)? propertyTypeChanged,
+    TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult? Function(String type)? transactionTypeChanged,
+  }) {
+    return propertyTypesError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? addAdvertisementLoading,
+    TResult Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult Function(File image)? imagePicked,
+    TResult Function(String type)? propertyTypeChanged,
+    TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult Function(String type)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (propertyTypesError != null) {
+      return propertyTypesError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddAdvertisementInitial value) initial,
+    required TResult Function(AddAdvertisementLoading value)
+        addAdvertisementLoading,
+    required TResult Function(AddAdvertisementSuccess value)
+        addAdvertisementSuccess,
+    required TResult Function(AddAdvertisementError value)
+        addAdvertisementError,
+    required TResult Function(ImagePicked value) imagePicked,
+    required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
+    required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
+    required TResult Function(TransactionTypeChanged value)
+        transactionTypeChanged,
+  }) {
+    return propertyTypesError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddAdvertisementInitial value)? initial,
+    TResult? Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult? Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult? Function(ImagePicked value)? imagePicked,
+    TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
+    TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
+  }) {
+    return propertyTypesError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddAdvertisementInitial value)? initial,
+    TResult Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult Function(ImagePicked value)? imagePicked,
+    TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
+    TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (propertyTypesError != null) {
+      return propertyTypesError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PropertyTypesError implements AddAdvertisementState {
+  const factory PropertyTypesError(final ApiErrorModel apiErrorModel) =
+      _$PropertyTypesErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$PropertyTypesErrorImplCopyWith<_$PropertyTypesErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RegionsLoadingImplCopyWith<$Res> {
+  factory _$$RegionsLoadingImplCopyWith(_$RegionsLoadingImpl value,
+          $Res Function(_$RegionsLoadingImpl) then) =
+      __$$RegionsLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RegionsLoadingImplCopyWithImpl<$Res>
+    extends _$AddAdvertisementStateCopyWithImpl<$Res, _$RegionsLoadingImpl>
+    implements _$$RegionsLoadingImplCopyWith<$Res> {
+  __$$RegionsLoadingImplCopyWithImpl(
+      _$RegionsLoadingImpl _value, $Res Function(_$RegionsLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RegionsLoadingImpl implements RegionsLoading {
+  const _$RegionsLoadingImpl();
+
+  @override
+  String toString() {
+    return 'AddAdvertisementState.regionsLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RegionsLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() addAdvertisementLoading,
+    required TResult Function(AddAdvertisementResponse addAdvertisementResponse)
+        addAdvertisementSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        addAdvertisementError,
+    required TResult Function(File image) imagePicked,
+    required TResult Function(String type) propertyTypeChanged,
+    required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
+    required TResult Function(String type) transactionTypeChanged,
+  }) {
+    return regionsLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult? Function(File image)? imagePicked,
+    TResult? Function(String type)? propertyTypeChanged,
+    TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult? Function(String type)? transactionTypeChanged,
+  }) {
+    return regionsLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? addAdvertisementLoading,
+    TResult Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult Function(File image)? imagePicked,
+    TResult Function(String type)? propertyTypeChanged,
+    TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult Function(String type)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (regionsLoading != null) {
+      return regionsLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddAdvertisementInitial value) initial,
+    required TResult Function(AddAdvertisementLoading value)
+        addAdvertisementLoading,
+    required TResult Function(AddAdvertisementSuccess value)
+        addAdvertisementSuccess,
+    required TResult Function(AddAdvertisementError value)
+        addAdvertisementError,
+    required TResult Function(ImagePicked value) imagePicked,
+    required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
+    required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
+    required TResult Function(TransactionTypeChanged value)
+        transactionTypeChanged,
+  }) {
+    return regionsLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddAdvertisementInitial value)? initial,
+    TResult? Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult? Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult? Function(ImagePicked value)? imagePicked,
+    TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
+    TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
+  }) {
+    return regionsLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddAdvertisementInitial value)? initial,
+    TResult Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult Function(ImagePicked value)? imagePicked,
+    TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
+    TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (regionsLoading != null) {
+      return regionsLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RegionsLoading implements AddAdvertisementState {
+  const factory RegionsLoading() = _$RegionsLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$RegionsSuccessImplCopyWith<$Res> {
+  factory _$$RegionsSuccessImplCopyWith(_$RegionsSuccessImpl value,
+          $Res Function(_$RegionsSuccessImpl) then) =
+      __$$RegionsSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> regions});
+}
+
+/// @nodoc
+class __$$RegionsSuccessImplCopyWithImpl<$Res>
+    extends _$AddAdvertisementStateCopyWithImpl<$Res, _$RegionsSuccessImpl>
+    implements _$$RegionsSuccessImplCopyWith<$Res> {
+  __$$RegionsSuccessImplCopyWithImpl(
+      _$RegionsSuccessImpl _value, $Res Function(_$RegionsSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? regions = null,
+  }) {
+    return _then(_$RegionsSuccessImpl(
+      null == regions
+          ? _value._regions
+          : regions // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RegionsSuccessImpl implements RegionsSuccess {
+  const _$RegionsSuccessImpl(final List<String> regions) : _regions = regions;
+
+  final List<String> _regions;
+  @override
+  List<String> get regions {
+    if (_regions is EqualUnmodifiableListView) return _regions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_regions);
+  }
+
+  @override
+  String toString() {
+    return 'AddAdvertisementState.regionsSuccess(regions: $regions)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegionsSuccessImpl &&
+            const DeepCollectionEquality().equals(other._regions, _regions));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_regions));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegionsSuccessImplCopyWith<_$RegionsSuccessImpl> get copyWith =>
+      __$$RegionsSuccessImplCopyWithImpl<_$RegionsSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() addAdvertisementLoading,
+    required TResult Function(AddAdvertisementResponse addAdvertisementResponse)
+        addAdvertisementSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        addAdvertisementError,
+    required TResult Function(File image) imagePicked,
+    required TResult Function(String type) propertyTypeChanged,
+    required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
+    required TResult Function(String type) transactionTypeChanged,
+  }) {
+    return regionsSuccess(regions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult? Function(File image)? imagePicked,
+    TResult? Function(String type)? propertyTypeChanged,
+    TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult? Function(String type)? transactionTypeChanged,
+  }) {
+    return regionsSuccess?.call(regions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? addAdvertisementLoading,
+    TResult Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult Function(File image)? imagePicked,
+    TResult Function(String type)? propertyTypeChanged,
+    TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult Function(String type)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (regionsSuccess != null) {
+      return regionsSuccess(regions);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddAdvertisementInitial value) initial,
+    required TResult Function(AddAdvertisementLoading value)
+        addAdvertisementLoading,
+    required TResult Function(AddAdvertisementSuccess value)
+        addAdvertisementSuccess,
+    required TResult Function(AddAdvertisementError value)
+        addAdvertisementError,
+    required TResult Function(ImagePicked value) imagePicked,
+    required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
+    required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
+    required TResult Function(TransactionTypeChanged value)
+        transactionTypeChanged,
+  }) {
+    return regionsSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddAdvertisementInitial value)? initial,
+    TResult? Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult? Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult? Function(ImagePicked value)? imagePicked,
+    TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
+    TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
+  }) {
+    return regionsSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddAdvertisementInitial value)? initial,
+    TResult Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult Function(ImagePicked value)? imagePicked,
+    TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
+    TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (regionsSuccess != null) {
+      return regionsSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RegionsSuccess implements AddAdvertisementState {
+  const factory RegionsSuccess(final List<String> regions) =
+      _$RegionsSuccessImpl;
+
+  List<String> get regions;
+  @JsonKey(ignore: true)
+  _$$RegionsSuccessImplCopyWith<_$RegionsSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RegionsErrorImplCopyWith<$Res> {
+  factory _$$RegionsErrorImplCopyWith(
+          _$RegionsErrorImpl value, $Res Function(_$RegionsErrorImpl) then) =
+      __$$RegionsErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$RegionsErrorImplCopyWithImpl<$Res>
+    extends _$AddAdvertisementStateCopyWithImpl<$Res, _$RegionsErrorImpl>
+    implements _$$RegionsErrorImplCopyWith<$Res> {
+  __$$RegionsErrorImplCopyWithImpl(
+      _$RegionsErrorImpl _value, $Res Function(_$RegionsErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$RegionsErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RegionsErrorImpl implements RegionsError {
+  const _$RegionsErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'AddAdvertisementState.regionsError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegionsErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegionsErrorImplCopyWith<_$RegionsErrorImpl> get copyWith =>
+      __$$RegionsErrorImplCopyWithImpl<_$RegionsErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() addAdvertisementLoading,
+    required TResult Function(AddAdvertisementResponse addAdvertisementResponse)
+        addAdvertisementSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        addAdvertisementError,
+    required TResult Function(File image) imagePicked,
+    required TResult Function(String type) propertyTypeChanged,
+    required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
+    required TResult Function(String type) transactionTypeChanged,
+  }) {
+    return regionsError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult? Function(File image)? imagePicked,
+    TResult? Function(String type)? propertyTypeChanged,
+    TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult? Function(String type)? transactionTypeChanged,
+  }) {
+    return regionsError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? addAdvertisementLoading,
+    TResult Function(AddAdvertisementResponse addAdvertisementResponse)?
+        addAdvertisementSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? addAdvertisementError,
+    TResult Function(File image)? imagePicked,
+    TResult Function(String type)? propertyTypeChanged,
+    TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
+    TResult Function(String type)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (regionsError != null) {
+      return regionsError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddAdvertisementInitial value) initial,
+    required TResult Function(AddAdvertisementLoading value)
+        addAdvertisementLoading,
+    required TResult Function(AddAdvertisementSuccess value)
+        addAdvertisementSuccess,
+    required TResult Function(AddAdvertisementError value)
+        addAdvertisementError,
+    required TResult Function(ImagePicked value) imagePicked,
+    required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
+    required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
+    required TResult Function(TransactionTypeChanged value)
+        transactionTypeChanged,
+  }) {
+    return regionsError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddAdvertisementInitial value)? initial,
+    TResult? Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult? Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult? Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult? Function(ImagePicked value)? imagePicked,
+    TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
+    TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
+  }) {
+    return regionsError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddAdvertisementInitial value)? initial,
+    TResult Function(AddAdvertisementLoading value)? addAdvertisementLoading,
+    TResult Function(AddAdvertisementSuccess value)? addAdvertisementSuccess,
+    TResult Function(AddAdvertisementError value)? addAdvertisementError,
+    TResult Function(ImagePicked value)? imagePicked,
+    TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
+    TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
+    TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
+    required TResult orElse(),
+  }) {
+    if (regionsError != null) {
+      return regionsError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RegionsError implements AddAdvertisementState {
+  const factory RegionsError(final ApiErrorModel apiErrorModel) =
+      _$RegionsErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$RegionsErrorImplCopyWith<_$RegionsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -3202,6 +4072,12 @@ class _$TransactionTypeChangedImpl implements TransactionTypeChanged {
     required TResult Function(File image) imagePicked,
     required TResult Function(String type) propertyTypeChanged,
     required TResult Function(String region) regionChanged,
+    required TResult Function() propertyTypesLoading,
+    required TResult Function(List<String> propertyTypes) propertyTypesSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) propertyTypesError,
+    required TResult Function() regionsLoading,
+    required TResult Function(List<String> regions) regionsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) regionsError,
     required TResult Function(String type) transactionTypeChanged,
   }) {
     return transactionTypeChanged(type);
@@ -3218,6 +4094,12 @@ class _$TransactionTypeChangedImpl implements TransactionTypeChanged {
     TResult? Function(File image)? imagePicked,
     TResult? Function(String type)? propertyTypeChanged,
     TResult? Function(String region)? regionChanged,
+    TResult? Function()? propertyTypesLoading,
+    TResult? Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult? Function()? regionsLoading,
+    TResult? Function(List<String> regions)? regionsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult? Function(String type)? transactionTypeChanged,
   }) {
     return transactionTypeChanged?.call(type);
@@ -3234,6 +4116,12 @@ class _$TransactionTypeChangedImpl implements TransactionTypeChanged {
     TResult Function(File image)? imagePicked,
     TResult Function(String type)? propertyTypeChanged,
     TResult Function(String region)? regionChanged,
+    TResult Function()? propertyTypesLoading,
+    TResult Function(List<String> propertyTypes)? propertyTypesSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? propertyTypesError,
+    TResult Function()? regionsLoading,
+    TResult Function(List<String> regions)? regionsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? regionsError,
     TResult Function(String type)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -3256,6 +4144,12 @@ class _$TransactionTypeChangedImpl implements TransactionTypeChanged {
     required TResult Function(ImagePicked value) imagePicked,
     required TResult Function(PropertyTypeChanged value) propertyTypeChanged,
     required TResult Function(RegionChanged value) regionChanged,
+    required TResult Function(PropertyTypesLoading value) propertyTypesLoading,
+    required TResult Function(PropertyTypesSuccess value) propertyTypesSuccess,
+    required TResult Function(PropertyTypesError value) propertyTypesError,
+    required TResult Function(RegionsLoading value) regionsLoading,
+    required TResult Function(RegionsSuccess value) regionsSuccess,
+    required TResult Function(RegionsError value) regionsError,
     required TResult Function(TransactionTypeChanged value)
         transactionTypeChanged,
   }) {
@@ -3272,6 +4166,12 @@ class _$TransactionTypeChangedImpl implements TransactionTypeChanged {
     TResult? Function(ImagePicked value)? imagePicked,
     TResult? Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult? Function(RegionChanged value)? regionChanged,
+    TResult? Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult? Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult? Function(PropertyTypesError value)? propertyTypesError,
+    TResult? Function(RegionsLoading value)? regionsLoading,
+    TResult? Function(RegionsSuccess value)? regionsSuccess,
+    TResult? Function(RegionsError value)? regionsError,
     TResult? Function(TransactionTypeChanged value)? transactionTypeChanged,
   }) {
     return transactionTypeChanged?.call(this);
@@ -3287,6 +4187,12 @@ class _$TransactionTypeChangedImpl implements TransactionTypeChanged {
     TResult Function(ImagePicked value)? imagePicked,
     TResult Function(PropertyTypeChanged value)? propertyTypeChanged,
     TResult Function(RegionChanged value)? regionChanged,
+    TResult Function(PropertyTypesLoading value)? propertyTypesLoading,
+    TResult Function(PropertyTypesSuccess value)? propertyTypesSuccess,
+    TResult Function(PropertyTypesError value)? propertyTypesError,
+    TResult Function(RegionsLoading value)? regionsLoading,
+    TResult Function(RegionsSuccess value)? regionsSuccess,
+    TResult Function(RegionsError value)? regionsError,
     TResult Function(TransactionTypeChanged value)? transactionTypeChanged,
     required TResult orElse(),
   }) {
@@ -4526,6 +5432,598 @@ abstract class NotificationsError implements NotificationsState {
   ApiErrorModel get apiErrorModel;
   @JsonKey(ignore: true)
   _$$NotificationsErrorImplCopyWith<_$NotificationsErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$NewsState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() newsLoading,
+    required TResult Function(NewsResponse newsResponse) newsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) newsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? newsLoading,
+    TResult? Function(NewsResponse newsResponse)? newsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? newsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? newsLoading,
+    TResult Function(NewsResponse newsResponse)? newsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? newsError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NewsInitial value) initial,
+    required TResult Function(NewsLoading value) newsLoading,
+    required TResult Function(NewsSuccess value) newsSuccess,
+    required TResult Function(NewsError value) newsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NewsInitial value)? initial,
+    TResult? Function(NewsLoading value)? newsLoading,
+    TResult? Function(NewsSuccess value)? newsSuccess,
+    TResult? Function(NewsError value)? newsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NewsInitial value)? initial,
+    TResult Function(NewsLoading value)? newsLoading,
+    TResult Function(NewsSuccess value)? newsSuccess,
+    TResult Function(NewsError value)? newsError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NewsStateCopyWith<$Res> {
+  factory $NewsStateCopyWith(NewsState value, $Res Function(NewsState) then) =
+      _$NewsStateCopyWithImpl<$Res, NewsState>;
+}
+
+/// @nodoc
+class _$NewsStateCopyWithImpl<$Res, $Val extends NewsState>
+    implements $NewsStateCopyWith<$Res> {
+  _$NewsStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$NewsInitialImplCopyWith<$Res> {
+  factory _$$NewsInitialImplCopyWith(
+          _$NewsInitialImpl value, $Res Function(_$NewsInitialImpl) then) =
+      __$$NewsInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NewsInitialImplCopyWithImpl<$Res>
+    extends _$NewsStateCopyWithImpl<$Res, _$NewsInitialImpl>
+    implements _$$NewsInitialImplCopyWith<$Res> {
+  __$$NewsInitialImplCopyWithImpl(
+      _$NewsInitialImpl _value, $Res Function(_$NewsInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NewsInitialImpl implements _NewsInitial {
+  const _$NewsInitialImpl();
+
+  @override
+  String toString() {
+    return 'NewsState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NewsInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() newsLoading,
+    required TResult Function(NewsResponse newsResponse) newsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) newsError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? newsLoading,
+    TResult? Function(NewsResponse newsResponse)? newsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? newsError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? newsLoading,
+    TResult Function(NewsResponse newsResponse)? newsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? newsError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NewsInitial value) initial,
+    required TResult Function(NewsLoading value) newsLoading,
+    required TResult Function(NewsSuccess value) newsSuccess,
+    required TResult Function(NewsError value) newsError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NewsInitial value)? initial,
+    TResult? Function(NewsLoading value)? newsLoading,
+    TResult? Function(NewsSuccess value)? newsSuccess,
+    TResult? Function(NewsError value)? newsError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NewsInitial value)? initial,
+    TResult Function(NewsLoading value)? newsLoading,
+    TResult Function(NewsSuccess value)? newsSuccess,
+    TResult Function(NewsError value)? newsError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NewsInitial implements NewsState {
+  const factory _NewsInitial() = _$NewsInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$NewsLoadingImplCopyWith<$Res> {
+  factory _$$NewsLoadingImplCopyWith(
+          _$NewsLoadingImpl value, $Res Function(_$NewsLoadingImpl) then) =
+      __$$NewsLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NewsLoadingImplCopyWithImpl<$Res>
+    extends _$NewsStateCopyWithImpl<$Res, _$NewsLoadingImpl>
+    implements _$$NewsLoadingImplCopyWith<$Res> {
+  __$$NewsLoadingImplCopyWithImpl(
+      _$NewsLoadingImpl _value, $Res Function(_$NewsLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NewsLoadingImpl implements NewsLoading {
+  const _$NewsLoadingImpl();
+
+  @override
+  String toString() {
+    return 'NewsState.newsLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NewsLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() newsLoading,
+    required TResult Function(NewsResponse newsResponse) newsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) newsError,
+  }) {
+    return newsLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? newsLoading,
+    TResult? Function(NewsResponse newsResponse)? newsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? newsError,
+  }) {
+    return newsLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? newsLoading,
+    TResult Function(NewsResponse newsResponse)? newsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? newsError,
+    required TResult orElse(),
+  }) {
+    if (newsLoading != null) {
+      return newsLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NewsInitial value) initial,
+    required TResult Function(NewsLoading value) newsLoading,
+    required TResult Function(NewsSuccess value) newsSuccess,
+    required TResult Function(NewsError value) newsError,
+  }) {
+    return newsLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NewsInitial value)? initial,
+    TResult? Function(NewsLoading value)? newsLoading,
+    TResult? Function(NewsSuccess value)? newsSuccess,
+    TResult? Function(NewsError value)? newsError,
+  }) {
+    return newsLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NewsInitial value)? initial,
+    TResult Function(NewsLoading value)? newsLoading,
+    TResult Function(NewsSuccess value)? newsSuccess,
+    TResult Function(NewsError value)? newsError,
+    required TResult orElse(),
+  }) {
+    if (newsLoading != null) {
+      return newsLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NewsLoading implements NewsState {
+  const factory NewsLoading() = _$NewsLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$NewsSuccessImplCopyWith<$Res> {
+  factory _$$NewsSuccessImplCopyWith(
+          _$NewsSuccessImpl value, $Res Function(_$NewsSuccessImpl) then) =
+      __$$NewsSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({NewsResponse newsResponse});
+}
+
+/// @nodoc
+class __$$NewsSuccessImplCopyWithImpl<$Res>
+    extends _$NewsStateCopyWithImpl<$Res, _$NewsSuccessImpl>
+    implements _$$NewsSuccessImplCopyWith<$Res> {
+  __$$NewsSuccessImplCopyWithImpl(
+      _$NewsSuccessImpl _value, $Res Function(_$NewsSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newsResponse = null,
+  }) {
+    return _then(_$NewsSuccessImpl(
+      null == newsResponse
+          ? _value.newsResponse
+          : newsResponse // ignore: cast_nullable_to_non_nullable
+              as NewsResponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NewsSuccessImpl implements NewsSuccess {
+  const _$NewsSuccessImpl(this.newsResponse);
+
+  @override
+  final NewsResponse newsResponse;
+
+  @override
+  String toString() {
+    return 'NewsState.newsSuccess(newsResponse: $newsResponse)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NewsSuccessImpl &&
+            (identical(other.newsResponse, newsResponse) ||
+                other.newsResponse == newsResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newsResponse);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NewsSuccessImplCopyWith<_$NewsSuccessImpl> get copyWith =>
+      __$$NewsSuccessImplCopyWithImpl<_$NewsSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() newsLoading,
+    required TResult Function(NewsResponse newsResponse) newsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) newsError,
+  }) {
+    return newsSuccess(newsResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? newsLoading,
+    TResult? Function(NewsResponse newsResponse)? newsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? newsError,
+  }) {
+    return newsSuccess?.call(newsResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? newsLoading,
+    TResult Function(NewsResponse newsResponse)? newsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? newsError,
+    required TResult orElse(),
+  }) {
+    if (newsSuccess != null) {
+      return newsSuccess(newsResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NewsInitial value) initial,
+    required TResult Function(NewsLoading value) newsLoading,
+    required TResult Function(NewsSuccess value) newsSuccess,
+    required TResult Function(NewsError value) newsError,
+  }) {
+    return newsSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NewsInitial value)? initial,
+    TResult? Function(NewsLoading value)? newsLoading,
+    TResult? Function(NewsSuccess value)? newsSuccess,
+    TResult? Function(NewsError value)? newsError,
+  }) {
+    return newsSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NewsInitial value)? initial,
+    TResult Function(NewsLoading value)? newsLoading,
+    TResult Function(NewsSuccess value)? newsSuccess,
+    TResult Function(NewsError value)? newsError,
+    required TResult orElse(),
+  }) {
+    if (newsSuccess != null) {
+      return newsSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NewsSuccess implements NewsState {
+  const factory NewsSuccess(final NewsResponse newsResponse) =
+      _$NewsSuccessImpl;
+
+  NewsResponse get newsResponse;
+  @JsonKey(ignore: true)
+  _$$NewsSuccessImplCopyWith<_$NewsSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NewsErrorImplCopyWith<$Res> {
+  factory _$$NewsErrorImplCopyWith(
+          _$NewsErrorImpl value, $Res Function(_$NewsErrorImpl) then) =
+      __$$NewsErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$NewsErrorImplCopyWithImpl<$Res>
+    extends _$NewsStateCopyWithImpl<$Res, _$NewsErrorImpl>
+    implements _$$NewsErrorImplCopyWith<$Res> {
+  __$$NewsErrorImplCopyWithImpl(
+      _$NewsErrorImpl _value, $Res Function(_$NewsErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$NewsErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NewsErrorImpl implements NewsError {
+  const _$NewsErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'NewsState.newsError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NewsErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NewsErrorImplCopyWith<_$NewsErrorImpl> get copyWith =>
+      __$$NewsErrorImplCopyWithImpl<_$NewsErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() newsLoading,
+    required TResult Function(NewsResponse newsResponse) newsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) newsError,
+  }) {
+    return newsError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? newsLoading,
+    TResult? Function(NewsResponse newsResponse)? newsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? newsError,
+  }) {
+    return newsError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? newsLoading,
+    TResult Function(NewsResponse newsResponse)? newsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? newsError,
+    required TResult orElse(),
+  }) {
+    if (newsError != null) {
+      return newsError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NewsInitial value) initial,
+    required TResult Function(NewsLoading value) newsLoading,
+    required TResult Function(NewsSuccess value) newsSuccess,
+    required TResult Function(NewsError value) newsError,
+  }) {
+    return newsError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NewsInitial value)? initial,
+    TResult? Function(NewsLoading value)? newsLoading,
+    TResult? Function(NewsSuccess value)? newsSuccess,
+    TResult? Function(NewsError value)? newsError,
+  }) {
+    return newsError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NewsInitial value)? initial,
+    TResult Function(NewsLoading value)? newsLoading,
+    TResult Function(NewsSuccess value)? newsSuccess,
+    TResult Function(NewsError value)? newsError,
+    required TResult orElse(),
+  }) {
+    if (newsError != null) {
+      return newsError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NewsError implements NewsState {
+  const factory NewsError(final ApiErrorModel apiErrorModel) = _$NewsErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$NewsErrorImplCopyWith<_$NewsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -7120,4 +8618,2689 @@ abstract class FilterSectionError implements FilterSectionState {
   @JsonKey(ignore: true)
   _$$FilterSectionErrorImplCopyWith<_$FilterSectionErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$UserMonthlyPointsState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() userMonthlyPointsLoading,
+    required TResult Function(
+            UserMonthlyPointsResponse userMonthlyPointsResponse)
+        userMonthlyPointsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        userMonthlyPointsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserMonthlyPointsInitial value) initial,
+    required TResult Function(UserMonthlyPointsLoading value)
+        userMonthlyPointsLoading,
+    required TResult Function(UserMonthlyPointsSuccess value)
+        userMonthlyPointsSuccess,
+    required TResult Function(UserMonthlyPointsError value)
+        userMonthlyPointsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UserMonthlyPointsInitial value)? initial,
+    TResult? Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult? Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserMonthlyPointsInitial value)? initial,
+    TResult Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserMonthlyPointsStateCopyWith<$Res> {
+  factory $UserMonthlyPointsStateCopyWith(UserMonthlyPointsState value,
+          $Res Function(UserMonthlyPointsState) then) =
+      _$UserMonthlyPointsStateCopyWithImpl<$Res, UserMonthlyPointsState>;
+}
+
+/// @nodoc
+class _$UserMonthlyPointsStateCopyWithImpl<$Res,
+        $Val extends UserMonthlyPointsState>
+    implements $UserMonthlyPointsStateCopyWith<$Res> {
+  _$UserMonthlyPointsStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$UserMonthlyPointsInitialImplCopyWith<$Res> {
+  factory _$$UserMonthlyPointsInitialImplCopyWith(
+          _$UserMonthlyPointsInitialImpl value,
+          $Res Function(_$UserMonthlyPointsInitialImpl) then) =
+      __$$UserMonthlyPointsInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserMonthlyPointsInitialImplCopyWithImpl<$Res>
+    extends _$UserMonthlyPointsStateCopyWithImpl<$Res,
+        _$UserMonthlyPointsInitialImpl>
+    implements _$$UserMonthlyPointsInitialImplCopyWith<$Res> {
+  __$$UserMonthlyPointsInitialImplCopyWithImpl(
+      _$UserMonthlyPointsInitialImpl _value,
+      $Res Function(_$UserMonthlyPointsInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UserMonthlyPointsInitialImpl implements UserMonthlyPointsInitial {
+  const _$UserMonthlyPointsInitialImpl();
+
+  @override
+  String toString() {
+    return 'UserMonthlyPointsState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserMonthlyPointsInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() userMonthlyPointsLoading,
+    required TResult Function(
+            UserMonthlyPointsResponse userMonthlyPointsResponse)
+        userMonthlyPointsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        userMonthlyPointsError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserMonthlyPointsInitial value) initial,
+    required TResult Function(UserMonthlyPointsLoading value)
+        userMonthlyPointsLoading,
+    required TResult Function(UserMonthlyPointsSuccess value)
+        userMonthlyPointsSuccess,
+    required TResult Function(UserMonthlyPointsError value)
+        userMonthlyPointsError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UserMonthlyPointsInitial value)? initial,
+    TResult? Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult? Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserMonthlyPointsInitial value)? initial,
+    TResult Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserMonthlyPointsInitial implements UserMonthlyPointsState {
+  const factory UserMonthlyPointsInitial() = _$UserMonthlyPointsInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$UserMonthlyPointsLoadingImplCopyWith<$Res> {
+  factory _$$UserMonthlyPointsLoadingImplCopyWith(
+          _$UserMonthlyPointsLoadingImpl value,
+          $Res Function(_$UserMonthlyPointsLoadingImpl) then) =
+      __$$UserMonthlyPointsLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserMonthlyPointsLoadingImplCopyWithImpl<$Res>
+    extends _$UserMonthlyPointsStateCopyWithImpl<$Res,
+        _$UserMonthlyPointsLoadingImpl>
+    implements _$$UserMonthlyPointsLoadingImplCopyWith<$Res> {
+  __$$UserMonthlyPointsLoadingImplCopyWithImpl(
+      _$UserMonthlyPointsLoadingImpl _value,
+      $Res Function(_$UserMonthlyPointsLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UserMonthlyPointsLoadingImpl implements UserMonthlyPointsLoading {
+  const _$UserMonthlyPointsLoadingImpl();
+
+  @override
+  String toString() {
+    return 'UserMonthlyPointsState.userMonthlyPointsLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserMonthlyPointsLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() userMonthlyPointsLoading,
+    required TResult Function(
+            UserMonthlyPointsResponse userMonthlyPointsResponse)
+        userMonthlyPointsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) {
+    if (userMonthlyPointsLoading != null) {
+      return userMonthlyPointsLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserMonthlyPointsInitial value) initial,
+    required TResult Function(UserMonthlyPointsLoading value)
+        userMonthlyPointsLoading,
+    required TResult Function(UserMonthlyPointsSuccess value)
+        userMonthlyPointsSuccess,
+    required TResult Function(UserMonthlyPointsError value)
+        userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UserMonthlyPointsInitial value)? initial,
+    TResult? Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult? Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserMonthlyPointsInitial value)? initial,
+    TResult Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) {
+    if (userMonthlyPointsLoading != null) {
+      return userMonthlyPointsLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserMonthlyPointsLoading implements UserMonthlyPointsState {
+  const factory UserMonthlyPointsLoading() = _$UserMonthlyPointsLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$UserMonthlyPointsSuccessImplCopyWith<$Res> {
+  factory _$$UserMonthlyPointsSuccessImplCopyWith(
+          _$UserMonthlyPointsSuccessImpl value,
+          $Res Function(_$UserMonthlyPointsSuccessImpl) then) =
+      __$$UserMonthlyPointsSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserMonthlyPointsResponse userMonthlyPointsResponse});
+}
+
+/// @nodoc
+class __$$UserMonthlyPointsSuccessImplCopyWithImpl<$Res>
+    extends _$UserMonthlyPointsStateCopyWithImpl<$Res,
+        _$UserMonthlyPointsSuccessImpl>
+    implements _$$UserMonthlyPointsSuccessImplCopyWith<$Res> {
+  __$$UserMonthlyPointsSuccessImplCopyWithImpl(
+      _$UserMonthlyPointsSuccessImpl _value,
+      $Res Function(_$UserMonthlyPointsSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userMonthlyPointsResponse = null,
+  }) {
+    return _then(_$UserMonthlyPointsSuccessImpl(
+      null == userMonthlyPointsResponse
+          ? _value.userMonthlyPointsResponse
+          : userMonthlyPointsResponse // ignore: cast_nullable_to_non_nullable
+              as UserMonthlyPointsResponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserMonthlyPointsSuccessImpl implements UserMonthlyPointsSuccess {
+  const _$UserMonthlyPointsSuccessImpl(this.userMonthlyPointsResponse);
+
+  @override
+  final UserMonthlyPointsResponse userMonthlyPointsResponse;
+
+  @override
+  String toString() {
+    return 'UserMonthlyPointsState.userMonthlyPointsSuccess(userMonthlyPointsResponse: $userMonthlyPointsResponse)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserMonthlyPointsSuccessImpl &&
+            (identical(other.userMonthlyPointsResponse,
+                    userMonthlyPointsResponse) ||
+                other.userMonthlyPointsResponse == userMonthlyPointsResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userMonthlyPointsResponse);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserMonthlyPointsSuccessImplCopyWith<_$UserMonthlyPointsSuccessImpl>
+      get copyWith => __$$UserMonthlyPointsSuccessImplCopyWithImpl<
+          _$UserMonthlyPointsSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() userMonthlyPointsLoading,
+    required TResult Function(
+            UserMonthlyPointsResponse userMonthlyPointsResponse)
+        userMonthlyPointsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsSuccess(userMonthlyPointsResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsSuccess?.call(userMonthlyPointsResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) {
+    if (userMonthlyPointsSuccess != null) {
+      return userMonthlyPointsSuccess(userMonthlyPointsResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserMonthlyPointsInitial value) initial,
+    required TResult Function(UserMonthlyPointsLoading value)
+        userMonthlyPointsLoading,
+    required TResult Function(UserMonthlyPointsSuccess value)
+        userMonthlyPointsSuccess,
+    required TResult Function(UserMonthlyPointsError value)
+        userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UserMonthlyPointsInitial value)? initial,
+    TResult? Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult? Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserMonthlyPointsInitial value)? initial,
+    TResult Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) {
+    if (userMonthlyPointsSuccess != null) {
+      return userMonthlyPointsSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserMonthlyPointsSuccess implements UserMonthlyPointsState {
+  const factory UserMonthlyPointsSuccess(
+          final UserMonthlyPointsResponse userMonthlyPointsResponse) =
+      _$UserMonthlyPointsSuccessImpl;
+
+  UserMonthlyPointsResponse get userMonthlyPointsResponse;
+  @JsonKey(ignore: true)
+  _$$UserMonthlyPointsSuccessImplCopyWith<_$UserMonthlyPointsSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserMonthlyPointsErrorImplCopyWith<$Res> {
+  factory _$$UserMonthlyPointsErrorImplCopyWith(
+          _$UserMonthlyPointsErrorImpl value,
+          $Res Function(_$UserMonthlyPointsErrorImpl) then) =
+      __$$UserMonthlyPointsErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$UserMonthlyPointsErrorImplCopyWithImpl<$Res>
+    extends _$UserMonthlyPointsStateCopyWithImpl<$Res,
+        _$UserMonthlyPointsErrorImpl>
+    implements _$$UserMonthlyPointsErrorImplCopyWith<$Res> {
+  __$$UserMonthlyPointsErrorImplCopyWithImpl(
+      _$UserMonthlyPointsErrorImpl _value,
+      $Res Function(_$UserMonthlyPointsErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$UserMonthlyPointsErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserMonthlyPointsErrorImpl implements UserMonthlyPointsError {
+  const _$UserMonthlyPointsErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'UserMonthlyPointsState.userMonthlyPointsError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserMonthlyPointsErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserMonthlyPointsErrorImplCopyWith<_$UserMonthlyPointsErrorImpl>
+      get copyWith => __$$UserMonthlyPointsErrorImplCopyWithImpl<
+          _$UserMonthlyPointsErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() userMonthlyPointsLoading,
+    required TResult Function(
+            UserMonthlyPointsResponse userMonthlyPointsResponse)
+        userMonthlyPointsSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsResponse userMonthlyPointsResponse)?
+        userMonthlyPointsSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) {
+    if (userMonthlyPointsError != null) {
+      return userMonthlyPointsError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserMonthlyPointsInitial value) initial,
+    required TResult Function(UserMonthlyPointsLoading value)
+        userMonthlyPointsLoading,
+    required TResult Function(UserMonthlyPointsSuccess value)
+        userMonthlyPointsSuccess,
+    required TResult Function(UserMonthlyPointsError value)
+        userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UserMonthlyPointsInitial value)? initial,
+    TResult? Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult? Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult? Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+  }) {
+    return userMonthlyPointsError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserMonthlyPointsInitial value)? initial,
+    TResult Function(UserMonthlyPointsLoading value)? userMonthlyPointsLoading,
+    TResult Function(UserMonthlyPointsSuccess value)? userMonthlyPointsSuccess,
+    TResult Function(UserMonthlyPointsError value)? userMonthlyPointsError,
+    required TResult orElse(),
+  }) {
+    if (userMonthlyPointsError != null) {
+      return userMonthlyPointsError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserMonthlyPointsError implements UserMonthlyPointsState {
+  const factory UserMonthlyPointsError(final ApiErrorModel apiErrorModel) =
+      _$UserMonthlyPointsErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$UserMonthlyPointsErrorImplCopyWith<_$UserMonthlyPointsErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$SearchFilterState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() searchFilterLoading,
+    required TResult Function(SearchFilterResponse searchFilterResponse)
+        searchFilterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) searchFilterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? searchFilterLoading,
+    TResult? Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? searchFilterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? searchFilterLoading,
+    TResult Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? searchFilterError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SearchFilterStateInitial value) initial,
+    required TResult Function(SearchFilterLoading value) searchFilterLoading,
+    required TResult Function(SearchFilterSuccess value) searchFilterSuccess,
+    required TResult Function(SearchFilterError value) searchFilterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SearchFilterStateInitial value)? initial,
+    TResult? Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult? Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult? Function(SearchFilterError value)? searchFilterError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SearchFilterStateInitial value)? initial,
+    TResult Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult Function(SearchFilterError value)? searchFilterError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SearchFilterStateCopyWith<$Res> {
+  factory $SearchFilterStateCopyWith(
+          SearchFilterState value, $Res Function(SearchFilterState) then) =
+      _$SearchFilterStateCopyWithImpl<$Res, SearchFilterState>;
+}
+
+/// @nodoc
+class _$SearchFilterStateCopyWithImpl<$Res, $Val extends SearchFilterState>
+    implements $SearchFilterStateCopyWith<$Res> {
+  _$SearchFilterStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SearchFilterStateInitialImplCopyWith<$Res> {
+  factory _$$SearchFilterStateInitialImplCopyWith(
+          _$SearchFilterStateInitialImpl value,
+          $Res Function(_$SearchFilterStateInitialImpl) then) =
+      __$$SearchFilterStateInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SearchFilterStateInitialImplCopyWithImpl<$Res>
+    extends _$SearchFilterStateCopyWithImpl<$Res,
+        _$SearchFilterStateInitialImpl>
+    implements _$$SearchFilterStateInitialImplCopyWith<$Res> {
+  __$$SearchFilterStateInitialImplCopyWithImpl(
+      _$SearchFilterStateInitialImpl _value,
+      $Res Function(_$SearchFilterStateInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SearchFilterStateInitialImpl implements _SearchFilterStateInitial {
+  const _$SearchFilterStateInitialImpl();
+
+  @override
+  String toString() {
+    return 'SearchFilterState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchFilterStateInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() searchFilterLoading,
+    required TResult Function(SearchFilterResponse searchFilterResponse)
+        searchFilterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) searchFilterError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? searchFilterLoading,
+    TResult? Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? searchFilterError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? searchFilterLoading,
+    TResult Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? searchFilterError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SearchFilterStateInitial value) initial,
+    required TResult Function(SearchFilterLoading value) searchFilterLoading,
+    required TResult Function(SearchFilterSuccess value) searchFilterSuccess,
+    required TResult Function(SearchFilterError value) searchFilterError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SearchFilterStateInitial value)? initial,
+    TResult? Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult? Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult? Function(SearchFilterError value)? searchFilterError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SearchFilterStateInitial value)? initial,
+    TResult Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult Function(SearchFilterError value)? searchFilterError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchFilterStateInitial implements SearchFilterState {
+  const factory _SearchFilterStateInitial() = _$SearchFilterStateInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$SearchFilterLoadingImplCopyWith<$Res> {
+  factory _$$SearchFilterLoadingImplCopyWith(_$SearchFilterLoadingImpl value,
+          $Res Function(_$SearchFilterLoadingImpl) then) =
+      __$$SearchFilterLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SearchFilterLoadingImplCopyWithImpl<$Res>
+    extends _$SearchFilterStateCopyWithImpl<$Res, _$SearchFilterLoadingImpl>
+    implements _$$SearchFilterLoadingImplCopyWith<$Res> {
+  __$$SearchFilterLoadingImplCopyWithImpl(_$SearchFilterLoadingImpl _value,
+      $Res Function(_$SearchFilterLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SearchFilterLoadingImpl implements SearchFilterLoading {
+  const _$SearchFilterLoadingImpl();
+
+  @override
+  String toString() {
+    return 'SearchFilterState.searchFilterLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchFilterLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() searchFilterLoading,
+    required TResult Function(SearchFilterResponse searchFilterResponse)
+        searchFilterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) searchFilterError,
+  }) {
+    return searchFilterLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? searchFilterLoading,
+    TResult? Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? searchFilterError,
+  }) {
+    return searchFilterLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? searchFilterLoading,
+    TResult Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? searchFilterError,
+    required TResult orElse(),
+  }) {
+    if (searchFilterLoading != null) {
+      return searchFilterLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SearchFilterStateInitial value) initial,
+    required TResult Function(SearchFilterLoading value) searchFilterLoading,
+    required TResult Function(SearchFilterSuccess value) searchFilterSuccess,
+    required TResult Function(SearchFilterError value) searchFilterError,
+  }) {
+    return searchFilterLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SearchFilterStateInitial value)? initial,
+    TResult? Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult? Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult? Function(SearchFilterError value)? searchFilterError,
+  }) {
+    return searchFilterLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SearchFilterStateInitial value)? initial,
+    TResult Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult Function(SearchFilterError value)? searchFilterError,
+    required TResult orElse(),
+  }) {
+    if (searchFilterLoading != null) {
+      return searchFilterLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchFilterLoading implements SearchFilterState {
+  const factory SearchFilterLoading() = _$SearchFilterLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$SearchFilterSuccessImplCopyWith<$Res> {
+  factory _$$SearchFilterSuccessImplCopyWith(_$SearchFilterSuccessImpl value,
+          $Res Function(_$SearchFilterSuccessImpl) then) =
+      __$$SearchFilterSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SearchFilterResponse searchFilterResponse});
+}
+
+/// @nodoc
+class __$$SearchFilterSuccessImplCopyWithImpl<$Res>
+    extends _$SearchFilterStateCopyWithImpl<$Res, _$SearchFilterSuccessImpl>
+    implements _$$SearchFilterSuccessImplCopyWith<$Res> {
+  __$$SearchFilterSuccessImplCopyWithImpl(_$SearchFilterSuccessImpl _value,
+      $Res Function(_$SearchFilterSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? searchFilterResponse = null,
+  }) {
+    return _then(_$SearchFilterSuccessImpl(
+      null == searchFilterResponse
+          ? _value.searchFilterResponse
+          : searchFilterResponse // ignore: cast_nullable_to_non_nullable
+              as SearchFilterResponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchFilterSuccessImpl implements SearchFilterSuccess {
+  const _$SearchFilterSuccessImpl(this.searchFilterResponse);
+
+  @override
+  final SearchFilterResponse searchFilterResponse;
+
+  @override
+  String toString() {
+    return 'SearchFilterState.searchFilterSuccess(searchFilterResponse: $searchFilterResponse)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchFilterSuccessImpl &&
+            (identical(other.searchFilterResponse, searchFilterResponse) ||
+                other.searchFilterResponse == searchFilterResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, searchFilterResponse);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchFilterSuccessImplCopyWith<_$SearchFilterSuccessImpl> get copyWith =>
+      __$$SearchFilterSuccessImplCopyWithImpl<_$SearchFilterSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() searchFilterLoading,
+    required TResult Function(SearchFilterResponse searchFilterResponse)
+        searchFilterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) searchFilterError,
+  }) {
+    return searchFilterSuccess(searchFilterResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? searchFilterLoading,
+    TResult? Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? searchFilterError,
+  }) {
+    return searchFilterSuccess?.call(searchFilterResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? searchFilterLoading,
+    TResult Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? searchFilterError,
+    required TResult orElse(),
+  }) {
+    if (searchFilterSuccess != null) {
+      return searchFilterSuccess(searchFilterResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SearchFilterStateInitial value) initial,
+    required TResult Function(SearchFilterLoading value) searchFilterLoading,
+    required TResult Function(SearchFilterSuccess value) searchFilterSuccess,
+    required TResult Function(SearchFilterError value) searchFilterError,
+  }) {
+    return searchFilterSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SearchFilterStateInitial value)? initial,
+    TResult? Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult? Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult? Function(SearchFilterError value)? searchFilterError,
+  }) {
+    return searchFilterSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SearchFilterStateInitial value)? initial,
+    TResult Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult Function(SearchFilterError value)? searchFilterError,
+    required TResult orElse(),
+  }) {
+    if (searchFilterSuccess != null) {
+      return searchFilterSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchFilterSuccess implements SearchFilterState {
+  const factory SearchFilterSuccess(
+          final SearchFilterResponse searchFilterResponse) =
+      _$SearchFilterSuccessImpl;
+
+  SearchFilterResponse get searchFilterResponse;
+  @JsonKey(ignore: true)
+  _$$SearchFilterSuccessImplCopyWith<_$SearchFilterSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchFilterErrorImplCopyWith<$Res> {
+  factory _$$SearchFilterErrorImplCopyWith(_$SearchFilterErrorImpl value,
+          $Res Function(_$SearchFilterErrorImpl) then) =
+      __$$SearchFilterErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$SearchFilterErrorImplCopyWithImpl<$Res>
+    extends _$SearchFilterStateCopyWithImpl<$Res, _$SearchFilterErrorImpl>
+    implements _$$SearchFilterErrorImplCopyWith<$Res> {
+  __$$SearchFilterErrorImplCopyWithImpl(_$SearchFilterErrorImpl _value,
+      $Res Function(_$SearchFilterErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$SearchFilterErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchFilterErrorImpl implements SearchFilterError {
+  const _$SearchFilterErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'SearchFilterState.searchFilterError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchFilterErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchFilterErrorImplCopyWith<_$SearchFilterErrorImpl> get copyWith =>
+      __$$SearchFilterErrorImplCopyWithImpl<_$SearchFilterErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() searchFilterLoading,
+    required TResult Function(SearchFilterResponse searchFilterResponse)
+        searchFilterSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel) searchFilterError,
+  }) {
+    return searchFilterError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? searchFilterLoading,
+    TResult? Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? searchFilterError,
+  }) {
+    return searchFilterError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? searchFilterLoading,
+    TResult Function(SearchFilterResponse searchFilterResponse)?
+        searchFilterSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? searchFilterError,
+    required TResult orElse(),
+  }) {
+    if (searchFilterError != null) {
+      return searchFilterError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SearchFilterStateInitial value) initial,
+    required TResult Function(SearchFilterLoading value) searchFilterLoading,
+    required TResult Function(SearchFilterSuccess value) searchFilterSuccess,
+    required TResult Function(SearchFilterError value) searchFilterError,
+  }) {
+    return searchFilterError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SearchFilterStateInitial value)? initial,
+    TResult? Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult? Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult? Function(SearchFilterError value)? searchFilterError,
+  }) {
+    return searchFilterError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SearchFilterStateInitial value)? initial,
+    TResult Function(SearchFilterLoading value)? searchFilterLoading,
+    TResult Function(SearchFilterSuccess value)? searchFilterSuccess,
+    TResult Function(SearchFilterError value)? searchFilterError,
+    required TResult orElse(),
+  }) {
+    if (searchFilterError != null) {
+      return searchFilterError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchFilterError implements SearchFilterState {
+  const factory SearchFilterError(final ApiErrorModel apiErrorModel) =
+      _$SearchFilterErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$SearchFilterErrorImplCopyWith<_$SearchFilterErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$CalculateMarketValueState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateMarketValueLoading,
+    required TResult Function(
+            CalculateMarketValueRsponse calculateMarketValueRsponse)
+        calculateMarketValueSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateMarketValueError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateMarketValueInitial value) initial,
+    required TResult Function(CalculateMarketValueLoading value)
+        calculateMarketValueLoading,
+    required TResult Function(CalculateMarketValueSuccess value)
+        calculateMarketValueSuccess,
+    required TResult Function(CalculateMarketValueError value)
+        calculateMarketValueError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateMarketValueInitial value)? initial,
+    TResult? Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult? Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateMarketValueInitial value)? initial,
+    TResult Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CalculateMarketValueStateCopyWith<$Res> {
+  factory $CalculateMarketValueStateCopyWith(CalculateMarketValueState value,
+          $Res Function(CalculateMarketValueState) then) =
+      _$CalculateMarketValueStateCopyWithImpl<$Res, CalculateMarketValueState>;
+}
+
+/// @nodoc
+class _$CalculateMarketValueStateCopyWithImpl<$Res,
+        $Val extends CalculateMarketValueState>
+    implements $CalculateMarketValueStateCopyWith<$Res> {
+  _$CalculateMarketValueStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$CalculateMarketValueInitialImplCopyWith<$Res> {
+  factory _$$CalculateMarketValueInitialImplCopyWith(
+          _$CalculateMarketValueInitialImpl value,
+          $Res Function(_$CalculateMarketValueInitialImpl) then) =
+      __$$CalculateMarketValueInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CalculateMarketValueInitialImplCopyWithImpl<$Res>
+    extends _$CalculateMarketValueStateCopyWithImpl<$Res,
+        _$CalculateMarketValueInitialImpl>
+    implements _$$CalculateMarketValueInitialImplCopyWith<$Res> {
+  __$$CalculateMarketValueInitialImplCopyWithImpl(
+      _$CalculateMarketValueInitialImpl _value,
+      $Res Function(_$CalculateMarketValueInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CalculateMarketValueInitialImpl
+    implements _CalculateMarketValueInitial {
+  const _$CalculateMarketValueInitialImpl();
+
+  @override
+  String toString() {
+    return 'CalculateMarketValueState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CalculateMarketValueInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateMarketValueLoading,
+    required TResult Function(
+            CalculateMarketValueRsponse calculateMarketValueRsponse)
+        calculateMarketValueSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateMarketValueError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateMarketValueInitial value) initial,
+    required TResult Function(CalculateMarketValueLoading value)
+        calculateMarketValueLoading,
+    required TResult Function(CalculateMarketValueSuccess value)
+        calculateMarketValueSuccess,
+    required TResult Function(CalculateMarketValueError value)
+        calculateMarketValueError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateMarketValueInitial value)? initial,
+    TResult? Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult? Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateMarketValueInitial value)? initial,
+    TResult Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CalculateMarketValueInitial
+    implements CalculateMarketValueState {
+  const factory _CalculateMarketValueInitial() =
+      _$CalculateMarketValueInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$CalculateMarketValueLoadingImplCopyWith<$Res> {
+  factory _$$CalculateMarketValueLoadingImplCopyWith(
+          _$CalculateMarketValueLoadingImpl value,
+          $Res Function(_$CalculateMarketValueLoadingImpl) then) =
+      __$$CalculateMarketValueLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CalculateMarketValueLoadingImplCopyWithImpl<$Res>
+    extends _$CalculateMarketValueStateCopyWithImpl<$Res,
+        _$CalculateMarketValueLoadingImpl>
+    implements _$$CalculateMarketValueLoadingImplCopyWith<$Res> {
+  __$$CalculateMarketValueLoadingImplCopyWithImpl(
+      _$CalculateMarketValueLoadingImpl _value,
+      $Res Function(_$CalculateMarketValueLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CalculateMarketValueLoadingImpl implements CalculateMarketValueLoading {
+  const _$CalculateMarketValueLoadingImpl();
+
+  @override
+  String toString() {
+    return 'CalculateMarketValueState.calculateMarketValueLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CalculateMarketValueLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateMarketValueLoading,
+    required TResult Function(
+            CalculateMarketValueRsponse calculateMarketValueRsponse)
+        calculateMarketValueSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateMarketValueError,
+  }) {
+    return calculateMarketValueLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+  }) {
+    return calculateMarketValueLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+    required TResult orElse(),
+  }) {
+    if (calculateMarketValueLoading != null) {
+      return calculateMarketValueLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateMarketValueInitial value) initial,
+    required TResult Function(CalculateMarketValueLoading value)
+        calculateMarketValueLoading,
+    required TResult Function(CalculateMarketValueSuccess value)
+        calculateMarketValueSuccess,
+    required TResult Function(CalculateMarketValueError value)
+        calculateMarketValueError,
+  }) {
+    return calculateMarketValueLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateMarketValueInitial value)? initial,
+    TResult? Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult? Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+  }) {
+    return calculateMarketValueLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateMarketValueInitial value)? initial,
+    TResult Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+    required TResult orElse(),
+  }) {
+    if (calculateMarketValueLoading != null) {
+      return calculateMarketValueLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CalculateMarketValueLoading
+    implements CalculateMarketValueState {
+  const factory CalculateMarketValueLoading() =
+      _$CalculateMarketValueLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$CalculateMarketValueSuccessImplCopyWith<$Res> {
+  factory _$$CalculateMarketValueSuccessImplCopyWith(
+          _$CalculateMarketValueSuccessImpl value,
+          $Res Function(_$CalculateMarketValueSuccessImpl) then) =
+      __$$CalculateMarketValueSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CalculateMarketValueRsponse calculateMarketValueRsponse});
+}
+
+/// @nodoc
+class __$$CalculateMarketValueSuccessImplCopyWithImpl<$Res>
+    extends _$CalculateMarketValueStateCopyWithImpl<$Res,
+        _$CalculateMarketValueSuccessImpl>
+    implements _$$CalculateMarketValueSuccessImplCopyWith<$Res> {
+  __$$CalculateMarketValueSuccessImplCopyWithImpl(
+      _$CalculateMarketValueSuccessImpl _value,
+      $Res Function(_$CalculateMarketValueSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? calculateMarketValueRsponse = null,
+  }) {
+    return _then(_$CalculateMarketValueSuccessImpl(
+      null == calculateMarketValueRsponse
+          ? _value.calculateMarketValueRsponse
+          : calculateMarketValueRsponse // ignore: cast_nullable_to_non_nullable
+              as CalculateMarketValueRsponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CalculateMarketValueSuccessImpl implements CalculateMarketValueSuccess {
+  const _$CalculateMarketValueSuccessImpl(this.calculateMarketValueRsponse);
+
+  @override
+  final CalculateMarketValueRsponse calculateMarketValueRsponse;
+
+  @override
+  String toString() {
+    return 'CalculateMarketValueState.calculateMarketValueSuccess(calculateMarketValueRsponse: $calculateMarketValueRsponse)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CalculateMarketValueSuccessImpl &&
+            (identical(other.calculateMarketValueRsponse,
+                    calculateMarketValueRsponse) ||
+                other.calculateMarketValueRsponse ==
+                    calculateMarketValueRsponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, calculateMarketValueRsponse);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CalculateMarketValueSuccessImplCopyWith<_$CalculateMarketValueSuccessImpl>
+      get copyWith => __$$CalculateMarketValueSuccessImplCopyWithImpl<
+          _$CalculateMarketValueSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateMarketValueLoading,
+    required TResult Function(
+            CalculateMarketValueRsponse calculateMarketValueRsponse)
+        calculateMarketValueSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateMarketValueError,
+  }) {
+    return calculateMarketValueSuccess(calculateMarketValueRsponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+  }) {
+    return calculateMarketValueSuccess?.call(calculateMarketValueRsponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+    required TResult orElse(),
+  }) {
+    if (calculateMarketValueSuccess != null) {
+      return calculateMarketValueSuccess(calculateMarketValueRsponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateMarketValueInitial value) initial,
+    required TResult Function(CalculateMarketValueLoading value)
+        calculateMarketValueLoading,
+    required TResult Function(CalculateMarketValueSuccess value)
+        calculateMarketValueSuccess,
+    required TResult Function(CalculateMarketValueError value)
+        calculateMarketValueError,
+  }) {
+    return calculateMarketValueSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateMarketValueInitial value)? initial,
+    TResult? Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult? Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+  }) {
+    return calculateMarketValueSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateMarketValueInitial value)? initial,
+    TResult Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+    required TResult orElse(),
+  }) {
+    if (calculateMarketValueSuccess != null) {
+      return calculateMarketValueSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CalculateMarketValueSuccess
+    implements CalculateMarketValueState {
+  const factory CalculateMarketValueSuccess(
+          final CalculateMarketValueRsponse calculateMarketValueRsponse) =
+      _$CalculateMarketValueSuccessImpl;
+
+  CalculateMarketValueRsponse get calculateMarketValueRsponse;
+  @JsonKey(ignore: true)
+  _$$CalculateMarketValueSuccessImplCopyWith<_$CalculateMarketValueSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CalculateMarketValueErrorImplCopyWith<$Res> {
+  factory _$$CalculateMarketValueErrorImplCopyWith(
+          _$CalculateMarketValueErrorImpl value,
+          $Res Function(_$CalculateMarketValueErrorImpl) then) =
+      __$$CalculateMarketValueErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$CalculateMarketValueErrorImplCopyWithImpl<$Res>
+    extends _$CalculateMarketValueStateCopyWithImpl<$Res,
+        _$CalculateMarketValueErrorImpl>
+    implements _$$CalculateMarketValueErrorImplCopyWith<$Res> {
+  __$$CalculateMarketValueErrorImplCopyWithImpl(
+      _$CalculateMarketValueErrorImpl _value,
+      $Res Function(_$CalculateMarketValueErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$CalculateMarketValueErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CalculateMarketValueErrorImpl implements CalculateMarketValueError {
+  const _$CalculateMarketValueErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'CalculateMarketValueState.calculateMarketValueError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CalculateMarketValueErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CalculateMarketValueErrorImplCopyWith<_$CalculateMarketValueErrorImpl>
+      get copyWith => __$$CalculateMarketValueErrorImplCopyWithImpl<
+          _$CalculateMarketValueErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateMarketValueLoading,
+    required TResult Function(
+            CalculateMarketValueRsponse calculateMarketValueRsponse)
+        calculateMarketValueSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateMarketValueError,
+  }) {
+    return calculateMarketValueError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+  }) {
+    return calculateMarketValueError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueRsponse calculateMarketValueRsponse)?
+        calculateMarketValueSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)? calculateMarketValueError,
+    required TResult orElse(),
+  }) {
+    if (calculateMarketValueError != null) {
+      return calculateMarketValueError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateMarketValueInitial value) initial,
+    required TResult Function(CalculateMarketValueLoading value)
+        calculateMarketValueLoading,
+    required TResult Function(CalculateMarketValueSuccess value)
+        calculateMarketValueSuccess,
+    required TResult Function(CalculateMarketValueError value)
+        calculateMarketValueError,
+  }) {
+    return calculateMarketValueError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateMarketValueInitial value)? initial,
+    TResult? Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult? Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult? Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+  }) {
+    return calculateMarketValueError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateMarketValueInitial value)? initial,
+    TResult Function(CalculateMarketValueLoading value)?
+        calculateMarketValueLoading,
+    TResult Function(CalculateMarketValueSuccess value)?
+        calculateMarketValueSuccess,
+    TResult Function(CalculateMarketValueError value)?
+        calculateMarketValueError,
+    required TResult orElse(),
+  }) {
+    if (calculateMarketValueError != null) {
+      return calculateMarketValueError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CalculateMarketValueError implements CalculateMarketValueState {
+  const factory CalculateMarketValueError(final ApiErrorModel apiErrorModel) =
+      _$CalculateMarketValueErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$CalculateMarketValueErrorImplCopyWith<_$CalculateMarketValueErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$CalculateConstructionCostState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateConstructionCostLoading,
+    required TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)
+        calculateConstructionCostSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateConstructionCostError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateConstructionCostLoading,
+    TResult? Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateConstructionCostLoading,
+    TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateConstructionCostInitial value) initial,
+    required TResult Function(CalculateConstructionCostLoading value)
+        calculateConstructionCostLoading,
+    required TResult Function(CalculateConstructionCostSuccess value)
+        calculateConstructionCostSuccess,
+    required TResult Function(CalculateConstructionCostError value)
+        calculateConstructionCostError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateConstructionCostInitial value)? initial,
+    TResult? Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult? Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult? Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateConstructionCostInitial value)? initial,
+    TResult Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CalculateConstructionCostStateCopyWith<$Res> {
+  factory $CalculateConstructionCostStateCopyWith(
+          CalculateConstructionCostState value,
+          $Res Function(CalculateConstructionCostState) then) =
+      _$CalculateConstructionCostStateCopyWithImpl<$Res,
+          CalculateConstructionCostState>;
+}
+
+/// @nodoc
+class _$CalculateConstructionCostStateCopyWithImpl<$Res,
+        $Val extends CalculateConstructionCostState>
+    implements $CalculateConstructionCostStateCopyWith<$Res> {
+  _$CalculateConstructionCostStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$CalculateConstructionCostInitialImplCopyWith<$Res> {
+  factory _$$CalculateConstructionCostInitialImplCopyWith(
+          _$CalculateConstructionCostInitialImpl value,
+          $Res Function(_$CalculateConstructionCostInitialImpl) then) =
+      __$$CalculateConstructionCostInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CalculateConstructionCostInitialImplCopyWithImpl<$Res>
+    extends _$CalculateConstructionCostStateCopyWithImpl<$Res,
+        _$CalculateConstructionCostInitialImpl>
+    implements _$$CalculateConstructionCostInitialImplCopyWith<$Res> {
+  __$$CalculateConstructionCostInitialImplCopyWithImpl(
+      _$CalculateConstructionCostInitialImpl _value,
+      $Res Function(_$CalculateConstructionCostInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CalculateConstructionCostInitialImpl
+    implements _CalculateConstructionCostInitial {
+  const _$CalculateConstructionCostInitialImpl();
+
+  @override
+  String toString() {
+    return 'CalculateConstructionCostState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CalculateConstructionCostInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateConstructionCostLoading,
+    required TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)
+        calculateConstructionCostSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateConstructionCostError,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateConstructionCostLoading,
+    TResult? Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateConstructionCostLoading,
+    TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateConstructionCostInitial value) initial,
+    required TResult Function(CalculateConstructionCostLoading value)
+        calculateConstructionCostLoading,
+    required TResult Function(CalculateConstructionCostSuccess value)
+        calculateConstructionCostSuccess,
+    required TResult Function(CalculateConstructionCostError value)
+        calculateConstructionCostError,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateConstructionCostInitial value)? initial,
+    TResult? Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult? Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult? Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateConstructionCostInitial value)? initial,
+    TResult Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CalculateConstructionCostInitial
+    implements CalculateConstructionCostState {
+  const factory _CalculateConstructionCostInitial() =
+      _$CalculateConstructionCostInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$CalculateConstructionCostLoadingImplCopyWith<$Res> {
+  factory _$$CalculateConstructionCostLoadingImplCopyWith(
+          _$CalculateConstructionCostLoadingImpl value,
+          $Res Function(_$CalculateConstructionCostLoadingImpl) then) =
+      __$$CalculateConstructionCostLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CalculateConstructionCostLoadingImplCopyWithImpl<$Res>
+    extends _$CalculateConstructionCostStateCopyWithImpl<$Res,
+        _$CalculateConstructionCostLoadingImpl>
+    implements _$$CalculateConstructionCostLoadingImplCopyWith<$Res> {
+  __$$CalculateConstructionCostLoadingImplCopyWithImpl(
+      _$CalculateConstructionCostLoadingImpl _value,
+      $Res Function(_$CalculateConstructionCostLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CalculateConstructionCostLoadingImpl
+    implements CalculateConstructionCostLoading {
+  const _$CalculateConstructionCostLoadingImpl();
+
+  @override
+  String toString() {
+    return 'CalculateConstructionCostState.calculateConstructionCostLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CalculateConstructionCostLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateConstructionCostLoading,
+    required TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)
+        calculateConstructionCostSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateConstructionCostLoading,
+    TResult? Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateConstructionCostLoading,
+    TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) {
+    if (calculateConstructionCostLoading != null) {
+      return calculateConstructionCostLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateConstructionCostInitial value) initial,
+    required TResult Function(CalculateConstructionCostLoading value)
+        calculateConstructionCostLoading,
+    required TResult Function(CalculateConstructionCostSuccess value)
+        calculateConstructionCostSuccess,
+    required TResult Function(CalculateConstructionCostError value)
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateConstructionCostInitial value)? initial,
+    TResult? Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult? Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult? Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateConstructionCostInitial value)? initial,
+    TResult Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) {
+    if (calculateConstructionCostLoading != null) {
+      return calculateConstructionCostLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CalculateConstructionCostLoading
+    implements CalculateConstructionCostState {
+  const factory CalculateConstructionCostLoading() =
+      _$CalculateConstructionCostLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$CalculateConstructionCostSuccessImplCopyWith<$Res> {
+  factory _$$CalculateConstructionCostSuccessImplCopyWith(
+          _$CalculateConstructionCostSuccessImpl value,
+          $Res Function(_$CalculateConstructionCostSuccessImpl) then) =
+      __$$CalculateConstructionCostSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {CalculateConstructionCostRsponse calculateConstructionCostRsponse});
+}
+
+/// @nodoc
+class __$$CalculateConstructionCostSuccessImplCopyWithImpl<$Res>
+    extends _$CalculateConstructionCostStateCopyWithImpl<$Res,
+        _$CalculateConstructionCostSuccessImpl>
+    implements _$$CalculateConstructionCostSuccessImplCopyWith<$Res> {
+  __$$CalculateConstructionCostSuccessImplCopyWithImpl(
+      _$CalculateConstructionCostSuccessImpl _value,
+      $Res Function(_$CalculateConstructionCostSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? calculateConstructionCostRsponse = null,
+  }) {
+    return _then(_$CalculateConstructionCostSuccessImpl(
+      null == calculateConstructionCostRsponse
+          ? _value.calculateConstructionCostRsponse
+          : calculateConstructionCostRsponse // ignore: cast_nullable_to_non_nullable
+              as CalculateConstructionCostRsponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CalculateConstructionCostSuccessImpl
+    implements CalculateConstructionCostSuccess {
+  const _$CalculateConstructionCostSuccessImpl(
+      this.calculateConstructionCostRsponse);
+
+  @override
+  final CalculateConstructionCostRsponse calculateConstructionCostRsponse;
+
+  @override
+  String toString() {
+    return 'CalculateConstructionCostState.calculateConstructionCostSuccess(calculateConstructionCostRsponse: $calculateConstructionCostRsponse)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CalculateConstructionCostSuccessImpl &&
+            (identical(other.calculateConstructionCostRsponse,
+                    calculateConstructionCostRsponse) ||
+                other.calculateConstructionCostRsponse ==
+                    calculateConstructionCostRsponse));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, calculateConstructionCostRsponse);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CalculateConstructionCostSuccessImplCopyWith<
+          _$CalculateConstructionCostSuccessImpl>
+      get copyWith => __$$CalculateConstructionCostSuccessImplCopyWithImpl<
+          _$CalculateConstructionCostSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateConstructionCostLoading,
+    required TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)
+        calculateConstructionCostSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostSuccess(calculateConstructionCostRsponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateConstructionCostLoading,
+    TResult? Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostSuccess
+        ?.call(calculateConstructionCostRsponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateConstructionCostLoading,
+    TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) {
+    if (calculateConstructionCostSuccess != null) {
+      return calculateConstructionCostSuccess(calculateConstructionCostRsponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateConstructionCostInitial value) initial,
+    required TResult Function(CalculateConstructionCostLoading value)
+        calculateConstructionCostLoading,
+    required TResult Function(CalculateConstructionCostSuccess value)
+        calculateConstructionCostSuccess,
+    required TResult Function(CalculateConstructionCostError value)
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateConstructionCostInitial value)? initial,
+    TResult? Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult? Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult? Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateConstructionCostInitial value)? initial,
+    TResult Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) {
+    if (calculateConstructionCostSuccess != null) {
+      return calculateConstructionCostSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CalculateConstructionCostSuccess
+    implements CalculateConstructionCostState {
+  const factory CalculateConstructionCostSuccess(
+          final CalculateConstructionCostRsponse
+              calculateConstructionCostRsponse) =
+      _$CalculateConstructionCostSuccessImpl;
+
+  CalculateConstructionCostRsponse get calculateConstructionCostRsponse;
+  @JsonKey(ignore: true)
+  _$$CalculateConstructionCostSuccessImplCopyWith<
+          _$CalculateConstructionCostSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CalculateConstructionCostErrorImplCopyWith<$Res> {
+  factory _$$CalculateConstructionCostErrorImplCopyWith(
+          _$CalculateConstructionCostErrorImpl value,
+          $Res Function(_$CalculateConstructionCostErrorImpl) then) =
+      __$$CalculateConstructionCostErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$CalculateConstructionCostErrorImplCopyWithImpl<$Res>
+    extends _$CalculateConstructionCostStateCopyWithImpl<$Res,
+        _$CalculateConstructionCostErrorImpl>
+    implements _$$CalculateConstructionCostErrorImplCopyWith<$Res> {
+  __$$CalculateConstructionCostErrorImplCopyWithImpl(
+      _$CalculateConstructionCostErrorImpl _value,
+      $Res Function(_$CalculateConstructionCostErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$CalculateConstructionCostErrorImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CalculateConstructionCostErrorImpl
+    implements CalculateConstructionCostError {
+  const _$CalculateConstructionCostErrorImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'CalculateConstructionCostState.calculateConstructionCostError(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CalculateConstructionCostErrorImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CalculateConstructionCostErrorImplCopyWith<
+          _$CalculateConstructionCostErrorImpl>
+      get copyWith => __$$CalculateConstructionCostErrorImplCopyWithImpl<
+          _$CalculateConstructionCostErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() calculateConstructionCostLoading,
+    required TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)
+        calculateConstructionCostSuccess,
+    required TResult Function(ApiErrorModel apiErrorModel)
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostError(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? calculateConstructionCostLoading,
+    TResult? Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult? Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostError?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? calculateConstructionCostLoading,
+    TResult Function(
+            CalculateConstructionCostRsponse calculateConstructionCostRsponse)?
+        calculateConstructionCostSuccess,
+    TResult Function(ApiErrorModel apiErrorModel)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) {
+    if (calculateConstructionCostError != null) {
+      return calculateConstructionCostError(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CalculateConstructionCostInitial value) initial,
+    required TResult Function(CalculateConstructionCostLoading value)
+        calculateConstructionCostLoading,
+    required TResult Function(CalculateConstructionCostSuccess value)
+        calculateConstructionCostSuccess,
+    required TResult Function(CalculateConstructionCostError value)
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CalculateConstructionCostInitial value)? initial,
+    TResult? Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult? Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult? Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+  }) {
+    return calculateConstructionCostError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CalculateConstructionCostInitial value)? initial,
+    TResult Function(CalculateConstructionCostLoading value)?
+        calculateConstructionCostLoading,
+    TResult Function(CalculateConstructionCostSuccess value)?
+        calculateConstructionCostSuccess,
+    TResult Function(CalculateConstructionCostError value)?
+        calculateConstructionCostError,
+    required TResult orElse(),
+  }) {
+    if (calculateConstructionCostError != null) {
+      return calculateConstructionCostError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CalculateConstructionCostError
+    implements CalculateConstructionCostState {
+  const factory CalculateConstructionCostError(
+      final ApiErrorModel apiErrorModel) = _$CalculateConstructionCostErrorImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$CalculateConstructionCostErrorImplCopyWith<
+          _$CalculateConstructionCostErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

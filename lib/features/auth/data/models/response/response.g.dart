@@ -106,6 +106,7 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) => UserResponse(
       name: json['name'] as String?,
       email: json['email'] as String?,
       phone: json['phone'] as String?,
+      points: (json['points'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$UserResponseToJson(UserResponse instance) =>
@@ -114,6 +115,7 @@ Map<String, dynamic> _$UserResponseToJson(UserResponse instance) =>
       'name': instance.name,
       'email': instance.email,
       'phone': instance.phone,
+      'points': instance.points,
     };
 
 ForgotPasswordResponse _$ForgotPasswordResponseFromJson(

@@ -8,7 +8,7 @@ class ApiConstants {
   static const String verifyCode = 'verify-code-forgot';
   static const String resetPassword = 'resetPassword';
   static const String verifyCodeRegister = 'verify-code';
-  
+
   // user Ads
   static const String showUserAdvertisement = 'show_all';
 
@@ -19,16 +19,23 @@ class ApiConstants {
   static const String allAds = 'advertisements';
 
   // home
-
   static const String adsAuction = 'adsauction';
   static const String adsVip = 'adsvip';
   static const String searchAds = 'adSsearch';
   static const String filterSection = 'advertisements/filter';
+  static const String getPropertyTypes = 'get-property-types';
+  static const String getAreas = 'get-areas';
+  static const String news = 'News';
+  static const String searchFilter = 'Search';
+  static const String calculateMarketValue = 'calculateMarketValue';
+  static const String  calculateConstructionCost = 'calculateConstructionCost';
+
   // User Info
   static const String userInfo = 'userinfo';
   static const String userUpdateInfo = 'profile/update';
   static const String notifications = 'Notifications';
   static const String deleteAccount = 'delete-account';
+  static const String getUserMonthlyPoints = 'getUserMonthlyPoints';
 }
 
 class ApiErrors {

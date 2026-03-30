@@ -34,6 +34,8 @@ AdsDataResponse _$AdsDataResponseFromJson(Map<String, dynamic> json) =>
       price: json['price'] as String?,
       images: json['images'] as String?,
       userId: json['user_id'] as String?,
+      shareCode: json['share_code'] as String?,
+      shareUrl: json['share_url'] as String?,
     );
 
 Map<String, dynamic> _$AdsDataResponseToJson(AdsDataResponse instance) =>
@@ -49,6 +51,8 @@ Map<String, dynamic> _$AdsDataResponseToJson(AdsDataResponse instance) =>
       'price': instance.price,
       'images': instance.images,
       'user_id': instance.userId,
+      'share_code': instance.shareCode,
+      'share_url': instance.shareUrl,
     };
 
 AuctionResponse _$AuctionResponseFromJson(Map<String, dynamic> json) =>
@@ -131,6 +135,8 @@ VipAdsDataResponse _$VipAdsDataResponseFromJson(Map<String, dynamic> json) =>
       price: json['price'] as String?,
       images: json['images'] as String?,
       userId: json['user_id'] as String?,
+      shareCode: json['share_code'] as String?,
+      shareUrl: json['share_url'] as String?,
     )..auctionDate = json['auction_date'] as String?;
 
 Map<String, dynamic> _$VipAdsDataResponseToJson(VipAdsDataResponse instance) =>
@@ -147,6 +153,8 @@ Map<String, dynamic> _$VipAdsDataResponseToJson(VipAdsDataResponse instance) =>
       'price': instance.price,
       'images': instance.images,
       'user_id': instance.userId,
+      'share_code': instance.shareCode,
+      'share_url': instance.shareUrl,
     };
 
 AddAdvertisementResponse _$AddAdvertisementResponseFromJson(
@@ -233,6 +241,8 @@ ShowUserAdvertisementData _$ShowUserAdvertisementDataFromJson(
       images: json['images'] as String?,
       userId: json['user_id'] as String?,
       createdAt: json['created_at'] as String?,
+      shareCode: json['share_code'] as String?,
+      shareUrl: json['share_url'] as String?,
     );
 
 Map<String, dynamic> _$ShowUserAdvertisementDataToJson(
@@ -252,6 +262,8 @@ Map<String, dynamic> _$ShowUserAdvertisementDataToJson(
       'images': instance.images,
       'user_id': instance.userId,
       'created_at': instance.createdAt,
+      'share_code': instance.shareCode,
+      'share_url': instance.shareUrl,
     };
 
 NotificationsResponse _$NotificationsResponseFromJson(
@@ -323,6 +335,8 @@ AdModel _$AdModelFromJson(Map<String, dynamic> json) => AdModel(
       images: json['images'] as String?,
       userId: json['user_id'] as String?,
       createdAt: json['created_at'] as String?,
+      shareCode: json['share_code'] as String?,
+      shareUrl: json['share_url'] as String?,
     );
 
 Map<String, dynamic> _$AdModelToJson(AdModel instance) => <String, dynamic>{
@@ -340,6 +354,24 @@ Map<String, dynamic> _$AdModelToJson(AdModel instance) => <String, dynamic>{
       'images': instance.images,
       'user_id': instance.userId,
       'created_at': instance.createdAt,
+      'share_code': instance.shareCode,
+      'share_url': instance.shareUrl,
+    };
+
+UserMonthlyPointsResponse _$UserMonthlyPointsResponseFromJson(
+        Map<String, dynamic> json) =>
+    UserMonthlyPointsResponse(
+      json['status'] as bool?,
+      (json['current_month'] as num?)?.toInt(),
+      json['total_points'] as String?,
+    );
+
+Map<String, dynamic> _$UserMonthlyPointsResponseToJson(
+        UserMonthlyPointsResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'current_month': instance.currentMonth,
+      'total_points': instance.totalPoints,
     };
 
 DeleteAdResponse _$DeleteAdResponseFromJson(Map<String, dynamic> json) =>
@@ -399,6 +431,8 @@ FilterSectionModel _$FilterSectionModelFromJson(Map<String, dynamic> json) =>
       userId: json['user_id'] as String?,
       createdAt: json['created_at'] as String?,
       updatedAt: json['updated_at'] as String?,
+      shareCode: json['share_code'] as String?,
+      shareUrl: json['share_url'] as String?,
     );
 
 Map<String, dynamic> _$FilterSectionModelToJson(FilterSectionModel instance) =>
@@ -418,4 +452,228 @@ Map<String, dynamic> _$FilterSectionModelToJson(FilterSectionModel instance) =>
       'user_id': instance.userId,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+      'share_code': instance.shareCode,
+      'share_url': instance.shareUrl,
+    };
+
+PropertyTypesResponse _$PropertyTypesResponseFromJson(
+        Map<String, dynamic> json) =>
+    PropertyTypesResponse(
+      success: json['success'] as bool?,
+      message: json['message'] as String?,
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) =>
+              PropertyTypesResponseData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$PropertyTypesResponseToJson(
+        PropertyTypesResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+      'message': instance.message,
+      'data': instance.data,
+    };
+
+PropertyTypesResponseData _$PropertyTypesResponseDataFromJson(
+        Map<String, dynamic> json) =>
+    PropertyTypesResponseData(
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+    );
+
+Map<String, dynamic> _$PropertyTypesResponseDataToJson(
+        PropertyTypesResponseData instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };
+
+AreasResponse _$AreasResponseFromJson(Map<String, dynamic> json) =>
+    AreasResponse(
+      success: json['success'] as bool?,
+      message: json['message'] as String?,
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => AreaData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$AreasResponseToJson(AreasResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+      'message': instance.message,
+      'data': instance.data,
+    };
+
+AreaData _$AreaDataFromJson(Map<String, dynamic> json) => AreaData(
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+    );
+
+Map<String, dynamic> _$AreaDataToJson(AreaData instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };
+
+NewsResponse _$NewsResponseFromJson(Map<String, dynamic> json) => NewsResponse(
+      success: json['success'] as bool?,
+      message: json['message'] as String?,
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => NewsResponseData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$NewsResponseToJson(NewsResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+      'data': instance.data,
+      'message': instance.message,
+    };
+
+NewsResponseData _$NewsResponseDataFromJson(Map<String, dynamic> json) =>
+    NewsResponseData(
+      id: (json['id'] as num?)?.toInt(),
+      title: json['title'] as String?,
+      url: json['url'] as String?,
+    );
+
+Map<String, dynamic> _$NewsResponseDataToJson(NewsResponseData instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'url': instance.url,
+    };
+
+SearchFilterResponse _$SearchFilterResponseFromJson(
+        Map<String, dynamic> json) =>
+    SearchFilterResponse(
+      success: json['success'] as bool?,
+      count: (json['count'] as num?)?.toInt(),
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => SearchFilterData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$SearchFilterResponseToJson(
+        SearchFilterResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+      'count': instance.count,
+      'data': instance.data,
+    };
+
+SearchFilterData _$SearchFilterDataFromJson(Map<String, dynamic> json) =>
+    SearchFilterData(
+      id: (json['id'] as num?)?.toInt(),
+      planPrice: json['plan_price'] as String?,
+      planName: json['plan_name'] as String?,
+      transactionType: json['transaction_type'] as String?,
+      phone: json['phone'] as String?,
+      status: json['status'] as String?,
+      description: json['description'] as String?,
+      auctionDate: json['auction_date'] as String?,
+      type: json['type'] as String?,
+      region: json['region'] as String?,
+      price: json['price'] as String?,
+      images: json['images'] as String?,
+      userId: json['user_id'] as String?,
+      shareCode: json['share_code'] as String?,
+      createdAt: json['created_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
+      shareUrl: json['share_url'] as String?,
+    );
+
+Map<String, dynamic> _$SearchFilterDataToJson(SearchFilterData instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'plan_price': instance.planPrice,
+      'plan_name': instance.planName,
+      'transaction_type': instance.transactionType,
+      'phone': instance.phone,
+      'status': instance.status,
+      'description': instance.description,
+      'auction_date': instance.auctionDate,
+      'type': instance.type,
+      'region': instance.region,
+      'price': instance.price,
+      'images': instance.images,
+      'user_id': instance.userId,
+      'share_code': instance.shareCode,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'share_url': instance.shareUrl,
+    };
+
+CalculateMarketValueRsponse _$CalculateMarketValueRsponseFromJson(
+        Map<String, dynamic> json) =>
+    CalculateMarketValueRsponse(
+      json['status'] as String?,
+      (json['estimated_value'] as num?)?.toInt(),
+      json['currency'] as String?,
+      json['details'] == null
+          ? null
+          : CalculateMarketValueRsponseData.fromJson(
+              json['details'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$CalculateMarketValueRsponseToJson(
+        CalculateMarketValueRsponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'estimated_value': instance.estimatedValue,
+      'currency': instance.currency,
+      'details': instance.details,
+    };
+
+CalculateMarketValueRsponseData _$CalculateMarketValueRsponseDataFromJson(
+        Map<String, dynamic> json) =>
+    CalculateMarketValueRsponseData(
+      (json['base_price'] as num?)?.toInt(),
+      (json['land_impact'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$CalculateMarketValueRsponseDataToJson(
+        CalculateMarketValueRsponseData instance) =>
+    <String, dynamic>{
+      'base_price': instance.basePrice,
+      'land_impact': instance.landImpact,
+    };
+
+CalculateConstructionCostRsponse _$CalculateConstructionCostRsponseFromJson(
+        Map<String, dynamic> json) =>
+    CalculateConstructionCostRsponse(
+      json['status'] as String?,
+      (json['construction_estimate'] as num?)?.toInt(),
+      json['currency'] as String?,
+      json['breakdown'] == null
+          ? null
+          : CalculateConstructionCostRsponseData.fromJson(
+              json['breakdown'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$CalculateConstructionCostRsponseToJson(
+        CalculateConstructionCostRsponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'construction_estimate': instance.constructionEstimate,
+      'currency': instance.currency,
+      'breakdown': instance.breakdown,
+    };
+
+CalculateConstructionCostRsponseData
+    _$CalculateConstructionCostRsponseDataFromJson(Map<String, dynamic> json) =>
+        CalculateConstructionCostRsponseData(
+          (json['structure_and_finishing'] as num?)?.toInt(),
+          (json['elevators'] as num?)?.toInt(),
+          (json['basement_extra'] as num?)?.toInt(),
+          (json['avg_cost_per_meter'] as num?)?.toDouble(),
+        );
+
+Map<String, dynamic> _$CalculateConstructionCostRsponseDataToJson(
+        CalculateConstructionCostRsponseData instance) =>
+    <String, dynamic>{
+      'structure_and_finishing': instance.structureAndFinishing,
+      'elevators': instance.elevators,
+      'basement_extra': instance.basementExtra,
+      'avg_cost_per_meter': instance.avg_costPerMeter,
     };

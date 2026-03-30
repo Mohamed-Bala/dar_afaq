@@ -1,53 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/resources/color_manager.dart';
 import 'sections/section_services.dart';
 
 Widget buildGridItem(
   SectionServices item,
   bool isSelected,
 ) {
-  return Material(
-    color: Colors.white,
-    elevation: 4,
-    borderRadius: BorderRadius.circular(15.0.r),
-    child: Container(
-      width: double.infinity,
-      height: 90.h,
-      decoration: BoxDecoration(
-        color: isSelected ? ColorManager.primary : Colors.transparent,
-        borderRadius: BorderRadius.circular(6.r),
-      ),
-      padding: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 8.0.w),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Stack(
-            alignment: Alignment.bottomRight,
-            children: [
-              Icon(
-                item.icon,
-                size: 20.sp,
-                color: isSelected ? ColorManager.white : ColorManager.primary,
-              ),
-            ],
-          ),
-          SizedBox(height: 5.h),
-          Flexible(
-            child: Text(
-              item.label,
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              style: TextStyle(
-                color: isSelected ? ColorManager.white : ColorManager.black,
-                fontSize: 13.sp,
-                fontWeight: FontWeight.bold,
-              ),
+  return Column(
+    children: [
+      Stack(
+        children: [
+          AnimatedContainer(
+            duration: Duration(milliseconds: 200),
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Icon(
+              item.icon,
             ),
           ),
         ],
       ),
-    ),
+      SizedBox(height: 6),
+      Text(
+        item.label,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 12),
+      ),
+    ],
   );
 }

@@ -119,6 +119,18 @@ class AdsSearchRequest {
   Map<String, dynamic> toJson() => _$AdsSearchRequestToJson(this);
 }
 
+//==============================================================================
+@JsonSerializable()
+class UserMonthlyPointsRequest {
+  @JsonKey(name: 'user_id')
+  final int? userId;
+  UserMonthlyPointsRequest({this.userId});
+
+  Map<String, dynamic> toJson() => _$UserMonthlyPointsRequestToJson(this);
+}
+
+//==============================================================================
+
 @JsonSerializable()
 class FilterSectionRequest {
   final String? section;
@@ -130,4 +142,92 @@ class FilterSectionRequest {
   });
 
   Map<String, dynamic> toJson() => _$FilterSectionRequestToJson(this);
+}
+
+// Serach ==========
+@JsonSerializable()
+class SearchFilterRequest {
+  @JsonKey(name: 'transaction_type')
+  final String transactionType;
+  final List<String> type;
+  final List<String> region;
+  @JsonKey(name: 'price_range')
+  final String priceRange;
+
+  SearchFilterRequest({
+    required this.transactionType,
+    required this.type,
+    required this.region,
+    required this.priceRange,
+  });
+
+  factory SearchFilterRequest.fromJson(Map<String, dynamic> json) =>
+      _$SearchFilterRequestFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SearchFilterRequestToJson(this);
+}
+//==============================================================================
+
+@JsonSerializable()
+class CalculateMarketValueRequest {
+  @JsonKey(name: 'land_size')
+  final int landSize;
+  final String location;
+  final int position;
+  @JsonKey(name: 'building_age')
+  final String buildingAge;
+  @JsonKey(name: 'finishing_level')
+  final int finishingLevel;
+  final List<String> features;
+
+  CalculateMarketValueRequest(
+      {required this.landSize,
+      required this.location,
+      required this.position,
+      required this.buildingAge,
+      required this.finishingLevel,
+      required this.features});
+
+  factory CalculateMarketValueRequest.fromJson(Map<String, dynamic> json) =>
+      _$CalculateMarketValueRequestFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CalculateMarketValueRequestToJson(this);
+}
+//==============================================================================
+
+@JsonSerializable()
+class CalculateConstructionCostRequest {
+  @JsonKey(name: 'building_area')
+  final int buildingArea;
+  @JsonKey(name: 'structure_type')
+  final int structureType;
+  @JsonKey(name: 'finishing_type')
+  final int finishingType;
+  @JsonKey(name: 'ac_type')
+  final int acType;
+  @JsonKey(name: 'energy_saving')
+  final bool energySaving;
+  final int elevators;
+  @JsonKey(name: 'plumbing_type')
+  final int plumbingType;
+  @JsonKey(name: 'has_basement')
+  final bool hasBasement;
+
+  CalculateConstructionCostRequest({
+    required this.buildingArea,
+    required this.structureType,
+    required this.finishingType,
+    required this.acType,
+    required this.energySaving,
+    required this.elevators,
+    required this.plumbingType,
+      required this.hasBasement,
+  });
+
+  factory CalculateConstructionCostRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$CalculateConstructionCostRequestFromJson(json);
+
+  Map<String, dynamic> toJson() =>
+      _$CalculateConstructionCostRequestToJson(this);
 }

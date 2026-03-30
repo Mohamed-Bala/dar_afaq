@@ -31,6 +31,9 @@ class _AddAdsViewState extends State<AddAdsView> {
           .read<AddAdvertisementCubit>()
           .updateTransactionType(widget.transactionType!);
     }
+    final cubit = context.read<AddAdvertisementCubit>();
+    cubit.getPropertyTypes();
+    cubit.getRegions();
   }
 
   @override
@@ -46,11 +49,10 @@ class _AddAdsViewState extends State<AddAdsView> {
           BlocBuilder<AddAdvertisementCubit, AddAdvertisementState>(
             builder: (context, state) {
               var cubit = context.read<AddAdvertisementCubit>();
-
               return Text(
                 '${AppStrings.selectedSection.tr()} : ${cubit.selectedTransactionType}',
-                style: const TextStyle(
-                  fontSize: 16,
+                style: TextStyle(
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
                 ),
               );
@@ -85,25 +87,53 @@ class _AddAdsViewState extends State<AddAdsView> {
           ),
           verticalSpace(10),
           SizedBox(
-            height: 50.h,
-            child: DropdownButtonFormField<String>(
-              icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
-              decoration: customDecoration(AppStrings.choosePropertyType.tr()),
-              value: context.read<AddAdvertisementCubit>().selectedPropertyType,
-              items: context
-                  .read<AddAdvertisementCubit>()
-                  .propertyTypes
-                  .map((type) {
-                return DropdownMenuItem(
-                  value: type,
-                  child: Text(type),
-                );
-              }).toList(),
-              onChanged: (value) {
-                if (value != null) {
-                  context
-                      .read<AddAdvertisementCubit>()
-                      .updatePropertyType(value);
+            height: 53.h,
+            child: BlocBuilder<AddAdvertisementCubit, AddAdvertisementState>(
+              buildWhen: (previous, current) =>
+                  current is PropertyTypesLoading ||
+                  current is PropertyTypesSuccess ||
+                  current is PropertyTypesError,
+              builder: (context, state) {
+                var cubit = context.read<AddAdvertisementCubit>();
+                if (state is PropertyTypesLoading) {
+                  return DropdownButtonFormField<String>(
+                    icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
+                    decoration: customDecoration(AppStrings.loading.tr()),
+                    value: null,
+                    items: [],
+                    onChanged: null,
+                  );
+                } else if (state is PropertyTypesError) {
+                  return DropdownButtonFormField<String>(
+                    icon: const Icon(Icons.error, color: Colors.red),
+                    decoration: customDecoration(AppStrings.errorOccurred.tr()),
+                    value: null,
+                    items: [],
+                    onChanged: null,
+                  );
+                } else {
+                  // PropertyTypesSuccess or initial state
+                  return DropdownButtonFormField<String>(
+                    icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
+                    decoration:
+                        customDecoration(AppStrings.choosePropertyType.tr()),
+                    value: cubit.selectedPropertyType,
+                    items: cubit.propertyTypes.isNotEmpty
+                        ? cubit.propertyTypes.map((type) {
+                            return DropdownMenuItem(
+                              value: type,
+                              child: Text(type),
+                            );
+                          }).toList()
+                        : [],
+                    onChanged: cubit.propertyTypes.isNotEmpty
+                        ? (value) {
+                            if (value != null) {
+                              cubit.updatePropertyType(value);
+                            }
+                          }
+                        : null,
+                  );
                 }
               },
             ),
@@ -111,25 +141,55 @@ class _AddAdsViewState extends State<AddAdsView> {
           verticalSpace(10),
           Text(
             AppStrings.region.tr(),
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
           ),
           verticalSpace(10),
           SizedBox(
             height: 50.h,
-            child: DropdownButtonFormField<String>(
-              icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
-              decoration: customDecoration(AppStrings.chooseRegion.tr()),
-              value: context.read<AddAdvertisementCubit>().selectedRegion,
-              items:
-                  context.read<AddAdvertisementCubit>().regions.map((region) {
-                return DropdownMenuItem(
-                  value: region,
-                  child: Text(region),
-                );
-              }).toList(),
-              onChanged: (value) {
-                if (value != null) {
-                  context.read<AddAdvertisementCubit>().updateRegion(value);
+            child: BlocBuilder<AddAdvertisementCubit, AddAdvertisementState>(
+              buildWhen: (previous, current) =>
+                  current is RegionsLoading ||
+                  current is RegionsSuccess ||
+                  current is RegionsError,
+              builder: (context, state) {
+                var cubit = context.read<AddAdvertisementCubit>();
+                if (state is RegionsLoading) {
+                  return DropdownButtonFormField<String>(
+                    icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
+                    decoration: customDecoration(AppStrings.loading.tr()),
+                    value: null,
+                    items: [],
+                    onChanged: null,
+                  );
+                } else if (state is RegionsError) {
+                  return DropdownButtonFormField<String>(
+                    icon: const Icon(Icons.error, color: Colors.red),
+                    decoration: customDecoration(AppStrings.errorOccurred.tr()),
+                    value: null,
+                    items: [],
+                    onChanged: null,
+                  );
+                } else {
+                  return DropdownButtonFormField<String>(
+                    icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
+                    decoration: customDecoration(AppStrings.chooseRegion.tr()),
+                    value: cubit.selectedRegion,
+                    items: cubit.regions.isNotEmpty
+                        ? cubit.regions.map((region) {
+                            return DropdownMenuItem(
+                              value: region,
+                              child: Text(region),
+                            );
+                          }).toList()
+                        : [],
+                    onChanged: cubit.regions.isNotEmpty
+                        ? (value) {
+                            if (value != null) {
+                              cubit.updateRegion(value);
+                            }
+                          }
+                        : null,
+                  );
                 }
               },
             ),
@@ -161,39 +221,83 @@ class _AddAdsViewState extends State<AddAdsView> {
           BlocBuilder<AddAdvertisementCubit, AddAdvertisementState>(
             builder: (context, state) {
               var cubit = context.read<AddAdvertisementCubit>();
-
               return GestureDetector(
-                onTap: () => cubit.pickImage(),
+                onTap: () => cubit.showImageSource(context),
                 child: Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 30),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   decoration: BoxDecoration(
                     color: Colors.grey[50],
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: Colors.grey.shade300),
                   ),
                   child: cubit.selectedImage != null
-                      ? Column(
+                      ? Stack(
+                          alignment: Alignment.topRight,
                           children: [
-                            Image.file(cubit.selectedImage!, height: 100),
-                            TextButton(
-                              onPressed: () => cubit.pickImage(),
-                              child: Text(AppStrings.changePhoto.tr()),
-                            )
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.file(
+                                cubit.selectedImage!,
+                                height: 160.h,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Positioned(
+                              top: 8,
+                              right: 8,
+                              child: GestureDetector(
+                                onTap: () => cubit.showImageSource(context),
+                                child: Container(
+                                  padding: EdgeInsets.all(6.h),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black54,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                    size: 18.sp,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         )
                       : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.cloud_upload_outlined,
-                              size: 40,
-                              color: Colors.grey[400],
+                            Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.cloud_upload_outlined,
+                                size: 30.sp,
+                                color: Colors.grey[600],
+                              ),
                             ),
-                            const SizedBox(height: 8),
+                            verticalSpace(10),
                             Text(
                               AppStrings.clickToUpload.tr(),
-                              style: TextStyle(color: Colors.grey),
+                              style: TextStyle(
+                                color: Colors.grey[700],
+                                fontSize: 14.sp,
+                              ),
                             ),
+
+                            //  verticalSpace(10),
+                            // /// 🔹 تلميح
+                            // Text(
+                            //   "PNG, JPG",
+                            //   style: TextStyle(
+                            //     color: Colors.grey[400],
+                            //     fontSize: 12,
+                            //   ),
+                            // ),
                           ],
                         ),
                 ),

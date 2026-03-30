@@ -33,6 +33,10 @@ class AdsDataResponse {
   String? images;
   @JsonKey(name: 'user_id')
   String? userId;
+  @JsonKey(name: 'share_code')
+  String? shareCode;
+  @JsonKey(name: 'share_url')
+  String? shareUrl;
 
   AdsDataResponse({
     this.id,
@@ -46,6 +50,8 @@ class AdsDataResponse {
     this.price,
     this.images,
     this.userId,
+    this.shareCode,
+    this.shareUrl,
   });
 
   factory AdsDataResponse.fromJson(Map<String, dynamic> json) =>
@@ -146,6 +152,10 @@ class VipAdsDataResponse {
   String? images;
   @JsonKey(name: 'user_id')
   String? userId;
+  @JsonKey(name: 'share_code')
+  String? shareCode;
+  @JsonKey(name: 'share_url')
+  String? shareUrl;
 
   VipAdsDataResponse({
     this.id,
@@ -159,6 +169,8 @@ class VipAdsDataResponse {
     this.price,
     this.images,
     this.userId,
+    this.shareCode,
+    this.shareUrl,
   });
 
   factory VipAdsDataResponse.fromJson(Map<String, dynamic> json) =>
@@ -256,6 +268,10 @@ class ShowUserAdvertisementData {
   final String? userId;
   @JsonKey(name: "created_at")
   final String? createdAt;
+  @JsonKey(name: "share_code")
+  final String? shareCode;
+  @JsonKey(name: "share_url")
+  final String? shareUrl;
 
   ShowUserAdvertisementData({
     this.id,
@@ -272,6 +288,8 @@ class ShowUserAdvertisementData {
     this.images,
     this.userId,
     this.createdAt,
+    this.shareCode,
+    this.shareUrl,
   });
 
   factory ShowUserAdvertisementData.fromJson(Map<String, dynamic> json) =>
@@ -350,6 +368,10 @@ class AdModel {
   final String? userId;
   @JsonKey(name: 'created_at')
   final String? createdAt;
+  @JsonKey(name: 'share_code')
+  final String? shareCode;
+  @JsonKey(name: 'share_url')
+  final String? shareUrl;
 
   AdModel({
     this.id,
@@ -366,17 +388,32 @@ class AdModel {
     this.images,
     this.userId,
     this.createdAt,
+    this.shareCode,
+    this.shareUrl,
   });
 
   factory AdModel.fromJson(Map<String, dynamic> json) =>
       _$AdModelFromJson(json);
 }
 
+// =============================================================================
+@JsonSerializable()
+class UserMonthlyPointsResponse {
+  final bool? status;
+  @JsonKey(name: 'current_month')
+  final int? currentMonth;
+  @JsonKey(name: 'total_points')
+  final String? totalPoints;
+  UserMonthlyPointsResponse(this.status, this.currentMonth, this.totalPoints);
+
+  factory UserMonthlyPointsResponse.fromJson(Map<String, dynamic> json) =>
+      _$UserMonthlyPointsResponseFromJson(json);
+}
+
 // === DeleteAdResponse
 @JsonSerializable()
 class DeleteAdResponse {
   String? message;
-
   DeleteAdResponse({
     this.message,
   });
@@ -436,6 +473,10 @@ class FilterSectionModel {
   final String? createdAt;
   @JsonKey(name: 'updated_at')
   final String? updatedAt;
+  @JsonKey(name: 'share_code')
+  final String? shareCode;
+  @JsonKey(name: 'share_url')
+  final String? shareUrl;
 
   FilterSectionModel({
     this.id,
@@ -453,6 +494,8 @@ class FilterSectionModel {
     this.userId,
     this.createdAt,
     this.updatedAt,
+    this.shareCode,
+    this.shareUrl,
   });
 
   // --- أضف الدالة هنا ---
@@ -474,4 +517,211 @@ class FilterSectionModel {
 
   factory FilterSectionModel.fromJson(Map<String, dynamic> json) =>
       _$FilterSectionModelFromJson(json);
+}
+
+@JsonSerializable()
+class PropertyTypesResponse {
+  final bool? success;
+  final String? message;
+  final List<PropertyTypesResponseData>? data;
+
+  PropertyTypesResponse({this.success, this.message, this.data});
+
+  factory PropertyTypesResponse.fromJson(Map<String, dynamic> json) =>
+      _$PropertyTypesResponseFromJson(json);
+}
+
+@JsonSerializable()
+class PropertyTypesResponseData {
+  final int? id;
+  final String? name;
+
+  PropertyTypesResponseData({this.id, this.name});
+
+  factory PropertyTypesResponseData.fromJson(Map<String, dynamic> json) =>
+      _$PropertyTypesResponseDataFromJson(json);
+}
+
+@JsonSerializable()
+class AreasResponse {
+  final bool? success;
+  final String? message;
+  final List<AreaData>? data;
+
+  AreasResponse({this.success, this.message, this.data});
+
+  factory AreasResponse.fromJson(Map<String, dynamic> json) =>
+      _$AreasResponseFromJson(json);
+}
+
+@JsonSerializable()
+class AreaData {
+  final int? id;
+  final String? name;
+
+  AreaData({this.id, this.name});
+
+  factory AreaData.fromJson(Map<String, dynamic> json) =>
+      _$AreaDataFromJson(json);
+}
+
+// ================= News =====================================
+
+@JsonSerializable()
+class NewsResponse {
+  final bool? success;
+  final List<NewsResponseData>? data;
+  final String? message;
+
+  NewsResponse({this.success, this.message, this.data});
+
+  factory NewsResponse.fromJson(Map<String, dynamic> json) =>
+      _$NewsResponseFromJson(json);
+}
+
+@JsonSerializable()
+class NewsResponseData {
+  final int? id;
+  final String? title;
+  final String? url;
+
+  NewsResponseData({this.id, this.title, this.url});
+
+  factory NewsResponseData.fromJson(Map<String, dynamic> json) =>
+      _$NewsResponseDataFromJson(json);
+}
+
+// ================ SearchFilterResponse =======================================
+
+@JsonSerializable()
+class SearchFilterResponse {
+  final bool? success;
+  final int? count;
+  final List<SearchFilterData>? data;
+
+  SearchFilterResponse({
+    required this.success,
+    required this.count,
+    required this.data,
+  });
+
+  factory SearchFilterResponse.fromJson(Map<String, dynamic> json) =>
+      _$SearchFilterResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SearchFilterResponseToJson(this);
+}
+
+@JsonSerializable()
+class SearchFilterData {
+  final int? id;
+  @JsonKey(name: 'plan_price')
+  final String? planPrice;
+  @JsonKey(name: 'plan_name')
+  final String? planName;
+  @JsonKey(name: 'transaction_type')
+  final String? transactionType;
+  final String? phone;
+  final String? status;
+  final String? description;
+  @JsonKey(name: 'auction_date')
+  final String? auctionDate;
+  final String? type;
+  final String? region;
+  final String? price;
+  final String? images;
+  @JsonKey(name: 'user_id')
+  final String? userId;
+  @JsonKey(name: 'share_code')
+  final String? shareCode;
+  @JsonKey(name: 'created_at')
+  final String? createdAt;
+  @JsonKey(name: 'updated_at')
+  final String? updatedAt;
+  @JsonKey(name: 'share_url')
+  final String? shareUrl;
+
+  SearchFilterData({
+    required this.id,
+    required this.planPrice,
+    required this.planName,
+    required this.transactionType,
+    required this.phone,
+    required this.status,
+    required this.description,
+    required this.auctionDate,
+    required this.type,
+    required this.region,
+    required this.price,
+    required this.images,
+    required this.userId,
+    required this.shareCode,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.shareUrl,
+  });
+
+  factory SearchFilterData.fromJson(Map<String, dynamic> json) =>
+      _$SearchFilterDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SearchFilterDataToJson(this);
+}
+//==============================================================================
+
+@JsonSerializable()
+class CalculateMarketValueRsponse {
+  final String? status;
+  @JsonKey(name: 'estimated_value')
+  final int? estimatedValue;
+  final String? currency;
+  CalculateMarketValueRsponseData? details;
+  CalculateMarketValueRsponse(
+      this.status, this.estimatedValue, this.currency, this.details);
+
+  factory CalculateMarketValueRsponse.fromJson(Map<String, dynamic> json) =>
+      _$CalculateMarketValueRsponseFromJson(json);
+}
+
+@JsonSerializable()
+class CalculateMarketValueRsponseData {
+  @JsonKey(name: 'base_price')
+  final int? basePrice;
+  @JsonKey(name: 'land_impact')
+  final int? landImpact;
+  CalculateMarketValueRsponseData(this.basePrice, this.landImpact);
+
+  factory CalculateMarketValueRsponseData.fromJson(Map<String, dynamic> json) =>
+      _$CalculateMarketValueRsponseDataFromJson(json);
+}
+//==============================================================================
+
+@JsonSerializable()
+class CalculateConstructionCostRsponse {
+  final String? status;
+  @JsonKey(name: 'construction_estimate')
+  final int? constructionEstimate;
+  final String? currency;
+  CalculateConstructionCostRsponseData? breakdown;
+  CalculateConstructionCostRsponse(
+      this.status, this.constructionEstimate, this.currency, this.breakdown);
+
+  factory CalculateConstructionCostRsponse.fromJson(
+          Map<String, dynamic> json) =>
+      _$CalculateConstructionCostRsponseFromJson(json);
+}
+
+@JsonSerializable()
+class CalculateConstructionCostRsponseData {
+  @JsonKey(name: 'structure_and_finishing')
+  final int? structureAndFinishing;
+  final int? elevators;
+  @JsonKey(name: 'basement_extra')
+  final int? basementExtra;
+  @JsonKey(name: 'avg_cost_per_meter')
+  final double? avg_costPerMeter;
+  CalculateConstructionCostRsponseData(this.structureAndFinishing,
+      this.elevators, this.basementExtra, this.avg_costPerMeter);
+
+  factory CalculateConstructionCostRsponseData.fromJson(
+          Map<String, dynamic> json) =>
+      _$CalculateConstructionCostRsponseDataFromJson(json);
 }

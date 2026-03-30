@@ -4926,7 +4926,7 @@ abstract class ResetPasswordError<T> implements ResetPasswordState<T> {
 mixin _$DeleteAccountState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() deleteAccountInitial,
     required TResult Function() deleteAccountLoading,
     required TResult Function(dynamic response) deleteAccountSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
@@ -4934,7 +4934,7 @@ mixin _$DeleteAccountState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? deleteAccountInitial,
     TResult? Function()? deleteAccountLoading,
     TResult? Function(dynamic response)? deleteAccountSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
@@ -4942,7 +4942,7 @@ mixin _$DeleteAccountState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? deleteAccountInitial,
     TResult Function()? deleteAccountLoading,
     TResult Function(dynamic response)? deleteAccountSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
@@ -4951,7 +4951,7 @@ mixin _$DeleteAccountState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(_DeleteAccountInitial value) deleteAccountInitial,
     required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
     required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
     required TResult Function(DeleteAccountError value) deleteAccountError,
@@ -4959,7 +4959,7 @@ mixin _$DeleteAccountState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult? Function(DeleteAccountError value)? deleteAccountError,
@@ -4967,7 +4967,7 @@ mixin _$DeleteAccountState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult Function(DeleteAccountError value)? deleteAccountError,
@@ -5017,7 +5017,7 @@ class _$DeleteAccountInitialImpl implements _DeleteAccountInitial {
 
   @override
   String toString() {
-    return 'DeleteAccountState.initial()';
+    return 'DeleteAccountState.deleteAccountInitial()';
   }
 
   @override
@@ -5033,36 +5033,36 @@ class _$DeleteAccountInitialImpl implements _DeleteAccountInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() deleteAccountInitial,
     required TResult Function() deleteAccountLoading,
     required TResult Function(dynamic response) deleteAccountSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
   }) {
-    return initial();
+    return deleteAccountInitial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? deleteAccountInitial,
     TResult? Function()? deleteAccountLoading,
     TResult? Function(dynamic response)? deleteAccountSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
   }) {
-    return initial?.call();
+    return deleteAccountInitial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? deleteAccountInitial,
     TResult Function()? deleteAccountLoading,
     TResult Function(dynamic response)? deleteAccountSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (deleteAccountInitial != null) {
+      return deleteAccountInitial();
     }
     return orElse();
   }
@@ -5070,36 +5070,36 @@ class _$DeleteAccountInitialImpl implements _DeleteAccountInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(_DeleteAccountInitial value) deleteAccountInitial,
     required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
     required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
     required TResult Function(DeleteAccountError value) deleteAccountError,
   }) {
-    return initial(this);
+    return deleteAccountInitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult? Function(DeleteAccountError value)? deleteAccountError,
   }) {
-    return initial?.call(this);
+    return deleteAccountInitial?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult Function(DeleteAccountError value)? deleteAccountError,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (deleteAccountInitial != null) {
+      return deleteAccountInitial(this);
     }
     return orElse();
   }
@@ -5148,7 +5148,7 @@ class _$DeleteAccountLoadingImpl implements DeleteAccountLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() deleteAccountInitial,
     required TResult Function() deleteAccountLoading,
     required TResult Function(dynamic response) deleteAccountSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
@@ -5159,7 +5159,7 @@ class _$DeleteAccountLoadingImpl implements DeleteAccountLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? deleteAccountInitial,
     TResult? Function()? deleteAccountLoading,
     TResult? Function(dynamic response)? deleteAccountSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
@@ -5170,7 +5170,7 @@ class _$DeleteAccountLoadingImpl implements DeleteAccountLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? deleteAccountInitial,
     TResult Function()? deleteAccountLoading,
     TResult Function(dynamic response)? deleteAccountSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
@@ -5185,7 +5185,7 @@ class _$DeleteAccountLoadingImpl implements DeleteAccountLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(_DeleteAccountInitial value) deleteAccountInitial,
     required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
     required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
     required TResult Function(DeleteAccountError value) deleteAccountError,
@@ -5196,7 +5196,7 @@ class _$DeleteAccountLoadingImpl implements DeleteAccountLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult? Function(DeleteAccountError value)? deleteAccountError,
@@ -5207,7 +5207,7 @@ class _$DeleteAccountLoadingImpl implements DeleteAccountLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult Function(DeleteAccountError value)? deleteAccountError,
@@ -5291,7 +5291,7 @@ class _$DeleteAccountSuccessImpl implements DeleteAccountSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() deleteAccountInitial,
     required TResult Function() deleteAccountLoading,
     required TResult Function(dynamic response) deleteAccountSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
@@ -5302,7 +5302,7 @@ class _$DeleteAccountSuccessImpl implements DeleteAccountSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? deleteAccountInitial,
     TResult? Function()? deleteAccountLoading,
     TResult? Function(dynamic response)? deleteAccountSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
@@ -5313,7 +5313,7 @@ class _$DeleteAccountSuccessImpl implements DeleteAccountSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? deleteAccountInitial,
     TResult Function()? deleteAccountLoading,
     TResult Function(dynamic response)? deleteAccountSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
@@ -5328,7 +5328,7 @@ class _$DeleteAccountSuccessImpl implements DeleteAccountSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(_DeleteAccountInitial value) deleteAccountInitial,
     required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
     required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
     required TResult Function(DeleteAccountError value) deleteAccountError,
@@ -5339,7 +5339,7 @@ class _$DeleteAccountSuccessImpl implements DeleteAccountSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult? Function(DeleteAccountError value)? deleteAccountError,
@@ -5350,7 +5350,7 @@ class _$DeleteAccountSuccessImpl implements DeleteAccountSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult Function(DeleteAccountError value)? deleteAccountError,
@@ -5439,7 +5439,7 @@ class _$DeleteAccountErrorImpl implements DeleteAccountError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() deleteAccountInitial,
     required TResult Function() deleteAccountLoading,
     required TResult Function(dynamic response) deleteAccountSuccess,
     required TResult Function(ApiErrorModel apiErrorModel) deleteAccountError,
@@ -5450,7 +5450,7 @@ class _$DeleteAccountErrorImpl implements DeleteAccountError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function()? deleteAccountInitial,
     TResult? Function()? deleteAccountLoading,
     TResult? Function(dynamic response)? deleteAccountSuccess,
     TResult? Function(ApiErrorModel apiErrorModel)? deleteAccountError,
@@ -5461,7 +5461,7 @@ class _$DeleteAccountErrorImpl implements DeleteAccountError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? deleteAccountInitial,
     TResult Function()? deleteAccountLoading,
     TResult Function(dynamic response)? deleteAccountSuccess,
     TResult Function(ApiErrorModel apiErrorModel)? deleteAccountError,
@@ -5476,7 +5476,7 @@ class _$DeleteAccountErrorImpl implements DeleteAccountError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DeleteAccountInitial value) initial,
+    required TResult Function(_DeleteAccountInitial value) deleteAccountInitial,
     required TResult Function(DeleteAccountLoading value) deleteAccountLoading,
     required TResult Function(DeleteAccountSuccess value) deleteAccountSuccess,
     required TResult Function(DeleteAccountError value) deleteAccountError,
@@ -5487,7 +5487,7 @@ class _$DeleteAccountErrorImpl implements DeleteAccountError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DeleteAccountInitial value)? initial,
+    TResult? Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult? Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult? Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult? Function(DeleteAccountError value)? deleteAccountError,
@@ -5498,7 +5498,7 @@ class _$DeleteAccountErrorImpl implements DeleteAccountError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DeleteAccountInitial value)? initial,
+    TResult Function(_DeleteAccountInitial value)? deleteAccountInitial,
     TResult Function(DeleteAccountLoading value)? deleteAccountLoading,
     TResult Function(DeleteAccountSuccess value)? deleteAccountSuccess,
     TResult Function(DeleteAccountError value)? deleteAccountError,

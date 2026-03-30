@@ -35,38 +35,32 @@ Future<void> init() async {
       () => VerifyCodeRepository(di()));
   di.registerFactory<VerifyCodeCubit>(() => VerifyCodeCubit(di()));
 
-    di.registerLazySingleton<VerifyCodeRegistrRepository>(
+  di.registerLazySingleton<VerifyCodeRegistrRepository>(
       () => VerifyCodeRegistrRepository(di()));
-  di.registerFactory<VerifyCodeRegisterCubit>(() => VerifyCodeRegisterCubit(di()));
+  di.registerFactory<VerifyCodeRegisterCubit>(
+      () => VerifyCodeRegisterCubit(di()));
 
   // ResetPassword
   di.registerLazySingleton<ResetPasswordRepository>(
       () => ResetPasswordRepository(di()));
   di.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit(di()));
 
-  // Add Advertisement
-  di.registerLazySingleton<AddAdvertisementRepository>(
-      () => AddAdvertisementRepository(di()));
-  di.registerFactory<AddAdvertisementCubit>(() => AddAdvertisementCubit(di()));
-
-  di.registerLazySingleton<ShowUserAdRepository>(
-      () => ShowUserAdRepository(di()));
-  di.registerFactory<ShowUserAdCubit>(() => ShowUserAdCubit(di()));
-
-  di.registerLazySingleton<NotificationsRepository>(
-      () => NotificationsRepository(di()));
-  di.registerFactory<NotificationsCubit>(() => NotificationsCubit(di()));
-  // Delete
-  di.registerLazySingleton<DeleteAdRepository>(() => DeleteAdRepository(di()));
-  di.registerFactory<DeleteAdCubit>(() => DeleteAdCubit(di()));
-  // Update
-  di.registerLazySingleton<UpdateAdRepository>(() => UpdateAdRepository(di()));
-  di.registerFactory<UpdateAdCubit>(() => UpdateAdCubit(di()));
   // home
   di.registerLazySingleton<HomeRepository>(() => HomeRepository(di()));
   di.registerLazySingleton<HomeApi>(() => HomeApi(dio));
 
-  // Serch
+  // Add Advertisement
+  di.registerLazySingleton<AddAdvertisementRepository>(
+      () => AddAdvertisementRepository(di()));
+  di.registerFactory<AddAdvertisementCubit>(
+      () => AddAdvertisementCubit(di(), di()));
+
+  // Show user ads
+  di.registerLazySingleton<ShowUserAdRepository>(
+      () => ShowUserAdRepository(di()));
+  di.registerFactory<ShowUserAdCubit>(() => ShowUserAdCubit(di()));
+
+  // Search
   di.registerLazySingleton<AdsSearchRepository>(
       () => AdsSearchRepository(di()));
   di.registerFactory<FilterCubit>(() => FilterCubit(di()));
@@ -75,17 +69,57 @@ Future<void> init() async {
   di.registerLazySingleton<FilterSectionRepository>(
       () => FilterSectionRepository(di()));
   di.registerFactory<FilterSctionCubit>(() => FilterSctionCubit(di()));
-
+  // ===========
+  di.registerLazySingleton<SearchFilterRepository>(
+      () => SearchFilterRepository(di()));
+  di.registerFactory<SearchFilterCubit>(() => SearchFilterCubit(di()));
   // User Info
   di.registerLazySingleton<UserInfoRepository>(() => UserInfoRepository(di()));
   di.registerFactory<UserInfoCubit>(() => UserInfoCubit(di()));
-
+// =================
+  di.registerLazySingleton<UserMonthlyPointsRepository>(
+      () => UserMonthlyPointsRepository(di()));
+  di.registerFactory<UserMonthlyPointsCubit>(
+      () => UserMonthlyPointsCubit(di()));
   // Update User Info
   di.registerLazySingleton<UpdateUserInfoRepository>(
       () => UpdateUserInfoRepository(di()));
   di.registerFactory<UpdateUserInfoCubit>(() => UpdateUserInfoCubit(di()));
 
+  // Update Ad
+  di.registerLazySingleton<UpdateAdRepository>(() => UpdateAdRepository(di()));
+  di.registerFactory<UpdateAdCubit>(() => UpdateAdCubit(di()));
 
-  di.registerLazySingleton<DeleteAccountRepository>(() => DeleteAccountRepository(di()));
+  // Delete Ad
+  di.registerLazySingleton<DeleteAdRepository>(() => DeleteAdRepository(di()));
+  di.registerFactory<DeleteAdCubit>(() => DeleteAdCubit(di()));
+  // Delete Account
+  di.registerLazySingleton<DeleteAccountRepository>(
+      () => DeleteAccountRepository(di()));
   di.registerFactory<DeleteAccountCubit>(() => DeleteAccountCubit(di()));
+
+  // Notifications
+  // تأكد من وجود الـ Repository وتسجيله أولاً
+  di.registerLazySingleton<NotificationsRepository>(
+      () => NotificationsRepository(di()));
+  // تسجيل الـ Cubit
+  di.registerFactory<NotificationsCubit>(() => NotificationsCubit(di()));
+
+  // News
+  // Notifications
+  // تأكد من وجود الـ Repository وتسجيله أولاً
+  di.registerLazySingleton<NewsRepository>(() => NewsRepository(di()));
+  // تسجيل الـ Cubit
+  di.registerFactory<NewsCubit>(() => NewsCubit(di()));
+
+  di.registerLazySingleton<CalculateMarketValueRepository>(
+      () => CalculateMarketValueRepository(di()));
+  di.registerFactory<CalculateMarketValueCubit>(
+      () => CalculateMarketValueCubit(di()));
+
+//==============================================================================
+  di.registerLazySingleton<CalculateConstructionCostRepository>(
+      () => CalculateConstructionCostRepository(di()));
+  di.registerFactory<CalculateConstructionCostCubit>(
+      () => CalculateConstructionCostCubit(di()));
 }

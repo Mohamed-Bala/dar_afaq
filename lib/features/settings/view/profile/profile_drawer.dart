@@ -1,4 +1,5 @@
 import 'package:afaq_real_estate/core/helper/extensions.dart';
+import 'package:afaq_real_estate/features/dashboard/logic/home_state.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,19 +19,24 @@ import '../../../../core/widgets/app_text_button.dart';
 import '../../../auth/logic/cubit_cubit.dart';
 import '../../../auth/logic/cubit_state.dart';
 import '../../../dashboard/logic/home_cubit.dart';
+import '../../widgets/user_points_card.dart';
 import '../my_advertisements/my_advertisements_view.dart';
 import 'profile_view.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({
-    super.key,
-  });
+  const Profile({super.key});
 
   @override
   State<Profile> createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<UserMonthlyPointsCubit>().getUserMonthlyPoints();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -132,10 +138,34 @@ class _ProfileState extends State<Profile> {
                             }),
                       ],
                     ),
+                    !isLoggedInUser
+                        ? SizedBox()
+                        : BlocBuilder<UserInfoCubit, UserInfoState>(
+                            builder: (context, userInfoState) {
+                              return BlocBuilder<UserMonthlyPointsCubit,
+                                  UserMonthlyPointsState>(
+                                builder: (context, state) {
+                                  if (state is UserMonthlyPointsSuccess &&
+                                      userInfoState is UserInfoSuccess) {
+                                    return UserPointsCard(
+                                      monthlyPoints: state
+                                          .userMonthlyPointsResponse
+                                          .totalPoints,
+                                      userActivityPoints:
+                                          userInfoState.data.user!.points,
+                                    );
+                                  }
+                                  return Center(
+                                    child: SizedBox(),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                   ],
                 ),
               ),
-              verticalSpace(10),
+              verticalSpace(5),
               const Expanded(
                 child: _MenuListView(),
               ),
@@ -314,7 +344,7 @@ class _MenuListViewState extends State<_MenuListView> {
             showDialogWidget(context);
           },
         ),
-        verticalSpace(100),
+        verticalSpace(90),
         if (!isLoggedInUser)
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -363,7 +393,7 @@ class _MenuListViewState extends State<_MenuListView> {
   Future<String> getAppLanguage() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String? language = sharedPreferences.getString(SharedPrefKeys.langKey);
-    if (language != null && language.isNotEmpty) {
+    if (language!.isNotEmpty) {
       return language;
     } else {
       // return default lang

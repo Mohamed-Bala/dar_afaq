@@ -17,7 +17,8 @@ class _MyAdvertisementsViewState extends State<MyAdvertisementsView> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.watch<ShowUserAdCubit>().emitGetUserAds();
+      // use read to avoid listening outside build
+      context.read<ShowUserAdCubit>().emitGetUserAds();
     });
   }
 

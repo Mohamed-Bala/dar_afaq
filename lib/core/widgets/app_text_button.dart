@@ -12,7 +12,7 @@ class AppTextButton extends StatelessWidget {
   final double? buttonHeight;
   final String buttonText;
   final TextStyle textStyle;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   const AppTextButton({
     super.key,
     this.borderRadius,

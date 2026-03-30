@@ -19,13 +19,13 @@ class _CategoryListViewState extends State<CategoryListView> {
       'label': "rent_calc",
       'icon': Icons.calculate_outlined,
       'index': 0,
-      'route': Routes.calculationCostRoute,
+      'route': Routes.calculateMarketValueRoute,
     },
     {
       'label': "build_calc",
       'icon': Icons.construction,
       'index': 1,
-      'route': Routes.rentCalculationRoute,
+      'route': Routes.calculateConstructionCostRoute,
     },
     {
       'label': "valuation",
@@ -59,33 +59,27 @@ class _CategoryListViewState extends State<CategoryListView> {
             category['label'] as String,
             currentLang,
           );
-          return Padding(
-            padding: EdgeInsets.only(
-              left: 16.0.w,
-              right: index == _menuItems.length - 1 ? 16.0 : 0,
-            ),
-            child: GestureDetector(
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            child: CircularIconMenuItem(
+              label: localizedLabel,
+              icon: category['icon'] as IconData,
+              isSelected: isSelected,
               onTap: () {
+                AuthGuard.runAction(context, onAuthenticated: () {
+                  if (category['route'] != null) {
+                    context.pushNamed(category['route'] as String);
+                  }
+                });
+
                 setState(() {
                   _selectedIndex = index;
                 });
               },
-              child: CircularIconMenuItem(
-                label: localizedLabel,
-                icon: category['icon'] as IconData,
-                isSelected: isSelected,
-                onTap: () {
-                  AuthGuard.runAction(context, onAuthenticated: () {
-                    if (category['route'] != null) {
-                      context.pushNamed(category['route'] as String);
-                    }
-                  });
-
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                },
-              ),
             ),
           );
         },

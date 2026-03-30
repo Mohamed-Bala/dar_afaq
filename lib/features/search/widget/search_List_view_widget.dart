@@ -4,18 +4,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../../../../../core/helper/extensions.dart';
-import '../../../../../../../core/helper/spacing.dart';
-import '../../../../../../../core/resources/color_manager.dart';
-import '../../../../../../../core/resources/strings_manager.dart';
-import '../../../../../../../core/resources/styles_manager.dart';
-import '../../../../../data/response/response.dart';
-import '../../../../widgets/build_action_button.dart';
-import '../../view/ads/ad_details_view.dart';
 
-class AdCard extends StatelessWidget {
-  final AdModel? adsData;
-  const AdCard({super.key, this.adsData});
+import '../../../core/helper/extensions.dart';
+import '../../../core/helper/spacing.dart';
+import '../../../core/resources/color_manager.dart';
+import '../../../core/resources/strings_manager.dart';
+import '../../../core/resources/styles_manager.dart';
+import '../../dashboard/data/response/response.dart';
+import '../../dashboard/ui/widgets/build_action_button.dart';
+import 'serach_details.dart';
+
+class SearchListViewWidget extends StatelessWidget {
+  final List<SearchFilterData?> searchFilterData;
+  const SearchListViewWidget({super.key, required this.searchFilterData});
+
+  @override
+  Widget build(BuildContext context) {
+    if (searchFilterData.isEmpty) {
+      return const Center(child: Text("لا  مزادات "));
+    }
+    return ListView.builder(
+      padding: EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 8.0.h),
+      itemCount: searchFilterData.length,
+      shrinkWrap: true, // مهم جداً داخل SingleChildScrollView
+      physics:
+          const NeverScrollableScrollPhysics(), // لمنع تعارض التمرير مع الأب
+      itemBuilder: (context, index) {
+        return SerachListItem(searchFilterData: searchFilterData[index]);
+      },
+    );
+  }
+}
+
+class SerachListItem extends StatelessWidget {
+  final SearchFilterData? searchFilterData;
+
+  const SerachListItem({super.key, this.searchFilterData});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +48,12 @@ class AdCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        if (adsData != null) {
+        if (searchFilterData != null) {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AdDetailsView(adsData: adsData!),
+              builder: (context) =>
+                  SerachDetails(searchFilterData: searchFilterData!),
             ),
           );
         }
@@ -54,7 +79,7 @@ class AdCard extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.0.r),
                       child: CachedNetworkImage(
-                        imageUrl: adsData?.images ?? "",
+                        imageUrl: searchFilterData?.images ?? "",
                         fit: BoxFit.cover,
                         placeholder: (context, url) => Shimmer.fromColors(
                           baseColor: ColorManager.lightGrey,
@@ -80,16 +105,17 @@ class AdCard extends StatelessWidget {
                           spacing: 4.w,
                           runSpacing: 4.h,
                           children: [
-                            if (adsData?.transactionType != null)
-                              _buildTag(adsData!.transactionType!,
+                            if (searchFilterData?.transactionType != null)
+                              _buildTag(searchFilterData!.transactionType!,
                                   color: Colors.blue),
-                            if (adsData?.type != null)
-                              _buildTag(adsData!.type!, color: Colors.brown),
+                            if (searchFilterData?.type != null)
+                              _buildTag(searchFilterData!.type!,
+                                  color: Colors.brown),
                           ],
                         ),
                         verticalSpace(10),
                         Text(
-                          adsData?.type ?? "",
+                          searchFilterData?.type ?? "",
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -106,7 +132,7 @@ class AdCard extends StatelessWidget {
                             horizontalSpace(4),
                             Expanded(
                               child: Text(
-                                adsData?.description ?? "",
+                                searchFilterData?.description ?? "",
                                 style: TextStyle(
                                     fontSize: 12.sp, color: Colors.grey),
                                 maxLines: 2,
@@ -123,7 +149,7 @@ class AdCard extends StatelessWidget {
                             horizontalSpace(4),
                             Expanded(
                               child: Text(
-                                adsData?.region ?? "",
+                                searchFilterData?.region ?? "",
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(fontSize: 14.sp),
                               ),
@@ -140,7 +166,7 @@ class AdCard extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 14.w),
               child: Text(
-                '${adsData?.price ?? '0'} $currency',
+                '${searchFilterData?.price ?? '0'} $currency',
                 style: TextStyle(
                   fontSize: 15.sp,
                   fontWeight: FontWeight.bold,
@@ -167,7 +193,7 @@ class AdCard extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       AuthGuard.runAction(context, onAuthenticated: () {
-                        makePhoneCall(adsData?.phone ?? "");
+                        makePhoneCall(searchFilterData?.phone ?? "");
                       });
                     },
                     child: buildActionButton(Icons.phone, ColorManager.primary),
@@ -178,8 +204,8 @@ class AdCard extends StatelessWidget {
                       AuthGuard.runAction(context, onAuthenticated: () {
                         launchWhatsAppAd(
                           context,
-                          phone: adsData?.phone ?? "",
-                          adId: "${adsData?.shareCode}",
+                          phone: searchFilterData?.phone ?? "",
+                          adId: "${searchFilterData?.shareCode}",
                         );
                       });
                     },

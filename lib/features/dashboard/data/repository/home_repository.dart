@@ -9,23 +9,23 @@ class HomeRepository {
 
   HomeRepository(this._homeApi);
 
-  Future<ApiResult<AdsResponse>> getSpecialization() async {
+  Future<ApiResult<AdsResponse>> getAllAds() async {
     try {
-      final response = await _homeApi.getSpecialization();
+      final response = await _homeApi.getAllAds();
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 
-  Future<ApiResult<AuctionResponse>> getAuctionResponse() async {
-    try {
-      final response = await _homeApi.getAuctionResponse();
-      return ApiResult.success(response);
-    } catch (error) {
-      return ApiResult.failure(ApiErrorHandler.handle(error));
-    }
-  }
+  // Future<ApiResult<AuctionResponse>> getAuctionResponse() async {
+  //   try {
+  //     final response = await _homeApi.getAuctionResponse();
+  //     return ApiResult.success(response);
+  //   } catch (error) {
+  //     return ApiResult.failure(ApiErrorHandler.handle(error));
+  //   }
+  // }
 
   Future<ApiResult<HomeResponse>> getHome() async {
     try {
@@ -35,6 +35,26 @@ class HomeRepository {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
+
+  Future<ApiResult<PropertyTypesResponse>> getPropertyTypes() async {
+    try {
+      final response = await _homeApi.getPropertyTypes();
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<AreasResponse>> getAreas() async {
+    try {
+      final response = await _homeApi.getAreas();
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  //============================================================================
 }
 
 class AddAdvertisementRepository {
@@ -147,6 +167,105 @@ class FilterSectionRepository {
     try {
       final response = await _homeApi.getfilterSection(filterSectionRequest);
 
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+}
+
+//==============================================================================
+class SearchFilterRepository {
+  final HomeApi _homeApi;
+
+  SearchFilterRepository(this._homeApi);
+
+  Future<ApiResult<SearchFilterResponse>> getSearchFilter(
+      SearchFilterRequest searchFilterRequest) async {
+    try {
+      final response = await _homeApi.getSearchFilter(
+        searchFilterRequest.transactionType,
+        searchFilterRequest.type,
+        searchFilterRequest.region,
+        searchFilterRequest.priceRange,
+      );
+
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+}
+
+//==============================================================================
+class NewsRepository {
+  final HomeApi _homeApi;
+
+  NewsRepository(this._homeApi);
+
+  Future<ApiResult<NewsResponse>> getNews() async {
+    try {
+      final response = await _homeApi.getNews();
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+class UserMonthlyPointsRepository {
+  final HomeApi _homeApi;
+
+  UserMonthlyPointsRepository(this._homeApi);
+
+  Future<ApiResult<UserMonthlyPointsResponse>> getUserMonthlyPoints(
+      UserMonthlyPointsRequest userMonthlyPointsRequest) async {
+    try {
+      final response =
+          await _homeApi.getUserMonthlyPoints(userMonthlyPointsRequest);
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+}
+
+//==============================================================================
+
+class CalculateMarketValueRepository {
+  final HomeApi _homeApi;
+
+  CalculateMarketValueRepository(this._homeApi);
+
+  Future<ApiResult<CalculateMarketValueRsponse>> getCalculateMarketValue(
+      CalculateMarketValueRequest calculateMarketValueRequest) async {
+    try {
+      final response = await _homeApi.getCalculateMarketValue(
+        calculateMarketValueRequest.toJson(),
+      );
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+}
+
+//==============================================================================
+
+class CalculateConstructionCostRepository {
+  final HomeApi _homeApi;
+
+  CalculateConstructionCostRepository(this._homeApi);
+
+  Future<ApiResult<CalculateConstructionCostRsponse>>
+      getCalculateConstructionCost(
+          CalculateConstructionCostRequest
+              calculateConstructionCostRequest) async {
+    try {
+      final response = await _homeApi.getCalculateConstructionCost(
+        calculateConstructionCostRequest.toJson(),
+      );
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));

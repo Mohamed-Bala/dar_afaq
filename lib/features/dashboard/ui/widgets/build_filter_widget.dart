@@ -26,10 +26,15 @@ class FilterWidget extends StatelessWidget {
             child: BlocBuilder<FilterCubit, FilterState>(
               buildWhen: (previous, current) => true, // يضمن تحديث الـ Dropdown
               builder: (context, state) {
+                var addCubit = context.read<AddAdvertisementCubit>();
+                if (addCubit.propertyTypes.isEmpty) {
+                  // Call getPropertyTypes if not loaded
+                  addCubit.getPropertyTypes();
+                }
                 return buildFilterDropdown(
                   label: AppStrings.propertyCategory.tr(),
                   value: context.read<FilterCubit>().currentTransactionType,
-                  items: context.read<AddAdvertisementCubit>().propertyTypes,
+                  items: addCubit.propertyTypes,
                   onChanged: (value) {
                     context
                         .read<FilterCubit>()
@@ -43,10 +48,20 @@ class FilterWidget extends StatelessWidget {
           Expanded(
             child: BlocBuilder<FilterCubit, FilterState>(
               builder: (context, state) {
+                var addCubit = context.read<AddAdvertisementCubit>();
+                if (addCubit.regions.isEmpty) {
+                  addCubit.getRegions();
+                  return buildFilterDropdown(
+                    label: AppStrings.region.tr(),
+                    value: null,
+                    items: [],
+                    onChanged: (value) {},
+                  );
+                }
                 return buildFilterDropdown(
                   label: AppStrings.region.tr(),
                   value: context.read<FilterCubit>().currentRegion,
-                  items: context.read<AddAdvertisementCubit>().regions,
+                  items: addCubit.regions,
                   onChanged: (value) {
                     context.read<FilterCubit>().getAdsSearch(region: value);
                   },

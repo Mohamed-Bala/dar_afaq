@@ -12,14 +12,14 @@ import '../../../../../../core/widgets/app_text_form_field.dart';
 import '../../../../logic/cubit_cubit.dart';
 import 'dart:ui' as ui;
 
-class EmailAndPassword extends StatefulWidget {
-  const EmailAndPassword({super.key});
+class PhoneAndPassword extends StatefulWidget {
+  const PhoneAndPassword({super.key});
 
   @override
-  State<EmailAndPassword> createState() => _EmailAndPasswordState();
+  State<PhoneAndPassword> createState() => _PhoneAndPasswordState();
 }
 
-class _EmailAndPasswordState extends State<EmailAndPassword> {
+class _PhoneAndPasswordState extends State<PhoneAndPassword> {
   bool isObscureText = true;
 
   @override
@@ -42,8 +42,8 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                       borderRadius: BorderRadius.circular(16.0.r),
                     ),
                     child: CountryCodePicker(
-                      initialSelection: '+249',
-                      favorite: const ['+965', '+966', 'KW', 'SA'],
+                      initialSelection: '+965',
+                      // favorite: const ['+965', '+966', 'KW', 'SA'],
                       showFlagMain: true,
                       showFlagDialog: true,
                       hideMainText: false,

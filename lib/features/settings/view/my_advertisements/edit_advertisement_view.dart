@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:afaq_real_estate/core/resources/color_manager.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ import '../../../../core/widgets/app_text_form_field.dart';
 import '../../../dashboard/data/response/response.dart';
 import '../../../dashboard/logic/home_cubit.dart';
 import '../../../dashboard/logic/home_state.dart';
+import '../../../dashboard/ui/view/advertisements/widgets/add_ads/custom_decoration.dart';
 
 class EditAdvertisementView extends StatefulWidget {
   final ShowUserAdvertisementData adData;
@@ -61,6 +63,7 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
   void initState() {
     super.initState();
     updateCubit = BlocProvider.of<UpdateAdCubit>(context);
+    // initialize controllers with existing ad data
     updateCubit.typeController =
         TextEditingController(text: widget.adData.type.toString());
     updateCubit.descriptionController =
@@ -69,6 +72,13 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
         TextEditingController(text: widget.adData.price.toString());
     updateCubit.regionController =
         TextEditingController(text: widget.adData.region);
+
+    // also set initial selection for the AddAdvertisementCubit dropdowns
+    final addCubit = context.read<AddAdvertisementCubit>();
+    // if property types and regions may not have loaded yet, we'll still store
+    // the value and update when they arrive -- update functions emit state
+    addCubit.updatePropertyType(widget.adData.type.toString());
+    addCubit.updateRegion(widget.adData.region ?? "");
   }
 
   @override
@@ -132,23 +142,135 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
                     _buildImageSection(),
                     verticalSpace(20),
                     _buildLabel(AppStrings.propertyType.tr()),
-                    AppTextFormField(
-                      controller: updateCubit.typeController,
-                      hintText: AppStrings.property.tr(),
-                      keyboardType: TextInputType.text,
-                      validator: (v) =>
-                          v!.isEmpty ? AppStrings.enterPropertyType.tr() : null,
+                    SizedBox(
+                      height: 53.h,
+                      child: BlocBuilder<AddAdvertisementCubit,
+                          AddAdvertisementState>(
+                        buildWhen: (previous, current) =>
+                            current is PropertyTypesLoading ||
+                            current is PropertyTypesSuccess ||
+                            current is PropertyTypesError ||
+                            current is PropertyTypeChanged,
+                        builder: (context, state) {
+                          var cubit = context.read<AddAdvertisementCubit>();
+                          if (state is PropertyTypesLoading) {
+                            return DropdownButtonFormField<String>(
+                              icon: const Icon(Icons.arrow_drop_down,
+                                  color: Colors.grey),
+                              decoration:
+                                  customDecoration(AppStrings.loading.tr()),
+                              value: null,
+                              items: [],
+                              onChanged: null,
+                            );
+                          } else if (state is PropertyTypesError) {
+                            return DropdownButtonFormField<String>(
+                              icon: const Icon(Icons.error, color: Colors.red),
+                              decoration: customDecoration(
+                                  AppStrings.errorOccurred.tr()),
+                              value: null,
+                              items: [],
+                              onChanged: null,
+                            );
+                          } else {
+                            // PropertyTypesSuccess or initial state
+                            return DropdownButtonFormField<String>(
+                              icon: const Icon(Icons.arrow_drop_down,
+                                  color: Colors.grey),
+                              decoration: customDecoration(
+                                  AppStrings.choosePropertyType.tr()),
+                              value: cubit.selectedPropertyType,
+                              items: cubit.propertyTypes.isNotEmpty
+                                  ? cubit.propertyTypes.map((type) {
+                                      return DropdownMenuItem(
+                                        value: type,
+                                        child: Text(type),
+                                      );
+                                    }).toList()
+                                  : [],
+                              onChanged: cubit.propertyTypes.isNotEmpty
+                                  ? (value) {
+                                      if (value != null) {
+                                        cubit.updatePropertyType(value);
+                                        // mirror selection in update controller
+                                        updateCubit.typeController.text = value;
+                                      }
+                                    }
+                                  : null,
+                            );
+                          }
+                        },
+                      ),
                     ),
-
+                    // AppTextFormField(
+                    //   controller: updateCubit.typeController,
+                    //   hintText: AppStrings.property.tr(),
+                    //   keyboardType: TextInputType.text,
+                    //   validator: (v) =>
+                    //       v!.isEmpty ? AppStrings.enterPropertyType.tr() : null,
+                    // ),
+                    verticalSpace(20),
                     // الحقول (TextFormFields)
-                    _buildLabel(AppStrings.adTitleLabel.tr()),
-                    AppTextFormField(
-                      controller: updateCubit.regionController,
-                      hintText: AppStrings.adTitleLabel.tr(),
-                      validator: (v) =>
-                          v!.isEmpty ? AppStrings.adTitleHint.tr() : null,
+                    _buildLabel(AppStrings.region.tr()),
+                    SizedBox(
+                      height: 50.h,
+                      child: BlocBuilder<AddAdvertisementCubit,
+                          AddAdvertisementState>(
+                        buildWhen: (previous, current) =>
+                            current is RegionsLoading ||
+                            current is RegionsSuccess ||
+                            current is RegionsError ||
+                            current is RegionChanged,
+                        builder: (context, state) {
+                          var cubit = context.read<AddAdvertisementCubit>();
+                          if (state is RegionsLoading) {
+                            return DropdownButtonFormField<String>(
+                              icon: const Icon(Icons.arrow_drop_down,
+                                  color: Colors.grey),
+                              decoration:
+                                  customDecoration(AppStrings.loading.tr()),
+                              value: null,
+                              items: [],
+                              onChanged: null,
+                            );
+                          } else if (state is RegionsError) {
+                            return DropdownButtonFormField<String>(
+                              icon: const Icon(Icons.error, color: Colors.red),
+                              decoration: customDecoration(
+                                  AppStrings.errorOccurred.tr()),
+                              value: null,
+                              items: [],
+                              onChanged: null,
+                            );
+                          } else {
+                            return DropdownButtonFormField<String>(
+                              icon: const Icon(Icons.arrow_drop_down,
+                                  color: Colors.grey),
+                              decoration: customDecoration(
+                                  AppStrings.chooseRegion.tr()),
+                              value: cubit.selectedRegion,
+                              items: cubit.regions.isNotEmpty
+                                  ? cubit.regions.map((region) {
+                                      return DropdownMenuItem(
+                                        value: region,
+                                        child: Text(region),
+                                      );
+                                    }).toList()
+                                  : [],
+                              onChanged: cubit.regions.isNotEmpty
+                                  ? (value) {
+                                      if (value != null) {
+                                        cubit.updateRegion(value);
+                                        // mirror selection in update controller
+                                        updateCubit.regionController.text = value;
+                                      }
+                                    }
+                                  : null,
+                            );
+                          }
+                        },
+                      ),
                     ),
-
                     verticalSpace(16),
                     _buildLabel(AppStrings.price.tr()),
                     AppTextFormField(
@@ -161,13 +283,31 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
                     ),
 
                     _buildLabel(AppStrings.adDescription.tr()),
-                    AppTextFormField(
+                    TextFormField(
                       controller: updateCubit.descriptionController,
-                      hintText: AppStrings.adDescriptionHint.tr(),
-                      // maxLines: 4,
-                      validator: (v) =>
-                          v!.isEmpty ? AppStrings.enterDescription.tr() : null,
+                      maxLines: 5,
+                      maxLength: 250,
+                      decoration:
+                          customDecoration(AppStrings.adDescriptionHint.tr()),
+                      // InputDecoration(
+                      //   contentPadding: EdgeInsets.symmetric(
+                      //       vertical: 16.h, horizontal: 16.w),
+                      //   border: OutlineInputBorder(
+                      //     borderRadius: BorderRadius.circular(12.r),
+                      //     borderSide: BorderSide(color: Colors.grey.shade400),
+                      //   ),
+                      //   hintText: AppStrings.adDescriptionHint.tr(),
+                      // ),
+                      textAlign: TextAlign.right,
                     ),
+
+                    // AppTextFormField(
+                    //   controller: updateCubit.descriptionController,
+                    //   hintText: AppStrings.adDescriptionHint.tr(),
+                    //  maxLines: 4,
+                    //   validator: (v) =>
+                    //       v!.isEmpty ? AppStrings.enterDescription.tr() : null,
+                    // ),
 
                     verticalSpace(30),
 
@@ -240,7 +380,7 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
               right: 8,
               child: CircleAvatar(
                 radius: 15,
-                backgroundColor: Colors.blue,
+                backgroundColor: ColorManager.primary,
                 child: Icon(Icons.edit, size: 15, color: Colors.white),
               ),
             ),
@@ -255,7 +395,7 @@ class _EditAdvertisementViewState extends State<EditAdvertisementView> {
       padding: EdgeInsets.only(bottom: 8.h),
       child: Text(
         text,
-        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        style:  TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
       ),
     );
   }

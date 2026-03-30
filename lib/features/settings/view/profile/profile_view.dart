@@ -15,6 +15,7 @@ import '../../../../core/widgets/app_text_button.dart';
 import '../../../auth/data/models/response/response.dart';
 import '../../../auth/logic/cubit_cubit.dart';
 import '../../../auth/logic/cubit_state.dart';
+import 'packages_view.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -126,7 +127,21 @@ class _ProfileViewState extends State<ProfileView> {
                         );
                       },
                       textStyle: StylesManager.font16White,
-                    )
+                    ),
+                    verticalSpace(8),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.0.w, vertical: 8.0.h),
+                      child: Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: Text(
+                          AppStrings.packages.tr(),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16.sp),
+                        ),
+                      ),
+                    ),
+                    PackagesView(),
                   ],
                 ),
               );

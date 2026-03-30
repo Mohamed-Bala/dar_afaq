@@ -12,7 +12,7 @@ abstract class HomeApi {
   factory HomeApi(Dio dio) = _HomeApi;
 
   @GET(ApiConstants.allAds)
-  Future<AdsResponse> getSpecialization();
+  Future<AdsResponse> getAllAds();
 
   @GET(ApiConstants.adsAuction)
   Future<AuctionResponse> getAuctionResponse();
@@ -23,6 +23,11 @@ abstract class HomeApi {
   @GET(ApiConstants.searchAds)
   Future<SearchAdsResponse> getSearchAds(
     @Body() AdsSearchRequest adsSearchRequest,
+  );
+
+  @GET(ApiConstants.getUserMonthlyPoints)
+  Future<UserMonthlyPointsResponse> getUserMonthlyPoints(
+    @Body() UserMonthlyPointsRequest userMonthlyPointsRequest,
   );
 
   @POST(ApiConstants.addAdvertisement)
@@ -49,5 +54,32 @@ abstract class HomeApi {
   @GET(ApiConstants.filterSection)
   Future<FilterSectionResponse> getfilterSection(
     @Body() FilterSectionRequest filterSectionRequest,
+  );
+
+  @GET(ApiConstants.getPropertyTypes)
+  Future<PropertyTypesResponse> getPropertyTypes();
+
+  @GET(ApiConstants.getAreas)
+  Future<AreasResponse> getAreas();
+
+  @GET(ApiConstants.news)
+  Future<NewsResponse> getNews();
+
+  @GET(ApiConstants.searchFilter)
+  Future<SearchFilterResponse> getSearchFilter(
+    @Query("transaction_type") String? transactionType,
+    @Query("type") List<String>? type,
+    @Query("region") List<String>? region,
+    @Query("price_range") String? priceRange,
+  );
+
+  @GET(ApiConstants.calculateMarketValue)
+  Future<CalculateMarketValueRsponse> getCalculateMarketValue(
+    @Queries() Map<String, dynamic> query,
+  );
+
+  @GET(ApiConstants.calculateConstructionCost)
+  Future<CalculateConstructionCostRsponse> getCalculateConstructionCost(
+    @Queries() Map<String, dynamic> query,
   );
 }

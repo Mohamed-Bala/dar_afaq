@@ -178,7 +178,11 @@ class GridHomeCard extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             AuthGuard.runAction(context, onAuthenticated: () {
-                              launchWhatsApp(vipAdsDataResponse?.phone ?? "");
+                              launchWhatsAppAd(
+                                context,
+                                phone: vipAdsDataResponse?.phone ?? "",
+                                adId: "${vipAdsDataResponse?.shareCode}",
+                              );
                             });
                           },
                           child: buildActionButton(

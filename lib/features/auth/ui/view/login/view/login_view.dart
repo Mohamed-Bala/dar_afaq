@@ -54,7 +54,7 @@ class _LoginViewState extends State<LoginView> {
                 Column(
                   children: [
                     verticalSpace(18),
-                    const EmailAndPassword(),
+                    const PhoneAndPassword(),
                     verticalSpace(24),
                     GestureDetector(
                       onTap: () {

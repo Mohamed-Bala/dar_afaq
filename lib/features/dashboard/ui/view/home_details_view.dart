@@ -1,3 +1,4 @@
+import 'package:afaq_real_estate/core/network/api_constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -207,7 +208,11 @@ class HomeDetailsView extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: () {
                   AuthGuard.runAction(context, onAuthenticated: () {
-                    launchWhatsApp(vipAdsDataResponse?.phone ?? "");
+                    launchWhatsAppAd(
+                      context,
+                      phone: vipAdsDataResponse?.phone ?? "",
+                      adId: "${vipAdsDataResponse?.shareCode}",
+                    );
                   });
                 },
                 icon: FaIcon(FontAwesomeIcons.whatsapp),

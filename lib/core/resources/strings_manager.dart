@@ -69,7 +69,7 @@ class AppStrings {
   // --- Dashboard & Navigation ---
   static const appName = "app_name";
   static const home = "home";
-  static const auctions = "auctions";
+  static const search = "search";
   static const addAd = "add_ad";
   static const deals = "deals";
   static const ads = "ads";
@@ -106,7 +106,7 @@ class AppStrings {
   static const regions = "regions";
   static const adStatus = " ad_status";
   static const active = " active";
-static const underReview = " under_review";
+  static const underReview = " under_review";
 
   static const call = "call";
   static const whatsapp = "whatsapp";
@@ -124,7 +124,11 @@ static const underReview = " under_review";
   static const serviceSale = "service_sale";
   static const serviceRent = "service_rent";
   static const serviceAuction = "service_auction";
-  static const newsAndArticles = "news_and_articles";
+  static const afaqRealEstateNews = "afaq_real_estate_news";
+    static const packages = "packages";
+
+  static const chooseFromGallery = "choose_from_gallery";
+  static const photoShoot = "photo_shoot";
 
   // --- Profile & Settings ---
   static const profileTitle = "profile_title";
@@ -189,8 +193,33 @@ static const underReview = " under_review";
   static const forExchange = "for_exchange";
   static const contractors = "contractors";
   static const realEstateOffices = "real_estate_offices";
-  static const internationalProperties = "international_properties";
+  static const jobs = "jobs";
   static const engineeringOffices = "engineering_offices";
+
+  // قسم مقاولات
+  static const plumbing = "plumbing";
+  static const locks = "locks";
+  static const sanitaryContractor = "sanitaryContractor";
+  static const pestControl = "pestControl";
+  static const gardens = "gardens";
+  static const decor = "decor";
+  static const paint = "paint";
+  static const airConditioning = "airConditioning";
+  static const blacksmith = "blacksmith";
+  static const carpenter = "carpenter";
+  static const electrician = "electrician";
+  static const applianceRepair = "applianceRepair";
+  static const buildingContracting = "buildingContracting";
+  static const aluminum = "aluminum";
+  static const insulation = "insulation";
+  static const tilesCeramic = "tilesCeramic";
+  static const ventilation = "ventilation";
+  static const elevators = "elevators";
+  static const doors = "doors";
+  static const glassTechnician = "glassTechnician";
+  static const buildingMaterials = "buildingMaterials";
+  static const agriculturalProducts = "agriculturalProducts";
+  static const waterTanks = "waterTanks";
 
   // --- Dialogs & Actions ---
   static const confirmDeleteMsg = "confirm_delete_msg";
@@ -238,6 +267,7 @@ static const underReview = " under_review";
   static const fullFloor = "full_floor";
   static const furnishedApt = "furnished_apt";
   static const duplexApt = "duplex_apt";
+  static const apartmentForRent = "apartment_for_rent";
   static const shopRent = "shop_rent";
   static const office = "office";
   static const warehouse = "warehouse";
@@ -251,7 +281,8 @@ static const underReview = " under_review";
   static const constServices = "const_services";
   static const finishingServices = "finishing_services";
   static const equippedOffices = "equipped_offices";
-  static const intlProperty = "intl_property";
+  static const vacancies = "vacancies";
+  static const jobSeeker = "job_seeker";
   static const archDesign = "arch_design";
   static const engDesign = "eng_design";
   static const supervision = "supervision";
@@ -269,7 +300,8 @@ static const underReview = " under_review";
       'const_services': 'خدمات البناء',
       'finishing_services': 'خدمات التشطيب',
       'equipped_offices': 'مكاتب مجهزة',
-      'intl_property': 'عقار دولي',
+      'vacancies': 'وظائف شاغرة',
+      'job_seeker': 'باحث عن عمل',
       'arch_design': 'تصميم معماري',
       'eng_design': 'تصميم هندسي',
       'supervision': 'إشراف ومتابعة',

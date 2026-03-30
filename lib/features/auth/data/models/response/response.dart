@@ -117,12 +117,14 @@ class UserResponse {
   String? name;
   String? email;
   String? phone;
+  int? points;
 
   UserResponse({
     this.id,
     this.name,
     this.email,
     this.phone,
+    this.points,
   });
 
   factory UserResponse.fromJson(Map<String, dynamic> json) =>

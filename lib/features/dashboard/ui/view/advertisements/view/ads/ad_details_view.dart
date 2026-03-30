@@ -207,7 +207,11 @@ class AdDetailsView extends StatelessWidget {
               child: ElevatedButton.icon(
                 onPressed: () {
                   AuthGuard.runAction(context, onAuthenticated: () {
-                    launchWhatsApp(adsData.phone ?? "");
+                    launchWhatsAppAd(
+                      context,
+                      phone: adsData.phone ?? "",
+                      adId: "${adsData.shareCode}",
+                    );
                   });
                 },
                 icon: FaIcon(

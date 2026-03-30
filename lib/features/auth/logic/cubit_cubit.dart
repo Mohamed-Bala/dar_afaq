@@ -213,6 +213,7 @@ class UserInfoCubit extends Cubit<UserInfoState> {
       success: (userInfoResponse) async {
         if (userInfoResponse.user != null) {
           // await SharedPrefHelper.saveUserInfo(userInfoResponse.user);
+         
         }
 
         emit(UserInfoState.userInfoSuccess(userInfoResponse));

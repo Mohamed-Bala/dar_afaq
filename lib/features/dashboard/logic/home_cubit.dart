@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../core/helper/constants.dart';
 import '../../../core/helper/shared_pref.dart';
+import '../../../core/resources/strings_manager.dart';
 import '../data/repository/home_repository.dart';
 import '../data/requests/requests.dart';
 import '../data/response/response.dart';
@@ -15,12 +17,12 @@ class HomeCubit extends Cubit<HomeState> {
   final HomeRepository _homeRepository;
   HomeCubit(this._homeRepository) : super(const HomeState.initial());
   List<AdsDataResponse?>? specializationsList = [];
-  List<AuctionDataResponse?>? auctionResponseList = [];
+  List<SearchFilterData?>? searchFilterDataList = [];
   List<VipAdsDataResponse?>? vipAdsDataResponseList = [];
 
   void getAllAds() async {
     emit(const HomeState.allAdsLoading());
-    final response = await _homeRepository.getSpecialization();
+    final response = await _homeRepository.getAllAds();
     response.when(
       success: (specializationsResponseModel) {
         specializationsList = specializationsResponseModel.allAds ?? [];
@@ -28,21 +30,6 @@ class HomeCubit extends Cubit<HomeState> {
       },
       failure: (errorHandler) {
         emit(HomeState.allAdsError(errorHandler));
-      },
-    );
-  }
-
-  Future<void> getAllAuction() async {
-    if (auctionResponseList!.isNotEmpty) return;
-    emit(const HomeState.auctionLoading());
-    final response = await _homeRepository.getAuctionResponse();
-    response.when(
-      success: (auctionResponseModel) {
-        auctionResponseList = auctionResponseModel.upcomingAuctions ?? [];
-        emit(HomeState.auctionSuccess(auctionResponseModel));
-      },
-      failure: (errorHandler) {
-        emit(HomeState.auctionError(errorHandler));
       },
     );
   }
@@ -62,9 +49,25 @@ class HomeCubit extends Cubit<HomeState> {
   }
 }
 
+class NavigationCubit extends Cubit<int> {
+  NavigationCubit() : super(0);
+
+  PageController? pageController;
+
+  void setController(PageController controller) {
+    pageController = controller;
+  }
+
+  void changeIndex(int index) {
+    emit(index);
+    pageController?.jumpToPage(index);
+  }
+}
+
 class AddAdvertisementCubit extends Cubit<AddAdvertisementState> {
   final AddAdvertisementRepository _addAdvertisementRepository;
-  AddAdvertisementCubit(this._addAdvertisementRepository)
+  final HomeRepository _homeRepository;
+  AddAdvertisementCubit(this._addAdvertisementRepository, this._homeRepository)
       : super(const AddAdvertisementState.initial());
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -76,180 +79,129 @@ class AddAdvertisementCubit extends Cubit<AddAdvertisementState> {
   int selectedPlanPrice = 100;
   String selectedTransactionType = '';
 
+  List<String> propertyTypes = [];
+
+  List<String> selectedPropertyTypes = [];
+  List<String> selectedRegions = [];
+
   void updateTransactionType(String type) {
     selectedTransactionType = type;
     emit(const AddAdvertisementState.initial());
   }
 
-  final List<String> propertyTypes = [
-    'بيت للبيع',
-    'دور',
-    'شقة مفروشة',
-    ' شقة دوبلكس',
-    ' محل للبيع',
-    ' مخازن',
-    ' مزرعة',
-    ' قسيمة صناعية',
-    ' استراحة',
-    'شاليه',
-    ' بيت للإيجار',
-    '  دور للإيجار',
-    ' شقة مفروشة للإيجار',
-    ' شقة دوبلكس للإيجار',
-    ' محل للإيجار',
-    ' مخازن للإيجار',
-    ' مزرعة للإيجار',
-    ' قسيمة صناعية للإيجار',
-    ' استراحة للإيجار',
-    ' شاليه للإيجار',
-    ' تبادل بيت',
-    ' تبادل دور',
-    ' تبادل شقة مفروشة',
-    ' تبادل دوبلكس',
-    ' عقارات في الإمارات',
-    ' عقارات في السعودية',
-    ' عقارات في قطر',
-    ' مكاتب للإيجار',
-    ' مكاتب مجهزة',
-    ' مكاتب للاستثمار',
-    ' إدارة عقارات سكنية',
-    ' إدارة محلات تجارية',
-    ' إدارة مخازن',
-    ' خدمات البناء',
-    ' خدمات التشطيب',
-    ' استشارات هندسية',
-    '  تصميم معماري',
-    ' تصميم هندسي',
-    ' إشراف ومتابعة'
-  ];
-
-  final List<String> regions = [
-    // محافظة العاصمة
-    ' الشرق',
-
-    'القبلة',
-
-    'الصالحية',
-
-    'المرقاب',
-
-    'بنيد القار',
-
-    'الدسمة',
-
-    'الدعية',
-
-    'الشامية',
-
-    'الروضة',
-
-    'العديلية',
-
-    'الخالدية',
-
-    'القادسية',
-
-    'المنصورية',
-
-    'النزهة',
-
-    'قرطبة',
-
-    'اليرموك',
-
-    'الصليبخات',
-
-    'الدوحة',
-
-    'غرناطة',
-
-    // محافظة حولي
-
-    'حولي',
-
-    'السالمية',
-
-    'البيان',
-
-    'مشرف',
-
-    'سلوى',
-
-    'الرميثية',
-
-    'الجابرية',
-
-    'النقره',
-
-    '  ميدان حولي',
-
-    'الشعب',
-
-    'الشهداء',
-
-    // محافظة الفروانية
-    'الفروانية',
-
-    'خيطان',
-
-    'الأندلس',
-
-    'الرقعي',
-
-    'العارضية',
-
-    'العمرية',
-
-    'الرابية',
-
-    ' جليب الشيوخ',
-
-    'اشبيلية',
-
-    'السغر',
-
-    // محافظة الأحمدي
-    'الأحمدي', 'الفنطاس', 'العقيلة', 'الظهر', 'النويصب', 'الرقة', 'هدية',
-    'أبو حليفة',
-    'الصباحية', 'المنقف', 'الفحيحيل', 'الوفرة', 'الزور', 'الخيران',
-    'الأحمدي الجديدة',
-    ' الخيران ', 'جابر العلي', 'المقوع',
-    ' أم الهيمان'
-
-        // محافظة مبارك الكبير
-    'مبارك الكبير',
-    'صباح السالم',
-    'المسيلة',
-    'العدان',
-    'القصور',
-    'القرين',
-    'أبو الحصانية',
-    'أبو فطيرة', 'الفنيطيس', 'المسايل', 'صبحان',
-
-    // محافظة الجهراء
-    'الجهراء', 'الواحة', 'العيون', 'القصر', 'النسيم', 'تيماء', 'النعيم',
-    'كبد',
-    'المطلاع', 'كبد', 'الصليبية', 'العبدلي', 'أمغرة'
-  ];
-
-  void updatePropertyType(String value) {
-    selectedPropertyType = value;
+  //============================================================================
+  void togglePropertyType(String value) {
+    if (selectedPropertyTypes.contains(value)) {
+      selectedPropertyTypes.remove(value);
+    } else {
+      selectedPropertyTypes.add(value);
+    }
     emit(AddAdvertisementState.propertyTypeChanged(value));
   }
 
-  void updateRegion(String value) {
-    selectedRegion = value;
+  //============================================================================
+  void toggleRegion(String value) {
+    if (selectedRegions.contains(value)) {
+      selectedRegions.remove(value);
+    } else {
+      selectedRegions.add(value);
+    }
     emit(AddAdvertisementState.regionChanged(value));
   }
 
-  Future<void> pickImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+  //============================================================================
+
+  void getPropertyTypes() async {
+    if (propertyTypes.isNotEmpty) return; // Don't fetch if already loaded
+    emit(const AddAdvertisementState.propertyTypesLoading());
+    final response = await _homeRepository.getPropertyTypes();
+    response.when(
+      success: (propertyTypesResponse) {
+        propertyTypes = propertyTypesResponse.data
+                ?.map((item) => item.name ?? '')
+                .toList() ??
+            [];
+        emit(AddAdvertisementState.propertyTypesSuccess(propertyTypes));
+      },
+      failure: (errorHandler) {
+        emit(AddAdvertisementState.propertyTypesError(errorHandler));
+      },
+    );
+  }
+
+  List<String> regions = [];
+
+  void updateRegion(String value) {
+    selectedRegion = value;
+    selectedRegions = [value];
+    emit(AddAdvertisementState.regionChanged(value));
+  }
+
+  void getRegions() async {
+    if (regions.isNotEmpty) return; // already loaded
+    emit(const AddAdvertisementState.regionsLoading());
+    final response = await _homeRepository.getAreas();
+    response.when(
+      success: (areasResponse) {
+        regions = areasResponse.data?.map((d) => d.name ?? '').toList() ?? [];
+        emit(AddAdvertisementState.regionsSuccess(regions));
+      },
+      failure: (errorHandler) {
+        emit(AddAdvertisementState.regionsError(errorHandler));
+      },
+    );
+  }
+
+  void updatePropertyType(String value) {
+    selectedPropertyType = value;
+    selectedRegions = [value];
+    emit(AddAdvertisementState.propertyTypeChanged(value));
+  }
+
+// ********************* ImageSource *******************************************
+  Future<void> pickImage(ImageSource source) async {
+    final XFile? image = await _picker.pickImage(source: source);
     if (image != null) {
       selectedImage = File(image.path);
       emit(const AddAdvertisementState.initial());
       emit(AddAdvertisementState.imagePicked(selectedImage!));
     }
   }
+
+  void showImageSource(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (_) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: Text(AppStrings.photoShoot.tr()),
+                onTap: () {
+                  Navigator.pop(context);
+                  pickImage(ImageSource.camera);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: Text(AppStrings.chooseFromGallery.tr()),
+                onTap: () {
+                  Navigator.pop(context);
+                  pickImage(ImageSource.gallery);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+//******************************************************************************
 
   void setPackageDetails(String name, int price) {
     selectedPlanName = name;
@@ -344,6 +296,28 @@ class NotificationsCubit extends Cubit<NotificationsState> {
       },
       failure: (apiError) {
         emit(NotificationsState.notificationsError(apiError));
+      },
+    );
+  }
+}
+
+// ===== News ============================================
+class NewsCubit extends Cubit<NewsState> {
+  final NewsRepository newsRepository;
+
+  NewsCubit(this.newsRepository) : super(const NewsState.initial());
+
+  void emitGetNews() async {
+    emit(const NewsState.newsLoading());
+
+    final result = await newsRepository.getNews();
+
+    result.when(
+      success: (newsResponse) {
+        emit(NewsState.newsSuccess(newsResponse));
+      },
+      failure: (apiError) {
+        emit(NewsState.newsError(apiError));
       },
     );
   }
@@ -471,6 +445,39 @@ class FilterCubit extends Cubit<FilterState> {
     getAdsSearch(); // جلب كل البيانات بدون فلاتر
   }
 }
+//==============================================================================
+
+class SearchFilterCubit extends Cubit<SearchFilterState> {
+  final SearchFilterRepository searchFilterRepository;
+  TextEditingController priceRange = TextEditingController();
+  TextEditingController transactionType = TextEditingController();
+
+  SearchFilterCubit(this.searchFilterRepository)
+      : super(SearchFilterState.initial());
+
+  Future<void> getSearchFilter(
+    List<String>? type,
+    List<String>? region,
+    String? transactionType,
+    String? priceRange,
+  ) async {
+    emit(SearchFilterState.searchFilterLoading());
+
+    final response = await searchFilterRepository.getSearchFilter(
+      SearchFilterRequest(
+        transactionType: transactionType ?? "",
+        type: type ?? [],
+        region: region ?? [],
+        priceRange: priceRange ?? "",
+      ),
+    );
+
+    response.when(
+      success: (data) => emit(SearchFilterState.searchFilterSuccess(data)),
+      failure: (error) => emit(SearchFilterState.searchFilterError(error)),
+    );
+  }
+}
 
 //==============================================================================
 
@@ -499,6 +506,127 @@ class FilterSctionCubit extends Cubit<FilterSectionState> {
     response.when(
       success: (data) => emit(FilterSectionState.filterSectionSuccess(data)),
       failure: (error) => emit(FilterSectionState.filterSectionError(error)),
+    );
+  }
+}
+
+//==============================================================================
+class UserMonthlyPointsCubit extends Cubit<UserMonthlyPointsState> {
+  final UserMonthlyPointsRepository userMonthlyPointsRepository;
+
+  UserMonthlyPointsCubit(this.userMonthlyPointsRepository)
+      : super(UserMonthlyPointsState.initial());
+
+  Future<void> getUserMonthlyPoints() async {
+    // if (UserMonthlyPointsState is! UserMonthlyPointsInitial) return;
+
+    final int userId = await SharedPrefHelper.getInt(SharedPrefKeys.userId);
+
+    emit(UserMonthlyPointsState.userMonthlyPointsLoading());
+
+    final response = await userMonthlyPointsRepository.getUserMonthlyPoints(
+      UserMonthlyPointsRequest(userId: userId),
+    );
+
+    response.when(
+      success: (data) => emit(
+        UserMonthlyPointsState.userMonthlyPointsSuccess(data),
+      ),
+      failure: (error) => emit(
+        UserMonthlyPointsState.userMonthlyPointsError(error),
+      ),
+    );
+  }
+}
+
+class CalculateMarketValueCubit extends Cubit<CalculateMarketValueState> {
+  final CalculateMarketValueRepository calculateMarketValueRepository;
+
+  CalculateMarketValueCubit(this.calculateMarketValueRepository)
+      : super(CalculateMarketValueState.initial());
+  final TextEditingController areaController = TextEditingController();
+  final TextEditingController buildingAge = TextEditingController();
+  final TextEditingController position = TextEditingController();
+  final TextEditingController location = TextEditingController();
+  final TextEditingController finishingLevel = TextEditingController();
+  List<String> features = [];
+  String? selectedFeature;
+  String? selectedLocation;
+
+  final formKey = GlobalKey<FormState>();
+
+  void emitCalculateMarketValue() async {
+    if (!(formKey.currentState?.validate() ?? false)) return;
+
+    emit(CalculateMarketValueState.calculateMarketValueLoading());
+
+    final result = await calculateMarketValueRepository.getCalculateMarketValue(
+      CalculateMarketValueRequest(
+        landSize: int.tryParse(areaController.text) ?? 0,
+        location: location.text,
+        position: int.tryParse(position.text) ?? 0,
+        buildingAge: buildingAge.text, // مثال: "1-3"
+        finishingLevel: int.tryParse(finishingLevel.text) ?? 0,
+        features: features, // مثال: ["pool", "garden"]
+      ),
+    );
+    result.when(
+      success: (response) {
+        emit(CalculateMarketValueState.calculateMarketValueSuccess(response));
+      },
+      failure: (apiError) =>
+          emit(CalculateMarketValueState.calculateMarketValueError(apiError)),
+    );
+  }
+}
+
+//==============================================================================
+class CalculateConstructionCostCubit
+    extends Cubit<CalculateConstructionCostState> {
+  final CalculateConstructionCostRepository calculateConstructionCostRepository;
+
+  CalculateConstructionCostCubit(this.calculateConstructionCostRepository)
+      : super(CalculateConstructionCostState.initial());
+  final TextEditingController buildingArea = TextEditingController();
+  final TextEditingController structureType = TextEditingController();
+  // final TextEditingController finishingType = TextEditingController();
+  // final TextEditingController acType = TextEditingController();
+  // final TextEditingController elevators = TextEditingController();
+  // final TextEditingController plumbingType = TextEditingController();
+  bool? energySaving;
+  bool? hasBasement;
+  int? finishingType;
+  int? acType;
+  int? elevators;
+  int? plumbingType;
+
+  final formKey = GlobalKey<FormState>();
+
+  void emitCalculateConstructionCost() async {
+    if (!(formKey.currentState?.validate() ?? false)) return;
+
+    emit(CalculateConstructionCostState.calculateConstructionCostLoading());
+
+    final result =
+        await calculateConstructionCostRepository.getCalculateConstructionCost(
+      CalculateConstructionCostRequest(
+          buildingArea: int.tryParse(buildingArea.text) ?? 0,
+          structureType: int.tryParse(structureType.text) ?? 0,
+          finishingType: finishingType ?? 0,
+          acType: acType ?? 0,
+          energySaving: energySaving ?? true,
+          elevators: elevators ?? 0,
+          plumbingType: plumbingType ?? 0,
+          hasBasement: hasBasement ?? true),
+    );
+    result.when(
+      success: (response) {
+        emit(CalculateConstructionCostState.calculateConstructionCostSuccess(
+            response));
+      },
+      failure: (apiError) => emit(
+          CalculateConstructionCostState.calculateConstructionCostError(
+              apiError)),
     );
   }
 }

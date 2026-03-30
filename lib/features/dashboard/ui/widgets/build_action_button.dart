@@ -1,4 +1,6 @@
 // Helper method to build action buttons (call/chat/share)
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -28,18 +30,71 @@ Widget buildActionButton(IconData icon, Color color) {
   );
 }
 
-Future<void> launchWhatsApp(String number) async {
-  final String url = "https://wa.me/$number";
+Future<void> launchWhatsAppAd(
+  BuildContext context, {
+  required String? phone,
+  required String adId,
+}) async {
+  final String webLink = "https://api.darafaqkw.com/share.php?code=$adId";
+  // final String webLink = "https://darafaqkw.com/advertisements/$adId";
+  final String lang = Localizations.localeOf(context).languageCode;
+  String message = lang == "ar"
+      ? "مرحبا\nانا مهتم بالإعلان الذي تم نشره علي منصه آفاق\n🔗 $webLink"
+      : "Hello, I am interested in the advertisement that was published on the Afaq platform\n🔗 $webLink";
 
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(
-      Uri.parse(url),
-      mode: LaunchMode.externalApplication,
-    );
+  String cleanPhone = (phone ?? "").replaceAll(RegExp(r'[^\d]'), '');
+  if (cleanPhone.length == 8) cleanPhone = '965$cleanPhone';
+
+  final Uri whatsappUri = Uri.parse(
+      "https://wa.me/$cleanPhone?text=${Uri.encodeComponent(message)}");
+
+  if (await canLaunchUrl(whatsappUri)) {
+    await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
   } else {
-    throw 'تعذر فتح الرابط $url';
+    final Uri fallbackUri = Uri.parse(webLink);
+    if (await canLaunchUrl(fallbackUri)) {
+      await launchUrl(fallbackUri, mode: LaunchMode.externalApplication);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("لا يمكن فتح الرابط")),
+      );
+    }
   }
 }
+
+// Future<void> launchWhatsAppAd(
+//   BuildContext context, {
+//   required String? phone,
+//   required String adId,
+// }) async {
+//   // الرابط الجديد الذي سيفتح التطبيق مباشرة بدون سيرفر
+//   final String customLink = "https://darafaqkw.com/ar/details/$adId";
+
+//   final String lang = Localizations.localeOf(context).languageCode;
+
+//   String message;
+
+//   if (lang == "ar") {
+//     message = "مرحبا\n"
+//         "انا مهتم بالإعلان الذي تم نشره علي منصه آفاق\n"
+//         "🔗 $customLink";
+//   } else {
+//     message =
+//         "Hello, I am interested in the advertisement that was published on the Afaq platform\n"
+//         "🔗 $customLink";
+//   }
+
+//   // تنظيف الرقم
+//   String cleanPhone = (phone ?? "").replaceAll(RegExp(r'[^\d]'), '');
+//   if (cleanPhone.length == 8) cleanPhone = '965$cleanPhone';
+
+//   final Uri whatsappUri = Uri.parse(
+//       "https://wa.me/$cleanPhone?text=${Uri.encodeComponent(message)}");
+
+//   if (await canLaunchUrl(whatsappUri)) {
+//     await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
+//   }
+// }
 
 Future<void> makePhoneCall(String phoneNumber) async {
   final Uri launchUri = Uri(

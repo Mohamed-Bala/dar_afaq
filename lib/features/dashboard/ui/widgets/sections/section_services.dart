@@ -1,9 +1,7 @@
 import 'package:afaq_real_estate/core/resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/resources/color_manager.dart';
 import '../services_grid.dart';
 
 class SectionServices {
@@ -59,6 +57,8 @@ List<SectionServices> get sectionServicesList => [
           SubCategoryModel(
               title: AppStrings.furnishedApt.tr(), icon: Icons.door_front_door),
           SubCategoryModel(
+              title: AppStrings.apartmentForRent.tr(), icon: Icons.apartment),
+          SubCategoryModel(
               title: AppStrings.duplexApt.tr(), icon: Icons.bungalow),
           SubCategoryModel(
               title: AppStrings.shopRent.tr(), icon: Icons.storefront),
@@ -85,18 +85,107 @@ List<SectionServices> get sectionServicesList => [
               title: AppStrings.houseExchange.tr(), icon: Icons.apartment),
         ],
       ),
+      // Start engineering Widget
       SectionServices(
         icon: Icons.engineering,
         label: AppStrings.contractors.tr(),
-        dbValue: "مقاولون",
+        dbValue: "مقاولات",
         subCategories: [
           SubCategoryModel(
-              title: AppStrings.constServices.tr(), icon: Icons.construction),
+            title: AppStrings.plumbing.tr(),
+            icon: Icons.plumbing,
+          ),
           SubCategoryModel(
-              title: AppStrings.finishingServices.tr(),
-              icon: Icons.format_paint),
+            title: AppStrings.locks.tr(),
+            icon: Icons.lock,
+          ),
+          SubCategoryModel(
+            title: AppStrings.sanitaryContractor.tr(),
+            icon: Icons.handyman,
+          ),
+          SubCategoryModel(
+            title: AppStrings.pestControl.tr(),
+            icon: Icons.bug_report,
+          ),
+          SubCategoryModel(
+            title: AppStrings.gardens.tr(),
+            icon: Icons.grass,
+          ),
+          SubCategoryModel(
+            title: AppStrings.decor.tr(),
+            icon: Icons.design_services,
+          ),
+          SubCategoryModel(
+            title: AppStrings.paint.tr(),
+            icon: Icons.format_paint,
+          ),
+          SubCategoryModel(
+            title: AppStrings.airConditioning.tr(),
+            icon: Icons.ac_unit,
+          ),
+          SubCategoryModel(
+            title: AppStrings.blacksmith.tr(),
+            icon: Icons.construction,
+          ),
+          SubCategoryModel(
+            title: AppStrings.carpenter.tr(),
+            icon: Icons.carpenter,
+          ),
+          SubCategoryModel(
+            title: AppStrings.electrician.tr(),
+            icon: Icons.electrical_services,
+          ),
+          SubCategoryModel(
+            title: AppStrings.applianceRepair.tr(),
+            icon: Icons.build,
+          ),
+          SubCategoryModel(
+            title: AppStrings.buildingContracting.tr(),
+            icon: Icons.home_work,
+          ),
+          SubCategoryModel(
+            title: AppStrings.aluminum.tr(),
+            icon: Icons.window,
+          ),
+          SubCategoryModel(
+            title: AppStrings.insulation.tr(),
+            icon: Icons.layers,
+          ),
+          SubCategoryModel(
+            title: AppStrings.tilesCeramic.tr(),
+            icon: Icons.grid_view,
+          ),
+          SubCategoryModel(
+            title: AppStrings.ventilation.tr(),
+            icon: Icons.air,
+          ),
+          SubCategoryModel(
+            title: AppStrings.elevators.tr(),
+            icon: Icons.elevator,
+          ),
+          SubCategoryModel(
+            title: AppStrings.doors.tr(),
+            icon: Icons.door_front_door,
+          ),
+          SubCategoryModel(
+            title: AppStrings.glassTechnician.tr(),
+            icon: Icons.crop_square,
+          ),
+          SubCategoryModel(
+            title: AppStrings.buildingMaterials.tr(),
+            icon: Icons.inventory,
+          ),
+          SubCategoryModel(
+            title: AppStrings.agriculturalProducts.tr(),
+            icon: Icons.eco,
+          ),
+          SubCategoryModel(
+            title: AppStrings.waterTanks.tr(),
+            icon: Icons.water_drop,
+          ),
         ],
       ),
+      // End engineering Widget
       SectionServices(
         icon: Icons.business,
         label: AppStrings.realEstateOffices.tr(),
@@ -108,12 +197,18 @@ List<SectionServices> get sectionServicesList => [
         ],
       ),
       SectionServices(
-        icon: Icons.public,
-        label: AppStrings.internationalProperties.tr(),
-        dbValue: "العقارات الدولية",
+        icon: Icons.work_outline,
+        label: AppStrings.jobs.tr(),
+        dbValue: " وظائف",
         subCategories: [
           SubCategoryModel(
-              title: AppStrings.intlProperty.tr(), icon: Icons.language),
+            title: AppStrings.vacancies.tr(),
+            icon: Icons.add_business,
+          ),
+          SubCategoryModel(
+            title: AppStrings.jobSeeker.tr(),
+            icon: Icons.person_search,
+          ),
         ],
       ),
       SectionServices(
@@ -133,48 +228,34 @@ List<SectionServices> get sectionServicesList => [
 
 Widget buildSectionItem(BuildContext context, SectionServices item,
     List<SubCategoryModel> subOptions) {
-  return Material(
-    color: Colors.white,
-    elevation: 4,
-    borderRadius: BorderRadius.circular(15.0.r),
-    child: InkWell(
-      borderRadius: BorderRadius.circular(15.0.r),
-      onTap: () {
-        showAnimatedOptions(context, item.label, subOptions);
-      },
-      child: Container(
-        width: 90.w,
-        height: 85.h,
-        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Icon(
-              item.icon,
-              size: 24.sp,
-              color: ColorManager.primary,
-            ),
-            SizedBox(height: 4.h),
-            Expanded(
-              child: Center(
-                child: Text(
-                  item.label,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: ColorManager.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12.sp,
-                    height: 1.1,
-                  ),
-                ),
+  return GestureDetector(
+    onTap: () {
+      showAnimatedOptions(context, item.label, subOptions);
+    },
+    child: Column(
+      children: [
+        Stack(
+          children: [
+            AnimatedContainer(
+              duration: Duration(milliseconds: 200),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Icon(
+                item.icon,
               ),
             ),
           ],
         ),
-      ),
+        SizedBox(height: 6),
+        Text(
+          item.label,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 12),
+        ),
+      ],
     ),
   );
 }
